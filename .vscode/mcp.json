@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "qwen-bridge": {
+      "type": "stdio",
+      "command": "${userHome}/.local/bin/qwen-bridge",
+      "env": {
+        "PYTHONUNBUFFERED": "1",
+        "QWEN_BRIDGE_OLLAMA_URL": "http://hamilton:11434",
+        "QWEN_BRIDGE_MODEL": "qwen3:30b-a3b",
+        "QWEN_BRIDGE_MAX_STEPS": "40"
+      }
+    }
+  }
+}
