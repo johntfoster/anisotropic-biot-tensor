@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "description": "Paths belonging to the public anisotropic-Biot theoretical paper repository.",
+  "paths": [
+    ".latexmkrc",
+    ".vscode",
+    "AGENTS.md",
+    "VISION.md",
+    "README.md",
+    "LICENSES.md",
+    "Makefile",
+    "main.tex",
+    "references.bib",
+    "references",
+    "provenance",
+    "agent_environment",
+    "agent_workflows",
+    "tools"
+  ]
+}
