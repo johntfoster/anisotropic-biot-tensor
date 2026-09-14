@@ -6,9 +6,10 @@
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage[colorlinks=true,allcolors=blue]{hyperref}
 \usepackage[nameinlink,noabbrev]{cleveref}
-\newcommand{\F}{\bm F}
-\newcommand{\Fb}{\overline{\bm F}}
-\newcommand{\I}{\bm I}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\Fb}{\bar{\mathbf{F}}}
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\I}{\mathbf{I}}
 \newcommand{\C}{\mathbb C}
 \newcommand{\D}{\mathbb D}
 \newcommand{\Hh}{\mathbb H}
@@ -54,30 +55,61 @@ elasticity; Biot tensor; mineral stiffness; Legendre transform
 \section{Introduction}
 \label{sec:introduction}
 
-The Biot coefficient measures the pressure contribution to the total stress
-of a saturated porous solid.  Foster and Xu \citep{fosterxu2025} obtained its
-finite-deformation scalar form from mixture kinematics, intrinsic-density
-conjugacy, and a pressure Legendre transform.  Their construction identifies
-the coefficient with the fixed-pressure change of solid specific volume under
-a skeleton-volume change.  That argument does not require an isotropic
-skeleton.  It produces a tensorial pressure correction whenever the true
-mineral volume responds directionally to the skeleton deformation.
+The linear theory of a fluid-saturated anisotropic porous solid was formulated
+by Biot \citep{biot1955anisotropic}.  Its pressure--stress coupling requires,
+in addition to the fourth-order elastic tensor, a symmetric second-order
+effective-stress (Biot--Willis) tensor and a storage coefficient
+\citep{biotwillis1957,thompsonwillis1991}.  This distinction is consequential:
+anisotropic elastic stiffness alone does not determine the directional
+pressure coupling.  Micromechanical interpretations and practical
+identification procedures have made this point explicit under assumptions
+about the solid constituents and pore structure \citep{cheng1997}, while
+crack-based analyses show how pore fabric can generate anisotropic Biot--Willis
+and Skempton tensors \citep{wong2017}.
 
-Here we develop that extension for one deformable solid and one fluid under
-saturation and local pressure equilibrium.  The finite-deformation kinematic
-and Legendre-transform extension is constitutively general.  Its stiffness-wall
-realization is a small-strain specialization using a
-generalized-Hooke energy with independent skeleton, mineral, and coupling
-stiffness tensors.  The latter is required: two stiffness tensors alone cannot
-specify how a skeleton strain changes the mineral state at fixed pore pressure.
-The classical result is recovered below from this paper's Foster--Xu-compatible
-matched logarithmic branch and its small-strain tangent.
+The experimental literature also motivates retaining tensorial coupling for
+layered rocks.  Dynamic measurements on VTI shale establish direction- and
+stress-dependent elastic stiffnesses \citep{sviridov2017}, and a more complete
+set of drained, pore-pressure, and deviatoric tests on Callovo--Oxfordian
+claystone found a strongly anisotropic strain response and a markedly
+anisotropic Skempton response, even though the back-calculated Biot-tensor
+anisotropy was small in that material \citep{braun2020}.  At the fracture
+scale, hydraulic-fracture models for shale must couple crack pressurization
+with pore-pressure diffusion and the stress carried by the solid phase
+\citep{chaubazantsu2016}.  That work is an application motivation for
+anisotropic poromechanical models with tensorial pressure coupling.
+
+The Biot coefficient measures the pressure contribution to the total stress
+of a saturated porous solid.  Foster and Xu \citep{fosterxu2025} derive a
+tensorial fixed-pressure sensitivity of the intrinsic solid specific volume,
+\(\bar v_s\), to skeleton deformation from mixture kinematics,
+intrinsic-density conjugacy, and a pressure Legendre transform.  Their scalar
+specialization closes the material mass balance by taking
+\(\bar v_s=\bar v_s(J)\), so the solid volume fraction, \(\phi_s\), is also a
+function of \(J\) alone and the sensitivity reduces to a scalar coefficient.
+
+Allowing the solid volume fraction to depend on the skeleton deformation
+gradient, \(\phi_s=\phi_s(\F,\ldots)\), makes \(\bar v_s\) depend on
+\(\F\) beyond \(J\), and its fixed-pressure sensitivity remains tensorial.
+
+Here, we generalize this construction for one deformable solid and one fluid
+in a saturated material at local pressure equilibrium.  We retain the
+finite-deformation kinematics and Legendre-transform argument, so the result
+does not depend on a particular elastic law.  We then give a small-strain realization using a
+generalized-Hooke energy.  This realization separates the skeleton stiffness,
+the mineral stiffness, and the stiffness that couples the two states.  The
+coupling stiffness is needed because the two individual stiffness tensors do
+not say how skeleton strain changes the mineral state at fixed pore pressure.
+Finally, we show how the familiar isotropic coefficient follows from a
+calibrated volumetric specialization consistent with the Foster--Xu
+construction.
 
 \section{Kinematics and thermodynamic setting}
 \label{sec:kinematics}
 
 Let \(\F\) map the solid skeleton reference configuration to its current
-configuration, and let \(J=\det\F>0\).  The solid partial density is
+configuration, and let \(J=\det\F>0\) be the corresponding skeleton volume
+ratio.  The solid partial density is
 \(\rho_s=\phi_s\bar\rho_s\), where \(\phi_s\) is the solid volume fraction
 and \(\bar\rho_s\) is the intrinsic density of the mineral solid.  For a
 uniform reference state, solid mass conservation gives
@@ -93,26 +125,48 @@ The true mineral volume ratio is
  \qquad \phi_f=1-\phi_s.
  \label{eq:distention}
 \end{equation}
-Thus \(\bar J\) is the mineral volume ratio, while \(J/\bar J\) is the
-distention ratio of the skeleton.  We adopt the distention--true-deformation
-kinematics used in the present framework,
+Thus \(\bar J\) is the mineral volume ratio, \(\phi_f\) is the fluid volume
+fraction, and \(J/\bar J\) is the distention ratio of the skeleton.  In other
+words, \(J\) measures the change of the porous skeleton volume, whereas
+\(\bar J\) measures the change of volume of the mineral itself.  We separate
+these two changes using the
+distention--true-deformation construction emphasized by Drumheller
+\citep{drumheller2000},
 \begin{equation}
- \F=\bm A\Fb,
- \qquad \det\bm A=\frac{J}{\bar J},
- \det\Fb=\bar J.
- \label{eq:true-mineral-jacobian}
+ \F=\A\Fb,
+ \qquad \det\A=\frac{J}{\bar J},
+ \qquad \det\Fb=\bar J.
+\label{eq:true-mineral-jacobian}
 \end{equation}
-Here \(\bm A\) describes distention.  Equation \eqref{eq:true-mineral-jacobian}
-defines the required volume relation, but its determinant alone does not
-determine the tensorial mineral state.  A finite-deformation constitutive model
-must prescribe an objective energy and a locally solvable mineral-state problem.
+Here \(\A\) describes distention and \(\Fb\) describes true mineral
+deformation.  The determinant relation in
+\eqref{eq:true-mineral-jacobian} is enough to track volume, but it does not
+determine the shape part of the mineral deformation.  To model anisotropic
+minerals, we therefore also need an objective energy and a local problem that
+determines the mineral state.
+For the nonreacting, one-solid/one-fluid specialization considered here, an
+isotropic distention \(\A=a\I\), with
+\(a=(J/\bar J)^{1/3}\), makes \(\F=a\Fb\) kinematically equivalent, up to
+the naming and ordering of factors, to the isotropic swelling--elastic
+multiplicative split used in Flory-type network theories \citep{flory1961}.
+This is a kinematic equivalence only: it neither transfers Flory's mixing free
+energy nor supplies the present pressure-conjugacy or constitutive assumptions.
 
 Let the local mineral coordinates be \(\bm z=(q,\bm\xi)\), where
 \(q=\ln\bar J\) and \(\bm\xi\) are isochoric mineral-shape coordinates.
-Let \(W(\F,q,\bm\xi)\) be the Helmholtz free energy per unit reference mixture
-volume.  Structural tensors, history variables, and temperature are suppressed
-and held fixed below.  Local pressure equilibrium and shape equilibrium are
-the constrained conditions
+At the fixed temperature considered here, let
+\(\psi^s(\F,q,\bm\xi)\) be the solid specific Helmholtz free energy and
+define the mixture-reference free-energy density by
+\(W(\F,q,\bm\xi)=\rho_{s0}\psi^s(\F,q,\bm\xi)\).  The normalization is
+that of Foster and Xu \citep{fosterxu2025}: their intrinsic solid specific
+volume is \(\bar v_s=1/\bar\rho_s=\bar v_{s0}\bar J\), and
+\(\rho_{s0}\bar v_{s0}=\phi_{s0}\).  The isothermal pressure conjugacy
+\(\partial\psi^s/\partial\bar v_s=-p\) then gives the following
+mixture-reference relations.  Here, \(q\) records the mineral volume change
+and \(\bm\xi\) records its shape change without an additional change of
+volume.  Structural tensors and history variables are suppressed and held
+fixed below.  Local pressure equilibrium determines the volume coordinate,
+while shape equilibrium determines the isochoric coordinates:
 \begin{equation}
  \left.\pder{W}{q}\right|_{\F,\bm\xi}=-\phi_{s0}p\bar J,
  \qquad
@@ -124,10 +178,11 @@ Equivalently, the volume derivative at fixed \(\F\) and \(\bm\xi\) is
  \left.\pder{W}{\bar J}\right|_{\F,\bm\xi}=-\phi_{s0}p.
  \label{eq:pressure-conjugacy}
 \end{equation}
-We assume material-frame indifference of \(W\) and equivariance of the local
-solution \((q,\bm\xi)(\F,p)\).  The coordinates \(\bm\xi\) are material,
-so a superposed spatial rotation changes no coordinate value and leaves
-\(\bar J\) invariant.
+Consider an already-deformed specimen that is rotated rigidly in space, with
+its shape and pore pressure left unchanged.  This change of laboratory
+orientation cannot affect the stored energy or the mineral state selected by
+local equilibrium.  Thus, the mineral volume ratio \(\bar J\) and the material
+shape coordinates \(\bm\xi\) do not depend on how the specimen is oriented.
 
 \section{Finite-deformation Biot tensor}
 \label{sec:finite-biot}
@@ -137,6 +192,8 @@ for \((q,\bm\xi)=(q,\bm\xi)(\F,p)\).  Specifically, the Jacobian of
 \(\bigl(W_q+\phi_{s0}p\bar J,W_{\bm\xi}\bigr)\) with respect to
 \((q,\bm\xi)\) is assumed nonsingular.  Define the reduced fixed-pressure energy and its
 Legendre transform by
+\begin{subequations}
+\label{eq:fixed-pressure-energies}
 \begin{align}
  W^{\prime\prime}(\F,p)&=W\bigl(\F,q(\F,p),\bm\xi(\F,p)\bigr),
  \label{eq:reduced-energy}\\
@@ -144,18 +201,32 @@ Legendre transform by
  \bar J\bigl(q(\F,p)\bigr).
  \label{eq:legendre-energy}
 \end{align}
-The first Piola stresses conjugate to \(\F\), respectively at fixed mineral
-state and at fixed pressure, are
-\begin{equation}
-\bm P^{\prime}=\left.\pder{W}{\F}\right|_{q,\bm\xi}
+\end{subequations}
+Foster and Xu \citep[eq.~(33)]{fosterxu2025} transform their specific internal
+energy according to
+\(\widetilde e^s(\F,p)=e^s(\F,\bar v_s)+p\bar v_s\).  Equation
+\eqref{eq:legendre-energy} is its isothermal Helmholtz counterpart.  Replacing
+\(e^s\) by \(\psi^s\), multiplying by \(\rho_{s0}\), and using
+\(\bar v_s=\bar v_{s0}\bar J\) together with
+\(\rho_{s0}\bar v_{s0}=\phi_{s0}\) gives
+\(W+\phi_{s0}p\bar J=\rho_{s0}(\psi^s+p\bar v_s)\).  Evaluating this
+identity at the local solution \((q,\bm\xi)(\F,p)\) gives
+\eqref{eq:legendre-energy} per unit reference mixture volume.
+The first Piola stresses conjugate to \(\F\), respectively at a fixed mineral
+state and at a fixed pore pressure, are
+\begin{subequations}
+\label{eq:effective-stresses}
+\begin{align}
+ \bm P^{\prime}&=\left.\pder{W}{\F}\right|_{q,\bm\xi}
  =\left.\pder{W^{\prime}}{\F}\right|_p,
- \qquad
- \bm P^{\prime\prime}=\left.\pder{W^{\prime\prime}}{\F}\right|_p.
- \label{eq:effective-stresses}
-\end{equation}
-The second equality in the first definition follows because the \(\dd q\)
-and \(\dd\bm\xi\) terms cancel by \eqref{eq:mineral-coordinate-equilibrium}.
-Differentiating
+ \label{eq:fixed-mineral-state-stress}\\
+ \bm P^{\prime\prime}&=\left.\pder{W^{\prime\prime}}{\F}\right|_p.
+ \label{eq:fixed-pressure-stress}
+\end{align}
+\end{subequations}
+The second equality in the first definition follows because the changes in
+\(q\) and \(\bm\xi\) cancel through
+\eqref{eq:mineral-coordinate-equilibrium}.  Differentiating
 \eqref{eq:legendre-energy} gives
 \begin{equation}
  \bm P^{\prime}=
@@ -165,8 +236,10 @@ Differentiating
 \end{equation}
 
 The total mixture first Piola stress is
-\(\bm P=\bm P^{\prime}-pJ\F^{-T}\).  Define the finite-deformation Biot
-tensor in the current configuration as
+\(\bm P=\bm P^{\prime}-pJ\F^{-T}\).  The first term contains the stress
+transmitted through the skeleton and mineral state, while the second is the
+usual pore-pressure traction.  We define the finite-deformation Biot tensor in
+the current configuration by
 \begin{equation}
  \bm B
  =\I-\frac{\phi_{s0}}{J}
@@ -174,16 +247,17 @@ tensor in the current configuration as
  \label{eq:finite-biot-tensor}
 \end{equation}
 Equations \eqref{eq:piola-transform-general} and \eqref{eq:finite-biot-tensor}
-yield the stress transform
+then give the familiar effective-stress form
 \begin{equation}
  \bm\sigma=\bm\sigma^{\prime\prime}-p\bm B,
  \label{eq:total-stress-transform}
 \end{equation}
 where \(\bm\sigma^{\prime\prime}=J^{-1}\bm P^{\prime\prime}\F^T\).
-Under the objectivity and equivariance assumptions stated above, a superposed
-rigid rotation \(\bm Q\) gives \(\bm B(\bm Q\F,p)=\bm Q\bm B(\F,p)\bm Q^T\),
-and the same relation holds for \(\bm\sigma^{\prime\prime}\).  For a state
-for which \(\bar J\) depends on \(\F\) only through \(J\),
+Under the rotation-invariance assumption stated above, a superposed rigid
+rotation \(\bm Q\) gives \(\bm B(\bm Q\F,p)=\bm Q\bm B(\F,p)\bm Q^T\),
+and the same relation holds for \(\bm\sigma^{\prime\prime}\).  For comparison,
+suppose that the mineral volume responds only to skeleton volume and not to
+skeleton shape.  Then \(\bar J\) depends on \(\F\) only through \(J\), and
 \begin{equation}
  \bm B=\left(1-\phi_{s0}\left.\pder{\bar J}{J}\right|_p\right)\I,
  \label{eq:scalar-recovery}
@@ -203,7 +277,7 @@ is \(\bar v_s=\bar J/\bar\rho_{s0}\).  Hence
 This is their equation~(39), expressed using the present volume ratio.
 
 The tensor in \eqref{eq:finite-biot-tensor} is symmetric under the stated
-objectivity assumptions.  Indeed, take a superposed infinitesimal rotation
+rotation-invariance assumption.  Indeed, take a superposed infinitesimal rotation
 \(\bm Q=\I+\bm\Omega\), \(\bm\Omega^T=-\bm\Omega\).  Invariance of
 \(\bar J\) gives
 \begin{equation}
@@ -217,7 +291,8 @@ objectivity assumptions.  Indeed, take a superposed infinitesimal rotation
 \section{Generalized-Hooke specialization}
 \label{sec:hooke}
 
-The small-strain limit makes the required constitutive data explicit.  Let
+The small-strain limit makes the constitutive information required for the
+tensorial coefficient explicit.  Let
 \(\bm e=\sym\nabla\bm u\) be the skeleton strain and let \(\bm\eta\) be a
 symmetric, material tangent coordinate for the true-mineral deformation.  For
 example, with \(\Fb=\bm R_b\bm U_b\), take
@@ -233,8 +308,8 @@ example, with \(\Fb=\bm R_b\bm U_b\), take
 All three tensors have units of pressure.  \(\C\) and \(\Hh\) are self-adjoint
 maps on symmetric tensors (minor and major symmetries); \(\D^T\) denotes the
 adjoint of \(\D\) under the double contraction.  The tensors respectively
-describe a constrained skeleton wall, skeleton--mineral coupling, and mineral
-stiffness wall.  A stable quadratic energy requires \(\Hh\) positive definite
+describe the constrained skeleton stiffness, skeleton--mineral coupling, and
+mineral stiffness.  A stable quadratic energy requires \(\Hh\) positive definite
 and its Schur complement
 \(\C^d=\C-\D:\Hh^{-1}:\D^T\) positive definite on symmetric skeleton strains.
 
