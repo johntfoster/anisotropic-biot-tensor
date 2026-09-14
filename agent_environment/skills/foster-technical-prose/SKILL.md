@@ -37,6 +37,18 @@ and an active verb when this improves readability. Do not remove necessary
 technical terms; introduce them after their plain-language meaning. Do not add
 informal rhetoric, unsupported motivation, or claims beyond the source text.
 
+Maintain a deliberate authorial voice.  In a single-author manuscript that
+builds on the author's earlier joint work, use conventional first-person plural
+consistently for authorial actions (for example, ``our earlier work'' and
+``we derive'') unless the user requests another voice.  Do not switch between
+``we'' and ``I'' solely to distinguish the current author list from that of
+the earlier work; retain third-person attribution for work by other authors.
+
+Close explanatory paragraphs constructively.  State what a model state,
+relation, or assumption represents or enables before qualifying its limits.
+Avoid ending a conclusion with a sentence framed only as what the model is not,
+unless that boundary is necessary to prevent a substantive misinterpretation.
+
 For a manuscript edit, report the scope revised, the explanatory changes made,
 and any technical prose deliberately left unchanged. Rebuild or otherwise
 validate the source when the repository requires it.
