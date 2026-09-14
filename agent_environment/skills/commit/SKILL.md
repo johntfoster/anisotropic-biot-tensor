@@ -29,9 +29,13 @@ cannot recover or summarize conversations themselves.
 4. Write the message body first, with substantive content under these headings
    in this exact order: `Summary`, `What changed & why`, `Alternatives considered`,
    `Dead ends & backtracks`, `Open questions`, `Next steps`. Then prepend a concise
-   header describing the same final change. Sanitize credentials, personal
-   details, and private conversation content; record technical reasoning, not
-   a transcript. Use repository-relative paths in the narrative.
+   header describing the same final change. Under `Summary`, include nonempty
+   `AI model(s):` and `AI session(s):` fields. Record the model names and
+   sanitized, non-secret session identifiers for every contributing session;
+   do not substitute unknown, unavailable, or placeholder values. Sanitize
+   credentials, personal details, and private conversation content; record
+   technical reasoning, not a transcript. Use repository-relative paths in the
+   narrative.
 5. Save the exact message in `.agent-runtime/commit/message.txt`. Stage only the
    intended source, instructions, tests, reference data, and publication assets.
    Inspect `git diff --cached`, including newly added files. Keep manuscript

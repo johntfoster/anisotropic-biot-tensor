@@ -5,15 +5,15 @@ Status: **Active**
 
 ## Journal-facing statement
 
-From 13 September 2026 through the latest covered commit on 14 September 2026, the author used OpenAI Codex (model versions were not consistently recorded) within an author-directed, version-controlled manuscript-development workflow. AI assistance was used for proposing and critiquing prose; examining notation and equation references; auditing derivational consistency; identifying candidate literature and bibliographic issues; supporting LaTeX quality assurance; supporting reproducible theoretical-manuscript development. The author determined the scientific questions, theoretical structure, assumptions, mathematical arguments, physical interpretations, and final wording. Every accepted change was reviewed by the author; equations and citations were checked against manuscript source and primary literature as applicable, and computational changes were subjected to the repository's applicable validation procedures. AI output was not treated as a scholarly source or credited with authorship. The author takes full responsibility for the accuracy, originality, and integrity of the work.
+From 13 September 2026 through the latest covered commit on 14 September 2026, the author used OpenAI Codex (GPT-5.6 Terra) within an author-directed, version-controlled manuscript-development workflow. AI assistance was used for proposing and critiquing prose; examining notation and equation references; auditing derivational consistency; identifying candidate literature and bibliographic issues; supporting LaTeX quality assurance; supporting reproducible theoretical-manuscript development. The author determined the scientific questions, theoretical structure, assumptions, mathematical arguments, physical interpretations, and final wording. Every accepted change was reviewed by the author; equations and citations were checked against manuscript source and primary literature as applicable, and computational changes were subjected to the repository's applicable validation procedures. AI output was not treated as a scholarly source or credited with authorship. The author takes full responsibility for the accuracy, originality, and integrity of the work. Versioned Git hooks regenerate and stage this disclosure before ordinary commits and require structured process-log messages. Consequently, the Git history preserves accepted changes and a curated, author-reviewed account of recoverable-session decisions, but it is not a complete transcript of prompts, rejected suggestions, transient output, or unavailable historical sessions.
 
 ## Record boundaries
 
-- First manuscript-touching commit: `1f3f7a40e782954fde998c76c1597521c832679c` (13 September 2026).
+- First manuscript-touching commit: `00a4dd4c9b41caad4215a82c7ed2a6b18d71273a` (13 September 2026).
 - Coverage endpoint: the latest covered commit on 14 September 2026.
-- Public record: Unknown: a public repository URL has not yet been assigned.
-- Model versions: Unknown where the structured registry records `unknown_not_consistently_recorded`; no versions have been inferred retrospectively.
-- Git records accepted changes. It is not a complete transcript of prompts, rejected suggestions, transient output, or undocumented historical sessions.
+- Public record: https://github.com/johntfoster/anisotropic-biot-tensor
+- Commit provenance: Each covered ordinary commit records its contributing AI model or models and sanitized session identifiers in its process log. The available session survey identifies: GPT-5.6 Terra.
+- Versioned Git hooks regenerate and stage this disclosure before ordinary commits and require structured process-log messages. The resulting history records accepted changes and a curated, author-reviewed account of recoverable-session decisions; it is not a complete transcript of prompts, rejected suggestions, transient output, or unavailable historical sessions.
 
 ## Recorded uses
 

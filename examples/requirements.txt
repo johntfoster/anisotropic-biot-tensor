@@ -1,0 +1,4 @@
+# Optional independent tensor/finite-difference validation; figure generation
+# and the manuscript build need only Python's standard library.
+numpy>=2,<3
+scipy>=1.14,<2

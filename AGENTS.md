@@ -19,6 +19,9 @@
 - Draft the commit body from recoverable session history before writing its
   header. Use the sections `Summary`, `What changed & why`, `Alternatives
   considered`, `Dead ends & backtracks`, `Open questions`, and `Next steps`.
+- In `Summary`, record the AI model or models and sanitized, non-secret session
+  identifier or identifiers that contributed to the commit. The hooks reject
+  ordinary commits that omit either field or substitute an unknown placeholder.
 - Install tracked hooks after every fresh clone or worktree with
   `tools/agentctl hooks install`.
 

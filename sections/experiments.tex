@@ -1,0 +1,441 @@
+\section{Constitutive examples and engineering consequences}
+\label{sec:examples}
+
+\subsection{A controlled mineral-anisotropy comparison}
+
+The direct mineral contribution can be isolated without changing the mixed
+coupling tensor. Let \(\bm v=\I/\sqrt3\) and
+\(\bm T=\operatorname{diag}(-1,-1,2)/\sqrt6\). These are orthonormal
+volumetric and axial deviatoric directions. Consider
+\begin{equation}
+ \Hh=3\phi_{s0}K_s\bm v\otimes\bm v
+ +2\phi_{s0}\mu_s\Pdev+\beta\bm T\otimes\bm T
+ +c(\bm v\otimes\bm T+\bm T\otimes\bm v).
+ \label{eq:controlled-mineral-family}
+\end{equation}
+For \(\beta>0\), this mineral is already anisotropic at \(c=0\), but
+\(\Pdev:\Hh:\I=\bm0\). With the isotropic coupling
+\(\D=d_v\Pvol\), changing \(c\) at fixed \(K_s,\mu_s,\beta,d_v\)
+gives, in the restricted daughter model,
+\begin{equation}
+ \bm B_0=\left(1+\frac{d_v}{3K_s}\right)\I
+ +\frac{c}{\sqrt3K_s}\bm T,
+ \qquad h=\phi_{s0}K_s.
+ \label{eq:controlled-mineral-biot}
+\end{equation}
+The mineral tensor is positive definite if \(\mu_s,K_s>0\),
+\(2\phi_{s0}\mu_s+\beta>0\), and
+\(c^2<3\phi_{s0}K_s(2\phi_{s0}\mu_s+\beta)\).
+In an arbitrary stress unit \(K_*\), take
+\(\phi_{s0}=0.75\), \(K_s=20K_*\), \(\mu_s=8K_*\),
+\(\beta=6K_*\), and \(d_v=-18K_*\).
+Increasing \(c\) from zero to \(6K_*\) changes the Biot principal values
+from \((0.700,0.700,0.700)\) to \((0.629,0.629,0.841)\), while the
+mineral remains positive definite. Its mean Biot coefficient is unchanged.
+Volumetric mineral deformation produces an axial deviatoric stress only in
+the second case. This is the physical meaning of the projected mineral block.
+
+The drained stiffness can be kept fixed by selecting \(\C^c\) through
+\eqref{eq:drained-stiffness} and then \(\C\) through
+\eqref{eq:constrained-skeleton-tangent}; the constrained energy is stable for
+any positive-definite selected \(\C^d\). This comparison isolates an
+energy contribution, not a homogenization of a specified pore geometry. In
+particular, it does not impose the unjacketed compatibility conditions of
+\cref{sec:compatibility}.
+
+\subsection{A finite-deformation model with compatible reference tangents}
+
+For the pressure and layer examples, choose the following complete energy,
+which is objective because its logarithmic strain and material coefficients
+are expressed in the reference frame:
+\begin{equation}
+ W_{\mathrm H}(\bm\varepsilon,q)
+ =\frac12\bm\varepsilon:\C^d:\bm\varepsilon
+ +\frac h2(q-\bm r:\bm\varepsilon)^2,
+ \qquad \bm r=-h^{-1}\bm g.
+ \label{eq:example-hencky-energy}
+\end{equation}
+Here \(\C^d\) denotes the constant zero-pressure tangent in logarithmic
+strain coordinates. At the reference state it is also the infinitesimal
+drained tangent; away from that state it is not the spatial stress--strain
+tangent. Let the material symmetry axis be \(\bm e_3\). Specify
+\(\phi_{s0}=0.75\), an isotropic intrinsic bulk modulus \(K_s=20K_*\),
+and the drained Mandel matrix in the order \((11,22,33,23,13,12)\):
+\begin{equation}
+ [\C^d]_{\mathrm M}=K_*
+ \begin{pmatrix}
+ 12&4&3&0&0&0\\4&12&3&0&0&0\\3&3&8&0&0&0\\
+ 0&0&0&6&0&0\\0&0&0&0&6&0\\0&0&0&0&0&8
+ \end{pmatrix}.
+ \label{eq:example-drained-matrix}
+\end{equation}
+The Mandel shear coordinates are \(\sqrt2\varepsilon_{23}\),
+\(\sqrt2\varepsilon_{13}\), and \(\sqrt2\varepsilon_{12}\).
+Using \eqref{eq:mixed-tangent-compatibility} and
+\eqref{eq:compatible-mineral-tangent} gives
+\begin{equation}
+ h=24.39759036K_*,\qquad
+ \bm r=\operatorname{diag}(19,19,14)/45,\qquad
+ \bm B_0=\operatorname{diag}(41,41,46)/60.
+ \label{eq:example-parameters}
+\end{equation}
+Thus both unjacketed reference conditions are satisfied. In particular,
+\(h\ne\phi_{s0}K_s=15K_*\). These numbers define a synthetic material;
+\(K_*\) is a common stress scale, not a measured shale modulus.
+
+The scalar mineral equilibrium and its tangent are
+\begin{align}
+ h(q-\bm r:\bm\varepsilon)+\phi_{s0}p\exp(q)&=0,
+ \label{eq:example-equilibrium}\\
+ h_p&=h+\phi_{s0}p\exp(q)>0\quad(p\geq0).
+ \label{eq:example-positive-tangent}
+\end{align}
+For every prescribed \(\bm\varepsilon\) and \(p\geq0\), the residual
+is strictly increasing from a negative to a positive value as \(q\) varies
+over the real line, so the equilibrium is unique. Porosity admissibility must
+still be checked. Eliminating \(q\) from \(W_{\mathrm H}+\phi_{s0}p\exp(q)\)
+gives a logarithmic-strain Hessian
+\(\C^d+h\,z(1+z)^{-1}\bm r\otimes\bm r\), where
+\(z=\phi_{s0}p\exp(q)/h\geq0\); it is positive definite. As noted in
+\cref{sec:finite-hencky}, this does not assert global finite-strain stability.
+
+For stretches coaxial with the material axes,
+\(\F=\operatorname{diag}(\exp\varepsilon_1,
+\exp\varepsilon_2,\exp\varepsilon_3)\), the stress and tangent simplify to
+\begin{align}
+ \sigma_i&=J^{-1}(\C^d:\bm\varepsilon)_{ii}
+ -p\left(1-\frac{\phi_{s0}\exp(q)}Jr_i\right),
+ \label{eq:example-coaxial-stress}\\
+ B_i&=1-\frac{\phi_{s0}\exp(q)}{J(1+z)}r_i.
+ \label{eq:example-coaxial-biot}
+\end{align}
+The factor \(1+z\) makes the distinction between the tangent and the
+finite-pressure stress change explicit. The first term in
+\eqref{eq:example-coaxial-stress} is the exact zero-pressure stress at the
+same deformation, since \(q=\bm r:\bm\varepsilon\) when \(p=0\).
+
+\subsection{Compatible anisotropic intrinsic solids}
+
+The mineral mechanism can also be examined while enforcing both reference
+unjacketed conditions. Retain the drained tensor
+\eqref{eq:example-drained-matrix} and take the mixture-normalized mineral
+family \eqref{eq:controlled-mineral-family}, now allowing the coupling to
+change as compatibility requires. With \(\Hh=\phi_{s0}\bar{\mathbb H}\),
+set \(\bm a=\phi_{s0}\Hh^{-1}:\I\), determine \(h\) and \(\bm g\)
+from \eqref{eq:compatible-mineral-tangent} and
+\eqref{eq:mixed-tangent-compatibility}, and define
+\begin{align}
+ \bm t&=3\bm g-\Pdev:\Hh:\I,
+ \label{eq:compatible-daughter-target}\\
+ \D&=\tfrac13\bm t\otimes\I-\tfrac12\Pdev:\Hh:\Pdev,
+ \label{eq:compatible-daughter-coupling}\\
+ \C&=\C^d+h^{-1}\bm g\otimes\bm g,
+ \qquad \kappa=h-\tfrac19\I:\Hh:\I.
+ \label{eq:compatible-daughter-reconstruction}
+\end{align}
+Since \(\D:\I=\bm t\) and
+\(\D:\Pdev+\Pdev:\D^T=-\Pdev:\Hh:\Pdev\), this construction
+returns \(\C^c=\C\), the prescribed \(\C^d\), and the compatible
+\(\bm g,h\). It exhibits the daughter coefficients rather than treating
+them as implicit fitting parameters. The energy is positive definite on its
+constrained state space when \(\C^d\) and \(h\) are positive.
+
+For the mineral family, inversion in its
+volumetric--axial-deviatoric subspace gives
+\begin{equation}
+ \bm a=\frac{\phi_{s0}\sqrt3}
+ {3\phi_{s0}K_s-c^2/(2\phi_{s0}\mu_s+\beta)}
+ \left(\bm v-\frac{c}{2\phi_{s0}\mu_s+\beta}\bm T\right),
+ \label{eq:compatible-mineral-compliance}
+\end{equation}
+\Cref{tab:compatible-minerals} gives three compatible materials. Every
+mineral tensor and every reduced energy is positive definite. Using their
+\(\bm r=-\bm g/h\) in \eqref{eq:example-hencky-energy} also gives
+admissible states at \(s=-0.2,0,0.2\) and
+\(p/K_s=0,0.01,0.1\), with sampled porosity above 0.13. Here \(K_s=20K_*\)
+is only the common normalization for those pressure samples; the anisotropic
+intrinsic hydrostatic compliance is the tensor \(\bm a\).
+
+\begin{table}[tb]
+\centering\small
+\caption{Compatible anisotropic-mineral calibrations at fixed drained tensor.
+Moduli \(c,\beta,h,\kappa\) are divided by \(K_*\). The restricted
+mineral contribution \(\I:\Hh:\I/9=15K_*\) is the same in all rows.}
+\label{tab:compatible-minerals}
+\begin{tabular}{@{}rrrrrr@{}}
+\toprule
+\(c/K_*\)&\(\beta/K_*\)&\(h/K_*\)&\(\kappa/K_*\)&\(B_{01}\)&\(B_{03}\)\\
+\midrule
+\tablerows{build/examples/anisotropic_rows.tex}
+\bottomrule
+\end{tabular}
+\end{table}
+
+At \(c=0\), the deviatoric anisotropy has no influence on \(\bm a\).
+At \(c=6K_*\), changing only \(\beta\) changes the inverse mineral
+response and therefore the compatible Biot tensor, even though
+\(\Pdev:\Hh:\I=\sqrt3c\bm T\) is unchanged. There is no contradiction
+with the fixed-coupling result: compatibility now changes \(\D:\I\)
+as well. The identifiable prediction under homogeneous-solid assumptions is
+\(\bm B_0=\I-\C^d:\bm a\), not a separately observable attribution to
+\(\Hh\) or \(\D\). Thus purely deviatoric mineral changes are invisible
+when volumetric and deviatoric response are decoupled, but can influence
+pressure coupling through compliance when those blocks interact.
+
+\subsection{Pressure changes after prescribed predeformation}
+
+Hold the specimen at \(\F=\operatorname{diag}(1,1,\exp s)\), for
+\(s=-0.2,0,0.2\), and increase pressure from zero to \(0.1K_s\).
+Compare the full stress with two approximations along these coaxial paths:
+\begin{equation}
+ \bm\sigma_{\mathrm{ref}}(\F,p)=\bm\sigma(\F,0)-p\bm B_0,
+ \qquad
+ \bm\sigma_{\mathrm{scalar}}(\F,p)
+ =\bm\sigma(\F,0)-p b_0\I,
+ \qquad b_0=\tfrac13\tr\bm B_0.
+ \label{eq:comparison-stresses}
+\end{equation}
+Both retain the full model's entire zero-pressure response. The tensor
+approximation also reproduces every reference pressure-tangent component;
+the scalar approximation reproduces only its mean. These are specified
+stress approximations on coaxial loading paths, not alternative globally
+hyperelastic finite-deformation models.
+
+\begin{figure}[tb]
+\centering
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 2,horizontal sep=1.6cm,vertical sep=1.4cm},
+ width=.43\textwidth,height=.27\textheight,
+ xlabel={$p/K_s$},xmin=0,xmax=.1,xtick={0,.025,.05,.075,.1},
+ xticklabels={$0$,$0.025$,$0.05$,$0.075$,$0.1$},grid=major,
+ legend style={font=\footnotesize},tick label style={font=\small}]
+\nextgroupplot[ylabel={$B_1=B_2$},legend pos=south east]
+\addplot[blue,thick] table[x=p,y=B1,col sep=comma]{build/examples/fixed_-0.2.csv};\addlegendentry{$s=-0.2$}
+\addplot[black,thick,dashed] table[x=p,y=B1,col sep=comma]{build/examples/fixed_+0.0.csv};\addlegendentry{$s=0$}
+\addplot[red,thick,dashdotted] table[x=p,y=B1,col sep=comma]{build/examples/fixed_+0.2.csv};\addlegendentry{$s=0.2$}
+\nextgroupplot[ylabel={$B_3$}]
+\addplot[blue,thick] table[x=p,y=B3,col sep=comma]{build/examples/fixed_-0.2.csv};
+\addplot[black,thick,dashed] table[x=p,y=B3,col sep=comma]{build/examples/fixed_+0.0.csv};
+\addplot[red,thick,dashdotted] table[x=p,y=B3,col sep=comma]{build/examples/fixed_+0.2.csv};
+\nextgroupplot[ylabel={Mineral volume ratio $\bar J$}]
+\addplot[blue,thick] table[x=p,y=mineral,col sep=comma]{build/examples/fixed_-0.2.csv};
+\addplot[black,thick,dashed] table[x=p,y=mineral,col sep=comma]{build/examples/fixed_+0.0.csv};
+\addplot[red,thick,dashdotted] table[x=p,y=mineral,col sep=comma]{build/examples/fixed_+0.2.csv};
+\nextgroupplot[ylabel={Porosity $\phi_f$}]
+\addplot[blue,thick] table[x=p,y=porosity,col sep=comma]{build/examples/fixed_-0.2.csv};
+\addplot[black,thick,dashed] table[x=p,y=porosity,col sep=comma]{build/examples/fixed_+0.0.csv};
+\addplot[red,thick,dashdotted] table[x=p,y=porosity,col sep=comma]{build/examples/fixed_+0.2.csv};
+\end{groupplot}
+\end{tikzpicture}
+\caption{Pressure tests at prescribed axial logarithmic strain. The principal
+pressure tangents evolve even though the energy coefficients are constant.
+Mineral compression opens pore volume when skeleton deformation is fixed.
+Colors and line styles denote the same predeformation in all panels.}
+\label{fig:fixed-pressure-tests}
+\end{figure}
+
+\begin{table}[tb]
+\centering\small
+\caption{End states at \(p/K_s=0.1\). Errors are percentages of the
+Frobenius norm of the full pressure-induced stress increment, comparing
+\eqref{eq:comparison-stresses} at the same deformation.}
+\label{tab:fixed-pressure-results}
+\begin{tabular}{@{}rrrrrrr@{}}
+\toprule
+\(s\)&\(B_1\)&\(B_3\)&\(\bar J\)&\(\phi_f\)&Tensor error (\%)&Scalar error (\%)\\
+\midrule
+\tablerows{build/examples/fixed_rows.tex}
+\bottomrule
+\end{tabular}
+\end{table}
+
+\Cref{fig:fixed-pressure-tests,tab:fixed-pressure-results} separate
+predeformation effects from pressure effects. At \(s=0\), the tensor
+approximation is exact to first order in pressure, but its finite-pressure
+stress error reaches 2.3\% at the end of the path. At \(s=0.2\) it reaches
+6.9\%, because a reference tensor does not reproduce the tangent at the
+predeformed state. Compression and increasing pressure can partly offset one
+another in the tangent, so endpoint agreement alone is not an adequate test
+of the entire pressure path. The changes follow the ratios
+\(\phi_{s0}\exp(q)/J\) and \(z\); they are not universal percentages for
+anisotropic porous materials.
+
+\subsection{Uniform pressurization of a laterally confined layer}
+
+Consider a homogeneous layer of reference thickness \(L_0\), with its lower
+surface fixed vertically, zero lateral strain, and zero total vertical
+traction on its upper surface. Pressure is prescribed uniformly after fluid
+equilibration, gravity is neglected, and the symmetry axis is normal to the
+layer. The exact homogeneous boundary-value solution has
+\(\F=\operatorname{diag}(1,1,\exp s)\), with
+\begin{equation}
+ \sigma_3(s,p)=0,\qquad
+ \frac{u_3(L_0)}{L_0}=\exp(s)-1,
+ \qquad \sigma_1=\sigma_2
+ \quad\text{(lateral reaction stress)}.
+ \label{eq:confined-layer-problem}
+\end{equation}
+The full model solves \eqref{eq:example-equilibrium} and the vertical
+traction condition together. Each approximation solves the same traction
+condition with its own stress from \eqref{eq:comparison-stresses}. Thus
+the compared displacements satisfy the same boundary conditions; the full
+solution is not inserted into the approximate stress laws to infer extension.
+This is an equilibrium boundary-value example, not a consolidation transient.
+Its small-pressure limits provide independent checks:
+\begin{equation}
+ \left.\frac{\dd s}{\dd p}\right|_0=\frac{B_{03}}{C^d_{3333}},
+ \qquad
+ \left.\frac{\dd\sigma_1}{\dd p}\right|_0
+ =\frac{C^d_{1133}}{C^d_{3333}}B_{03}-B_{01}.
+ \label{eq:layer-initial-slopes}
+\end{equation}
+
+\begin{figure}[tb]
+\centering
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 1,horizontal sep=1.6cm},
+ width=.43\textwidth,height=.25\textheight,xlabel={$p/K_s$},
+ xmin=0,xmax=.1,xtick={0,.025,.05,.075,.1},
+ xticklabels={$0$,$0.025$,$0.05$,$0.075$,$0.1$},grid=major,tick label style={font=\small},
+ legend style={font=\footnotesize},legend pos=north west]
+\nextgroupplot[ylabel={Extension $100u_3(L_0)/L_0$ (\%)}]
+\addplot[black,thick] table[x=p,y=full_extension,col sep=comma]{build/examples/layer.csv};\addlegendentry{Full equilibrium}
+\addplot[blue,thick,dashed] table[x=p,y=tensor_extension,col sep=comma]{build/examples/layer.csv};\addlegendentry{Reference tensor}
+\addplot[red,thick,dashdotted] table[x=p,y=scalar_extension,col sep=comma]{build/examples/layer.csv};\addlegendentry{Scalar mean}
+\nextgroupplot[ylabel={Lateral reaction $\sigma_1/K_s$},scaled y ticks=false,yticklabel style={/pgf/number format/fixed,/pgf/number format/precision=2}]
+\addplot[black,thick] table[x=p,y=full_reaction,col sep=comma]{build/examples/layer.csv};
+\addplot[blue,thick,dashed] table[x=p,y=tensor_reaction,col sep=comma]{build/examples/layer.csv};
+\addplot[red,thick,dashdotted] table[x=p,y=scalar_reaction,col sep=comma]{build/examples/layer.csv};
+\end{groupplot}
+\end{tikzpicture}
+\caption{Confined-layer extension and lateral reaction under the same
+uniform pressure and zero upper-surface total traction. The scalar model's
+near agreement with the final reaction does not imply an accurate displacement.}
+\label{fig:confined-layer}
+\end{figure}
+
+\begin{table}[tb]
+\centering\small
+\caption{Confined-layer solutions. Extensions are percentages of \(L_0\);
+reaction stresses are divided by \(K_s\). ``Ref.'' denotes the reference
+tensor approximation.}
+\label{tab:layer-results}
+\begin{tabular}{@{}rrrrrrr@{}}
+\toprule
+\(p/K_s\)&\multicolumn{3}{c}{Extension (\%)}&\multicolumn{3}{c}{Reaction \(\sigma_1/K_s\)}\\
+\cmidrule(lr){2-4}\cmidrule(l){5-7}
+&Full&Ref.&Scalar&Full&Ref.&Scalar\\
+\midrule
+\tablerows{build/examples/layer_rows.tex}
+\bottomrule
+\end{tabular}
+\end{table}
+
+At \(p/K_s=0.1\), extension is 30.6\% in the full model, 27.7\% with
+the reference tensor, and 24.9\% with the scalar mean. Relative to the full
+solution, the reference tensor underpredicts extension by 9.3\% and the
+magnitude of lateral reaction by 11.2\%. The scalar model underpredicts
+extension by 18.8\% while nearly reproducing the final lateral reaction,
+through cancellation of errors in directional coupling and deformation.
+Consequently, a single reaction measurement could conceal an inaccurate
+displacement prediction. At \(p/K_s=0.01\), the reference-tensor extension
+error is only 0.61\%, illustrating the smaller effect in the weakly nonlinear
+regime. For a stiff mineral, pressures approaching \(0.1K_s\) may lie well
+outside the reversible range of a real rock. The larger loads expose the
+constitutive mechanism; their suitability for a particular engineering
+material must be established experimentally.
+
+\subsection{Finite-pressure information not fixed by reference calibration}
+
+The finite-pressure numbers above are conditional on the selected energy.
+To quantify that constitutive freedom, replace the logarithmic mineral-volume
+penalty in \eqref{eq:example-hencky-energy} by a penalty in the volume ratio:
+\begin{equation}
+ W_{\mathrm V}(\bm\varepsilon,q)
+ =\frac12\bm\varepsilon:\C^d:\bm\varepsilon
+ +\frac h2\left[\exp(q)-\exp(\bm r:\bm\varepsilon)\right]^2.
+ \label{eq:volume-penalty-energy}
+\end{equation}
+The two energies have identical reference Hessians in
+\((\bm\varepsilon,q)\), and at every zero-pressure deformation both
+minimize at \(q=\bm r:\bm\varepsilon\) with the same condensed energy.
+Consequently they share both reference unjacketed conditions, reference
+storage, and the full zero-pressure stress response. Yet the volume-penalty
+model gives
+\begin{align}
+ \bar J_{\mathrm V}&=\exp(\bm r:\bm\varepsilon)-\frac{\phi_{s0}p}{h},
+ \label{eq:volume-penalty-equilibrium}\\
+ \Phi_{\mathrm V}&=J-\phi_{s0}\exp(\bm r:\bm\varepsilon)
+                    +\frac{\phi_{s0}^2}{h}p,
+ \label{eq:volume-penalty-pore-volume}\\
+ B_{{\mathrm V},i}&=1-\frac{\phi_{s0}}J
+                   \exp(\bm r:\bm\varepsilon)r_i
+ \quad\text{on coaxial paths}.
+ \label{eq:volume-penalty-biot}
+\end{align}
+This tensor depends on deformation, but not pressure. It satisfies
+\eqref{eq:biot-integrability}, in contrast to freezing the spatial reference
+tensor. Its mineral tangent is \(h_p=h\bar J_{\mathrm V}^2>0\) on the
+positive-volume branch. The model is used only where
+\(0<\phi_{s0}\bar J_{\mathrm V}/J<1\); it is not extended past mineral
+volume collapse.
+
+Solving the same confined-layer boundary conditions with
+\eqref{eq:volume-penalty-energy} gives extension 29.88\% and lateral stress
+\(-0.04336K_s\) at \(p/K_s=0.1\), compared with 30.60\% and
+\(-0.04459K_s\) for the logarithmic penalty. These correspond to 2.4\%
+and 2.8\% differences relative to the logarithmic model. The differences
+are smaller than the frozen-tensor errors in this example, but they remain
+undetermined by all of the shared calibration data. At \(p/K_s=0.01\),
+the extension difference falls to 0.19\%. These two continuations are an
+explicit demonstration of nonuniqueness, not upper and lower bounds on all
+admissible energies. Their complete pressure sweeps are generated by the
+same reproduction script.
+
+A finite-pressure experiment at fixed deformation can distinguish them.
+Differentiating \eqref{eq:example-coaxial-biot} at zero pressure gives
+\begin{equation}
+ \left.\frac{\partial B_i}{\partial p}\right|_{\F,p=0}
+ =\frac{2\phi_{s0}^2r_i}{Jh}
+   \exp(2\bm r:\bm\varepsilon)
+ \quad\text{for }W_{\mathrm H},
+ \qquad
+ \left.\frac{\partial B_{{\mathrm V},i}}{\partial p}\right|_{\F}=0.
+ \label{eq:pressure-curvature-discriminator}
+\end{equation}
+The stress curvature is the negative of this derivative, by
+\eqref{eq:cauchy-pressure-tangent}. Measuring successive equilibrated
+pressure slopes at a fixed deformation, together with intrinsic-density or
+pore-volume changes, supplies information absent from reference elastic
+moduli and storage. Experimental resolution and the reversible pressure
+range determine whether that curvature is distinguishable in a real material.
+The present results establish the constitutive distinction and a test for it;
+they do not supply that experimental evidence.
+
+\subsection{Reproducibility and verification}
+
+The script \texttt{examples/finite\_pressure.py} uses bracketed scalar
+equilibrium solves and generates all plotted data and table entries under
+\texttt{build/examples/}. The manuscript build executes it automatically.
+The tensor-check script \texttt{examples/verify\_tensor.py} evaluates
+\(\log\bm U\) and its spectral derivative for general, including
+noncoaxial, deformation gradients. It compares pressure and deformation
+finite differences against the Biot tensor and compares the gradient of
+\(W'-pJ\) against the total Piola stress. It also checks superposed-rotation
+covariance, tensor symmetry, the daughter-energy reduction, the
+coaxial formulas, analytical initial layer slopes, and both reference
+unjacketed conditions. It shares the scalar root routine and material
+constants with the generator, but implements the general tensor derivatives
+separately. The compatible anisotropic daughter reconstructions and the second
+hyperelastic continuation are checked as well.
+
+At 28 test states, the largest absolute discrepancy in the pressure-tangent
+check is below \(8\times10^{-8}\). Across 103 propagation directions per
+state, the smallest sampled acoustic-tensor eigenvalue is above
+\(2.10K_*\). The alternative volume-penalty model also has a sampled acoustic minimum
+above \(2.10K_*\), and its pressure/potential finite-difference errors are
+below \(3\times10^{-10}\). These are local numerical checks, not a proof
+of global ellipticity. All tabulated pressure and layer states have \(h_p>0\) and
+porosity strictly between zero and one. The source specifies the deterministic
+sampling seed and writes the full diagnostics and software versions for
+reproducibility.

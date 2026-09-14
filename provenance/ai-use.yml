@@ -2,8 +2,8 @@
   "schema_version": 1,
   "project": {
     "title": "An anisotropic Biot tensor from finite-deformation mixture kinematics",
-    "public_repository_url": null,
-    "public_repository_url_status": "unknown_not_yet_assigned"
+    "public_repository_url": "https://github.com/johntfoster/anisotropic-biot-tensor",
+    "public_repository_url_status": "assigned"
   },
   "manuscript_paths": [
     "main.tex",
@@ -33,8 +33,10 @@
     {
       "name": "OpenAI Codex",
       "provider": "OpenAI",
-      "model_versions": null,
-      "model_versions_status": "unknown_not_consistently_recorded"
+      "model_versions": [
+        "GPT-5.6 Terra"
+      ],
+      "model_versions_status": "surveyed_from_recoverable_commit_sessions"
     }
   ]
 }

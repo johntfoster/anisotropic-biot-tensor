@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the six-section process log required in commit-message bodies."""
+"""Validate the six-section process log and AI provenance required in commit messages."""
 
 from __future__ import annotations
 
@@ -18,6 +18,15 @@ SECTIONS = (
     "Next steps",
 )
 HEADING = re.compile(r"^(?:##\s+)?(" + "|".join(re.escape(item) for item in SECTIONS) + r")\s*$")
+AI_PROVENANCE_FIELDS = (
+    "AI model(s)",
+    "AI session(s)",
+)
+AI_PROVENANCE = {
+    field: re.compile(r"^" + re.escape(field) + r"\s*:\s*(.+?)\s*$", re.IGNORECASE)
+    for field in AI_PROVENANCE_FIELDS
+}
+UNACCEPTABLE_PROVENANCE = {"unknown", "unavailable", "not recorded", "n/a", "none", "todo", "tbd"}
 
 
 def validate(message: str) -> list[str]:
@@ -49,6 +58,16 @@ def validate(message: str) -> list[str]:
         content = [line.strip() for line in lines[line_index + 1 : end] if line.strip()]
         if not content:
             errors.append(f"empty section: {name}")
+
+        if name == "Summary":
+            for field, pattern in AI_PROVENANCE.items():
+                values = [match.group(1) for line in content if (match := pattern.match(line))]
+                if not values:
+                    errors.append(f"missing {field} in Summary")
+                elif len(values) > 1:
+                    errors.append(f"duplicate {field} in Summary")
+                elif values[0].casefold() in UNACCEPTABLE_PROVENANCE:
+                    errors.append(f"unrecorded {field} in Summary")
 
     return errors
 

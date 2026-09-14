@@ -109,6 +109,8 @@ def tool_phrase(tools: list[dict[str, Any]], latex: bool = False) -> str:
         versions = item.get("model_versions")
         if versions:
             name += f" ({', '.join(versions)})"
+        elif item.get("model_versions_status") == "recorded_per_commit_after_policy_adoption":
+            name += " (model and session provenance is recorded in each new commit's process log)"
         else:
             name += " (model versions were not consistently recorded)"
         entries.append(latex_escape(name) if latex else name)
@@ -117,6 +119,11 @@ def tool_phrase(tools: list[dict[str, Any]], latex: bool = False) -> str:
     if len(entries) == 2:
         return f"{entries[0]} and {entries[1]}"
     return ", ".join(entries[:-1]) + f", and {entries[-1]}"
+
+
+def recorded_model_versions(registry: dict[str, Any]) -> str:
+    versions = [version for tool in registry["tools"] for version in tool.get("model_versions") or []]
+    return ", ".join(versions) if versions else "no model versions"
 
 
 def coverage(root: Path, registry: dict[str, Any], pending_date: str | None) -> dict[str, str]:
@@ -151,6 +158,7 @@ def render_markdown(registry: dict[str, Any], first: dict[str, str], end: dict[s
         end_description = f"the latest covered commit on {finish}"
         state = "Active"
     uses = "; ".join(registry["uses"])
+    models = recorded_model_versions(registry)
     checks = "\n".join(f"- {item}" for item in registry["verification"])
     public_url = registry["project"].get("public_repository_url")
     public_record = public_url or "Unknown: a public repository URL has not yet been assigned."
@@ -161,15 +169,15 @@ Status: **{state}**
 
 ## Journal-facing statement
 
-From {start} through {end_description}, the author used {tools} within an author-directed, version-controlled manuscript-development workflow. AI assistance was used for {uses}. The author determined the scientific questions, theoretical structure, assumptions, mathematical arguments, physical interpretations, and final wording. Every accepted change was reviewed by the author; equations and citations were checked against manuscript source and primary literature as applicable, and computational changes were subjected to the repository's applicable validation procedures. AI output was not treated as a scholarly source or credited with authorship. The author takes full responsibility for the accuracy, originality, and integrity of the work.
+From {start} through {end_description}, the author used {tools} within an author-directed, version-controlled manuscript-development workflow. AI assistance was used for {uses}. The author determined the scientific questions, theoretical structure, assumptions, mathematical arguments, physical interpretations, and final wording. Every accepted change was reviewed by the author; equations and citations were checked against manuscript source and primary literature as applicable, and computational changes were subjected to the repository's applicable validation procedures. AI output was not treated as a scholarly source or credited with authorship. The author takes full responsibility for the accuracy, originality, and integrity of the work. Versioned Git hooks regenerate and stage this disclosure before ordinary commits and require structured process-log messages. Consequently, the Git history preserves accepted changes and a curated, author-reviewed account of recoverable-session decisions, but it is not a complete transcript of prompts, rejected suggestions, transient output, or unavailable historical sessions.
 
 ## Record boundaries
 
 - First manuscript-touching commit: `{first['commit']}` ({start}).
 - Coverage endpoint: {end_description}.
 - Public record: {public_record}
-- Model versions: Unknown where the structured registry records `unknown_not_consistently_recorded`; no versions have been inferred retrospectively.
-- Git records accepted changes. It is not a complete transcript of prompts, rejected suggestions, transient output, or undocumented historical sessions.
+- Commit provenance: Each covered ordinary commit records its contributing AI model or models and sanitized session identifiers in its process log. The available session survey identifies: {models}.
+- Versioned Git hooks regenerate and stage this disclosure before ordinary commits and require structured process-log messages. The resulting history records accepted changes and a curated, author-reviewed account of recoverable-session decisions; it is not a complete transcript of prompts, rejected suggestions, transient output, or unavailable historical sessions.
 
 ## Recorded uses
 
@@ -192,10 +200,16 @@ def render_latex(registry: dict[str, Any], first: dict[str, str], end: dict[str,
     else:
         endpoint = f"the latest covered commit on {finish}"
     uses = "; ".join(registry["uses"])
+    public_url = registry["project"].get("public_repository_url")
+    inspection_statement = (
+        f" The repository at \\url{{{latex_escape(public_url)}}} is available for inspection of accepted changes and recorded process logs."
+        if public_url
+        else ""
+    )
     return f"""% Generated by tools/update_ai_disclosure.py; edit provenance/ai-use.yml instead.
 \\section*{{Declaration of generative AI and AI-assisted technologies}}
 
-From {start} through {endpoint}, the author used {tools} within an author-directed, version-controlled manuscript-development workflow. AI assistance was used for {latex_escape(uses)}. The author determined the scientific questions, theoretical structure, assumptions, mathematical arguments, physical interpretations, and final wording. Every accepted change was reviewed by the author; equations and citations were checked against manuscript source and primary literature as applicable, and computational changes were subjected to the repository's applicable validation procedures. AI output was not treated as a scholarly source or credited with authorship. The author takes full responsibility for the accuracy, originality, and integrity of the work.
+From {start} through {endpoint}, the author used {tools} within an author-directed, version-controlled manuscript-development workflow. AI assistance was used for {latex_escape(uses)}. The author determined the scientific questions, theoretical structure, assumptions, mathematical arguments, physical interpretations, and final wording. Every accepted change was reviewed by the author; equations and citations were checked against manuscript source and primary literature as applicable, and computational changes were subjected to the repository's applicable validation procedures. AI output was not treated as a scholarly source or credited with authorship. The author takes full responsibility for the accuracy, originality, and integrity of the work. Versioned Git hooks regenerate and stage this disclosure before ordinary commits and require structured process-log messages. Consequently, the Git history preserves accepted changes and a curated, author-reviewed account of recoverable-session decisions, but it is not a complete transcript of prompts, rejected suggestions, transient output, or unavailable historical sessions.{inspection_statement}
 """
 
 

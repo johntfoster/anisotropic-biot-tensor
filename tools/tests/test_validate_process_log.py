@@ -20,6 +20,9 @@ VALID = """Subject
 Summary
 State transition.
 
+AI model(s): GPT-5
+AI session(s): codex-2026-09-14-example
+
 What changed & why
 Factual changes and rationale.
 
@@ -46,8 +49,20 @@ class ProcessLogValidationTest(unittest.TestCase):
         self.assertIn("missing section: Summary", errors)
 
     def test_rejects_empty_section(self) -> None:
-        errors = MODULE.validate(VALID.replace("State transition.\n", ""))
+        empty_summary = VALID.replace(
+            "State transition.\n\nAI model(s): GPT-5\nAI session(s): codex-2026-09-14-example\n",
+            "",
+        )
+        errors = MODULE.validate(empty_summary)
         self.assertIn("empty section: Summary", errors)
+
+    def test_rejects_missing_ai_provenance(self) -> None:
+        errors = MODULE.validate(VALID.replace("AI session(s): codex-2026-09-14-example\n", ""))
+        self.assertIn("missing AI session(s) in Summary", errors)
+
+    def test_rejects_unrecorded_ai_provenance(self) -> None:
+        errors = MODULE.validate(VALID.replace("AI model(s): GPT-5", "AI model(s): unknown"))
+        self.assertIn("unrecorded AI model(s) in Summary", errors)
 
     def test_rejects_reordered_sections(self) -> None:
         changed = VALID.replace("Summary\nState transition.", "TEMP").replace(
