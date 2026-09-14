@@ -1,5 +1,9 @@
 /build/
 /.agent-runtime/
+/.codex/
+/.claude/
+/.opencode/
+/.github/skills/
 /.jitcache/
 *.aux
 *.bbl

@@ -1,5 +1,17 @@
 # AGENTS.md
 
+## Shared workflow dependency
+
+- This paper repository is the primary context. Read
+  `.agent/shared/AGENTS.shared.md`; local scientific instructions in this file
+  override shared workflow defaults.
+- The reusable core is pinned as the `.agent/shared` Git submodule. Route work
+  with `tools/agentctl route "<task>"`; shared skills are canonical under
+  `.agent/shared/skills/`, and paper-specific skills belong under
+  `agent_local/skills/` with distinct names.
+- Do not inspect sibling paper repositories unless John explicitly requests it
+  or `research-dependencies.yml` declares the exact pinned source needed.
+
 ## Portable agent environment
 
 - Treat this file as the sole universal entry point for agent work.
@@ -15,7 +27,7 @@
 ## Commit messages as process logs
 
 - For every request to create a commit, use
-  `agent_environment/skills/commit/SKILL.md`.
+  `.agent/shared/skills/commit/SKILL.md`.
 - Draft the commit body from recoverable session history before writing its
   header. Use the sections `Summary`, `What changed & why`, `Alternatives
   considered`, `Dead ends & backtracks`, `Open questions`, and `Next steps`.
@@ -27,8 +39,8 @@
 
 ## Agent skill registration
 
-- Canonical skills live in `agent_environment/skills/<name>/SKILL.md`.
-- `agent_environment/dependencies.json` maps each harness to its skill
+- Canonical shared skills live in `.agent/shared/skills/<name>/SKILL.md`.
+- `agent-profile.json` maps each harness to its skill
   discovery directory. Re-register the one-way skill links after a fresh clone
   or when switching harnesses.
 
