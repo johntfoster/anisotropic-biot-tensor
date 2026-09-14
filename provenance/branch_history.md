@@ -30,7 +30,8 @@ anisotropic special cases and the calibrated fully isotropic recovery
 Three independent peer reviewers audited the draft through multiple revision
 cycles. Their reviews corrected the finite-deformation conjugacy to use
 \(\bar J\), made the mineral-state coordinate split explicit, separated the
-Foster--Xu-compatible matched branch from a broad quadratic family, and
+volumetric calibration that recovers the classical coefficient from a broad
+quadratic family, and
 verified the reference-density normalization that maps Foster and Xu's scalar
 coefficient to the mixture-normalized form used here. The final review cycle
 returned three accept recommendations.

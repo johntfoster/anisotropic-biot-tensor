@@ -13,8 +13,8 @@ The work distinguishes a general objective finite-deformation kinematic and
 thermodynamic result from its small-strain stiffness-tensor realization. It
 derives the isotropic-mineral and anisotropic-mineral limits, identifies the
 additional coupling calibration required by the classical fully isotropic
-coefficient, and recovers \(B=1-K/K_s\) on the Foster--Xu-compatible matched
-volumetric branch.
+coefficient, and recovers \(B=1-K/K_s\) through a calibrated volumetric
+specialization.
 
 The repository must build from a clean clone, preserve a clear chain from the
 source paper to the new theoretical contribution, and keep agent workflows,

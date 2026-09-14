@@ -42,6 +42,8 @@
 - Preserve TeX semantics, equation labels, citations, and the distinction
   between finite-deformation kinematics and the small-strain stiffness-tensor
   specialization.
+- Do not describe a calibration as "matched." State the condition it enforces
+  or the quantities it is calibrated to reproduce.
 - Number and descriptively label every displayed equation introduced by an
   agent. Use `align` for multi-step derivations.
 - Verify citation-backed claims against the cited full text. Keep PDFs under
