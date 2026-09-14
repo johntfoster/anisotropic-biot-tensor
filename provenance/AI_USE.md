@@ -9,7 +9,7 @@ From 13 September 2026 through the latest covered commit on 13 September 2026, t
 
 ## Record boundaries
 
-- First manuscript-touching commit: `5d5c469465ed6ce86eab338d30a7b6a687ab2113` (13 September 2026).
+- First manuscript-touching commit: `1f3f7a40e782954fde998c76c1597521c832679c` (13 September 2026).
 - Coverage endpoint: the latest covered commit on 13 September 2026.
 - Public record: Unknown: a public repository URL has not yet been assigned.
 - Model versions: Unknown where the structured registry records `unknown_not_consistently_recorded`; no versions have been inferred retrospectively.
