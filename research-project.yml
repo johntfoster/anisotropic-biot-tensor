@@ -13,7 +13,7 @@
   "workflow": {
     "repository": "https://github.com/johntfoster/research-agent-workflows",
     "path": ".agent/shared",
-    "revision": "bd82f7bed44ecb3ae7e2e6895a990ef456b8c23c",
+    "revision": "06e780a48edb167d59f122959bc09f3bd96fd4de",
     "release": "v0.2.0"
   },
   "maintenance": {
