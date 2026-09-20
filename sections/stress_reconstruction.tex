@@ -1,0 +1,204 @@
+% !TeX root = ../main.tex
+\section{Logarithmic Hooke laws and the drained response}
+\label{sec:stress-reconstruction}
+
+We prescribe the mineral and drained skeleton responses in material
+logarithmic strain. Let \(\mathbf F=\mathbf R\mathbf U\) be the right
+polar decomposition. Equation \eqref{eq:conformal-mineral-metric} gives
+\(\bar{\mathbf U}=a^{-1/3}\mathbf U\), independently of
+\(\mathbf R_A\). Taking the logarithms yields
+\begin{align}
+ \mathbf\varepsilon&=\log\mathbf U,
+ \label{eq:skeleton-logarithmic-strain}\\
+ \bar{\mathbf\varepsilon}&=\log\bar{\mathbf U},
+ \label{eq:mineral-logarithmic-strain}\\
+ &=\mathbf\varepsilon-\frac13\ln a\,\mathbf I.
+ \label{eq:constrained-mineral-logarithmic-strain}
+\end{align}
+Here \(\mathbf U\) and \(\bar{\mathbf U}\) are the skeleton and
+mineral right stretches. Their logarithmic traces are \(\ln J\) and
+\(\ln\bar J\). We use
+\(\dev\mathbf\varepsilon=\mathbf\varepsilon
+-\tr(\mathbf\varepsilon)\mathbf I/3\) for the shape-changing part.
+Thus \(\bar{\mathbf\varepsilon}
+=\dev\mathbf\varepsilon+\ln\bar J\mathbf I/3\).
+
+Let \(\mathbb{C}_s\) and \(\mathbb{C}^d\) be constant fourth-order
+mineral and drained stiffness tensors, with the usual minor and major
+symmetries and positive elastic energy. The prescribed generalized Hooke
+laws are
+\begin{align}
+ \pder{\bar W_s}{\bar{\mathbf\varepsilon}}
+ &=\mathbb{C}_s:\bar{\mathbf\varepsilon},
+ \label{eq:prescribed-mineral-log-hooke}\\
+ \pder{W_d}{\mathbf\varepsilon}
+ &=\mathbb{C}^d:\mathbf\varepsilon.
+ \label{eq:prescribed-skeleton-log-hooke}
+\end{align}
+These stresses are conjugate to logarithmic strain. Their spatial
+Kirchhoff stresses are obtained by differentiating the strain with respect
+to deformation, as detailed in \cref{sec:logarithmic-derivative}.
+The energies, zero in the undeformed state, are
+\begin{equation}
+ \bar W_s=\frac12\bar{\mathbf\varepsilon}:\mathbb{C}_s:
+                    \bar{\mathbf\varepsilon},\qquad
+ W_d=\frac12\mathbf\varepsilon:\mathbb{C}^d:\mathbf\varepsilon.
+ \label{eq:prescribed-logarithmic-energies}
+\end{equation}
+The first is per reference mineral volume and the second per reference
+mixture volume. At zero pressure the coupled energy must recover \(W_d\).
+
+We first determine the scalar distention energy from a spherical drained
+strain. Define
+\begin{equation}
+ K=\frac19\mathbf I:\mathbb{C}^d:\mathbf I,\qquad
+ K_s=\frac19\mathbf I:\mathbb{C}_s:\mathbf I.
+ \label{eq:spherical-strain-stiffnesses}
+\end{equation}
+These coefficients give mean logarithmic stress per logarithmic volume
+change when strain is spherical. For an anisotropic solid, a spherical
+strain can generate a deviatoric stress; \(K\) and \(K_s\) need not
+equal moduli measured under hydrostatic stress. They become the usual
+bulk moduli in the isotropic limit.
+
+Along the spherical drained path, both strains are spherical. Taking the
+trace of \eqref{eq:constitutive-kirchhoff-phase-stress} at \(p=0\)
+gives the same volume relation as the scalar construction,
+\begin{align}
+ K\ln J&=\phi_{s0}K_s\ln\bar J,
+ \label{eq:drained-mineral-volume-matching}\\
+ \ln a&=\left(1-\frac K{\phi_{s0}K_s}\right)\ln J.
+ \label{eq:drained-distention-volume-matching}
+\end{align}
+The logarithmic stress transformation preserves the trace, as shown in
+\eqref{eq:logarithmic-stress-trace}. The derivative of \(W_A\) with
+respect to \(\ln a\) equals \(K\ln J\) on this path. Substitution
+and integration give
+\begin{equation}
+ W_A(a)=\frac{K}{2\left(1-K/(\phi_{s0}K_s)\right)}(\ln a)^2.
+ \label{eq:distention-energy}
+\end{equation}
+We assume \(0<K<\phi_{s0}K_s\), so the distention energy has positive
+curvature with respect to \(\ln a\). Because \(W_A\) depends on \(a\) alone, the values determined
+on this path also apply when the mineral changes shape.
+
+Combining \eqref{eq:equivalent-mixture-mineral-energy} and
+\eqref{eq:distention-energy} gives the complete elastic energy
+\begin{align}
+ W_s(\mathbf F,\bar J)
+ &=\frac{K}{2\left(1-K/(\phi_{s0}K_s)\right)}
+             \left[\ln\left(\frac J{\bar J}\right)\right]^2
+ \nonumber\\
+ &\quad+\frac{\phi_{s0}}2
+ \left(\dev\mathbf\varepsilon+\frac{\ln\bar J}{3}\mathbf I\right)
+ :\mathbb{C}_s:
+ \left(\dev\mathbf\varepsilon+\frac{\ln\bar J}{3}\mathbf I\right).
+ \label{eq:equivalent-anisotropic-energy}
+\end{align}
+To exhibit the volume contribution, expand the mineral term:
+\begin{align}
+ W_s
+ &=\frac{K}{2\left(1-K/(\phi_{s0}K_s)\right)}
+             \left[\ln\left(\frac J{\bar J}\right)\right]^2
+ +\frac{\phi_{s0}K_s}{2}(\ln\bar J)^2
+ \nonumber\\
+ &\quad+\frac{\phi_{s0}}3\ln\bar J\,
+        \mathbf I:\mathbb{C}_s:\dev\mathbf\varepsilon
+ +\frac{\phi_{s0}}2\dev\mathbf\varepsilon:\mathbb{C}_s:
+                                      \dev\mathbf\varepsilon.
+ \label{eq:equivalent-volumetric-energy}
+\end{align}
+The first two terms are precisely the companion's elastic volumetric
+energy. The third describes mineral volume--shape coupling and follows
+from the prescribed mineral Hooke law. It vanishes for an isotropic mineral.
+The final term is the mineral shape energy, weighted by reference solid
+fraction.
+
+Pressure equilibrium is enforced by differentiating this energy at fixed
+\(\mathbf F\).
+Both \(J\) and skeleton shape then remain fixed while distention changes
+with mineral volume. Multiplying the derivative by \(\bar J\) gives
+\begin{align}
+ -\phi_{s0}p\bar J
+ &=-\frac{K\ln(J/\bar J)}{1-K/(\phi_{s0}K_s)}
+   +\phi_{s0}K_s\ln\bar J
+ \nonumber\\
+ &\quad+\frac{\phi_{s0}}3\mathbf I:\mathbb{C}_s:
+                                      \dev\mathbf\varepsilon.
+ \label{eq:anisotropic-energy-pressure-derivative}
+\end{align}
+Collecting terms yields the mineral-volume equation
+\begin{align}
+ 0&=K_s\ln\bar J
+   +\left(1-\frac K{\phi_{s0}K_s}\right)p\bar J
+   -\frac K{\phi_{s0}}\ln J
+ \nonumber\\
+ &\quad+\frac13\left(1-\frac K{\phi_{s0}K_s}\right)
+      \mathbf I:\mathbb{C}_s:\dev\mathbf\varepsilon.
+ \label{eq:anisotropic-mineral-eos}
+\end{align}
+At fixed deformation and nonnegative pressure, the right-hand side of
+\eqref{eq:anisotropic-mineral-eos} increases strictly from negative to positive
+infinity as \(\bar J\) ranges over positive values. There is therefore one positive root. At negative pressure,
+we follow the root continuous from zero pressure while
+\begin{equation}
+ K_s+\left(1-\frac K{\phi_{s0}K_s}\right)p\bar J>0.
+ \label{eq:trace-mineral-stability-domain}
+\end{equation}
+This condition keeps the local volume derivative positive. It also gives a
+local minimum of \(W_s+\phi_{s0}p\bar J\) with respect to mineral volume.
+At negative pressure this minimum need not be global. Positive phase volumes
+and stability against general deformation must be checked separately.
+
+The spherical drained path fixed \(W_A\). Reproducing the entire drained
+Hooke law places a further restriction on \(\mathbb{C}^d\).
+Setting \(p=0\) in \eqref{eq:anisotropic-mineral-eos} gives
+\begin{equation}
+ \ln a=\frac1{3K_s}\left(1-\frac K{\phi_{s0}K_s}\right)
+                  \mathbf I:\mathbb{C}_s:\mathbf\varepsilon.
+ \label{eq:drained-anisotropic-distention}
+\end{equation}
+Substitution into the energy, or its logarithmic strain derivative, gives
+\begin{equation}
+ \mathbb{C}^d=\phi_{s0}\mathbb{C}_s
+ -\frac{\phi_{s0}}{9K_s}\left(1-\frac K{\phi_{s0}K_s}\right)
+    (\mathbb{C}_s:\mathbf I)\otimes(\mathbb{C}_s:\mathbf I).
+ \label{eq:drained-stiffness-restriction}
+\end{equation}
+The compliance form follows directly from the drained stress and the
+strain split. At zero pressure, differentiating the energy in logarithmic
+strain gives \(\mathbb{C}^d:\mathbf\varepsilon
+=\phi_{s0}\mathbb{C}_s:\bar{\mathbf\varepsilon}\).
+The derivative of the distention energy also gives
+\begin{equation}
+ \ln a=\frac{1-K/(\phi_{s0}K_s)}{3K}
+             \mathbf I:\mathbb{C}^d:\mathbf\varepsilon.
+ \label{eq:drained-distention-from-stress}
+\end{equation}
+Substituting these relations into
+\(\mathbf\varepsilon=\bar{\mathbf\varepsilon}+\ln a\mathbf I/3\)
+yields
+\begin{align}
+ \mathbf\varepsilon
+ &=(\phi_{s0}\mathbb{C}_s)^{-1}:\mathbb{C}^d:\mathbf\varepsilon
+ \nonumber\\
+ &\quad+\frac{1-K/(\phi_{s0}K_s)}{9K}
+       \mathbf I\left(\mathbf I:\mathbb{C}^d:\mathbf\varepsilon\right).
+ \label{eq:drained-compliance-work-derivation}
+\end{align}
+Because this holds for every symmetric drained strain, the additional
+compliance is
+\begin{equation}
+ (\mathbb{C}^d)^{-1}-(\phi_{s0}\mathbb{C}_s)^{-1}
+ =\frac{1-K/(\phi_{s0}K_s)}{9K}\mathbf I\otimes\mathbf I.
+ \label{eq:drained-compliance-restriction}
+\end{equation}
+The inverse is on symmetric tensors. Acting on a stress, the right-hand
+side produces a spherical strain proportional to its trace. This is exactly
+the additional deformation allowed by the dilation part of conformal distention. Together, \eqref{eq:drained-stiffness-restriction} and
+\eqref{eq:drained-compliance-restriction} are necessary and sufficient within
+the present construction for the full drained energy to equal the prescribed
+\(W_d\). Positive mineral stiffness
+and \(0<K<\phi_{s0}K_s\) then give positive drained stiffness. Arbitrary
+independent choices of the two stiffness tensors generally do not satisfy
+this relation.

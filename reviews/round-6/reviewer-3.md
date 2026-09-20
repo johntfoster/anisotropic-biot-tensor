@@ -1,0 +1,29 @@
+# Independent review 3: final prose, notation, scope, and reproducibility
+
+**Recommendation: ACCEPT.** I independently reassessed the round-6 changes in their surrounding derivation. They strengthen the explanation without expanding the physical claims or introducing unnecessary notation. No scientific revision is required in my assigned scope. This is a simulated review, not an editorial decision by JMPS.
+
+## Evidence and scope
+
+I read `reviews/round-5/response.md` as a change inventory, checked the revised passages directly in `main.tex`, `sections/stress_reconstruction.tex`, and `sections/experiments.tex`, and reread the logarithmic-stress appendix. The local instructions and author profile remain unchanged from my previous direct reading. All **19** entries in `reviews/round-6/source-sha256.txt` match the files reviewed. I inspected the numerical report against the new manuscript error summary. The numerical source hashes are unchanged from the versions I independently executed during round 5; that execution evidence remains applicable without treating earlier votes as evidence. Final rendered-page QA is being performed separately by the root reviewer; I did not claim a fresh visual audit of the round-6 PDF.
+
+## Findings
+
+- **The work converse is explicit and correct.** `main.tex:236–254` distinguishes fixed mineral volume from fixed skeleton deformation before giving the two equations. The first derivative gives the spherical distention stress plus the mineral deviatoric stress; the pressure equation supplies the missing mean contribution. Substitution recovers the complete spatial phase stress balance. The explanation is local, uses the existing energy and stress symbols, and does not assume common stress/strain principal directions. It clarifies the role of the integrated energy rather than merely restating its trace.
+
+- **The compliance derivation follows the mechanics directly.** `sections/stress_reconstruction.tex:165–199` uses equality of drained conjugate stresses, the distention energy derivative, and the spherical strain split. The displayed substitution yields the stated compliance restriction for all symmetric drained strains, with the inverse taken on symmetric tensors. The passage avoids a new stress variable or auxiliary matrix operator. Its final interpretation correctly describes the additional allowed strain as spherical and preserves the restriction on admissible skeleton/mineral stiffness pairs.
+
+- **The constitutive assumption is identified at its first use.** `main.tex:135–139` now calls the mineral law a representative phase constitutive assumption. This is appropriately modest: the volume-fraction stress sum is not presented as a derivation of a general pore-scale constitutive average. The wording remains consistent with the abstract, the prescribed logarithmic mineral law, and the discussion of missing pore-shape mechanisms.
+
+- **The physical meaning of the Biot tensor is now exact.** `main.tex:302–311` states the contraction with the current virtual deformation at fixed pressure and explains both reference and current volume normalization. The equation follows directly by varying J minus the reference-solid-fraction-weighted mineral volume and pushing the mineral-volume gradient forward. It removes the ambiguous informal description without adding symbols.
+
+- **The numerical evidence is visible and proportionate.** `sections/experiments.tex:80–96` reports 273 states, 13 stiffnesses, errors below 9e-10 in normalized stress and 2e-9 in the pressure tangent, and the 2e-6 comparison tolerance. These agree with the independently executed script outputs: 8.646453275584776e-10 and 1.940834382097023e-9 respectively. The paragraph retains the distinction between checking model identities, validating material response, and proving finite-deformation stability. README still gives the direct reproduction commands and separates the tests from the manuscript build.
+
+- **The notation and theoretical scope remain disciplined.** New tensor expressions use upright bold `\mathbf{}` throughout, including Greek stress and fourth-order stiffness. No `\bm`, `\boldsymbol`, or `\mathbb` tensor notation occurs in the active manuscript files. New displays have descriptive labels. The additions preserve the stress/work/energy sequence, spherical distention, the full anisotropic mineral law, and the distinction between logarithmic conjugate and spatial stress. Gajo's scalar precedence and the limited volumetric correspondence remain explicitly stated; no new priority claim has been introduced.
+
+## Required and optional action
+
+There are no required scientific changes and no further optional prose changes necessary to resolve my review. The additions address the earlier precision and numerical-reporting suggestions satisfactorily.
+
+I also checked the disclosure's historical scope against `provenance/reconsideration-ai-session.md`. That separate record explicitly documents the current uncommitted activity and does not claim that John has reviewed or accepted the draft. The generated disclosure correctly identifies its narrower covered-commit period. No commit or external submission was requested, so no disclosure change is required for this task. If the paper is later submitted, its disclosure can be refreshed through the ordinary provenance workflow after the author's review. The current activity is recorded; it is not an undisclosed scientific contribution.
+
+The manuscript remains suitable as a bounded theoretical contribution. Its useful result is the explicit compatibility restriction and associated finite-deformation pressure coupling under a specified deformation mechanism. It does not need new material experiments, an arbitrary-pore-geometry claim, or extra constitutive notation to support that contribution.

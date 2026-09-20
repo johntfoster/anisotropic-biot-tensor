@@ -1,0 +1,27 @@
+{
+  "discrete_mass_absolute": 5.595003627067996e-14,
+  "discrete_mass_mobilized_relative": 2.1454567719771327e-11,
+  "force_relative": 4.0715050378789136e-12,
+  "expected_force": -1.4,
+  "force_convention": "top boundary carries a uniform compressive traction of magnitude q_L over width a (quarter Mandel, a=1) or 2a (full domain, a=1); expected top resultant is -a*q_L (quarter) or -2*a*q_L (full).",
+  "platen_equality_absolute": 3.400058012914542e-15,
+  "peak_pressure": 0.20754766152996,
+  "peak_time": 0.004,
+  "reference_comparable": false,
+  "reference_note": "The rotated-anisotropy runs use DEFAULT_CS with phi_s0=0.6 and K=7, while the Mandel reference is the reference-modulus isotropic problem of the quarter-domain decks (phi_s0=0.9, K=1, G=0.75, alpha=0.6). A Mandel-normalized discrepancy would compare different problems, so no reference-normalized field is emitted; only the run diagnostics (mass balance, force balance, platen equality, peak pressure) are reported.",
+  "configuration": {
+    "nx": 24,
+    "ny": 6,
+    "dt": 0.0005,
+    "end": 0.1,
+    "load": 0.7,
+    "linear": false,
+    "case": "anisotropic",
+    "angle": 30,
+    "initial": [
+      0,
+      0,
+      0
+    ]
+  }
+}

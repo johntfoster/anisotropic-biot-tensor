@@ -1,0 +1,43 @@
+{
+  "snapshot_id": "69e5e45a1ca3bf0596906abf4aa91ca8aab27016da90d93594efae34d5194030",
+  "review_verdicts": [
+    "ACCEPT",
+    "ACCEPT",
+    "ACCEPT"
+  ],
+  "post_acceptance_scientific_edits": false,
+  "manifest_files_verified": 100,
+  "pdf_sha256": "1e352f568db8a03b034cff798df4db644857916d35fff58f5960a01a9ddb0696",
+  "supplement_sha256": "cec4b5ff171ecec27c2c0d8d797afef8f0b65f79ac899b1d4b60ce4313535d4d",
+  "build_command": "latexmk -lualatex -interaction=nonstopmode -halt-on-error -outdir=build main.tex",
+  "build_check": "passed; accepted PDF unchanged",
+  "manuscript_profile_check": "passed",
+  "git_diff_check": "passed",
+  "pages": 17,
+  "conformal_checks": 186,
+  "experimental_states": 1051,
+  "baseline_files": 119,
+  "authorized_changed_baseline_files": [
+    "README.md",
+    "VISION.md",
+    "examples/requirements.txt",
+    "main.tex",
+    "provenance/AI_USE.md",
+    "provenance/ai-use.yml",
+    "provenance/ai_use_statement.tex",
+    "references.bib",
+    "sections/experiments.tex",
+    "sections/limits.tex",
+    "sections/logarithmic_derivative.tex",
+    "sections/stress_reconstruction.tex",
+    "tools/update_ai_disclosure.py"
+  ],
+  "unexpected_changes": [],
+  "outbound_pdf": "/home/jfoster/.openclaw/media/outbound/anisotropic-biot-tensor-reviewed-2026-09-20.pdf",
+  "delivery_status": "confirmed",
+  "checked_at": "2026-09-20T18:07:41.740709+00:00",
+  "delivery_message_id": "7185",
+  "goal_status": "complete",
+  "watcher_removed": true,
+  "completed_at": "2026-09-20T18:08:42.687251+00:00"
+}

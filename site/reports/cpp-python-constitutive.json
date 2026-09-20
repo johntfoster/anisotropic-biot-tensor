@@ -1,0 +1,30 @@
+{
+  "states": 41,
+  "inadmissible_states_excluded": 3,
+  "value_absolute_error": 6.394884621840902e-14,
+  "jacobian_step_sizes": [
+    0.0001,
+    5e-05,
+    2.5e-05,
+    1e-05
+  ],
+  "jacobian_absolute_errors": [
+    1.6069079009639609e-06,
+    4.0186294825161895e-07,
+    1.0125008031991456e-07,
+    1.5505328576637112e-08
+  ],
+  "quadrature_order_errors": {
+    "8": 2.2002693000899853e-09,
+    "12": 8.08242361927114e-14,
+    "16": 6.572520305780927e-14,
+    "24": 6.394884621840902e-14,
+    "32": 5.684341886080802e-14
+  },
+  "metric_eigenvalue_range": [
+    0.5034562732858825,
+    2.3309092234221582
+  ],
+  "pass_values": true,
+  "pass_derivatives": true
+}

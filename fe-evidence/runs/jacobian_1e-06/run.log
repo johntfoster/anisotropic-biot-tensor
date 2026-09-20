@@ -1,0 +1,140 @@
+
+[36m
+*** Info ***
+'execute_on' parameter specified in [Outputs] block is ignored for object 'checkpoint'.
+Define this object in its own sub-block of [Outputs] to modify its execution schedule.[39m
+Framework Information:
+MOOSE Version:           git commit abafb58b on 2026-02-20
+LibMesh Version:         
+PETSc Version:           3.24.4
+SLEPc Version:           3.24.0
+Current Time:            Sun Sep 20 17:08:26 2026
+Executable Timestamp:    Sun Sep 20 14:26:45 2026
+
+Input File(s):
+  /home/jfoster/projects/research/reactive_transport/anisotropic-biot-tensor/.agent-runtime/moose-fe-goal-2026-09-20/implementation/runs/jacobian_1e-06/input.i
+
+Command Line Argument(s):
+  --n-threads=1
+
+Command Line Input Argument(s):
+  Outputs/file_base=/home/jfoster/projects/research/reactive_transport/anisotropic-biot-tensor/.agent-runtime/moose-fe-goal-2026-09-20/implementation/runs/jacobian_1e-06/solution
+
+Checkpoint:
+  Wall Time Interval:      Every 3600 s
+  User Checkpoint:         Disabled
+  # Checkpoints Kept:      2
+  Execute On:              TIMESTEP_END 
+
+Parallelism:
+  Num Processors:          1
+  Num Threads:             1
+
+Mesh: 
+  Parallel Type:           replicated
+  Mesh Dimension:          2
+  Spatial Dimension:       2
+  Nodes:                   25
+  Elems:                   4
+  Num Subdomains:          1
+
+Nonlinear System:
+  Num DOFs:                59
+  Num Local DOFs:          59
+  Variables:               { "ux" "uy" } "p" 
+  Finite Element Types:    "LAGRANGE" "LAGRANGE" 
+  Approximation Orders:    "SECOND" "FIRST" 
+
+Auxiliary System:
+  Num DOFs:                70
+  Num Local DOFs:          70
+  Variables:               { "J" "Jbar" "solid_fraction" "stability" "energy" "B12" "sigma11" "sigma22" 
+                             "sigma12" } "mass_reaction" "force_reaction" 
+  Finite Element Types:    "MONOMIAL" "LAGRANGE" "LAGRANGE" 
+  Approximation Orders:    "CONSTANT" "FIRST" "SECOND" 
+
+Execution Information:
+  Executioner:             Transient
+  TimeStepper:             ConstantDT
+  TimeIntegrator(s):       ImplicitEuler
+  Solver Mode:             NEWTON 
+  PETSc Preconditioner:    lu 
+  MOOSE Preconditioner:    SMP 
+[31mLEGACY MODES ENABLED:[39m
+ This application uses the legacy material output option: material properties are output only on TIMESTEP_END, not INITIAL. To remove this message, set 'use_legacy_material_output' to false in this application. If there are gold output files that contain material property output for which output occurs on INITIAL, then these will generate diffs due to zero values being stored, and these tests should be re-golded.
+[39m
+[31mLEGACY MODES ENABLED:[39m
+ This application uses the legacy initial residual evaluation behavior. The legacy behavior performs an often times redundant residual evaluation before the solution modifying objects are executed prior to the initial (0th nonlinear iteration) residual evaluation. The new behavior skips that redundant residual evaluation unless the parameter Executioner/use_pre_smo_residual is set to true. To remove this message and enable the new behavior, set the parameter 'use_legacy_initial_residual_evaluation_behavior' to false in *App.C. Some tests that rely on the side effects of the legacy behavior may fail/diff and should be re-golded.
+[39m
+
+Time Step 0, time = 0
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| time           | J_max          | J_min          | Jbar_max       | Jbar_min       | center_pressure| edge_ux        |
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   1.000000e+00 |   1.000000e+00 |   1.000000e+00 |   1.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
++----------------+----------------+----------------+------------------+----------------+----------------+
+| time           | mass           | mass_reaction  | outflow_gradient | platen_max     | platen_min     |
++----------------+----------------+----------------+------------------+----------------+----------------+
+|   0.000000e+00 |   1.600000e-01 |   0.000000e+00 |     0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+------------------+----------------+----------------+
++----------------+--------------------+--------------------+----------------+----------------+----------------+
+| time           | solid_fraction_max | solid_fraction_min | stability_max  | stability_min  | top_reaction   |
++----------------+--------------------+--------------------+----------------+----------------+----------------+
+|   0.000000e+00 |       6.000000e-01 |       6.000000e-01 |   2.800000e+01 |   2.800000e+01 |   0.000000e+00 |
++----------------+--------------------+--------------------+----------------+----------------+----------------+
+
+Warning, Exodus files cannot have titles longer than 80 characters.  Your title will be truncated.
+
+Time Step 1, time = 0.001, dt = 0.001
+ * Nonlinear |R| = [32m3.595908e-01[39m (Before preset BCs, predictors, correctors, and constraints)
+ 0 Nonlinear |R| = [32m3.595908e-01[39m
+  ---------- Testing Jacobian -------------
+  Run with -snes_test_jacobian_view and optionally -snes_test_jacobian <threshold> to show difference
+    of hand-coded and finite difference Jacobian entries greater than <threshold>.
+  Testing hand-coded Jacobian, if (for double precision runs) ||J - Jfd||_F/||J||_F is
+    O(1.e-8), the hand-coded Jacobian is probably correct.
+  ||J - Jfd||_F/||J||_F = 2.10041e-07, ||J - Jfd||_F = 0.000545034
+      0 Linear |R| = [32m3.595908e-01[39m
+      1 Linear |R| = [32m3.761436e-08[39m
+      2 Linear |R| = [32m5.183766e-16[39m
+ 1 Nonlinear |R| = [32m1.212612e-02[39m
+  ---------- Testing Jacobian -------------
+  ||J - Jfd||_F/||J||_F = 2.39529e-07, ||J - Jfd||_F = 0.000642483
+      0 Linear |R| = [32m1.212612e-02[39m
+      1 Linear |R| = [32m4.438129e-10[39m
+      2 Linear |R| = [32m9.157986e-17[39m
+ 2 Nonlinear |R| = [32m3.918392e-06[39m
+  ---------- Testing Jacobian -------------
+  ||J - Jfd||_F/||J||_F = 2.38895e-07, ||J - Jfd||_F = 0.000640367
+      0 Linear |R| = [32m3.918392e-06[39m
+      1 Linear |R| = [32m3.101529e-13[39m
+      2 Linear |R| = [32m7.304537e-19[39m
+ 3 Nonlinear |R| = [32m1.446846e-12[39m
+[32m Solve Converged![39m
+
+Outlier Variable Residual Norms:
+  uy: [33m1.290448e-12[39m
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| time           | J_max          | J_min          | Jbar_max       | Jbar_min       | center_pressure| edge_ux        |
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   1.000000e+00 |   1.000000e+00 |   1.000000e+00 |   1.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e-03 |   9.935376e-01 |   9.863312e-01 |   9.947404e-01 |   9.937550e-01 |   1.447534e-01 |   7.873548e-03 |
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
++----------------+----------------+----------------+------------------+----------------+----------------+
+| time           | mass           | mass_reaction  | outflow_gradient | platen_max     | platen_min     |
++----------------+----------------+----------------+------------------+----------------+----------------+
+|   0.000000e+00 |   1.600000e-01 |   0.000000e+00 |     0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e-03 |   1.587882e-01 |  -1.211798e+00 |     8.526455e-02 |  -2.414481e-03 |  -3.300389e-03 |
++----------------+----------------+----------------+------------------+----------------+----------------+
++----------------+--------------------+--------------------+----------------+----------------+----------------+
+| time           | solid_fraction_max | solid_fraction_min | stability_max  | stability_min  | top_reaction   |
++----------------+--------------------+--------------------+----------------+----------------+----------------+
+|   0.000000e+00 |       6.000000e-01 |       6.000000e-01 |   2.800000e+01 |   2.800000e+01 |   0.000000e+00 |
+|   1.000000e-03 |       6.045160e-01 |       6.007061e-01 |   2.807457e+01 |   2.800945e+01 |  -7.000000e-01 |
++----------------+--------------------+--------------------+----------------+----------------+----------------+
+

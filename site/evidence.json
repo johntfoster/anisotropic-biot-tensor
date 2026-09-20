@@ -1,0 +1,332 @@
+{
+  "schema_version": 1,
+  "version": "moose-fe-pending-2026-09-20",
+  "title": "An anisotropic Biot tensor: finite-element verification",
+  "summary": "This companion records the evidence for the conformal-distention model and its MOOSE implementation. Constitutive, fluid-coupling, analytical reference, and manufactured-solution convergence checks pass and are published here with regenerated figures; finite-deformation demonstrations and physical validation remain pending or not performed.",
+  "provenance": {
+    "source_revision": "ecfe4a22a094d3b346ea89287f9a23e1917f017c",
+    "scientific_snapshot": "scientific-snapshot",
+    "note": "The base commit predates this working revision. The finite-element sources and evidence are provided under the repository-relative paths moose_app/, validation/, fe-evidence/, figures/ and site/; the scientific-snapshot artifact lists the exact files with SHA-256 hashes, and the review snapshot pinned in the review record is the authoritative frozen artifact for the checks below."
+  },
+  "categories": {
+    "analytical": {
+      "status": "passed",
+      "summary": "The independent Mandel reference passes 38 self-checks (peak overshoot 5.4659% at t = 0.01516535). This status covers the analytical reference self-checks only.",
+      "demonstration": "The finite-load FE comparison against the reference is a demonstration, not an analytical gate; its normalized pressure discrepancy floors at about 3.2e-3 (a discretization floor at nx=20, dt=1e-3) rather than decaying to the linear reference as the load tends to 1e-4.",
+      "evidence": [
+        "mandel-reference",
+        "fe-load-limit-data"
+      ]
+    },
+    "implementation": {
+      "status": "passed",
+      "summary": "Material-point and residual checks: fluid EOS and reference-mass derivatives (110 checks, max scaled error 8.09e-09); conformal constitutive suite; independent spherical-gauge and reconstruction suites. The C++ law matches the independent Python evaluation to 6.4e-14 over 41 finite states (artifact cpp-python-constitutive.json, which records the comparison itself).",
+      "evidence": [
+        "fluid-coupling-verification",
+        "conformal-verification",
+        "tensor-verification",
+        "reconstruction-verification",
+        "cpp-python-constitutive"
+      ]
+    },
+    "convergence": {
+      "status": "passed",
+      "summary": "Manufactured-solution L2 convergence at a fixed final time: spatial order is consistent with Q2 displacement and Q1 pressure (ux 2.99/2.96, uy 3.00/2.96, p 2.00/2.00 over nx=4,8,16 at dt=1e-4). The temporal order is measured by successive differences of the exact-solution error norms at fixed mesh, which cancels the mesh-dependent spatial floor; the nx=16 triple (ux 1.093, uy 0.978, p 1.015) bounds the temporal order near one (at most about 1.1), consistent with backward Euler and not higher. At finer meshes the same measure gives nx=32 (ux 1.397, uy 1.018, p 1.125) and nx=64 (ux 1.396, uy 1.076, p 1.252). Those measured successive-difference orders belong to this mesh and step sequence and include values above one (ux is about 1.4); they are reported as measurements and no order above one is asserted. The departure from one at fixed mesh is a mesh-step cross term in the error balance: successive differences cancel a time-step-independent mesh floor exactly, so no order above one is claimed; naive error-ratio orders at fixed step are dominated by the spatial error and are never reported as temporal order. The isotropic Mandel spatial refinement is non-monotone at the finest level because of the initial drainage boundary discontinuity and is reported separately.",
+      "evidence": [
+        "mms-convergence"
+      ]
+    },
+    "finite_deformation": {
+      "status": "pending",
+      "summary": "Rotated-anisotropy and partial-drainage cases are force-controlled demonstrations with a kinematic rigid platen (a top traction plus an equal-value boundary constraint). Their decks do not solve the reference-modulus isotropic quarter-domain Mandel problem (they use phi_s0=0.6 and K=7, and the partial family additionally uses the square domain [-1,1]x[-1,1]), so no Mandel-normalized discrepancy is reported for them and the formerly listed reference-normalized numbers are withdrawn; the measured per-run diagnostics are collected in finite-deformation-summary.json. Over the 6 anisotropic runs at mineral orientations 0, 30, 45, 90 degrees (with coarse and fine meshes at 30 degrees) the peak center pressure is 0.2062-0.2158 at t = 0.002-0.004, the plate resultant reproduces the applied load with force_relative at most 1.276e-10, and the discrete fluid-mass balance residual normalized by the mobilized mass is at most 2.47e-10. The isotropic-comparison run gives peak center pressure 0.2238 and force_relative 3.214e-12. The 4 partial-drainage runs give peak center pressure 0.2005-0.2016 at t = 0.002-0.0035, force_relative at most 2.052e-10, and normalized mass balance at most 4.636e-10. The corrected plate resultant is -2*a*q_L (full domain, a=1); it is an equilibrium residual, not a force-balance failure. No finite-deformation quantitative verification claim is made.",
+      "evidence": [
+        "finite-deformation-summary"
+      ]
+    },
+    "physical_validation": {
+      "status": "not_performed",
+      "summary": "The parameters are synthetic. No comparison to laboratory or field measurements has been performed.",
+      "evidence": []
+    }
+  },
+  "cases": [
+    {
+      "title": "Small-load isotropic Mandel consolidation",
+      "status": "pending",
+      "description": "Coupled displacement and pressure response against the classical analytical solution as the load tends to zero, using parameters that satisfy the compliance restriction. Tolerances under review.",
+      "artifacts": [
+        "fe-load-limit-data"
+      ]
+    },
+    {
+      "title": "Rotated anisotropic consolidation",
+      "status": "pending",
+      "description": "Force-controlled demonstration (top traction plus a kinematic rigid platen) for prescribed mineral orientations on the slender domain [-1,1]x[-0.1,0.1]; compared against the isotropic Mandel reference as a demonstration of the anisotropic material response, not as verification.",
+      "artifacts": [
+        "finite-deformation-summary",
+        "fe-map-anisotropic-30"
+      ]
+    },
+    {
+      "title": "Partial-boundary drainage",
+      "status": "pending",
+      "description": "Spatially restricted drainage producing two-dimensional flow and deformation on the square domain [-1,1]x[-1,1]. Because the Mandel analytical reference uses the slender domain [-1,1]x[-0.1,0.1], the reference-normalized comparison is not comparable and is omitted; only mass balance, force balance, platen equality, peak pressure, and the maps are reported.",
+      "artifacts": [
+        "finite-deformation-summary",
+        "fe-map-partial-0"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "fe-mandel-history",
+      "path": "figures/fe_mandel_history.png",
+      "destination": "fe_mandel_history.png",
+      "kind": "figure",
+      "label": "isotropic Mandel pressure and platen history",
+      "sha256": "b32c06a8b040f90506dbd4336d268016a8fb5ca67a61512390a19b4705cb67ba"
+    },
+    {
+      "id": "fe-mandel-history-data",
+      "path": "figures/fe_mandel_history.csv",
+      "destination": "fe_mandel_history.csv",
+      "kind": "data",
+      "label": "isotropic Mandel pressure and platen history (data)",
+      "sha256": "f38dd4be7520364f7dfdfa3cedfc238f69ad9c13e978b7344adf3b73cde13d97"
+    },
+    {
+      "id": "fe-mandel-profiles",
+      "path": "figures/fe_mandel_profiles.png",
+      "destination": "fe_mandel_profiles.png",
+      "kind": "figure",
+      "label": "isotropic Mandel pressure profiles",
+      "sha256": "722914fc49b3e60e8cbb8119d01769722597482117c592f01e223d9b15ad17e3"
+    },
+    {
+      "id": "fe-mandel-profiles-data",
+      "path": "figures/fe_mandel_profiles.csv",
+      "destination": "fe_mandel_profiles.csv",
+      "kind": "data",
+      "label": "isotropic Mandel pressure profiles (data)",
+      "sha256": "94eaf1a5a616504aacfa5d86e56f61983839bf409ec8d70876af123e7abe90a1"
+    },
+    {
+      "id": "fe-mandel-refinement",
+      "path": "figures/fe_mandel_refinement.png",
+      "destination": "fe_mandel_refinement.png",
+      "kind": "figure",
+      "label": "isotropic Mandel spatial and temporal refinement",
+      "sha256": "0a33e7ed2ba5ccddfbd4ee13b3419f2c7fe56925637ff07091e3174e9d0b1614"
+    },
+    {
+      "id": "fe-mandel-refinement-data",
+      "path": "figures/fe_mandel_refinement.csv",
+      "destination": "fe_mandel_refinement.csv",
+      "kind": "data",
+      "label": "isotropic Mandel spatial and temporal refinement (data)",
+      "sha256": "4ba439e5250e8a209171f43b43234ea19b2dad1a0279a6cbf159a27e2d1e870d"
+    },
+    {
+      "id": "fe-mms-convergence",
+      "path": "figures/fe_mms_convergence.png",
+      "destination": "fe_mms_convergence.png",
+      "kind": "figure",
+      "label": "manufactured-solution spatial convergence",
+      "sha256": "91c5afbd928b37b4b84c5d73109a90a3295e66f24582a8ded2dc8863c559c11b"
+    },
+    {
+      "id": "fe-mms-convergence-data",
+      "path": "figures/fe_mms_convergence.csv",
+      "destination": "fe_mms_convergence.csv",
+      "kind": "data",
+      "label": "manufactured-solution spatial convergence (data)",
+      "sha256": "e171cf31b809f677f8eb76426a74b22a632f647cc6511c2d495144a2c36b8feb"
+    },
+    {
+      "id": "fe-load-limit",
+      "path": "figures/fe_load_limit.png",
+      "destination": "fe_load_limit.png",
+      "kind": "figure",
+      "label": "finite-load comparison at decreasing compressive load (small-load error floor)",
+      "sha256": "ef8fe419ecdcf35bb1f08dfc453e1a97b81dc09235e04acb39ce5f6761be6934"
+    },
+    {
+      "id": "fe-load-limit-data",
+      "path": "figures/fe_load_limit.csv",
+      "destination": "fe_load_limit.csv",
+      "kind": "data",
+      "label": "finite-load comparison at decreasing compressive load (small-load error floor) (data)",
+      "sha256": "78be5974f732514554acd500618db82c08e7f2eeae01e249da654b5b9f3ec831"
+    },
+    {
+      "id": "fe-map-anisotropic-30",
+      "path": "figures/fe_map_anisotropic_30.png",
+      "destination": "fe_map_anisotropic_30.png",
+      "kind": "figure",
+      "label": "rotated anisotropic consolidation map",
+      "sha256": "3c8d51220634322223ba2b7947efb19647f4ee1bc70957444a0425abf7d7e177"
+    },
+    {
+      "id": "fe-map-partial-0",
+      "path": "figures/fe_map_partial_0.png",
+      "destination": "fe_map_partial_0.png",
+      "kind": "figure",
+      "label": "partial-drainage two-dimensional map",
+      "sha256": "b168a20f5addcbf66bb980e3cb15eabd6950b961d6b031b318dadb6472d54af4"
+    },
+    {
+      "id": "fluid-coupling-verification",
+      "path": "site/reports/fluid-coupling-verification.json",
+      "destination": "fluid-coupling-verification.json",
+      "kind": "report",
+      "label": "fluid EOS and reference-mass derivative checks",
+      "sha256": "5842f2eb55c05ea98abec204e0030db87e3f53ba8bd7b56b965a04b9621f7e76"
+    },
+    {
+      "id": "conformal-verification",
+      "path": "site/reports/conformal-verification.json",
+      "destination": "conformal-verification.json",
+      "kind": "report",
+      "label": "conformal constitutive verification suite",
+      "sha256": "6ffa6e02427b6178ed9aeb64e8c6f1a15603682f6730934dfcd818eeae7b2d0a"
+    },
+    {
+      "id": "tensor-verification",
+      "path": "site/reports/tensor-verification.json",
+      "destination": "tensor-verification.json",
+      "kind": "report",
+      "label": "spherical-gauge tensor verification suite",
+      "sha256": "f6a17c90c258a14a8f002934250c9d933bcf6f25238ea9ad7ff8978991ebf900"
+    },
+    {
+      "id": "reconstruction-verification",
+      "path": "site/reports/reconstruction-verification.json",
+      "destination": "reconstruction-verification.json",
+      "kind": "report",
+      "label": "work-equivalence and unjacketed reconstruction suite",
+      "sha256": "c9bbc67e2dce6e3ee104b9d9234e8fa5fd7a8af277f9679650a1bfd7bec53f99"
+    },
+    {
+      "id": "mandel-reference",
+      "path": "site/reports/mandel-reference.json",
+      "destination": "mandel-reference.json",
+      "kind": "report",
+      "label": "independent Mandel series reference self-check (38 checks)",
+      "sha256": "534c3a06c8a3ca9871fa5d401ca3646318e83285bbb18db0c7c14e0a1c967461"
+    },
+    {
+      "id": "mandel-reference-mandel-probes",
+      "path": "site/reports/mandel-probes.csv",
+      "destination": "mandel-probes.csv",
+      "kind": "data",
+      "label": "independent Mandel series reference self-check (38 checks) (data: mandel-probes.csv)",
+      "sha256": "d1f04244ab8b55791e401d61a7fdce308722e289aa7bffa54ec41ae8861a6dbf"
+    },
+    {
+      "id": "mandel-reference-mandel-profiles",
+      "path": "site/reports/mandel-profiles.csv",
+      "destination": "mandel-profiles.csv",
+      "kind": "data",
+      "label": "independent Mandel series reference self-check (38 checks) (data: mandel-profiles.csv)",
+      "sha256": "3a1c02f32629198e059ef85a592c8e533f828a38ba4199f9af0ae9e360c4f221"
+    },
+    {
+      "id": "mms-convergence",
+      "path": "site/reports/mms-convergence.json",
+      "destination": "mms-convergence.json",
+      "kind": "report",
+      "label": "manufactured-solution spatial and temporal convergence orders",
+      "sha256": "87e1d95bb87b4535e5e5389d8d19bc4d5ca97d0a38e95ebc703bff6c5b977887"
+    },
+    {
+      "id": "cpp-python-constitutive",
+      "path": "site/reports/cpp-python-constitutive.json",
+      "destination": "cpp-python-constitutive.json",
+      "kind": "report",
+      "label": "C++ versus independent Python constitutive evaluation",
+      "sha256": "9c2263fc789ab7381f2f40a2bcf9119568023b5d786bb5d81741504186a035d3"
+    },
+    {
+      "id": "finite-deformation-summary",
+      "path": "site/reports/finite-deformation-summary.json",
+      "destination": "finite-deformation-summary.json",
+      "kind": "report",
+      "label": "measured diagnostics of the anisotropic, isotropic-comparison, and partial-drainage demonstrations",
+      "sha256": "dc139b0bd97a4fd2be89ff4b728954017242799e2512ad5beb0be690806663d1"
+    },
+    {
+      "id": "scientific-snapshot",
+      "path": "site/scientific-snapshot.json",
+      "destination": "scientific-snapshot.json",
+      "kind": "provenance",
+      "label": "exact FE source and evidence snapshot",
+      "sha256": "250ed9d5c48d0df22506f2b5d8474d61552119af10685fdec7e2574a1896059b"
+    }
+  ],
+  "figures": [
+    {
+      "artifact": "fe-mandel-history",
+      "caption": "isotropic Mandel pressure and platen history",
+      "alt": "isotropic Mandel pressure and platen history generated from the recorded MOOSE runs"
+    },
+    {
+      "artifact": "fe-mandel-profiles",
+      "caption": "isotropic Mandel pressure profiles",
+      "alt": "isotropic Mandel pressure profiles generated from the recorded MOOSE runs"
+    },
+    {
+      "artifact": "fe-mandel-refinement",
+      "caption": "isotropic Mandel spatial and temporal refinement",
+      "alt": "isotropic Mandel spatial and temporal refinement generated from the recorded MOOSE runs"
+    },
+    {
+      "artifact": "fe-mms-convergence",
+      "caption": "manufactured-solution spatial convergence",
+      "alt": "manufactured-solution spatial convergence generated from the recorded MOOSE runs"
+    },
+    {
+      "artifact": "fe-load-limit",
+      "caption": "finite-load comparison at decreasing compressive load (small-load error floor)",
+      "alt": "finite-load comparison at decreasing compressive load (small-load error floor) generated from the recorded MOOSE runs"
+    },
+    {
+      "artifact": "fe-map-anisotropic-30",
+      "caption": "rotated anisotropic consolidation map",
+      "alt": "rotated anisotropic consolidation map generated from the recorded MOOSE runs"
+    },
+    {
+      "artifact": "fe-map-partial-0",
+      "caption": "partial-drainage two-dimensional map",
+      "alt": "partial-drainage two-dimensional map generated from the recorded MOOSE runs"
+    }
+  ],
+  "reproduction": [
+    {
+      "title": "Build the MOOSE application",
+      "description": "Configure the framework, then compile the repository application.",
+      "command": "cd moose_app && make -j$(nproc)"
+    },
+    {
+      "title": "Material-point verification",
+      "description": "Independent constitutive and fluid-coupling checks.",
+      "command": "python3 examples/verify_conformal.py && python3 examples/verify_fluid_coupling.py"
+    },
+    {
+      "title": "Coupled runs",
+      "description": "Isotropic Mandel, manufactured solution, anisotropic and partial drainage.",
+      "command": "cd moose_app/scripts && python3 run_verification.py && python3 run_demonstrations.py"
+    },
+    {
+      "title": "Plots",
+      "description": "Regenerate figures from the recorded runs.",
+      "command": "python3 examples/plot_fe_results.py"
+    }
+  ],
+  "limitations": [
+    "Stress symmetry alone does not require the dilation-times-rotation specialization at every individual material state; the specialization and volume-only distention energy are additional constitutive assumptions.",
+    "The drained and mineral stiffness tensors must obey the spherical rank-one compliance restriction; they are not independent inputs.",
+    "The model describes mineral anisotropy; shape-changing distention and pore-shape anisotropy require additional constitutive mechanics.",
+    "Rotated-anisotropy and partial-drainage runs are force-controlled demonstrations with a kinematic rigid platen, not verified quantitative predictions.",
+    "Parameters are synthetic; agreement with numerical and analytical checks is not experimental validation."
+  ]
+}

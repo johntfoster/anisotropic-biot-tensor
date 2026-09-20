@@ -1,0 +1,27 @@
+{
+  "discrete_mass_absolute": 1.1482759187941838e-12,
+  "discrete_mass_mobilized_relative": 7.800880587141437e-11,
+  "force_relative": 2.4071379810054948e-11,
+  "expected_force": -1.4,
+  "force_convention": "top boundary carries a uniform compressive traction of magnitude q_L over width a (quarter Mandel, a=1) or 2a (full domain, a=1); expected top resultant is -a*q_L (quarter) or -2*a*q_L (full).",
+  "platen_equality_absolute": 2.3002433291452462e-14,
+  "peak_pressure": 0.20136140523736,
+  "peak_time": 0.002,
+  "reference_comparable": false,
+  "reference_note": "The partial-drainage runs use the square domain [-1,1]x[-1,1] (h=1 in decks.py), while the Mandel analytical reference is the slender domain [-1,1]x[-0.1,0.1] (a=1, b=0.1). A Mandel-normalized discrepancy would compare different problems, so no reference-normalized field is emitted; only the run diagnostics (mass balance, force balance, platen equality, peak pressure) are reported.",
+  "configuration": {
+    "nx": 8,
+    "ny": 8,
+    "dt": 0.002,
+    "end": 0.1,
+    "load": 0.7,
+    "linear": false,
+    "case": "partial",
+    "angle": 30,
+    "initial": [
+      0,
+      0,
+      0
+    ]
+  }
+}

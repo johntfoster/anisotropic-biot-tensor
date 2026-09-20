@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import importlib.util
+import os
 import shutil
 import subprocess
 import sys
@@ -26,7 +27,14 @@ def main() -> int:
     parser.add_argument("profile", choices=["manuscript", "research", "publication", "moose"])
     profile = parser.parse_args().profile
     if profile == "manuscript":
-        return 0 if all(shutil.which(name) for name in ("pdflatex", "bibtex")) else 1
+        if not all(shutil.which(name) for name in ("lualatex", "latexmk", "bibtex", "kpsewhich", "pdftoppm")):
+            return 1
+        env = os.environ.copy()
+        local = ROOT / ".agent-runtime/latex-packages/extracted/usr/share/texlive/texmf-dist"
+        if local.is_dir():
+            env["TEXMFHOME"] = str(local) + ":" + env.get("TEXMFHOME", "")
+        return subprocess.run(["kpsewhich", "luaotfload-main.lua"], env=env,
+                              stdout=subprocess.DEVNULL).returncode
     if profile == "research":
         return 0 if module_in(profile, "pypdf") else 1
     if profile == "publication":

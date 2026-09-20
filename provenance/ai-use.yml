@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": {
-    "title": "An anisotropic Biot tensor from finite-deformation mixture kinematics",
+    "title": "An anisotropic Biot tensor from mineral stress and distention work",
     "public_repository_url": "https://github.com/johntfoster/anisotropic-biot-tensor",
     "public_repository_url_status": "assigned"
   },
@@ -25,18 +25,19 @@
     "supporting reproducible theoretical-manuscript development"
   ],
   "verification": [
-    "The author reviewed every accepted change.",
-    "Equations and citations were checked against manuscript source and primary literature as applicable.",
-    "Manuscript changes were subjected to the repository's applicable validation procedures."
+    "The current revision awaits final author review before submission.",
+    "Numerical checks and simulated review evidence are stored with the working revision."
   ],
   "tools": [
     {
       "name": "OpenAI Codex",
       "provider": "OpenAI",
       "model_versions": [
-        "GPT-5.6 Terra"
+        "GPT-5.6 Terra",
+        "GPT-6 Astra"
       ],
-      "model_versions_status": "surveyed_from_recoverable_commit_sessions"
+      "model_versions_status": "historical survey and current session status"
     }
-  ]
+  ],
+  "journal_statement": "The author used OpenAI Codex (GPT-5.6 Terra and GPT-6 Astra) to assist with manuscript drafting, derivation checks, numerical implementation, figure preparation, and simulated peer review. The current working revision includes AI-assisted work through 20 September 2026. The scientific scope and modeling choices were directed by the author. Numerical verification and independent AI reviews support preparation of this draft; they do not constitute journal peer review or final author approval. The author retains responsibility for the scientific content and will review the final manuscript before submission. AI output is not cited as a scholarly source or credited with authorship. Reproducible code and review records accompany the manuscript."
 }

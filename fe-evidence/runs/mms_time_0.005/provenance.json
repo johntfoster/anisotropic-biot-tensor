@@ -1,0 +1,43 @@
+{
+  "case": "mms_time_0.005",
+  "configuration": {
+    "case": "manufactured",
+    "nx": 16,
+    "ny": 16,
+    "dt": 0.005,
+    "end": 0.2,
+    "linear": true,
+    "angle": 30
+  },
+  "command": [
+    "/home/jfoster/projects/research/reactive_transport/anisotropic-biot-tensor/moose_app/anisotropic_biot-opt",
+    "-i",
+    "/home/jfoster/projects/research/reactive_transport/anisotropic-biot-tensor/.agent-runtime/moose-fe-goal-2026-09-20/implementation/runs/mms_time_0.005/input.i",
+    "Outputs/file_base=/home/jfoster/projects/research/reactive_transport/anisotropic-biot-tensor/.agent-runtime/moose-fe-goal-2026-09-20/implementation/runs/mms_time_0.005/solution",
+    "--n-threads=1"
+  ],
+  "exit_code": 0,
+  "seconds": 14.623203039169312,
+  "input_sha256": "55140b5eb73bf1c0d174828d4d0abb7c1750ee980d822f1fbfb94df206d7d40a",
+  "binary_sha256": "ff0272fc279fcf91f6acd0c4a2e0ce436e8b165ad68b15549c27e6845dfdd31e",
+  "source_sha256": {
+    "moose_app/include/base/AnisotropicBiotApp.h": "effb0e291aab7c30ccd89d7f9d3f5bb8f1c9b39abee929727312a8e327bede65",
+    "moose_app/include/kernels/ReferenceBalance.h": "35597027125468147409ab0d88e85b2b88fc16902cbc7c802502b44275822dbb",
+    "moose_app/include/materials/ConformalMaterial.h": "bd3e4796f30fc7bbaf444ccf84d81cf66f3360be5c41bd76062f34c04c8a6931",
+    "moose_app/include/postprocessors/DofReactionSum.h": "1d648c29bcacac3991bdceaf1403c4cce412964d85a9ba25580fa7d2bb098bd9",
+    "moose_app/include/postprocessors/ReferenceOutflow.h": "1a2ac57e7413abecc7808fcc29c60e993004383f94f3bd1d4b451468d6aa4936",
+    "moose_app/include/utils/ConformalLaw.h": "ca18175b202ebf1cba65c499f59ee1039d4a8611c3d27764adc229e329cd613c",
+    "moose_app/src/base/AnisotropicBiotApp.C": "2059936f46b77362f16fa72e6267b15a28dee978658ae0bc9e56354f93fbfd6c",
+    "moose_app/src/kernels/ReferenceBalance.C": "a02c52d671732eaf212eebffa0dbf08569a9231a2d6a24b599fce38d4900d375",
+    "moose_app/src/main.C": "487819873df519dae81e95fc58a706113671e41733d11eeed2d70610a15dab9a",
+    "moose_app/src/materials/ConformalMaterial.C": "0589bff8ef5da8355be579aed52ddd15fd676d598fe1aa6405fb122e51fce54c",
+    "moose_app/src/postprocessors/DofReactionSum.C": "b0c63d9dea8b80b66ae64e835f323d640d61c1c223377abc6ff5e55540740757",
+    "moose_app/src/postprocessors/ReferenceOutflow.C": "ae8f1a8fd0ff94c12d0e791e55aca38281ec6e025233e1135c53cdab852b6d29"
+  },
+  "outputs": {
+    "run.log": "1f2d1663eb3914aab6f2242f332b30d16508300207f668db6da013cd539e3b8a",
+    "input.i": "55140b5eb73bf1c0d174828d4d0abb7c1750ee980d822f1fbfb94df206d7d40a",
+    "solution.e": "398488ca0e7c19af262bf05a62673a76021b1dc61fa771eac4cf7d5079a97751",
+    "solution.csv": "a5d9d98b122c81e31b6bc3734d1162f173cb0f5c2aa7c1c7b2e41fe6c866e8e7"
+  }
+}

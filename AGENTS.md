@@ -52,6 +52,36 @@
 - The canonical manuscript root is `main.tex`; `references.bib` is its sole
   bibliography. There is no dependency on the parent nonlinear-Biot repository.
 
+## Author prose, notation, and derivation
+
+- Read `author_style_profile.md` before editing manuscript text, captions,
+  tables, documentation, or agent instructions. Read `main.tex`, including
+  its macros, before interpreting included equations.
+- Use `\mathbb{}` for fourth-order tensor symbols, including stiffnesses
+  and compliances. Use upright bold `\mathbf{}` for second-order tensors
+  and vectors. Do not use `\bm` or `\boldsymbol` for tensor symbols.
+  Preserve Greek symbols through a suitable upright math-font configuration
+  and verify the rendered glyphs. Scalars remain distinct from tensors.
+- Reuse the established physical symbols. Do not introduce helper variables
+  unless essential to the requested result or explicitly approved by John.
+- Begin with the physical purpose, give the equation, define its symbols
+  locally, and explain the consequence. Use ordinary technical English.
+  Explain necessary mechanics terms instead of compressing steps into jargon.
+- In constitutive reconstruction, begin from volume-fraction-weighted Cauchy
+  stress and reversible work. Identify the held-fixed variables and volume
+  used to normalize every energy. Derive the equivalent volumetric energy
+  before differentiating it to obtain pressure coupling.
+- Test the full spatial tensor balance separately from its trace. Agreement
+  with a scalar mineral equation cannot establish a tensor extension.
+  Identify additional assumptions where they first enter the derivation.
+- Keep drafting history and reviewer responses out of the manuscript.
+- Preserve `% AGENT-LOCK-BEGIN` / `% AGENT-LOCK-END` regions unless the user
+  names them as edit targets. Use automatic delimiter sizing and `align` for
+  multistep equalities, with no multiline block inside one visible delimiter.
+- Adapted companion skills are under `agent_local/skills/biot-*/SKILL.md`.
+  Their distinct names preserve the shared skills as canonical. The transfer
+  record is `provenance/companion-guidance-transfer.md`.
+
 ## Manuscript editing and build
 
 - Preserve TeX semantics, equation labels, citations, and the distinction

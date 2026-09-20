@@ -1,901 +1,564 @@
 \documentclass[11pt]{article}
-
 \usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb,bm,mathtools}
-\usepackage{booktabs,tabularx}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
-\usepgfplotslibrary{groupplots}
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\unimathsetup{mathbf=sym,bold-style=upright}
+\setmathfont{Latin Modern Math}
+\usepackage{booktabs}
+\usepackage{graphicx}
 \makeatletter
 \let\tablerows\@@input
 \makeatother
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{embedfile}
 \usepackage[nameinlink,noabbrev]{cleveref}
-\newcommand{\F}{\mathbf{F}}
-\newcommand{\Fb}{\bar{\mathbf{F}}}
-\newcommand{\A}{\mathbf{A}}
-\newcommand{\I}{\mathbf{I}}
-\newcommand{\C}{\mathbb C}
-\newcommand{\D}{\mathbb D}
-\newcommand{\Hh}{\mathbb H}
-\newcommand{\Pvol}{\mathbb P_{\mathrm{vol}}}
-\newcommand{\Pdev}{\mathbb P_{\mathrm{dev}}}
 \newcommand{\tr}{\operatorname{tr}}
-\newcommand{\sym}{\operatorname{sym}}
+\newcommand{\dev}{\operatorname{dev}}
 \newcommand{\dd}{\,\mathrm d}
 \newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand{\atp}{\big|_{p}}
-\newcommand{\ate}{\big|_{\bm e}}
 \providecommand{\doi}[1]{\href{https://dx.doi.org/#1}{#1}}
-
-\title{Mineral-volume compatibility and anisotropic pressure coupling at finite deformation}
+\title{An anisotropic Biot tensor from mineral stress and distention work}
 \author{John T. Foster}
 \date{}
-\hypersetup{pdftitle={Mineral-volume compatibility and anisotropic pressure coupling at finite deformation},pdfauthor={John T. Foster}}
-
+\hypersetup{pdftitle={An anisotropic Biot tensor from mineral stress and distention work},pdfauthor={John T. Foster}}
 \begin{document}
+\embedfile[filespec=conformal-2026-09-20-v1.zip,mimetype=application/zip,
+ desc={Versioned numerical sources, verification, and figure data}]{build/conformal-2026-09-20-v1.zip}
 \maketitle
-
 \begin{abstract}
-A saturated anisotropic solid can require different stress increments in
-its principal directions to prevent deformation during a pore-pressure change.
-We express this pressure tangent through the equilibrium response of true
-mineral volume in a one-solid/one-fluid mixture. The construction connects a
-finite-deformation effective-stress decomposition to an experimentally defined
-pressure sensitivity and to the established pore-volume conjugacy. Its
-constitutive implications are examined using a constrained skeleton--mineral
-energy. Under isotropic distention, the direct mineral contribution to
-directional coupling is its volumetric--deviatoric stiffness block; purely
-deviatoric mineral anisotropy does not contribute to that block. The classical
-solid-storage restriction, expressed in the mineral-volume
-coordinate, supplies a compatibility test beyond recovery of the Biot stress
-coefficient. This condition exposes the limitation of identifying the
-effective mineral-volume tangent with a volume-scaled isolated mineral
-modulus. Compatible anisotropic-mineral examples separate direct stiffness effects
-from the effects of compliance and coupling calibration. Two objective
-hyperelastic continuations provide reproducible pressure and layer tests. In the illustrative finite-strain
-regime, freezing the reference Biot tensor underpredicts layer extension by
-about 9\% and lateral reaction magnitude by about 11\%. The two energies share their reference tangents and complete drained response,
-but predict different pressure curvatures, providing a finite-pressure
-identification test. An integrability condition also shows why a spatially
-constant anisotropic pressure tensor cannot define a hyperelastic law on an
-open set of finite coaxial strains.
+We derive the finite-deformation Biot tensor of a saturated elastic porous
+solid from the volume-fraction-weighted phase stresses and their reversible
+work. The distention gradient consists of a dilation and a proper rotation,
+so mineral deformation and changes in pore volume are distinguished without
+fixing the orientation of the intermediate frame. For an objective mineral
+energy and a distention energy depending only on volume, the internal
+rotation cancels from the constitutive response. The mineral stress must
+nevertheless be rotated into the mixture frame before the phase stresses
+are added. A generalized Hooke law in material logarithmic strain gives an
+implicit mineral-volume equation and an explicit pressure-coupling tensor.
+The drained compliance equals the mineral compliance divided by the
+reference solid fraction plus a spherical, rank-one contribution.
+Mineral volume--shape coupling produces directional
+pressure sensitivity, whereas an isotropic mineral recovers the scalar
+nonlinear Biot coefficient. Numerical experiments compare these responses
+under pressure, shear, and constrained extension. Independent energy and
+pressure derivatives verify the complete spatial phase-stress balance and
+its invariance under changes of the internal rotation. A finite-element
+implementation of the coupled deformation and fluid-transport balances is
+verified against a manufactured solution for the constant reference tangent
+and, in the same limit, the constant-coefficient consolidation reference, and
+exercised on rotated-anisotropy
+and partial-drainage demonstrations at finite load; no quantitative
+finite-deformation verification and no experimental validation are claimed for
+those demonstrations. The construction
+isolates anisotropy inherited from the mineral; shape-changing distention
+requires an additional constitutive law.
 \end{abstract}
-
-\noindent\textbf{Keywords:} finite-deformation poromechanics; anisotropic
-elasticity; Biot tensor; mineral stiffness; Legendre transform
+\noindent\textbf{Keywords:} anisotropic poroelasticity; finite deformation;
+Biot tensor; mineral compression; logarithmic strain; finite-element
+verification
 
 \section{Introduction}
 \label{sec:introduction}
 
-The linear theory of a fluid-saturated anisotropic porous solid was formulated
-by Biot \citep{biot1955anisotropic}.  Its pressure--stress coupling requires,
-in addition to the fourth-order elastic tensor, a symmetric second-order
-effective-stress (Biot--Willis) tensor and a storage coefficient
-\citep{biotwillis1957,thompsonwillis1991}.  These coupling coefficients are independent phenomenological data in a
-general linear model. Additional micromechanical assumptions can relate them
-to the elastic moduli. For example, the microisotropic construction reviewed
-and used by Wong \citep[sec.~2.1]{wong2017} relates directional Biot
-coefficients to drained stiffnesses and the isotropic constituent modulus.
-It is therefore necessary to distinguish independence in a constitutive family
-from independence under specified microstructural constraints.
+A change in pore pressure deforms both the pore space and the solid material
+surrounding it. In an anisotropic porous solid, the stress needed to hold
+the specimen fixed can change by different amounts in different directions.
+Biot's anisotropic theory expresses this response through a tensor coupling
+pore pressure to stress \citep{biot1955anisotropic}. The reference elastic
+coefficients describe this coupling together with deformation and fluid
+storage \citep{biotwillis1957,thompsonwillis1991}. At finite deformation,
+mineral compression changes the solid volume fraction and therefore the
+weights with which the phase stresses contribute to the mixture stress.
 
-Experiments on Callovo--Oxfordian claystone illustrate why this distinction
-matters. Braun et al.\ \citep{braun2020} report strong elastic and Skempton
-anisotropy but relatively weak anisotropy in the back-calculated Biot
-coefficients. Elastic anisotropy alone is consequently an insufficient guide
-to the magnitude of directional pressure coupling. Their use of drained,
-pore-pressure, and deviatoric loading also illustrates the measurements needed
-to distinguish these responses.
+The relation between pressure and volume supplies a direct way to follow
+these changes. De Buhan et al.\ \citep{debuhan1998} formulate finite-strain
+poromechanics using deformation and pore volume. Foster and Xu
+\citep{fosterxu2025} express the Biot coefficient through the change in
+intrinsic solid volume with skeleton volume at fixed pore pressure.
+Gajo \citep{gajo2010} combines logarithmic volumetric laws for the skeleton
+and compressible solid constituent in a finite-strain hyperelastic model.
+The elastic scalar equation used in our companion manuscript
+\citep{foster2026poroplastic} follows from the same logarithmic relations.
+We follow the same physical sequence: phase stress balance, reversible
+work, equivalent energy, and implicit differentiation of mineral volume.
+Anisotropic poroelastic coefficients are measured in shales, claystones, and
+cracked rock and are related to laboratory stiffnesses
+\citep{cheng1997,wong2017,braun2020,sviridov2017,makhnenkolabuz2016}, and they
+enter continuum frameworks for coupled deformation and flow in anisotropic
+elastoplastic porous media \citep{zhaoborja2020}. Large deformations of soft
+porous materials and hydraulic crack growth raise related questions about solid
+and pore-volume change \citep{macminnetal2016,chaubazantsu2016}, for which
+polymer-network thermodynamics supplies classical volumetric relations
+\citep{flory1961}.
 
-Finite-deformation volume conjugacy is established poromechanical structure.
-De Buhan et al.\ \citep{debuhan1998} construct a skeleton potential in the
-macroscopic deformation gradient and reference-normalized pore volume, and
-analyze the conditions for a pressure-independent Terzaghi effective stress.
-Zhao and Borja \citep{zhaoborja2020} develop an anisotropic elastoplastic
-formulation with an objective stress rate and a Biot tensor expressed through
-the elastic moduli and intrinsic bulk modulus. Their derivation uses a
-barotropic elastic solid constituent and a small elastic correction in the
-solid mass balance; it is not simply a theory of infinitesimal total
-kinematics. In our earlier work \citep{fosterxu2025}, a pressure Legendre
-transform identifies a finite-deformation scalar Biot coefficient through the
-fixed-pressure sensitivity of intrinsic solid volume to skeleton volume.
+We consider an anisotropic mineral and allow the distention gradient to
+contain both a dilation and a proper rotation. This conformal distention
+changes pore volume while leaving the shape of the mineral
+unchanged. The rotation changes the frame in which mineral stress is
+represented. Carrying it through the virtual work identifies the phase
+stress in the mixture frame and determines whether that rotation affects
+the constitutive response. Applying the complete mineral Hooke law then gives both the
+volumetric work and the shear work. These requirements restrict the two
+elastic stiffness tensors: the additional drained compliance must produce
+only a spherical change in strain. We derive that restriction rather than prescribe
+an independent tensor describing pressure coupling.
 
-Here that scalar sensitivity is extended to the full skeleton deformation.
-The resulting tensor is both a state-dependent function and an incremental
-pressure tangent; these descriptions are compatible. The general identity
-organizes the constitutive analysis but does not prescribe a material law or
-replace the established volume-potential formulation. The main constitutive
-questions are which mineral and coupling properties control this tangent,
-and which extra conditions make its reference limit compatible with a
-homogeneous solid under unjacketed loading.
+The result is an elastic constitutive model for a specified deformation
+mechanism. Pore-scale calculations offer a separate way to determine
+effective coefficients from geometry \citep{dehghanipentamerodio2019,
+dehghanizilian2021}. In the present model, the mineral law and volume-only conformal
+distention are prescribed directly. After deriving the compatible energy,
+we obtain the mineral-volume equation and the Biot tensor, examine their
+reference and isotropic limits, and verify the full phase stress balance
+numerically. We then implement the coupled deformation and fluid-transport
+balances, verify the implementation against a manufactured solution in the
+constant reference tangent and, in the same limit, the constant-coefficient
+consolidation reference, and report finite-load demonstrations. We restrict attention to elastic
+deformation.
 
-We address these questions using isotropic distention and a constrained
-quadratic skeleton--mineral energy. The reduction isolates the direct
-volumetric--deviatoric mineral contribution and the mixed mineral-volume
-tangent. Requiring both the classical stress response and classical solid storage
-reveals a compatibility failure in the restricted daughter-energy ansatz that
-a stress-only calibration misses. This is a diagnosis of that ansatz, not a
-new independent poroelastic coefficient. Compatible anisotropic-mineral examples connect this diagnosis to the
-directional mechanism. Two objective energies then separate finite-pressure
-model dependence from the error of freezing a reference pressure tensor. A
-finite-strain integrability test explains the limitation of that approximation. The numerical parameters define a reproducible
-constitutive example rather than a calibration to a particular rock.
-
-\begin{table}[tb]
-\centering\small
-\caption{Relationship to the closest formulations. The comparison concerns
-constitutive structure, not historical priority of volume conjugacy.}
-\label{tab:prior-formulations}
-\begin{tabularx}{\textwidth}{@{}p{.23\textwidth}XX@{}}
-\toprule
-Formulation & Constitutive structure & Relation to the present analysis\\
-\midrule
-De Buhan et al.\ \citep{debuhan1998} & Finite-strain skeleton potential in
- deformation and pore volume; microscopic boundary-value construction &
- Establishes volume conjugacy and conditions for pressure-independent
- effective stress.\\
-Wong \citep{wong2017} & Linear anisotropic response with microisotropic
- constituent and crack fabric & Modulus-based reference coupling under
- additional microscopic assumptions.\\
-Zhao--Borja \citep{zhaoborja2020} & Objective elastic stress rate, barotropic
- constituent, anisotropic plasticity & Rate-based coupling, classical solid storage, and engineering
- simulations; distinct from a specified hyperelastic mineral-volume energy.\\
-Foster--Xu \citep{fosterxu2025} & Mixture kinematics and pressure transform &
- Scalar precursor recovered when mineral volume depends on skeleton volume.\\
-Present work & Objective energy with an equilibrated mineral-volume
- coordinate & Tensor sensitivity, constrained mineral contribution,
- unjacketed compatibility, and finite-pressure examples.\\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\section{Kinematics and thermodynamic setting}
+\section{Deformation and volume-fraction-weighted stress}
 \label{sec:kinematics}
 
-Let \(\F\) map the solid skeleton reference configuration to its current
-configuration, and let \(J=\det\F>0\) be the corresponding skeleton volume
-ratio.  The solid partial density is
-\(\rho_s=\phi_s\bar\rho_s\), where \(\phi_s\) is the solid volume fraction
-and \(\bar\rho_s\) is the intrinsic density of the mineral solid.  For a
-uniform reference state, solid mass conservation gives
+Let \(\mathbf F\) be the skeleton deformation gradient and
+\(J=\det\mathbf F>0\) its volume ratio. We separate true mineral
+deformation from distention using \citep{drumheller2000}
 \begin{equation}
- J\rho_s=\rho_{s0}=\phi_{s0}\bar\rho_{s0}.
- \label{eq:solid-mass}
+ \mathbf F=\mathbf A\bar{\mathbf F},\qquad
+ J=a\bar J,\qquad
+ a=\det\mathbf A,\qquad \bar J=\det\bar{\mathbf F}.
+ \label{eq:true-mineral-jacobian}
 \end{equation}
-The true mineral volume ratio is
+Here \(\bar J\) measures mineral volume change and \(a\) measures the
+additional volume change associated with the pore structure. The reference
+state has \(J=\bar J=a=1\). We specialize the distention gradient to
 \begin{equation}
- \bar J\equiv\frac{\bar\rho_{s0}}{\bar\rho_s},
- \qquad
- \phi_s=\frac{\phi_{s0}\bar J}{J},
- \qquad \phi_f=1-\phi_s.
- \label{eq:distention}
+ \mathbf A=a^{1/3}\mathbf R_A,\qquad
+ \mathbf R_A^T\mathbf R_A=\mathbf I,\qquad \det\mathbf R_A=1,\qquad
+ \bar{\mathbf F}=a^{-1/3}\mathbf R_A^T\mathbf F.
+ \label{eq:spherical-distention}
 \end{equation}
-Thus \(\bar J\) is the mineral volume ratio, \(\phi_f\) is the fluid volume
-fraction, and \(J/\bar J\) is the distention ratio of the skeleton.  In other
-words, \(J\) measures the change of the porous skeleton volume, whereas
-\(\bar J\) measures the change of volume of the mineral itself.  We separate
-these two changes using the
-distention--true-deformation construction emphasized by Drumheller
-\citep{drumheller2000},
+Here \(\mathbf R_A\) is a proper rotation and \(a\) is the determinant
+of \(\mathbf A\), not a principal stretch. The inverse distention gradient
+is \(a^{-1/3}\mathbf R_A^T\). This specialization allows a relative
+rotation and a change in volume, with no shape-changing distention.
+In particular, the mineral right Cauchy--Green tensor satisfies
 \begin{equation}
- \F=\A\Fb,
- \qquad \det\A=\frac{J}{\bar J},
- \qquad \det\Fb=\bar J.
-\label{eq:true-mineral-jacobian}
+ \bar{\mathbf C}=\bar{\mathbf F}^T\bar{\mathbf F}
+                  =a^{-2/3}\mathbf C,\qquad
+ \mathbf C=\mathbf F^T\mathbf F.
+ \label{eq:conformal-mineral-metric}
 \end{equation}
-Here \(\A\) describes distention and \(\Fb\) describes true mineral
-deformation.  The determinant relation in
-\eqref{eq:true-mineral-jacobian} is enough to track volume.  We use the
-isotropic-distention specialization below, which also fixes the shape part of
-the true mineral deformation once \(\F\) and \(\bar J\) are known.
-For the nonreacting, one-solid/one-fluid specialization considered here, an
-isotropic distention \(\A=a\I\), with
-\(a=(J/\bar J)^{1/3}\), makes \(\F=a\Fb\) kinematically equivalent, up to
-the naming and ordering of factors, to the isotropic swelling--elastic
-multiplicative split used in Flory-type network theories \citep{flory1961}.
-This is a kinematic equivalence only: it neither transfers Flory's mixing free
-energy nor supplies the present pressure-conjugacy or constitutive assumptions.
+Consequently the normalized right stretches of the mineral and skeleton
+are equal. A general determinant-one distention factor would additionally allow
+shear and describe a different deformation mechanism.
 
-Let \(q=\ln\bar J\) be the mineral volume coordinate.  At the fixed
-temperature considered here, let \(\psi_s(\F,q)\) be the solid specific
-Helmholtz free energy and define the mixture-reference free-energy density by
-\(W(\F,q)=\rho_{s0}\psi_s(\F,q)\).  The normalization used
-in our earlier work \citep{fosterxu2025} takes the intrinsic solid specific
-volume as \(\bar v_s=1/\bar\rho_s=\bar v_{s0}\bar J\), and
-\(\rho_{s0}\bar v_{s0}=\phi_{s0}\).  Following Foster and Xu
-\citep{fosterxu2025}, \(p\) denotes the fluid pore pressure.  The isothermal pressure conjugacy
-\(\partial\psi_s/\partial\bar v_s=-p\) then gives the following
-mixture-reference relation.  Structural tensors and history variables are
-suppressed and held fixed below.  Local pressure equilibrium determines the
-mineral volume coordinate:
+Let \(\bar\rho_s\) be solid intrinsic density, \(\phi_s\) the current
+solid volume fraction, and \(\rho_s=\phi_s\bar\rho_s\) the solid mass
+per current mixture volume. Throughout, a bar on a kinematic or energetic quantity denotes the mineral
+state reached by removing the distention in \eqref{eq:spherical-distention}.
+A bar on an intrinsic density denotes the per-phase-volume value
+\(\bar\rho_\xi=\rho_\xi/\phi_\xi\), which is the mineral state for the solid.
+A bar on a stress denotes its representation in the mixture frame, whereas a hat denotes
+the true frame. A bar on a prescribed boundary datum, such as the mass flux
+\(\bar Q_f\) of \eqref{eq:fe-fluid-residual}, denotes its prescribed value on that
+boundary.
+The two stress representations differ by the rotation \eqref{eq:rotated-mineral-cauchy}.
+Fourth-order tensors are set in blackboard bold and second-order tensors in
+upright bold. Conservation of solid mass gives
+\begin{align}
+ J\rho_s&=\phi_{s0}\bar\rho_{s0},
+ \label{eq:solid-mass}\\
+ \bar J&=\frac{\bar\rho_{s0}}{\bar\rho_s},\qquad
+ \phi_s=\frac{\phi_{s0}\bar J}{J},\qquad
+ \phi_s a=\phi_{s0}.
+ \label{eq:distention}
+\end{align}
+The reference solid fraction satisfies \(0<\phi_{s0}<1\). Full saturation
+gives fluid fraction \(1-\phi_s\). We retain states with positive mineral
+volume and \(0<\phi_s<1\).
+
+The phase stresses must be added in a common spatial frame. Let
+\(\widehat{\mathbf\sigma}_s\) denote the intrinsic mineral Cauchy stress
+in the frame reached by \(\bar{\mathbf F}\). Its representation in the
+mixture frame is
 \begin{equation}
- \left.\pder{W}{q}\right|_{\F}=-\phi_{s0}p\bar J.
- \label{eq:mineral-coordinate-equilibrium}
+ \bar{\mathbf\sigma}_s
+ =\mathbf R_A\widehat{\mathbf\sigma}_s\mathbf R_A^T.
+ \label{eq:rotated-mineral-cauchy}
 \end{equation}
-Equivalently, the volume derivative at fixed \(\F\) is
+Both are stresses per current mineral volume; the rotation changes their
+components, not their normalization. The intrinsic fluid stress is
+\(-p\mathbf I\), with positive \(p\) denoting compression. The
+volume-fraction-weighted phase balance therefore gives
 \begin{equation}
- \left.\pder{W}{\bar J}\right|_{\F}=-\phi_{s0}p.
+ \mathbf\sigma
+ =\phi_s\bar{\mathbf\sigma}_s-(1-\phi_s)p\mathbf I.
+ \label{eq:constitutive-phase-stress-sum}
+\end{equation}
+The single-prime effective stress includes the full pore-pressure term,
+\begin{align}
+ \mathbf\sigma'&=\mathbf\sigma+p\mathbf I,
+ \label{eq:total-cauchy-single-prime}\\
+ &=\phi_s(\bar{\mathbf\sigma}_s+p\mathbf I).
+ \label{eq:constitutive-single-prime-phase-stress}
+\end{align}
+Multiplication by reference-to-current volume ratios defines the skeleton
+and mineral Kirchhoff stresses:
+\begin{equation}
+ \mathbf\tau'=J\mathbf\sigma',\qquad
+ \bar{\mathbf\tau}_s=\bar J\bar{\mathbf\sigma}_s.
+ \label{eq:kirchhoff-volume-conventions}
+\end{equation}
+The mineral energy \(\bar W_s(\bar{\mathbf F})\), per reference mineral
+volume, supplies the true-frame Kirchhoff stress and its mixture-frame
+representation through
+\begin{equation}
+ \widehat{\mathbf\tau}_s
+ =\pder{\bar W_s}{\bar{\mathbf F}}\bar{\mathbf F}^T,\qquad
+ \bar{\mathbf\tau}_s
+ =\mathbf R_A\widehat{\mathbf\tau}_s\mathbf R_A^T.
+ \label{eq:rotated-mineral-kirchhoff}
+\end{equation}
+Objectivity of the mineral energy makes these stresses symmetric, including
+for an anisotropic mineral. Using \(J\phi_s=\phi_{s0}\bar J\) in the
+phase balance gives
+\begin{equation}
+ \mathbf\tau'
+ =\phi_{s0}(\bar{\mathbf\tau}_s+p\bar J\mathbf I).
+ \label{eq:constitutive-kirchhoff-phase-stress}
+\end{equation}
+This is a spatial tensor equation. Its trace alone would determine only
+mean stress; the work calculation below retains its shear components.
+
+\section{Reversible work and the equivalent energy}
+\label{sec:work-equivalence}
+
+Write \(W_s(\mathbf F,\bar J)\) for solid energy per reference mixture
+volume. At fixed temperature, pressure equilibrium and the deformation
+stress follow from \citep{fosterxu2025}
+\begin{equation}
+ \left.\pder{W_s}{\bar J}\right|_{\mathbf F}=-\phi_{s0}p,
+ \qquad
+ \mathbf P'=\left.\pder{W_s}{\mathbf F}\right|_{\bar J},
+ \qquad \mathbf\tau'=\mathbf P'\mathbf F^T.
  \label{eq:pressure-conjugacy}
 \end{equation}
-Consider an already-deformed specimen that is rotated rigidly in space, with
-its shape and pore pressure left unchanged.  This change of laboratory
-orientation cannot affect the stored energy or the mineral volume selected by
-local equilibrium.  Thus, \(\bar J\) does not depend on how the specimen is
-oriented.
-
-\section{Finite-deformation Biot tensor}
-\label{sec:finite-biot}
-
-Assume that \eqref{eq:mineral-coordinate-equilibrium} can be solved locally
-for \(q=q(\F,p)\); specifically, assume that the derivative of
-\(W_q+\phi_{s0}p\bar J\) with respect to \(q\) is nonzero.  Define the
-reduced fixed-pressure energy and its
-Legendre transform by
-\begin{subequations}
-\label{eq:fixed-pressure-energies}
-\begin{align}
- W^{\prime\prime}(\F,p)&=W\bigl(\F,q(\F,p)\bigr),
- \label{eq:reduced-energy}\\
- W^{\prime}(\F,p)&=W^{\prime\prime}(\F,p)+\phi_{s0}p\,
- \bar J\bigl(q(\F,p)\bigr).
- \label{eq:legendre-energy}
-\end{align}
-\end{subequations}
-In our earlier work \citep[eq.~(33)]{fosterxu2025}, we transformed the specific
-internal energy according to
-\(\widetilde e^s(\F,p)=e^s(\F,\bar v_s)+p\bar v_s\).  Equation
-\eqref{eq:legendre-energy} is its isothermal Helmholtz counterpart.  Replacing
-\(e^s\) by \(\psi_s\), multiplying by \(\rho_{s0}\), and using
-\(\bar v_s=\bar v_{s0}\bar J\) together with
-\(\rho_{s0}\bar v_{s0}=\phi_{s0}\) gives
-\(W+\phi_{s0}p\bar J=\rho_{s0}(\psi_s+p\bar v_s)\).  Evaluating this
-identity at the local solution \(q(\F,p)\) gives
-\eqref{eq:legendre-energy} per unit reference mixture volume.
-The first Piola stresses conjugate to \(\F\), respectively at a fixed mineral
-state and at a fixed pore pressure, are
-\begin{subequations}
-\label{eq:effective-stresses}
-\begin{align}
- \bm P^{\prime}&=\left.\pder{W}{\F}\right|_{q}
- =\left.\pder{W^{\prime}}{\F}\right|_p,
- \label{eq:fixed-mineral-state-stress}\\
- \bm P^{\prime\prime}&=\left.\pder{W^{\prime\prime}}{\F}\right|_p.
- \label{eq:fixed-pressure-stress}
-\end{align}
-\end{subequations}
-The second equality in the first definition follows because the change in
-\(q\) cancels through
-\eqref{eq:mineral-coordinate-equilibrium}.  Differentiating
-\eqref{eq:legendre-energy} gives
+An infinitesimal variation about a finite elastic state therefore gives
 \begin{equation}
- \bm P^{\prime}=
- \bm P^{\prime\prime}+
- \phi_{s0}p\left.\pder{\bar J}{\F}\right|_p.
- \label{eq:piola-transform-general}
+ \delta W_s=\mathbf\tau':(\delta\mathbf F\mathbf F^{-1})
+                 -\phi_{s0}p\,\delta\bar J.
+ \label{eq:coupled-energy-work}
 \end{equation}
+All variations are elastic. The independent arguments in this expression
+are \(\mathbf F\) and \(\bar J\).
 
-The total mixture first Piola stress is
-\(\bm P=\bm P^{\prime}-pJ\F^{-T}\).  The first term contains the stress
-transmitted through the skeleton and mineral state, while the second is the
-usual pore-pressure traction.  We define the finite-deformation Biot tensor in
-the current configuration by
-\begin{equation}
- \bm B
- =\I-\frac{\phi_{s0}}{J}
- \left.\pder{\bar J}{\F}\right|_p\F^T.
- \label{eq:finite-biot-tensor}
-\end{equation}
-Equations \eqref{eq:piola-transform-general} and \eqref{eq:finite-biot-tensor}
-then give the familiar effective-stress form
-\begin{equation}
- \bm\sigma=\bm\sigma^{\prime\prime}-p\bm B,
- \label{eq:total-stress-transform}
-\end{equation}
-where \(\bm\sigma^{\prime\prime}=J^{-1}\bm P^{\prime\prime}\F^T\).
-This decomposition does not imply that \(\bm\sigma^{\prime\prime}\) is
-independent of pressure. The experimentally accessible pressure tangent
-follows from the same potential. Smoothness on a selected equilibrium branch
+To separate mineral work from distention work, vary
+\(\mathbf F=a^{1/3}\mathbf R_A\bar{\mathbf F}\). Direct differentiation
 gives
 \begin{align}
- \left.\pder{W'}{p}\right|_{\F}&=\phi_{s0}\bar J,
+ \delta\mathbf F\mathbf F^{-1}
+ &=\frac13\mathbf I\,\delta\ln a
+   +\delta\mathbf R_A\mathbf R_A^T
+   +\mathbf R_A(\delta\bar{\mathbf F}\bar{\mathbf F}^{-1})\mathbf R_A^T,
+ \label{eq:spherical-distention-virtual-deformation}\\
+ \delta\bar J
+ &=\bar J\tr(\delta\bar{\mathbf F}\bar{\mathbf F}^{-1}).
+ \label{eq:mineral-volume-variation}
+\end{align}
+Differentiating \(\mathbf R_A\mathbf R_A^T=\mathbf I\) shows that
+\(\delta\mathbf R_A\mathbf R_A^T\) is skew. Its contraction with the
+symmetric stress \(\mathbf\tau'\) vanishes. Substitution into
+\eqref{eq:coupled-energy-work} therefore gives
+\begin{align}
+ \delta W_s
+ &=\frac13\tr\mathbf\tau'\,\delta\ln a
+ +\left(\mathbf R_A^T\mathbf\tau'\mathbf R_A
+                 -\phi_{s0}p\bar J\mathbf I\right):
+       (\delta\bar{\mathbf F}\bar{\mathbf F}^{-1}),
+ \label{eq:phase-work-substitution}\\
+ &=\frac13\tr\mathbf\tau'\,\delta\ln a
+ +\phi_{s0}\widehat{\mathbf\tau}_s:
+       (\delta\bar{\mathbf F}\bar{\mathbf F}^{-1}).
+ \label{eq:distention-mineral-energy-work}
+\end{align}
+The second line uses the full phase balance
+\eqref{eq:constitutive-kirchhoff-phase-stress} and the stress rotation
+\eqref{eq:rotated-mineral-kirchhoff}. The fluid-pressure work cancels,
+leaving mineral work weighted by the reference solid fraction. This
+cancellation does not require the mineral stress and strain to have common
+principal directions.
+
+We assume that the remaining distention energy depends only on its volume
+ratio, \(W_A(a)\), with no separate fabric or orientation energy.
+Integrating the mineral work at fixed distention then gives
+\begin{equation}
+ W_s(\mathbf F,\bar J)=W_A(a)+\phi_{s0}\bar W_s(\bar{\mathbf F}),
+ \qquad a=\frac J{\bar J},\qquad
+ \bar{\mathbf F}=a^{-1/3}\mathbf R_A^T\mathbf F.
+ \label{eq:equivalent-mixture-mineral-energy}
+\end{equation}
+The distention derivative is
+\(\partial W_A/\partial\ln a=\tr\mathbf\tau'/3\). Objectivity of
+\(\bar W_s\) means invariance under a left rotation of its argument:
+\begin{equation}
+ \bar W_s(a^{-1/3}\mathbf R_A^T\mathbf F)
+ =\bar W_s(a^{-1/3}\mathbf F).
+ \label{eq:conformal-objective-energy}
+\end{equation}
+Thus \(W_s\) is a function of \(\mathbf F\) and \(\bar J\), independent
+of \(\mathbf R_A\). This result holds for material anisotropy because a
+left rotation leaves the material metric \(\bar{\mathbf C}\) unchanged.
+The internal rotation specifies an intermediate frame, not a new elastic
+mode in this constitutive specialization. We may set \(\mathbf R_A=\mathbf I\)
+when evaluating the energy, provided mineral stresses computed in another
+frame are transformed by \eqref{eq:rotated-mineral-kirchhoff}.
+
+We can also differentiate this energy to check that it returns the full
+phase stress. At fixed mineral volume, a change in skeleton deformation
+changes distention by \(\delta\ln a=\delta\ln J\). At fixed skeleton
+deformation, a change in mineral volume instead gives
+\(\delta\ln a=-\delta\ln\bar J\). These two variations give
+\begin{align}
+ \mathbf\tau'&=\pder{W_A}{\ln a}\mathbf I
+                         +\phi_{s0}\dev\bar{\mathbf\tau}_s,
+ \label{eq:energy-returned-effective-stress}\\
+ \pder{W_A}{\ln a}
+ &=\frac{\phi_{s0}}3\tr\bar{\mathbf\tau}_s+\phi_{s0}p\bar J.
+ \label{eq:energy-returned-pressure-balance}
+\end{align}
+Here \(\dev\bar{\mathbf\tau}_s=\bar{\mathbf\tau}_s
+-\tr(\bar{\mathbf\tau}_s)\mathbf I/3\) removes the mean stress.
+The second line uses pressure equilibrium. Substituting it into the first
+recovers \eqref{eq:constitutive-kirchhoff-phase-stress}, including all shear
+components. Thus the integrated energy and the weighted phase stress give
+the same response.
+
+For a purely volumetric mineral variation,
+\(\delta\bar{\mathbf F}\bar{\mathbf F}^{-1}
+=\mathbf I\delta\bar J/(3\bar J)\), the same work relation reduces to
+\begin{equation}
+ \delta W_s=\frac13\tr\mathbf\tau'\,\delta\ln a
+ +\frac{\phi_{s0}}3\tr\bar{\mathbf\sigma}_s\,\delta\bar J.
+ \label{eq:equivalent-volumetric-work}
+\end{equation}
+This is the volume-work relation used in the scalar companion derivation.
+The distinction between reference mixture volume and reference mineral
+volume accounts for the factor \(\phi_{s0}\).
+
+\input{sections/stress_reconstruction}
+
+\section{Pressure coupling at finite deformation}
+\label{sec:finite-biot}
+
+At a prescribed pressure, solve \eqref{eq:anisotropic-mineral-eos} for
+\(\bar J(\mathbf F,p)\). Following the pressure transformation in
+\citet{fosterxu2025}, define
+\begin{align}
+ W''(\mathbf F,p)&=W_s(\mathbf F,\bar J(\mathbf F,p)),
+ \label{eq:reduced-energy}\\
+ W'(\mathbf F,p)&=W''(\mathbf F,p)+\phi_{s0}p\bar J(\mathbf F,p).
+ \label{eq:legendre-energy}
+\end{align}
+The double-prime stress is obtained by differentiating \(W''\) at fixed pressure.
+The derivative of \(W'\) at fixed pressure equals the derivative of
+\(W_s\) at fixed mineral volume because the mineral-response terms cancel
+by \eqref{eq:pressure-conjugacy}. Thus
+\begin{align}
+ \mathbf P''&=\left.\pder{W''}{\mathbf F}\right|_p,
+ \label{eq:fixed-pressure-stress}\\
+ \mathbf P'&=\left.\pder{W'}{\mathbf F}\right|_p,
+ \label{eq:fixed-mineral-state-stress}\\
+ &=\mathbf P''+\phi_{s0}p
+       \left.\pder{\bar J}{\mathbf F}\right|_p.
+ \label{eq:piola-transform-general}
+\end{align}
+Pushing the stresses to the current configuration gives
+\begin{equation}
+ \mathbf\sigma=\mathbf\sigma''-p\mathbf B,\qquad
+ \mathbf B=\mathbf I-\frac{\phi_{s0}}J
+       \left.\pder{\bar J}{\mathbf F}\right|_p\mathbf F^T.
+ \label{eq:finite-biot-tensor}
+\end{equation}
+Here \(\mathbf\sigma''=J^{-1}\mathbf P''\mathbf F^T\).
+At fixed pressure, the contraction of \(\mathbf B\) with the current virtual deformation
+gives the pore-volume change per current mixture volume:
+\begin{equation}
+ \frac{\delta(J-\phi_{s0}\bar J)}J
+ =\mathbf B:(\delta\mathbf F\mathbf F^{-1}),\qquad \delta p=0.
+ \label{eq:biot-pore-volume-variation}
+\end{equation}
+The numerator is the pore-volume change per reference mixture volume;
+dividing by \(J\) gives the current-volume normalization.
+
+To evaluate this derivative, differentiate the mineral equation at fixed
+pressure, which gives
+\begin{align}
+ &\left[K_s+\left(1-\frac K{\phi_{s0}K_s}\right)p\bar J\right]
+     \left.\pder{\ln\bar J}{\mathbf F}\right|_p
+ \nonumber\\
+ &\qquad=\frac K{\phi_{s0}}\mathbf F^{-T}
+ -\frac13\left(1-\frac K{\phi_{s0}K_s}\right)
+   \pder{}{\mathbf F}
+   \left[\mathbf I:\mathbb{C}_s:\dev\mathbf\varepsilon\right].
+ \label{eq:mineral-fixed-pressure-derivative}
+\end{align}
+The material logarithmic strain is
+\(\mathbf\varepsilon=\tfrac12\log\mathbf C\), where
+\(\mathbf C=\mathbf F^T\mathbf F\). In an anisotropic solid, the
+logarithmic strain and its conjugate stress need not have the same principal
+directions. The derivative of the matrix logarithm must therefore be retained.
+Using its self-adjointness gives the explicit current Biot tensor
+\begin{align}
+ \mathbf B
+ &=\mathbf I-\frac{\bar J}
+ {J\left[K_s+\left(1-\dfrac K{\phi_{s0}K_s}\right)p\bar J\right]}
+ \left\{K\mathbf I\right.
+ \nonumber\\
+ &\qquad\left.
+ -\frac{\phi_{s0}}3\left(1-\frac K{\phi_{s0}K_s}\right)
+ \mathbf F\left[\pder{\log\mathbf C}{\mathbf C}:
+       \dev(\mathbb{C}_s:\mathbf I)\right]\mathbf F^T
+ \right\}.
+ \label{eq:anisotropic-biot-explicit}
+\end{align}
+The matrix derivative and its repeated-eigenvalue limit are given in
+\cref{sec:logarithmic-derivative}. If mineral volume and shape are coupled
+by \(\mathbb{C}_s\), a change of skeleton shape changes \(\bar J\).
+The second term inside braces represents this contribution. It makes the
+pressure response directional even though distention changes only volume and orientation.
+Mineral anisotropy alone need not give directional pressure coupling.
+If \(\dev(\mathbb{C}_s:\mathbf I)=\mathbf0\), as for cubic symmetry,
+this term vanishes and \(\mathbf B\) remains spherical even when the
+mineral shear response is anisotropic.
+
+The energy depends on material strain, so a superposed spatial rotation
+\(\mathbf Q\) leaves \(\bar J\) unchanged and rotates the tensor as
+\(\mathbf B(\mathbf Q\mathbf F,p)=\mathbf Q\mathbf B(\mathbf F,p)
+\mathbf Q^T\). The matrix-logarithm derivative maps symmetric tensors
+to symmetric tensors; hence \(\mathbf B\) is symmetric.
+
+There are two useful checks on the stress interpretation. First, direct
+energy differentiation retains the complete phase balance:
+\begin{equation}
+ \mathbf\sigma
+ =\frac{\phi_{s0}}J\bar{\mathbf\tau}_s
+       -(1-\phi_s)p\mathbf I.
+ \label{eq:total-stress-phase-energy}
+\end{equation}
+The mineral Kirchhoff stress is computed from its prescribed energy and
+true deformation, then rotated into the mixture frame by
+\eqref{eq:rotated-mineral-kirchhoff}. Equation
+\eqref{eq:distention-mineral-energy-work} proves their agreement for finite
+states, including states with different stress and strain directions.
+Second, mixed differentiation of \(W'\) gives
+\begin{align}
+ \left.\pder{W'}p\right|_{\mathbf F}&=\phi_{s0}\bar J,
  \label{eq:pressure-envelope}\\
- \left.\pder{\bm P}{p}\right|_{\F}
- &=\phi_{s0}\left.\pder{\bar J}{\F}\right|_p-J\F^{-T},
- \label{eq:piola-pressure-tangent}\\
- \left.\pder{\bm\sigma}{p}\right|_{\F}&=-\bm B(\F,p).
+ \left.\pder{\mathbf\sigma}p\right|_{\mathbf F}&=-\mathbf B.
  \label{eq:cauchy-pressure-tangent}
 \end{align}
-The second step uses equality of the mixed derivatives of \(W'\).
-Equivalently, with pore volume per reference mixture volume
-\(\Phi=J-\phi_{s0}\bar J\), the tensor is its pushed-forward deformation
-sensitivity:
+Thus a fixed-deformation pressure experiment measures \(\mathbf B\)
+through the change in total stress. On an admissible pressure interval
+containing zero, integrating this derivative gives
 \begin{equation}
- \bm B=J^{-1}\left.\pder{\Phi}{\F}\right|_p\F^T.
- \label{eq:pore-volume-biot}
+ \mathbf\sigma(\mathbf F,p)
+ =\mathbf\sigma(\mathbf F,0)
+       -\int_0^p\mathbf B(\mathbf F,\pi)\,\dd\pi.
+ \label{eq:integrated-pressure-response}
 \end{equation}
-This is the volume-conjugacy interpretation associated with a skeleton
-potential in \((\F,\Phi)\) \citep{debuhan1998}. The mineral-volume coordinate
-makes the constituent response explicit without creating a new conjugacy.
-For a pressure experiment at fixed deformation,
-\begin{align}
- \bm\sigma(\F,p)-\bm\sigma(\F,0)
- &=-\int_0^p\bm B(\F,\pi)\,\dd\pi,
- \label{eq:integrated-pressure-response}\\
- \left.\pder{\bm\sigma^{\prime\prime}}{p}\right|_{\F}
- &=p\left.\pder{\bm B}{p}\right|_{\F}.
- \label{eq:effective-stress-pressure-dependence}
-\end{align}
-Thus using \(-p\bm B(\F,p)\) with the zero-pressure stress generally gives
-an incorrect finite-pressure response. In a displacement-controlled test,
-\eqref{eq:cauchy-pressure-tangent} instead identifies \(\bm B\) from the
-stress changes needed to hold the specimen's shape and volume fixed.
+The fixed-pressure effective stress \(\mathbf\sigma''\) itself depends
+on pressure. The instantaneous coupling tensor therefore applies to an
+infinitesimal pressure increment; a finite change from the drained stress
+requires the integral in \eqref{eq:integrated-pressure-response}.
 
-There is also an integrability restriction on any proposed finite-state
-tensor. On a coaxial deformation family with logarithmic principal strains
-\(\varepsilon_i\), \eqref{eq:pore-volume-biot} implies
-\begin{align}
- \left.\pder{\Phi}{\varepsilon_i}\right|_p&=JB_i,
- \label{eq:coaxial-volume-gradient}\\
- \frac{\partial(JB_i)}{\partial\varepsilon_j}
- &=\frac{\partial(JB_j)}{\partial\varepsilon_i}.
- \label{eq:biot-integrability}
-\end{align}
-All derivatives in the second line hold pressure fixed. If the spatial
-principal values \(B_i\) are constants on an open set of these strains,
-then \(\partial J/\partial\varepsilon_i=J\) makes
-\eqref{eq:biot-integrability} require \(B_i=B_j\). Therefore a spatially
-constant nonspherical Biot tensor is not compatible with a smooth
-hyperelastic pore-volume potential on that domain. It can be a reference
-tangent or a prescribed-path approximation, but a finite-deformation
-continuation must include the state dependence needed by this condition.
-This is a consequence of mixed-derivative symmetry, not a prohibition on
-anisotropic coupling or on rate-based constitutive theories.
-
-Under the rotation-invariance assumption stated above, a superposed rigid
-rotation \(\bm Q\) gives \(\bm B(\bm Q\F,p)=\bm Q\bm B(\F,p)\bm Q^T\),
-and the same relation holds for \(\bm\sigma^{\prime\prime}\).  For comparison,
-suppose that the mineral volume responds only to skeleton volume and not to
-skeleton shape.  Then \(\bar J\) depends on \(\F\) only through \(J\), and
-\begin{equation}
- \bm B=\left(1-\phi_{s0}\left.\pder{\bar J}{J}\right|_p\right)\I,
- \label{eq:scalar-recovery}
-\end{equation}
-which is the scalar finite-deformation result derived in our earlier work
-\citep[eq.~(39)]{fosterxu2025}.  The normalization used there gives the same
-expression exactly: the reference specific volume is \(v_{s0}=1/\rho_{s0}\), where
-\(\rho_{s0}=\phi_{s0}\bar\rho_{s0}\), whereas the intrinsic specific volume
-is \(\bar v_s=\bar J/\bar\rho_{s0}\).  Hence
-\begin{equation}
- \frac{\bar v_s}{v_{s0}}=\phi_{s0}\bar J,
- \qquad
- B=1-\phi_{s0}\left.\pder{\bar J}{J}\right|_p.
- \label{eq:foster-xu-normalization-bridge}
-\end{equation}
-This is equation~(39) of \citet{fosterxu2025}, expressed using the present
-volume ratio.
-
-The tensor in \eqref{eq:finite-biot-tensor} is symmetric under the stated
-rotation-invariance assumption.  To show this, take a superposed infinitesimal rotation
-\(\bm Q=\I+\bm\Omega\), \(\bm\Omega^T=-\bm\Omega\).  Invariance of
-\(\bar J\) gives
-\begin{equation}
- \left.\pder{\bar J}{\F}\right|_p:(\bm\Omega\F)=0,
- \qquad\text{so}\qquad
- \left.\pder{\bar J}{\F}\right|_p\F^T
- \ \text{is symmetric}.
- \label{eq:biot-tensor-symmetry}
-\end{equation}
-
-\section{Finite-deformation Hencky realization}
-\label{sec:finite-hencky}
-
-The kinematic result above does not require a particular elastic law.  We now
-give one objective finite-deformation realization that respects the
-isotropic-distention split.  Let \(\F=\bm R\bm U\) and
-\(\Fb=\bar{\mathbf R}\bar{\mathbf U}\) be right polar decompositions, and
-introduce the material logarithmic strains
-\begin{equation}
- \bm\varepsilon=\log\bm U,
- \qquad
- \bm\eta=\log\bar{\mathbf U}.
- \label{eq:hencky-strain-coordinates}
-\end{equation}
-Because \(\A=a\I\), \(\bar{\mathbf U}=a^{-1}\bm U\).  Thus \(\bm\eta\)
-is not an independent state variable: it is fixed by \(\bm\varepsilon\) and
-\(q\).  Introduce the volumetric and deviatoric projectors on symmetric
-tensors,
-\begin{equation}
- \Pvol=\frac13\I\otimes\I,
- \qquad
- \Pdev=\mathbb I_{\mathrm{sym}}-\Pvol.
- \label{eq:volumetric-deviatoric-projectors}
-\end{equation}
-Then
-\begin{equation}
- \bm\eta=\Pdev:\bm\varepsilon+\frac{q}{3}\I.
- \label{eq:constrained-mineral-hencky-strain}
-\end{equation}
-In particular, \(\tr\bm\eta=q=\ln\bar J\) exactly.  Let
-\(W_{\mathrm H}(\bm\varepsilon,q)\) be any objective Hencky energy per unit
-reference mixture volume, with structural tensors understood in the material
-frame.  At prescribed pore pressure, the scalar mineral-volume equilibrium is
-\begin{equation}
- \frac{\partial W_{\mathrm H}}{\partial q}
- +\phi_{s0}p\exp(q)=0.
- \label{eq:finite-hencky-mineral-equilibrium}
-\end{equation}
-Define the scalar fixed-pressure mineral tangent by
-\begin{equation}
- h_p=\frac{\partial^2 W_{\mathrm H}}{\partial q^2}
- +\phi_{s0}p\exp(q).
- \label{eq:finite-hencky-mineral-tangent}
-\end{equation}
-For \(h_p\ne0\), differentiation of
-\eqref{eq:finite-hencky-mineral-equilibrium} at fixed pressure gives
-\begin{equation}
- \left.\frac{\partial q}{\partial\bm\varepsilon}\right|_p
- =-h_p^{-1}\frac{\partial^2 W_{\mathrm H}}
- {\partial q\,\partial\bm\varepsilon}.
- \label{eq:finite-hencky-mineral-sensitivity}
-\end{equation}
-Since \(\dd\bar J=\bar J\,\dd q\),
-\eqref{eq:finite-hencky-mineral-sensitivity} and the chain rule from
-\(\bm\varepsilon(\F)=\log\bm U\) give
-\begin{equation}
- \left.\pder{\bar J}{\F}\right|_p
- =-\bar J h_p^{-1}
- \frac{\partial^2 W_{\mathrm H}}
- {\partial q\,\partial\bm\varepsilon}:
- \frac{\partial\bm\varepsilon}{\partial\F}.
- \label{eq:finite-hencky-volume-sensitivity}
-\end{equation}
-Here \(\partial\bm\varepsilon/\partial\F\) is the fourth-order tangent
-that maps \(\dd\F\) to \(\dd\bm\varepsilon\).  Substitution in
-\eqref{eq:finite-biot-tensor} yields
-\begin{equation}
- \bm B=\I+\frac{\phi_{s0}\bar J}{J}h_p^{-1}
- \left[\frac{\partial^2 W_{\mathrm H}}
- {\partial q\,\partial\bm\varepsilon}:
- \frac{\partial\bm\varepsilon}{\partial\F}\right]\F^T.
- \label{eq:finite-hencky-biot-tensor}
-\end{equation}
-At the zero-pressure reference state,
-\(\bm\varepsilon=\bm\eta=\bm0\), \(J=\bar J=1\),
-\(\left.\partial\bm\varepsilon/\partial\F\right|_{\F=\I}
-=\mathbb I_{\mathrm{sym}}\), the identity map on symmetric tensors.
-Equation~\eqref{eq:finite-hencky-biot-tensor} therefore becomes
-\begin{equation}
- \bm B_0=\I+\phi_{s0}h_0^{-1}
- \left.\frac{\partial^2 W_{\mathrm H}}
- {\partial q\,\partial\bm\varepsilon}\right|_0,
- \qquad
- h_0=\left.\frac{\partial^2 W_{\mathrm H}}{\partial q^2}\right|_0.
- \label{eq:finite-hencky-reference-biot-tensor}
-\end{equation}
-Thus directional pressure coupling arises from a mixed mineral-volume--skeleton
-strain tangent, without assigning an independent mineral-shape equilibrium.
-
-\subsection{Admissibility of the equilibrium branch}
-
-The condition \(h_p\ne0\) is an implicit-function condition. A local
-minimum with respect to mineral volume at fixed deformation and pressure
-requires \(h_p>0\). In addition, a saturated porous state must satisfy
-\begin{equation}
- J>0,\qquad 0<\frac{\phi_{s0}\exp(q)}{J}<1.
- \label{eq:porosity-admissibility}
-\end{equation}
-These restrictions neither imply global existence of the branch nor guarantee
-elastic stability with respect to skeleton deformation. That stability must be
-checked for the condensed total potential \(W'(\F,p)-pJ\), including the
-geometric effects of finite deformation. Convexity in logarithmic strain alone
-is not a proof of rank-one convexity in \(\F\).
-
-\section{Generalized-Hooke specialization}
-\label{sec:hooke}
-
-For \(\F=\I+\nabla\bm u\), let \(\bm e=\sym\nabla\bm u\).  The
-linearization of \eqref{eq:constrained-mineral-hencky-strain} is
-\begin{equation}
- \bm\varepsilon=\bm e+O(\lVert\nabla\bm u\rVert^2),
- \qquad
- \bm\eta=\Pdev:\bm e+\frac{q}{3}\I+o(\lVert\nabla\bm u\rVert+|q|).
- \label{eq:hencky-small-strain-limit}
-\end{equation}
-To expose the mineral-stiffness contribution, begin with the quadratic
-Hencky tangent
-\begin{equation}
- W_{\mathrm H,0}(\bm e,\bm\eta)=
- \frac12\bm e:\C:\bm e+
- \bm e:\D:\bm\eta+
- \frac12\bm\eta:\Hh:\bm\eta,
- \label{eq:underlying-quadratic-energy}
-\end{equation}
-Here \(\C\) is a fourth-order skeleton energy coefficient, not the
-measured drained stiffness. The fourth-order tensor \(\Hh\) represents
-mineral-solid elasticity in
-an energy measured per unit reference mixture volume.  The latter
-normalization is a volume scaling, not an additional mineral property.  Let
-\(\bar W_{m,0}(\bm\eta)\) be the mineral energy per unit reference mineral
-volume and let \(\bar{\mathbb H}\) be its fourth-order elasticity tensor.
-For a uniform reference
-mixture, its contribution to the mixture-reference energy and its tangent are
-\begin{equation}
- W_{m,0}=\phi_{s0}\bar W_{m,0},
-\qquad
- \Hh=\phi_{s0}\bar{\mathbb H},
-\qquad
- \bar{\mathbb H}
- =\left.\frac{\partial^2\bar W_{m,0}}
- {\partial\bm\eta\,\partial\bm\eta}\right|_{\bm\eta=\bm0}.
- \label{eq:mixture-reference-mineral-elasticity}
-\end{equation}
-Thus \(\bar{\mathbb H}\), rather than \(\Hh\), is the tensor that can
-be identified from an isolated mineral specimen, provided that specimen is
-represented by the same mineral constitutive state.  The tensor \(\Hh\)
-then places that measured response on the reference volume of the porous
-mixture.  Both \(\C\) and \(\Hh\) are self-adjoint on symmetric tensors.
-The fourth-order tensor \(\D\) maps mineral strain to skeleton stress and
-represents their elastic coupling.  The constrained relation in
-\eqref{eq:hencky-small-strain-limit} reduces
-\eqref{eq:underlying-quadratic-energy} to
-\begin{equation}
- W_0(\bm e,q)=
- \frac12\bm e:\C^c:\bm e+
- q\,\bm g:\bm e+
- \frac12 hq^2,
- \label{eq:quadratic-energy}
-\end{equation}
-where \(\C^c\) is the constrained skeleton tangent, \(\bm g\) is the
-mineral-volume--skeleton coupling, and \(h>0\) is the mineral-volume tangent.
-Direct substitution gives
-\begin{align}
- \C^c&=\C+2\sym(\D:\Pdev)+\Pdev:\Hh:\Pdev,
- \label{eq:constrained-skeleton-tangent}\\
- \bm g&=\frac13\left(\D:\I+\Pdev:\Hh:\I\right),
- \label{eq:reduced-volume-strain-coupling}\\
- h&=\frac19\I:\Hh:\I.
- \label{eq:reduced-mineral-volume-tangent}
-\end{align}
-Here \(\sym(\D:\Pdev)=\tfrac12(\D:\Pdev+\Pdev:\D^T)\).  Thus,
-mineral anisotropy enters \(\bm g\) whenever \(\Hh:\I\) has a deviatoric
-part.  Mineral equilibrium under pore pressure is
-\begin{equation}
- \bm g:\bm e+hq=-\phi_{s0}p,
- \label{eq:linear-mineral-equilibrium}
-\end{equation}
-and hence
-\begin{equation}
- q=-h^{-1}\bm g:\bm e-h^{-1}\phi_{s0}p.
- \label{eq:mineral-strain-solution}
-\end{equation}
-At \(p=0\), elimination of \(q\) gives the drained skeleton stiffness,
-\begin{equation}
- \C^d=\C^c-h^{-1}\bm g\otimes\bm g.
- \label{eq:drained-stiffness}
-\end{equation}
-Here \((\bm g\otimes\bm g):\bm e=\bm g(\bm g:\bm e)\).
-Since \(\bar J=1+q+o(|q|)\), \eqref{eq:mineral-strain-solution}
-and \eqref{eq:finite-biot-tensor} yield the small-strain Biot tensor
-\begin{equation}
- \boxed{\quad
- \bm B_0=\I+\phi_{s0}h^{-1}\bm g.
- \quad}
- \label{eq:linear-biot-tensor}
-\end{equation}
-The stress relation is \(\bm\sigma=\bm\sigma^{\prime\prime}-p\bm B_0\).
-Within the freely specified reduced energy, \(\C^d\) and \(h\) alone do
-not determine \(\bm g\). For any chosen \(\bm g\), setting
-\(\C^c=\C^d+h^{-1}\bm g\otimes\bm g\) preserves the drained tangent.
-This freedom is restricted if additional constituent compatibility is imposed,
-as shown below. Stability of this reduced quadratic energy requires both
-\(h>0\) and positive definiteness of \(\C^d\). The daughter tensors are
-an energy decomposition on the constrained state space; positivity of their
-individual diagonal blocks does not by itself prove stability of the coupled
-energy.
-
-\section{Special cases}
-\label{sec:special-cases}
-
-\subsection{Isotropic mineral stiffness and anisotropic skeleton coupling}
-
-Let the mineral stiffness be isotropic,
-\begin{equation}
- \Hh=\phi_{s0}\left[
- \lambda_s\,\I\otimes\I+2\mu_s\,\mathbb I_{\mathrm{sym}}
- \right],
- \qquad K_s=\lambda_s+\frac23\mu_s.
- \label{eq:isotropic-mineral-stiffness}
-\end{equation}
-Then \(\Pdev:\Hh:\I=\bm0\) and \(h=\phi_{s0}K_s\), so
-\begin{equation}
- \bm g=\frac13\D:\I,
- \qquad
- \bm B_0=\I+\frac{1}{3K_s}\D:\I.
- \label{eq:isotropic-mineral-biot-tensor}
-\end{equation}
-The constrained and drained skeleton tangents may be anisotropic.  With an
-isotropic mineral, directional pressure coupling is carried by the volumetric
-part \(\D:\I\) of the skeleton--mineral coupling.
-
-\subsection{Anisotropic mineral stiffness with isotropic coupling}
-
-Let the coupling be isotropic,
-\begin{equation}
- \D=d_v\Pvol+d_d\Pdev.
- \label{eq:isotropic-skeleton-mineral-coupling}
-\end{equation}
-For an arbitrary positive-definite mineral stiffness \(\Hh\), equations
-\eqref{eq:reduced-volume-strain-coupling}--\eqref{eq:linear-biot-tensor}
-give
-\begin{equation}
- \bm B_0=
- \I+\frac{\phi_{s0}}{3h}
- \left(d_v\I+\Pdev:\Hh:\I\right),
- \qquad h=\frac19\I:\Hh:\I.
- \label{eq:anisotropic-mineral-biot-tensor}
-\end{equation}
-Consequently, an anisotropic mineral stiffness can produce a directional Biot
-tensor even when the skeleton--mineral coupling is isotropic.  The directional
-part is proportional to \(\Pdev:\Hh:\I\), which measures
-volumetric--deviatoric coupling in the mineral stiffness.
-
-\subsection{Mineral anisotropy without volumetric--deviatoric coupling}
-
-If the anisotropic mineral stiffness satisfies
-\begin{equation}
- \Pdev:\Hh:\I=\bm0,
- \label{eq:mineral-volumetric-deviatoric-decoupling}
-\end{equation}
-then the mineral may remain anisotropic in its deviatoric block
-\(\Pdev:\Hh:\Pdev\), but it does not produce directional pressure coupling
-through \eqref{eq:anisotropic-mineral-biot-tensor}.  For the isotropic
-coupling \eqref{eq:isotropic-skeleton-mineral-coupling},
-\begin{equation}
- \bm B_0=\left(1+\frac{\phi_{s0}d_v}{3h}\right)\I.
- \label{eq:decoupled-mineral-biot-tensor}
-\end{equation}
-Changing only the deviatoric block while holding \(h\) and \(\D\) fixed
-leaves the entire Biot tensor unchanged. Changing the volumetric block can
-change its spherical part.
-
-\subsection{Volumetric calibration for the classical coefficient}
-\label{sec:volumetric-calibration}
-
-The quadratic family includes a volumetric calibration that recovers the
-classical scalar Biot coefficient.  Take the isotropic mineral stiffness
-\eqref{eq:isotropic-mineral-stiffness} and set
-\begin{equation}
-\D=-3K\Pvol+d_d\Pdev,
-\qquad
-\C^c=\C^d+\frac{K^2}{\phi_{s0}K_s}\I\otimes\I.
- \label{eq:volumetric-energy}
-\end{equation}
-Here \(K\) and \(K_s\) are the drained skeleton and mineral bulk moduli.
-Equations \eqref{eq:reduced-volume-strain-coupling} and
-\eqref{eq:reduced-mineral-volume-tangent} give \(\bm g=-K\I\) and
-\(h=\phi_{s0}K_s\).  The Schur complement in
-\eqref{eq:drained-stiffness} then returns \(\C^d\), and
-\eqref{eq:linear-biot-tensor} gives
-\begin{equation}
- \bm B_0=\left(1-\frac{K}{K_s}\right)\I,
- \qquad B=1-\frac{K}{K_s}.
- \label{eq:classical-biot}
-\end{equation}
-The deviatoric coefficient \(d_d\) does not enter \(\bm B_0\), but it
-contributes to the constrained tangent in
-\eqref{eq:constrained-skeleton-tangent}.
-Positive bulk and shear moduli are required for isotropic elastic response.  If
-the drained skeleton is no stiffer in bulk than its unjacketed mineral
-response, \(0\leq K\leq K_s\), then \eqref{eq:classical-biot} gives
-\(0\leq B\leq1\) \citep{makhnenkolabuz2016}.  This modulus ordering is a
-material restriction and is not a consequence of tensor anisotropy alone.
-
-\section{Compatibility with homogeneous-solid unjacketed loading}
-\label{sec:compatibility}
-
-An unjacketed pressure increment applies the same compressive pressure to the
-external boundary and the pore surfaces. For a homogeneous elastic solid
-constituent, the classical uniform-stress solution provides an additional
-constitutive constraint. Let \(\bar{\mathbb S}=\bar{\mathbb H}^{-1}\), and
-define the intrinsic hydrostatic compressibility tensor
-\(\bm a=\bar{\mathbb S}:\I\). The target reference response is
-\begin{equation}
- \bm\sigma=-p\I,\qquad
- \bm e=-p\bm a,\qquad q=-p\tr\bm a.
- \label{eq:unjacketed-target}
-\end{equation}
-Here the mineral and specimen undergo the same uniform strain. This is a
-specific microscopic compatibility assumption, not a consequence of local
-pressure equilibrium alone. It is consistent with the isotropic-distention
-constraint because the target distention increment is zero.
-Substitution into the reference stress relation gives
-\begin{align}
- \bm B_0&=\I-\C^d:\bm a,
- \label{eq:classical-anisotropic-compatibility}\\
- \bm g&=-\frac{h}{\phi_{s0}}\C^d:\bm a.
- \label{eq:mixed-tangent-compatibility}
-\end{align}
-For isotropic intrinsic elasticity, \(\bm a=\I/(3K_s)\); the first
-expression is the microisotropic modulus-based tensor used in classical
-anisotropic poroelasticity \citep[sec.~2.1]{wong2017} and in the elastic
-coupling of Zhao and Borja \citep{zhaoborja2020}. The second expression
-specifies the previously free mixed tangent once \(h\) is known.
-
-Recovering the mineral-volume part of \eqref{eq:unjacketed-target} imposes
-another condition. Applying the same loading to
-\eqref{eq:linear-mineral-equilibrium} gives
-\begin{align}
- \bm g:\bm a+h\tr\bm a&=\phi_{s0},
- \label{eq:unjacketed-volume-compatibility}\\
- h&=\frac{\phi_{s0}^2}
- {\phi_{s0}\tr\bm a-\bm a:\C^d:\bm a},
- \qquad
- \phi_{s0}\tr\bm a>\bm a:\C^d:\bm a.
- \label{eq:compatible-mineral-tangent}
-\end{align}
-The inequality is necessary for a stable positive mineral-volume tangent in
-this reduced model. These equations are a constitutive compatibility test:
-recovering the stress coefficient does not alone establish that the mineral
-volume or storage response has the classical limit.
-
-In the fully isotropic case, the two compatibility conditions reduce to
-\begin{equation}
- h_{\mathrm{uj}}=\frac{\phi_{s0}^2K_s^2}{\phi_{s0}K_s-K},
- \qquad
- \bm g_{\mathrm{uj}}=-\frac{h_{\mathrm{uj}}K}{\phi_{s0}K_s}\I,
- \qquad K<\phi_{s0}K_s.
- \label{eq:compatible-isotropic-tangents}
-\end{equation}
-The stress-only calibration in \cref{sec:volumetric-calibration}, by contrast,
-sets \(h=\phi_{s0}K_s\) and \(\bm g=-K\I\). On the same unjacketed
-path its mineral equilibrium predicts
-\begin{equation}
- q=-\frac{p}{K_s}\left(1+\frac{K}{\phi_{s0}K_s}\right),
- \label{eq:stress-only-unjacketed-mismatch}
-\end{equation}
-rather than \(-p/K_s\) for \(K>0\). The factor multiplying \(p/K_s\)
-is the consequence of using the isolated-mineral tangent as the fixed-skeleton
-mineral-volume tangent. These are different experiments.
-
-Consequently, the restricted daughter energy with
-\(\Hh=\phi_{s0}\bar{\mathbb H}\) cannot, in general, reproduce both
-classical conditions. One possible extension adds an independent pore-constraint
-energy \(\tfrac12\kappa q^2\) to
-\eqref{eq:underlying-quadratic-energy}. In that extended family,
-\begin{equation}
- h=\frac19\I:\Hh:\I+\kappa,
- \qquad
- \kappa=h_{\mathrm{uj}}-\phi_{s0}K_s
- \quad\text{in the isotropic case}.
- \label{eq:additional-volume-energy}
-\end{equation}
-The mixed coupling and constrained skeleton tangent must also be selected to
-satisfy \eqref{eq:mixed-tangent-compatibility} and
-\eqref{eq:drained-stiffness}. This extension assigns the measured intrinsic
-elasticity to \(\Hh\) while allowing the cost of changing mineral volume
-at fixed skeleton deformation to include pore constraints. It does not change
-the direct mineral contribution to \(\bm g\) in
-\eqref{eq:reduced-volume-strain-coupling}. The examples below use the
-compatible reduced energy, with \(h\) an effective tangent rather than an
-isolated-mineral modulus.
-
-\subsection{Identification and storage}
-
-At the reference state, drained tests identify \(\C^d\); equilibrium
-pressure perturbations at fixed deformation identify \(\bm B_0\).
-Intrinsic-density measurements at fixed skeleton strain provide
-\begin{equation}
- \left.\pder{q}{p}\right|_{\bm e}=-\frac{\phi_{s0}}{h},
- \qquad
- \bm g=\frac{h}{\phi_{s0}}(\bm B_0-\I).
- \label{eq:reference-identification}
-\end{equation}
-The specimen must be allowed to equilibrate with the pressure reservoir;
-fixed deformation is not the same condition as zero fluid exchange. If
-pressure loading is performed at constant total stress instead, the measured
-strain sensitivity must be combined with \(\C^d\) to infer \(\bm B_0\).
-The range of laboratory loadings used by Braun et al.\ \citep{braun2020}
-illustrates this distinction. Recovering \(\bm g\) from measured coupling
-is identification, not an independent validation of the model.
-
-For the reference pore-volume increment and the increment of fluid content
-\(\zeta\), measured as fluid mass divided by reference intrinsic fluid
-density and reference mixture volume, the linearized mass relation is
-\begin{align}
- \delta\Phi&=\bm B_0:\bm e+\frac{\phi_{s0}^2}{h}p,
- \label{eq:reference-pore-volume}\\
- \zeta&=\bm B_0:\bm e+
- \left(\frac{\phi_{s0}^2}{h}+\frac{\phi_{f0}}{K_f}\right)p.
- \label{eq:reference-fluid-content}
-\end{align}
-Here \(\phi_{f0}=1-\phi_{s0}\), and \(K_f>0\) is the fluid bulk modulus.
-These expressions follow from solid mass conservation and a linearized fluid
-equation of state. The solid-storage coefficient \(S_s=\phi_{s0}^2/h\)
-under homogeneous-solid compatibility can be written
-\begin{align}
- S_s&=\phi_{s0}\tr\bm a-\bm a:\C^d:\bm a
-      =\bm a:(\bm B_0-\phi_{f0}\I),
- \label{eq:classical-solid-storage}\\
- S_s&=\frac{\tr\bm B_0/3-\phi_{f0}}{K_s}
- \quad\text{for an isotropic intrinsic solid}.
- \label{eq:microisotropic-solid-storage}
-\end{align}
-The latter is the established solid-storage term in Zhao and Borja
-\citep[eqs.~(17), (29), (42)]{zhaoborja2020}; it becomes
-\((B-\phi_{f0})/K_s\) in the fully isotropic case. Thus
-\eqref{eq:compatible-mineral-tangent} is classical storage compatibility
-expressed in the \(q\) coordinate. The extra coefficient \(\kappa\) in
-\eqref{eq:additional-volume-energy} restores that existing constitutive
-freedom within a restricted energy decomposition; it is not a newly
-independent physical coefficient. The useful diagnosis is that assigning
-\(h=\phi_{s0}K_s\) instead gives \(S_s=\phi_{s0}/K_s\) despite a correct
-stress coefficient. A storage measurement distinguishes those assignments.
-At finite deformation the same construction gives
-\(\Phi_p=\phi_{s0}^2\bar J^2/h_p>0\) on the stable branch.
-
+\input{sections/limits}
 \input{sections/experiments}
+\input{sections/finite_elements}
 
 \section{Discussion and conclusions}
-\label{sec:conclusions}
+\label{sec:conclusion}
 
-The finite-deformation tensor is a pressure tangent and a pushed-forward
-pore-volume sensitivity. Its effective-stress decomposition follows from
-mineral-volume equilibrium, but the pressure-independent stress used in a
-finite pressure increment must be distinguished from
-\(\bm\sigma^{\prime\prime}\). The integral pressure response makes that
-distinction explicit and provides a direct test of a constitutive
-implementation.
+We derived the mixture energy by equating the reversible work of the
+volume-fraction-weighted phase stresses to the work of mineral deformation
+and distention. Writing the distention as a dilation times a proper rotation makes that change of variables explicit;
+the skew rotation variation performs no work against a symmetric stress.
+The mineral contribution is its prescribed energy multiplied by the
+reference solid fraction. The drained spherical response then determines
+the distention energy, and the complete drained Hooke law gives the
+compliance restriction in \eqref{eq:drained-compliance-restriction}.
 
-The constrained quadratic reduction identifies the direct mineral contribution
-through \(\Pdev:\Hh:\I\). This statement requires isotropic distention
-and the stated energy decomposition. It is not a general theorem that all
-mineral anisotropy affects pressure coupling in this way. Even in that family,
-\(\bm B_0\) and \(\Hh\) determine only
-\(\D:\I=3\bm g-\Pdev:\Hh:\I\); they do not identify the full coupling
-tensor. Changes to \(\D\) can compensate for changes in the mineral
-contribution, so independent constituent information is required to attribute
-measured directionality to a mechanism.
+The mineral-volume equation retains the coupling between volume and shape
+in the anisotropic mineral law. Its derivative produces a directional Biot
+tensor while preserving the full spatial phase stress balance. The
+isotropic reduction recovers the logarithmic scalar relation used by Gajo
+and the companion manuscript. The reference stress and storage coefficients,
+together with the finite unjacketed path, provide additional checks. Independent
+numerical differentiation verifies the phase stress, pressure derivative,
+and energy at finite anisotropic deformations. A finite-element
+discretization of the coupled deformation and fluid-transport balances
+reproduces the constant-coefficient consolidation reference in the
+constant-tangent limit and satisfies a manufactured-solution convergence test
+for that reference tangent. At finite load the nonlinear solutions approach
+the reference as the load decreases, but their normalized pressure discrepancy
+floors at about \(3.2\times10^{-3}\) at \(nx=20\), \(dt=10^{-3}\) rather than
+decaying to it. The finite-load
+rotated-anisotropy and partial-drainage calculations are reported as
+demonstrations, not as quantitative verification of the nonlinear law or as
+experimental validation.
 
-Classical unjacketed stress and storage compatibility provide a restrictive
-test of the reference calibration. A model can reproduce \(1-K/K_s\) in stress
-and still predict the wrong mineral volume and storage. Enforcing both
-responses fixes the effective mineral-volume tangent and explains why a
-volume-scaled isolated-mineral modulus is generally insufficient. The added
-pore-constraint energy restores the established independent storage freedom
-to that ansatz; it is not a unique microscopic construction. When compatibility
-is enforced, the mineral compliance and the recalibrated coupling act together.
-A direct stiffness-block attribution made at fixed coupling must not be
-transferred unchanged to this constrained calibration.
+Conformal distention requires the skeleton and mineral to share their
+normalized right stretch, while allowing a relative rotation. With a
+volume-only distention energy, this rotation leaves the response unchanged and
+allows their compliance difference to describe only an additional spherical
+strain. In particular, an isotropic mineral gives an isotropic drained
+skeleton in this construction. Anisotropy caused by pore shape in an
+otherwise isotropic mineral requires a law for nonspherical distention and
+its work. Two independently selected anisotropic stiffnesses will generally
+fail \eqref{eq:drained-compliance-restriction}; that failure identifies
+missing deformation mechanisms rather than a pressure coefficient to be
+chosen independently.
 
-The pressure and confined-layer examples show how finite-state coupling can
-alter measurable loads and displacements even when the reference anisotropic
-tensor and the entire zero-pressure response are reproduced by a simpler
-approximation. The volume-penalty continuation demonstrates that those reference data
-do not uniquely select the finite-pressure response. Pressure curvature at
-fixed deformation distinguishes the two energies, while the integrability
-condition rules out a globally hyperelastic interpretation of a spatially
-frozen nonspherical tensor. These are constitutive tests, not experimental
-validation or universal error thresholds. Small values of
-\(p/K_s\) and small strains reduce these differences; for stiff minerals,
-large elastic strains may be precluded by damage or plasticity before the
-illustrative regime is reached. Application to a rock therefore requires
-independent calibration over its reversible range, verification of branch
-admissibility, and a comparison with measured pressure and deformation paths.
-Anisotropic distention, evolving pore fabric, and inelasticity would require
-additional constitutive variables beyond the present elastic model.
+The conformal restriction is a constitutive specialization, not a
+consequence of stress symmetry alone. In the equilibrium similarity
+transformation considered by \citet[section~8.9]{drumheller2000},
+symmetry of a particular true stress and its transformed stress requires
+that the true stress commute with \(\mathbf A^T\mathbf A\).
+Requiring the same transformation to preserve symmetry for every
+symmetric stress makes \(\mathbf A^T\mathbf A\) spherical and gives
+a dilation times a rotation. A constitutively restricted family of
+stresses need not imply that universal condition. Symmetry removes work
+against a skew rotation increment; it does not remove work against a
+symmetric shape-changing increment. Volume-only distention work is the
+additional mechanism prescribed here.
+
+The examples use synthetic elastic parameters. Application to a material
+requires checking the measured stiffnesses against the assumed deformation
+mechanism and restricting strains to a range supported by data. Constant
+coefficients in logarithmic strain define an elastic energy; measured
+finite-pressure acoustic stiffnesses include the tangent about a stressed
+state and need separate interpretation \citep{zha1996forsterite}.
+A general distention gradient can additionally represent changes in pore
+shape. Its work requires a tensorial constitutive law. Restricting an
+already prescribed tensorial distention energy to a dilation times a
+rotation need not recover the volume-only energy assumed here; couplings
+to orientation or skeleton deformation can remain. The present result
+applies locally to the stated conformal, volume-only model. Compatibility
+of independently prescribed distention fields is a separate boundary-value
+question. These distinctions provide a basis for adding pore-shape
+deformation while retaining the phase-work balance.
+
+\appendix
+\input{sections/logarithmic_derivative}
 
 \section*{Acknowledgements}
-
 The author thanks Professor D. Nicolas Espinoza. This work was funded by the
 U.S. Department of Energy under awards DE-FE0032349, ``Hydrogen Storage in Salt
 Caverns in the Permian Basin: Seal Integrity Evaluation and Field Test,'' and
 DE-AR0001864283, assigned control number 2784-1755, ``Cyclic Injection for
 Commercial Seismic-Safe Geologic H$_2$ Production.''
-
 \input{provenance/ai_use_statement.tex}
-
 \bibliographystyle{plainnat}
 \bibliography{references}
 \end{document}

@@ -1,0 +1,27 @@
+{
+  "discrete_mass_absolute": 2.671387416830484e-14,
+  "discrete_mass_mobilized_relative": 7.586966636690598e-12,
+  "force_relative": 3.2144128628682927e-12,
+  "expected_force": -1.4,
+  "force_convention": "top boundary carries a uniform compressive traction of magnitude q_L over width a (quarter Mandel, a=1) or 2a (full domain, a=1); expected top resultant is -a*q_L (quarter) or -2*a*q_L (full).",
+  "platen_equality_absolute": 9.003214840319629e-16,
+  "peak_pressure": 0.22382672333431,
+  "peak_time": 0.004,
+  "reference_comparable": false,
+  "reference_note": "The isotropic comparison run uses isotropic_stiffness(28,16.8) with phi_s0=0.6 and K=7, not the reference-modulus problem of the quarter-domain decks (phi_s0=0.9, K=1, G=0.75). A Mandel-normalized discrepancy would compare different problems, so no reference-normalized field is emitted; only the run diagnostics (mass balance, force balance, platen equality, peak pressure) are reported.",
+  "configuration": {
+    "nx": 16,
+    "ny": 4,
+    "dt": 0.001,
+    "end": 0.1,
+    "load": 0.7,
+    "linear": false,
+    "case": "isotropic",
+    "angle": 0,
+    "initial": [
+      0,
+      0,
+      0
+    ]
+  }
+}

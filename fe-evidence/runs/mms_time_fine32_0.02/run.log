@@ -1,0 +1,295 @@
+
+[36m
+*** Info ***
+'execute_on' parameter specified in [Outputs] block is ignored for object 'checkpoint'.
+Define this object in its own sub-block of [Outputs] to modify its execution schedule.[39m
+Framework Information:
+MOOSE Version:           git commit abafb58b on 2026-02-20
+LibMesh Version:         
+PETSc Version:           3.24.4
+SLEPc Version:           3.24.0
+Current Time:            Sun Sep 20 15:03:24 2026
+Executable Timestamp:    Sun Sep 20 14:26:45 2026
+
+Input File(s):
+  /home/jfoster/projects/research/reactive_transport/anisotropic-biot-tensor/.agent-runtime/moose-fe-goal-2026-09-20/implementation/runs/mms_time_fine32_0.02/input.i
+
+Command Line Argument(s):
+  --n-threads=1
+
+Command Line Input Argument(s):
+  Outputs/file_base=/home/jfoster/projects/research/reactive_transport/anisotropic-biot-tensor/.agent-runtime/moose-fe-goal-2026-09-20/implementation/runs/mms_time_fine32_0.02/solution
+
+Checkpoint:
+  Wall Time Interval:      Every 3600 s
+  User Checkpoint:         Disabled
+  # Checkpoints Kept:      2
+  Execute On:              TIMESTEP_END 
+
+Parallelism:
+  Num Processors:          1
+  Num Threads:             1
+
+Mesh: 
+  Parallel Type:           replicated
+  Mesh Dimension:          2
+  Spatial Dimension:       2
+  Nodes:                   4225
+  Elems:                   1024
+  Num Subdomains:          1
+
+Nonlinear System:
+  Num DOFs:                9539
+  Num Local DOFs:          9539
+  Variables:               { "ux" "uy" } "p" 
+  Finite Element Types:    "LAGRANGE" "LAGRANGE" 
+  Approximation Orders:    "SECOND" "FIRST" 
+
+Auxiliary System:
+  Num DOFs:                14530
+  Num Local DOFs:          14530
+  Variables:               { "J" "Jbar" "solid_fraction" "stability" "energy" "B12" "sigma11" "sigma22" 
+                             "sigma12" } "mass_reaction" "force_reaction" 
+  Finite Element Types:    "MONOMIAL" "LAGRANGE" "LAGRANGE" 
+  Approximation Orders:    "CONSTANT" "FIRST" "SECOND" 
+
+Execution Information:
+  Executioner:             Transient
+  TimeStepper:             ConstantDT
+  TimeIntegrator(s):       ImplicitEuler
+  Solver Mode:             NEWTON 
+  PETSc Preconditioner:    lu 
+  MOOSE Preconditioner:    SMP 
+[31mLEGACY MODES ENABLED:[39m
+ This application uses the legacy material output option: material properties are output only on TIMESTEP_END, not INITIAL. To remove this message, set 'use_legacy_material_output' to false in this application. If there are gold output files that contain material property output for which output occurs on INITIAL, then these will generate diffs due to zero values being stored, and these tests should be re-golded.
+[39m
+[31mLEGACY MODES ENABLED:[39m
+ This application uses the legacy initial residual evaluation behavior. The legacy behavior performs an often times redundant residual evaluation before the solution modifying objects are executed prior to the initial (0th nonlinear iteration) residual evaluation. The new behavior skips that redundant residual evaluation unless the parameter Executioner/use_pre_smo_residual is set to true. To remove this message and enable the new behavior, set the parameter 'use_legacy_initial_residual_evaluation_behavior' to false in *App.C. Some tests that rely on the side effects of the legacy behavior may fail/diff and should be re-golded.
+[39m
+
+Time Step 0, time = 0
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | p_l2           | ux_l2          | uy_l2          |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+----------------+
+
+Warning, Exodus files cannot have titles longer than 80 characters.  Your title will be truncated.
+
+Time Step 1, time = 0.02, dt = 0.02
+ * Nonlinear |R| = [32m2.481840e-03[39m (Before preset BCs, predictors, correctors, and constraints)
+ 0 Nonlinear |R| = [32m2.703212e-02[39m
+      0 Linear |R| = [32m2.703212e-02[39m
+      1 Linear |R| = [32m2.105952e-16[39m
+ 1 Nonlinear |R| = [32m1.431629e-15[39m
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | p_l2           | ux_l2          | uy_l2          |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   2.000000e-02 |   1.626982e-07 |   7.612254e-10 |   7.726479e-10 |
++----------------+----------------+----------------+----------------+
+
+
+Time Step 2, time = 0.04, dt = 0.02
+ * Nonlinear |R| = [32m2.480837e-03[39m (Before preset BCs, predictors, correctors, and constraints)
+ 0 Nonlinear |R| = [32m2.702130e-02[39m
+      0 Linear |R| = [32m2.702130e-02[39m
+      1 Linear |R| = [32m2.207659e-16[39m
+ 1 Nonlinear |R| = [32m2.011846e-15[39m
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | p_l2           | ux_l2          | uy_l2          |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   2.000000e-02 |   1.626982e-07 |   7.612254e-10 |   7.726479e-10 |
+|   4.000000e-02 |   3.326841e-07 |   1.542085e-09 |   1.556326e-09 |
++----------------+----------------+----------------+----------------+
+
+
+Time Step 3, time = 0.06, dt = 0.02
+ * Nonlinear |R| = [32m2.478851e-03[39m (Before preset BCs, predictors, correctors, and constraints)
+ 0 Nonlinear |R| = [32m2.699968e-02[39m
+      0 Linear |R| = [32m2.699968e-02[39m
+      1 Linear |R| = [32m2.341218e-16[39m
+ 1 Nonlinear |R| = [32m2.002464e-15[39m
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | p_l2           | ux_l2          | uy_l2          |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   2.000000e-02 |   1.626982e-07 |   7.612254e-10 |   7.726479e-10 |
+|   4.000000e-02 |   3.326841e-07 |   1.542085e-09 |   1.556326e-09 |
+|   6.000000e-02 |   5.028776e-07 |   2.323905e-09 |   2.339811e-09 |
++----------------+----------------+----------------+----------------+
+
+
+Time Step 4, time = 0.08, dt = 0.02
+ * Nonlinear |R| = [32m2.475875e-03[39m (Before preset BCs, predictors, correctors, and constraints)
+ 0 Nonlinear |R| = [32m2.696726e-02[39m
+      0 Linear |R| = [32m2.696726e-02[39m
+      1 Linear |R| = [32m2.138037e-16[39m
+ 1 Nonlinear |R| = [32m1.995146e-15[39m
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | p_l2           | ux_l2          | uy_l2          |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   2.000000e-02 |   1.626982e-07 |   7.612254e-10 |   7.726479e-10 |
+|   4.000000e-02 |   3.326841e-07 |   1.542085e-09 |   1.556326e-09 |
+|   6.000000e-02 |   5.028776e-07 |   2.323905e-09 |   2.339811e-09 |
+|   8.000000e-02 |   6.729068e-07 |   3.105043e-09 |   3.122396e-09 |
++----------------+----------------+----------------+----------------+
+
+
+Time Step 5, time = 0.1, dt = 0.02
+ * Nonlinear |R| = [32m2.471908e-03[39m (Before preset BCs, predictors, correctors, and constraints)
+ 0 Nonlinear |R| = [32m2.692406e-02[39m
+      0 Linear |R| = [32m2.692406e-02[39m
+      1 Linear |R| = [32m2.392041e-16[39m
+ 1 Nonlinear |R| = [32m2.006868e-15[39m
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | p_l2           | ux_l2          | uy_l2          |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   2.000000e-02 |   1.626982e-07 |   7.612254e-10 |   7.726479e-10 |
+|   4.000000e-02 |   3.326841e-07 |   1.542085e-09 |   1.556326e-09 |
+|   6.000000e-02 |   5.028776e-07 |   2.323905e-09 |   2.339811e-09 |
+|   8.000000e-02 |   6.729068e-07 |   3.105043e-09 |   3.122396e-09 |
+|   1.000000e-01 |   8.426784e-07 |   3.885023e-09 |   3.903743e-09 |
++----------------+----------------+----------------+----------------+
+
+
+Time Step 6, time = 0.12, dt = 0.02
+ * Nonlinear |R| = [32m2.466952e-03[39m (Before preset BCs, predictors, correctors, and constraints)
+ 0 Nonlinear |R| = [32m2.687008e-02[39m
+      0 Linear |R| = [32m2.687008e-02[39m
+      1 Linear |R| = [32m1.991599e-16[39m
+ 1 Nonlinear |R| = [32m1.950679e-15[39m
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | p_l2           | ux_l2          | uy_l2          |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   2.000000e-02 |   1.626982e-07 |   7.612254e-10 |   7.726479e-10 |
+|   4.000000e-02 |   3.326841e-07 |   1.542085e-09 |   1.556326e-09 |
+|   6.000000e-02 |   5.028776e-07 |   2.323905e-09 |   2.339811e-09 |
+|   8.000000e-02 |   6.729068e-07 |   3.105043e-09 |   3.122396e-09 |
+|   1.000000e-01 |   8.426784e-07 |   3.885023e-09 |   3.903743e-09 |
+|   1.200000e-01 |   1.012118e-06 |   4.663491e-09 |   4.683533e-09 |
++----------------+----------------+----------------+----------------+
+
+
+Time Step 7, time = 0.14, dt = 0.02
+ * Nonlinear |R| = [32m2.461010e-03[39m (Before preset BCs, predictors, correctors, and constraints)
+ 0 Nonlinear |R| = [32m2.680536e-02[39m
+      0 Linear |R| = [32m2.680536e-02[39m
+      1 Linear |R| = [32m1.844288e-16[39m
+ 1 Nonlinear |R| = [32m2.021091e-15[39m
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | p_l2           | ux_l2          | uy_l2          |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   2.000000e-02 |   1.626982e-07 |   7.612254e-10 |   7.726479e-10 |
+|   4.000000e-02 |   3.326841e-07 |   1.542085e-09 |   1.556326e-09 |
+|   6.000000e-02 |   5.028776e-07 |   2.323905e-09 |   2.339811e-09 |
+|   8.000000e-02 |   6.729068e-07 |   3.105043e-09 |   3.122396e-09 |
+|   1.000000e-01 |   8.426784e-07 |   3.885023e-09 |   3.903743e-09 |
+|   1.200000e-01 |   1.012118e-06 |   4.663491e-09 |   4.683533e-09 |
+|   1.400000e-01 |   1.181157e-06 |   5.440117e-09 |   5.461452e-09 |
++----------------+----------------+----------------+----------------+
+
+
+Time Step 8, time = 0.16, dt = 0.02
+ * Nonlinear |R| = [32m2.454083e-03[39m (Before preset BCs, predictors, correctors, and constraints)
+ 0 Nonlinear |R| = [32m2.672991e-02[39m
+      0 Linear |R| = [32m2.672991e-02[39m
+      1 Linear |R| = [32m1.804606e-16[39m
+ 1 Nonlinear |R| = [32m2.022397e-15[39m
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | p_l2           | ux_l2          | uy_l2          |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   2.000000e-02 |   1.626982e-07 |   7.612254e-10 |   7.726479e-10 |
+|   4.000000e-02 |   3.326841e-07 |   1.542085e-09 |   1.556326e-09 |
+|   6.000000e-02 |   5.028776e-07 |   2.323905e-09 |   2.339811e-09 |
+|   8.000000e-02 |   6.729068e-07 |   3.105043e-09 |   3.122396e-09 |
+|   1.000000e-01 |   8.426784e-07 |   3.885023e-09 |   3.903743e-09 |
+|   1.200000e-01 |   1.012118e-06 |   4.663491e-09 |   4.683533e-09 |
+|   1.400000e-01 |   1.181157e-06 |   5.440117e-09 |   5.461452e-09 |
+|   1.600000e-01 |   1.349725e-06 |   6.214582e-09 |   6.237189e-09 |
++----------------+----------------+----------------+----------------+
+
+
+Time Step 9, time = 0.18, dt = 0.02
+ * Nonlinear |R| = [32m2.446175e-03[39m (Before preset BCs, predictors, correctors, and constraints)
+ 0 Nonlinear |R| = [32m2.664377e-02[39m
+      0 Linear |R| = [32m2.664377e-02[39m
+      1 Linear |R| = [32m1.860003e-16[39m
+ 1 Nonlinear |R| = [32m2.026542e-15[39m
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | p_l2           | ux_l2          | uy_l2          |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   2.000000e-02 |   1.626982e-07 |   7.612254e-10 |   7.726479e-10 |
+|   4.000000e-02 |   3.326841e-07 |   1.542085e-09 |   1.556326e-09 |
+|   6.000000e-02 |   5.028776e-07 |   2.323905e-09 |   2.339811e-09 |
+|   8.000000e-02 |   6.729068e-07 |   3.105043e-09 |   3.122396e-09 |
+|   1.000000e-01 |   8.426784e-07 |   3.885023e-09 |   3.903743e-09 |
+|   1.200000e-01 |   1.012118e-06 |   4.663491e-09 |   4.683533e-09 |
+|   1.400000e-01 |   1.181157e-06 |   5.440117e-09 |   5.461452e-09 |
+|   1.600000e-01 |   1.349725e-06 |   6.214582e-09 |   6.237189e-09 |
+|   1.800000e-01 |   1.517754e-06 |   6.986571e-09 |   7.010432e-09 |
++----------------+----------------+----------------+----------------+
+
+
+Time Step 10, time = 0.2, dt = 0.02
+ * Nonlinear |R| = [32m2.437288e-03[39m (Before preset BCs, predictors, correctors, and constraints)
+ 0 Nonlinear |R| = [32m2.654698e-02[39m
+      0 Linear |R| = [32m2.654698e-02[39m
+      1 Linear |R| = [32m1.859968e-16[39m
+ 1 Nonlinear |R| = [32m2.083025e-15[39m
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | p_l2           | ux_l2          | uy_l2          |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   2.000000e-02 |   1.626982e-07 |   7.612254e-10 |   7.726479e-10 |
+|   4.000000e-02 |   3.326841e-07 |   1.542085e-09 |   1.556326e-09 |
+|   6.000000e-02 |   5.028776e-07 |   2.323905e-09 |   2.339811e-09 |
+|   8.000000e-02 |   6.729068e-07 |   3.105043e-09 |   3.122396e-09 |
+|   1.000000e-01 |   8.426784e-07 |   3.885023e-09 |   3.903743e-09 |
+|   1.200000e-01 |   1.012118e-06 |   4.663491e-09 |   4.683533e-09 |
+|   1.400000e-01 |   1.181157e-06 |   5.440117e-09 |   5.461452e-09 |
+|   1.600000e-01 |   1.349725e-06 |   6.214582e-09 |   6.237189e-09 |
+|   1.800000e-01 |   1.517754e-06 |   6.986571e-09 |   7.010432e-09 |
+|   2.000000e-01 |   1.685177e-06 |   7.755772e-09 |   7.780872e-09 |
++----------------+----------------+----------------+----------------+
+
+Finished Executing                                                                       [[33m 14.00 s[39m] [[33m  187 MB[39m]

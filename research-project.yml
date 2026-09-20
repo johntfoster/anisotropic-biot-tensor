@@ -4,7 +4,7 @@
   "repository": "https://github.com/johntfoster/anisotropic-biot-tensor",
   "default_branch": "main",
   "status": "active",
-  "scientific_scope": "theory-only",
+  "scientific_scope": "anisotropic finite-deformation poroelasticity with MOOSE implementation and verification",
   "authority": {
     "instructions": "AGENTS.md",
     "profile": "agent-profile.json",
@@ -17,8 +17,8 @@
     "release": "v0.2.0"
   },
   "maintenance": {
-    "objective": "2026-09-19 research infrastructure migration",
-    "manuscript_edits": false,
+    "objective": "2026-09-20 author-authorized MOOSE implementation, coupled FE verification, website and manuscript review",
+    "manuscript_edits": true,
     "protected_paths": [
       "*.tex",
       "*.bib",
@@ -73,12 +73,12 @@
   },
   "verification": {
     "infrastructure": "Manifest, freeze/hooks, pinned core, local clean-clone startup, live site and source-package checks passed; hosted passed.",
-    "implementation": "not-run-in-this-migration",
-    "analytical": "not-run-in-this-migration",
-    "convergence": "not-run-in-this-migration",
-    "finite_deformation": "not-run-in-this-migration",
-    "physical_validation": "not-run-in-this-migration"
+    "implementation": "MOOSE implementation in progress; no completed FE verification claim.",
+    "analytical": "Independent Mandel reference in development; material-point checks belong to prior reviewed snapshot.",
+    "convergence": "Pending current MOOSE mesh/time/load-refinement evidence.",
+    "finite_deformation": "Pending current coupled FE runs; prior homogeneous constitutive experiments are not FE verification.",
+    "physical_validation": "Not performed; synthetic parameters and numerical verification only."
   },
-  "next_milestone": "Retain manuscript freeze; scientific development requires a separately scoped task.",
-  "title": "An anisotropic Biot tensor from mineral stress and volumetric work"
+  "next_milestone": "Implement and verify coupled MOOSE examples; publish verified evidence; complete independent review and three Foster editing cycles.",
+  "title": "An anisotropic Biot tensor from mineral stress and distention work"
 }

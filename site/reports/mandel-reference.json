@@ -1,0 +1,223 @@
+{
+  "parameters": {
+    "K": 1.0,
+    "G": 0.75,
+    "alpha": 0.6,
+    "M": 4.705882352941177,
+    "mobility": 1.5,
+    "a": 1.0,
+    "b": 0.1
+  },
+  "derived": {
+    "Ku": 2.6941176470588237,
+    "nu": 0.2,
+    "nu_u": 0.3726273726273726,
+    "skempton": 1.0480349344978166,
+    "c": 3.8216560509554145,
+    "root_ratio": 4.63425925925926,
+    "initial_pressure_per_load": 0.4795204795204795
+  },
+  "load": 1.0,
+  "force_convention": "load is positive mean traction; full top force=2*a*load per unit thickness",
+  "source_sha256": "e5cf969c5c9714ea31aa8bd8a7ed4745a69b3984ae5ca9c096064368c44ebe7a",
+  "numpy_version": "1.26.4",
+  "artifacts": {
+    "mandel-probes.csv": "d1f04244ab8b55791e401d61a7fdce308722e289aa7bffa54ec41ae8861a6dbf",
+    "mandel-profiles.csv": "3a1c02f32629198e059ef85a592c8e533f828a38ba4199f9af0ae9e360c4f221"
+  },
+  "verification": {
+    "category": "analytical-reference-only",
+    "passed": true,
+    "checks": {
+      "root_equation_scaled_residual": {
+        "error": 1.306979698079136e-13,
+        "tolerance": 2e-12,
+        "passed": true
+      },
+      "reference_M": {
+        "error": 0.0,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "reference_Ku": {
+        "error": 0.0,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "undrained_fluid_content": {
+        "error": 4.163336342344337e-17,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "undrained_vertical_stress": {
+        "error": 0.0,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "undrained_horizontal_stress": {
+        "error": 0.0,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "drained_pressure": {
+        "error": 3.396048032492518e-27,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "drained_ux": {
+        "error": 2.7755575615628914e-17,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "drained_uy": {
+        "error": 6.938893903907228e-18,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "horizontal_equilibrium_t1e-05": {
+        "error": 1.2639889135357407e-13,
+        "tolerance": 2e-13,
+        "passed": true
+      },
+      "drainage_t1e-05": {
+        "error": 0.0,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "rigid_platen_t1e-05": {
+        "error": 0.0,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "platen_resultant_t1e-05": {
+        "error": 0.0,
+        "tolerance": 1e-11,
+        "passed": true
+      },
+      "truncation_pressure_t1e-05": {
+        "error": 0.0,
+        "tolerance": 1e-12,
+        "passed": true
+      },
+      "truncation_displacement_t1e-05": {
+        "error": 0.0,
+        "tolerance": 1e-12,
+        "passed": true
+      },
+      "horizontal_equilibrium_t0.001": {
+        "error": 2.4424906541753444e-15,
+        "tolerance": 2e-13,
+        "passed": true
+      },
+      "drainage_t0.001": {
+        "error": 0.0,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "rigid_platen_t0.001": {
+        "error": 0.0,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "platen_resultant_t0.001": {
+        "error": -4.440892098500626e-16,
+        "tolerance": 1e-11,
+        "passed": true
+      },
+      "truncation_pressure_t0.001": {
+        "error": 1.1102230246251565e-16,
+        "tolerance": 1e-12,
+        "passed": true
+      },
+      "truncation_displacement_t0.001": {
+        "error": 0.0,
+        "tolerance": 1e-12,
+        "passed": true
+      },
+      "horizontal_equilibrium_t0.03": {
+        "error": 3.885780586188048e-16,
+        "tolerance": 2e-13,
+        "passed": true
+      },
+      "drainage_t0.03": {
+        "error": 0.0,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "rigid_platen_t0.03": {
+        "error": 0.0,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "platen_resultant_t0.03": {
+        "error": -2.220446049250313e-16,
+        "tolerance": 1e-11,
+        "passed": true
+      },
+      "truncation_pressure_t0.03": {
+        "error": 0.0,
+        "tolerance": 1e-12,
+        "passed": true
+      },
+      "truncation_displacement_t0.03": {
+        "error": 0.0,
+        "tolerance": 1e-12,
+        "passed": true
+      },
+      "horizontal_equilibrium_t0.2": {
+        "error": 1.249000902703301e-16,
+        "tolerance": 2e-13,
+        "passed": true
+      },
+      "drainage_t0.2": {
+        "error": 0.0,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "rigid_platen_t0.2": {
+        "error": 0.0,
+        "tolerance": 1e-14,
+        "passed": true
+      },
+      "platen_resultant_t0.2": {
+        "error": 0.0,
+        "tolerance": 1e-11,
+        "passed": true
+      },
+      "truncation_pressure_t0.2": {
+        "error": 0.0,
+        "tolerance": 1e-12,
+        "passed": true
+      },
+      "truncation_displacement_t0.2": {
+        "error": 0.0,
+        "tolerance": 1e-12,
+        "passed": true
+      },
+      "initial_interior_pressure_limit": {
+        "error": 7.217932691649942e-06,
+        "tolerance": 2e-05,
+        "passed": true
+      },
+      "initial_displacement_limit": {
+        "error": 2.2435740785475833e-06,
+        "tolerance": 2e-05,
+        "passed": true
+      },
+      "integrated_mass_rate": {
+        "error": -4.626435345933544e-11,
+        "tolerance": 1e-09,
+        "passed": true
+      },
+      "central_overshoot": {
+        "ratio": 1.0546586069998425,
+        "time": 0.015165352045764979,
+        "passed": true
+      },
+      "series_tail_bound": {
+        "value": 9.210160763129485e-14,
+        "passed": true
+      }
+    }
+  }
+}

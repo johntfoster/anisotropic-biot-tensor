@@ -1,0 +1,14 @@
+/build/
+/lib/
+*.o
+*.d
+*.la
+*.lo
+*.so*
+*~
+*-opt
+*-dbg
+*-devel
+*_out*
+/test/lib/
+*.yaml

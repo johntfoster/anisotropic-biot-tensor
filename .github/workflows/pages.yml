@@ -15,4 +15,5 @@ jobs:
   site:
     uses: johntfoster/research-agent-workflows/.github/workflows/research-site.yml@bd82f7bed44ecb3ae7e2e6895a990ef456b8c23c
     with:
+      build-argv: '["python3", "tools/build_verification_site.py"]'
       deploy: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}

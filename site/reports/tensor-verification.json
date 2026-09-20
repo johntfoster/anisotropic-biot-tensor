@@ -1,0 +1,22 @@
+{
+  "errors": {
+    "phase_energy": 9.894327579473838e-10,
+    "pressure": 1.77870529416424e-09,
+    "volume_gradient": 3.583080741831335e-10,
+    "rotation": 1.078248601515952e-12,
+    "symmetry": 7.632783294297951e-17,
+    "diagonal": 6.217248937900877e-15,
+    "trace": 1.3322676295501878e-14,
+    "shape": 4.440892098500626e-16
+  },
+  "materials": 13,
+  "states_per_material": 21,
+  "total_states": 273,
+  "maximum_stress_strain_commutator": 2.613958036329473,
+  "seed": 20260919,
+  "versions": {
+    "python": "3.10.12",
+    "numpy": "1.26.4",
+    "scipy": "1.15.3"
+  }
+}

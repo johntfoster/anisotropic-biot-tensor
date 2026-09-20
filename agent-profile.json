@@ -10,6 +10,11 @@
   },
   "routes": [
     {
+      "any": ["derivation", "notation", "prose", "manuscript", "reconsider", "reevaluate"],
+      "skills": ["biot-latex-derivation-auditor", "biot-latex-notation-propagation-planner", "biot-manuscript-narrative-review", "biot-latex-display-math-normalizer", "biot-latex-workshop-recompile"],
+      "profiles": ["manuscript"]
+    },
+    {
       "any": ["commit", "checkpoint", "record changes in git"],
       "skills": ["commit"],
       "profiles": []

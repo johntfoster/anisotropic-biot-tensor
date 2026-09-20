@@ -1,0 +1,39 @@
+{
+  "discrete_mass_absolute": 2.0102217044009208e-14,
+  "discrete_mass_mobilized_relative": 1.40233982235304e-08,
+  "force_relative": 1.547099986098574e-09,
+  "expected_force": -0.0001,
+  "force_convention": "top boundary carries a uniform compressive traction of magnitude q_L over width a (quarter Mandel, a=1) or 2a (full domain, a=1); expected top resultant is -a*q_L (quarter) or -2*a*q_L (full).",
+  "platen_equality_absolute": 7.403999695244565e-16,
+  "peak_pressure": 5.0437098691573e-05,
+  "peak_time": 0.015,
+  "reference_comparable": true,
+  "pressure_max_normalized": 0.003220919735602341,
+  "platen_max_normalized": 0.0011041420222318288,
+  "edge_ux_max_normalized": 0.004159430101826978,
+  "profile_max_normalized": 0.13179917032549723,
+  "profile_max_after_t001": 0.013171407616092529,
+  "profile_fixed_time_errors": {
+    "0.01": 0.013171407616092529,
+    "0.02": 0.006434641332736708,
+    "0.05": 0.0019310708990967758,
+    "0.1": 0.0018309052104019186
+  },
+  "profile_rms_normalized": 0.004532412041159425,
+  "peak_pressure_normalized": 1.0518236622971786,
+  "configuration": {
+    "nx": 20,
+    "ny": 2,
+    "dt": 0.001,
+    "end": 0.1,
+    "load": 0.0001,
+    "linear": false,
+    "case": "mandel",
+    "angle": 0,
+    "initial": [
+      2.4841102364264422e-05,
+      -4.1822210117055035e-05,
+      4.795085080083665e-05
+    ]
+  }
+}

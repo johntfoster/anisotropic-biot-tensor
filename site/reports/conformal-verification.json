@@ -1,0 +1,1286 @@
+{
+  "checks_passed": 186,
+  "legacy_identities_rechecked": 67,
+  "checks": {
+    "legacy_state0_rotation_orthogonality": {
+      "error": 3.0395499895946622e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state0_true_metric": {
+      "error": 3.1797249449515113e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state0_log_strain": {
+      "error": 1.4166733733635741e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state0_energy_rotation_independence": {
+      "error": 9.992007221626409e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state0_rotated_mineral_stress": {
+      "error": 1.2982194071620141e-13,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state0_mixture_stress_rotation_independence": {
+      "error": 9.008955018676337e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state0_scalar_pressure_equilibrium": {
+      "error": 3.197442310920451e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state0_full_phase_balance_from_energy": {
+      "error": 1.7499055558674723e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state0_pressure_tangent": {
+      "error": 7.936270344986046e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state0_pressure_dependent_rotation_cancels": {
+      "error": 5.915584450119593e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state0_pore_volume_derivative": {
+      "error": 6.1653211636209215e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state0_zero_rotation_energy_derivative": {
+      "error": 1.3877787807814455e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state0_full_virtual_work": {
+      "error": 1.3322676295501878e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state1_rotation_orthogonality": {
+      "error": 5.103291176194704e-17,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state1_true_metric": {
+      "error": 5.042050700450315e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state1_log_strain": {
+      "error": 8.780545822405299e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state1_energy_rotation_independence": {
+      "error": 2.220446049250313e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state1_rotated_mineral_stress": {
+      "error": 1.7238871602826213e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state1_mixture_stress_rotation_independence": {
+      "error": 7.71844581400566e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state1_scalar_pressure_equilibrium": {
+      "error": 1.0658141036401503e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state1_full_phase_balance_from_energy": {
+      "error": 1.4951428476325232e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state1_pressure_tangent": {
+      "error": 5.907230083556385e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state1_pressure_dependent_rotation_cancels": {
+      "error": 7.012643684163637e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state1_pore_volume_derivative": {
+      "error": 5.393682204117439e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state1_zero_rotation_energy_derivative": {
+      "error": 1.4247862149356175e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state1_full_virtual_work": {
+      "error": 7.105427357601002e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state2_rotation_orthogonality": {
+      "error": 4.715095267240489e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state2_true_metric": {
+      "error": 5.749262315581966e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state2_log_strain": {
+      "error": 4.971125486136789e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state2_energy_rotation_independence": {
+      "error": 2.220446049250313e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state2_rotated_mineral_stress": {
+      "error": 5.2890563463424217e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state2_mixture_stress_rotation_independence": {
+      "error": 3.947666455281845e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state2_scalar_pressure_equilibrium": {
+      "error": 9.547918011776346e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state2_full_phase_balance_from_energy": {
+      "error": 3.135450902199155e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state2_pressure_tangent": {
+      "error": 1.2002114259687281e-09,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state2_pressure_dependent_rotation_cancels": {
+      "error": 1.0941498793516995e-09,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state2_pore_volume_derivative": {
+      "error": 5.657908283462655e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state2_zero_rotation_energy_derivative": {
+      "error": 1.813364273554422e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state2_full_virtual_work": {
+      "error": 1.7763568394002505e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state3_rotation_orthogonality": {
+      "error": 3.0512030111758142e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state3_true_metric": {
+      "error": 5.968287064110958e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state3_log_strain": {
+      "error": 6.281767087587462e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state3_energy_rotation_independence": {
+      "error": 2.6645352591003757e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state3_rotated_mineral_stress": {
+      "error": 6.591705539470781e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state3_mixture_stress_rotation_independence": {
+      "error": 4.5505907414272657e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state3_scalar_pressure_equilibrium": {
+      "error": 2.5424107263916085e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state3_full_phase_balance_from_energy": {
+      "error": 3.345154797183853e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state3_pressure_tangent": {
+      "error": 1.4853569092612477e-09,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state3_pressure_dependent_rotation_cancels": {
+      "error": 2.189936966329227e-09,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state3_pore_volume_derivative": {
+      "error": 5.3032661838302464e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state3_zero_rotation_energy_derivative": {
+      "error": 1.4062824978585314e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state3_full_virtual_work": {
+      "error": 1.2434497875801753e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state4_rotation_orthogonality": {
+      "error": 1.5505224357943732e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state4_true_metric": {
+      "error": 3.176770830354169e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state4_log_strain": {
+      "error": 3.5958604205572e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state4_energy_rotation_independence": {
+      "error": 2.6645352591003757e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state4_rotated_mineral_stress": {
+      "error": 5.5186858464929646e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state4_mixture_stress_rotation_independence": {
+      "error": 3.918190818698397e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state4_scalar_pressure_equilibrium": {
+      "error": 5.662137425588298e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state4_full_phase_balance_from_energy": {
+      "error": 3.401724537978496e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state4_pressure_tangent": {
+      "error": 2.0741404845606774e-09,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state4_pressure_dependent_rotation_cancels": {
+      "error": 2.4549890331732928e-09,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state4_pore_volume_derivative": {
+      "error": 4.364017546052063e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state4_zero_rotation_energy_derivative": {
+      "error": 3.608224830031758e-11,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_state4_full_virtual_work": {
+      "error": 7.105427357601002e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_reference_rank_one_compliance_identity": {
+      "error": 1.3652985632514386e-17,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "legacy_reference_biot": {
+      "error": 1.9313265519586384e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "compliance_rank": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "analytical"
+    },
+    "branch_pressure_-14_lambert_volume": {
+      "error": 0.0,
+      "tolerance": 2e-13,
+      "category": "analytical"
+    },
+    "branch_pressure_-14_residual": {
+      "error": 0.0,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "branch_pressure_-14_positive_stability": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "analytical"
+    },
+    "branch_pressure_-13_lambert_volume": {
+      "error": 2.220446049250313e-16,
+      "tolerance": 2e-13,
+      "category": "analytical"
+    },
+    "branch_pressure_-13_residual": {
+      "error": 1.7763568394002505e-15,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "branch_pressure_-13_positive_stability": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "analytical"
+    },
+    "branch_pressure_800_lambert_volume": {
+      "error": 5.551115123125783e-17,
+      "tolerance": 2e-13,
+      "category": "analytical"
+    },
+    "branch_pressure_800_residual": {
+      "error": 2.842170943040401e-14,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "branch_pressure_800_positive_stability": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "analytical"
+    },
+    "branch_termination": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "analytical"
+    },
+    "zero_fluid_volume": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "analytical"
+    },
+    "anisotropic_state0_residual": {
+      "error": 0.0,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "anisotropic_state0_solid_mass": {
+      "error": 0.0,
+      "tolerance": 1e-13,
+      "category": "analytical"
+    },
+    "anisotropic_state0_symmetry": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "implementation"
+    },
+    "anisotropic_state0_energy_stress": {
+      "error": 2.595789180526278e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state0_pressure_tangent": {
+      "error": 1.6314614719848413e-11,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state0_volume_gradient": {
+      "error": 2.1261012676333693e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state0_storage": {
+      "error": 1.1921106463086417e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state0_physical_rotation": {
+      "error": 1.9697324839375649e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state1_residual": {
+      "error": 6.661338147750939e-16,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "anisotropic_state1_solid_mass": {
+      "error": 0.0,
+      "tolerance": 1e-13,
+      "category": "analytical"
+    },
+    "anisotropic_state1_symmetry": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "implementation"
+    },
+    "anisotropic_state1_energy_stress": {
+      "error": 2.7915109595054436e-11,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state1_pressure_tangent": {
+      "error": 1.4104986038327203e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state1_volume_gradient": {
+      "error": 2.665963935938695e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state1_storage": {
+      "error": 7.069535928883042e-13,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state1_physical_rotation": {
+      "error": 4.3607156332468004e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state2_residual": {
+      "error": 0.0,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "anisotropic_state2_solid_mass": {
+      "error": 0.0,
+      "tolerance": 1e-13,
+      "category": "analytical"
+    },
+    "anisotropic_state2_symmetry": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "implementation"
+    },
+    "anisotropic_state2_energy_stress": {
+      "error": 2.0273135217271294e-11,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state2_pressure_tangent": {
+      "error": 1.0721042420325146e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state2_volume_gradient": {
+      "error": 4.381100903777488e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state2_storage": {
+      "error": 3.1306728043301035e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state2_physical_rotation": {
+      "error": 7.600619990491682e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state3_residual": {
+      "error": 2.220446049250313e-16,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "anisotropic_state3_solid_mass": {
+      "error": 0.0,
+      "tolerance": 1e-13,
+      "category": "analytical"
+    },
+    "anisotropic_state3_symmetry": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "implementation"
+    },
+    "anisotropic_state3_energy_stress": {
+      "error": 3.9991646231554545e-11,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state3_pressure_tangent": {
+      "error": 1.3799382326426114e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state3_volume_gradient": {
+      "error": 3.4142673495213943e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state3_storage": {
+      "error": 1.961597551058958e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state3_physical_rotation": {
+      "error": 1.6084086653518544e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state4_residual": {
+      "error": 4.440892098500626e-16,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "anisotropic_state4_solid_mass": {
+      "error": 0.0,
+      "tolerance": 1e-13,
+      "category": "analytical"
+    },
+    "anisotropic_state4_symmetry": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "implementation"
+    },
+    "anisotropic_state4_energy_stress": {
+      "error": 9.66920995404305e-11,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state4_pressure_tangent": {
+      "error": 2.372201516535378e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state4_volume_gradient": {
+      "error": 3.918985975308545e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state4_storage": {
+      "error": 1.886496167613494e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state4_physical_rotation": {
+      "error": 7.0610533492034146e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state5_residual": {
+      "error": 4.440892098500626e-16,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "anisotropic_state5_solid_mass": {
+      "error": 0.0,
+      "tolerance": 1e-13,
+      "category": "analytical"
+    },
+    "anisotropic_state5_symmetry": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "implementation"
+    },
+    "anisotropic_state5_energy_stress": {
+      "error": 1.3376206607642115e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state5_pressure_tangent": {
+      "error": 1.9976744610985345e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state5_volume_gradient": {
+      "error": 3.4587034577836514e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state5_storage": {
+      "error": 1.2226504531032134e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "anisotropic_state5_physical_rotation": {
+      "error": 8.472363883313073e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state0_residual": {
+      "error": 0.0,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "isotropic_state0_solid_mass": {
+      "error": 0.0,
+      "tolerance": 1e-13,
+      "category": "analytical"
+    },
+    "isotropic_state0_symmetry": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "implementation"
+    },
+    "isotropic_state0_energy_stress": {
+      "error": 9.608369763639306e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state0_pressure_tangent": {
+      "error": 1.6219805667108085e-11,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state0_volume_gradient": {
+      "error": 1.0091708178140943e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state0_storage": {
+      "error": 1.1921106463086417e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state0_physical_rotation": {
+      "error": 2.0722584851184127e-16,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state0_scalar_limit": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "analytical"
+    },
+    "isotropic_state1_residual": {
+      "error": 6.661338147750939e-16,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "isotropic_state1_solid_mass": {
+      "error": 0.0,
+      "tolerance": 1e-13,
+      "category": "analytical"
+    },
+    "isotropic_state1_symmetry": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "implementation"
+    },
+    "isotropic_state1_energy_stress": {
+      "error": 9.303279288432909e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state1_pressure_tangent": {
+      "error": 1.5449555377829087e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state1_volume_gradient": {
+      "error": 1.3889952983000874e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state1_storage": {
+      "error": 7.069535928883042e-13,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state1_physical_rotation": {
+      "error": 4.451210229565042e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state1_scalar_limit": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "analytical"
+    },
+    "isotropic_state2_residual": {
+      "error": 1.6653345369377348e-16,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "isotropic_state2_solid_mass": {
+      "error": 0.0,
+      "tolerance": 1e-13,
+      "category": "analytical"
+    },
+    "isotropic_state2_symmetry": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "implementation"
+    },
+    "isotropic_state2_energy_stress": {
+      "error": 3.249256200501734e-11,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state2_pressure_tangent": {
+      "error": 4.894823722417829e-11,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state2_volume_gradient": {
+      "error": 3.650358896400917e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state2_storage": {
+      "error": 7.025977022401264e-13,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state2_physical_rotation": {
+      "error": 1.4425558238454442e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state2_scalar_limit": {
+      "error": 1.9229626863835638e-16,
+      "tolerance": 1e-12,
+      "category": "analytical"
+    },
+    "isotropic_state3_residual": {
+      "error": 1.6653345369377348e-16,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "isotropic_state3_solid_mass": {
+      "error": 0.0,
+      "tolerance": 1e-13,
+      "category": "analytical"
+    },
+    "isotropic_state3_symmetry": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "implementation"
+    },
+    "isotropic_state3_energy_stress": {
+      "error": 1.3344387722888301e-11,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state3_pressure_tangent": {
+      "error": 1.5488878696131224e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state3_volume_gradient": {
+      "error": 3.6244949961168193e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state3_storage": {
+      "error": 7.995132333959987e-13,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state3_physical_rotation": {
+      "error": 8.530426804138271e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state3_scalar_limit": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "analytical"
+    },
+    "isotropic_state4_residual": {
+      "error": 4.440892098500626e-16,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "isotropic_state4_solid_mass": {
+      "error": 0.0,
+      "tolerance": 1e-13,
+      "category": "analytical"
+    },
+    "isotropic_state4_symmetry": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "implementation"
+    },
+    "isotropic_state4_energy_stress": {
+      "error": 8.433392335992066e-11,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state4_pressure_tangent": {
+      "error": 4.2156793049536073e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state4_volume_gradient": {
+      "error": 3.1937545078022825e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state4_storage": {
+      "error": 3.812991589136061e-13,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state4_physical_rotation": {
+      "error": 3.923660740106592e-15,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state4_scalar_limit": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "analytical"
+    },
+    "isotropic_state5_residual": {
+      "error": 8.881784197001252e-16,
+      "tolerance": 2e-11,
+      "category": "analytical"
+    },
+    "isotropic_state5_solid_mass": {
+      "error": 0.0,
+      "tolerance": 1e-13,
+      "category": "analytical"
+    },
+    "isotropic_state5_symmetry": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "implementation"
+    },
+    "isotropic_state5_energy_stress": {
+      "error": 2.1620306898361704e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state5_pressure_tangent": {
+      "error": 2.441211503683895e-10,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state5_volume_gradient": {
+      "error": 2.4145372263760072e-12,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state5_storage": {
+      "error": 1.923895071032078e-13,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state5_physical_rotation": {
+      "error": 1.3163050644163336e-14,
+      "tolerance": 2e-07,
+      "category": "implementation"
+    },
+    "isotropic_state5_scalar_limit": {
+      "error": 0.0,
+      "tolerance": 1e-12,
+      "category": "analytical"
+    },
+    "exact_repeated_eigenvalue_log_derivative": {
+      "error": 0.0,
+      "tolerance": 1e-13,
+      "category": "analytical"
+    },
+    "integrated_pressure_response": {
+      "error": 1.6690496401605072e-14,
+      "tolerance": 1e-10,
+      "category": "analytical"
+    },
+    "second_order_energy_stress": {
+      "error": 0.00039301249916512404,
+      "tolerance": 0.06,
+      "category": "convergence"
+    },
+    "second_order_pore_volume": {
+      "error": 0.00021174627686271208,
+      "tolerance": 0.06,
+      "category": "convergence"
+    },
+    "second_order_pressure": {
+      "error": 0.01085012072268099,
+      "tolerance": 0.06,
+      "category": "convergence"
+    }
+  },
+  "max_constitutive_identity_error": 2.4549890331732928e-09,
+  "naive_unrotated_phase_stress_errors": [
+    13.609701922306048,
+    4.687795830749921,
+    16.58219078760466,
+    12.654310015577973,
+    20.16381720479686
+  ],
+  "legacy_states": [
+    {
+      "F": [
+        [
+          1.069372164512897,
+          0.008197348136732955,
+          0.0873791413576904
+        ],
+        [
+          0.021903569630556972,
+          0.8885219310828261,
+          -0.10689639191963406
+        ],
+        [
+          -0.028968777677572114,
+          -0.10070594187555196,
+          0.9176727261463622
+        ]
+      ],
+      "p": 0.4,
+      "R_A": [
+        [
+          -0.44481454828261624,
+          0.7894104071356896,
+          0.4230499104621043
+        ],
+        [
+          -0.6512226646018601,
+          0.03920019398409125,
+          -0.7578735949355024
+        ],
+        [
+          -0.6148569416904908,
+          -0.6126128907372685,
+          0.49664513221971984
+        ]
+      ],
+      "a": 0.9108077073910018,
+      "B": [
+        [
+          0.7701295174251898,
+          -0.018892306580958404,
+          -0.0042262693230651635
+        ],
+        [
+          -0.018892306580958397,
+          0.7820801397992636,
+          0.01101270624216034
+        ],
+        [
+          -0.0042262693230651635,
+          0.011012706242160337,
+          0.7517015996277595
+        ]
+      ]
+    },
+    {
+      "F": [
+        [
+          1.063116602038845,
+          0.04298423717735034,
+          0.05155210745078982
+        ],
+        [
+          0.13976901207174264,
+          1.227794499466073,
+          0.10557860783088767
+        ],
+        [
+          0.02529339530700529,
+          0.0195171653902699,
+          1.0719890738598679
+        ]
+      ],
+      "p": 0.75,
+      "R_A": [
+        [
+          0.651150448242253,
+          0.25680865688165344,
+          0.7141795345041428
+        ],
+        [
+          -0.44508904631530494,
+          0.8914175345186944,
+          0.08526734429278664
+        ],
+        [
+          -0.6147347676876959,
+          -0.37339535736703194,
+          0.6947496473498214
+        ]
+      ],
+      "a": 1.2552646336897402,
+      "B": [
+        [
+          0.836112006171498,
+          -0.014385343560559469,
+          -0.002174739411406397
+        ],
+        [
+          -0.014385343560559469,
+          0.8427008073986195,
+          0.006237458026214781
+        ],
+        [
+          -0.002174739411406398,
+          0.006237458026214782,
+          0.8204541523290891
+        ]
+      ]
+    },
+    {
+      "F": [
+        [
+          0.877613838990078,
+          -0.2002884382003673,
+          0.0813241480492919
+        ],
+        [
+          -0.07553634096494004,
+          0.8410425636809028,
+          0.16588648652025906
+        ],
+        [
+          -0.05371888250996774,
+          0.08226863746558423,
+          1.1108773024850207
+        ]
+      ],
+      "p": 1.1,
+      "R_A": [
+        [
+          0.7875656512075726,
+          0.29371310817701074,
+          -0.5417314418814839
+        ],
+        [
+          0.28533938615293364,
+          0.6053694337321611,
+          0.7430405664650277
+        ],
+        [
+          0.5461884104847513,
+          -0.7397705446878797,
+          0.3929602543061306
+        ]
+      ],
+      "a": 0.8850762005517557,
+      "B": [
+        [
+          0.7691492717696483,
+          -0.0201735989739672,
+          -0.004730686050523387
+        ],
+        [
+          -0.0201735989739672,
+          0.7761804376906966,
+          0.00943003977993083
+        ],
+        [
+          -0.004730686050523387,
+          0.009430039779930828,
+          0.7466518933557554
+        ]
+      ]
+    },
+    {
+      "F": [
+        [
+          1.039946699605631,
+          0.1603311911867878,
+          -0.08649446713858513
+        ],
+        [
+          -0.15954699373270964,
+          0.9908894526301572,
+          -0.20512804350838415
+        ],
+        [
+          0.02769746850208852,
+          -0.14513643707260107,
+          0.850624751418781
+        ]
+      ],
+      "p": 1.4499999999999997,
+      "R_A": [
+        [
+          0.26433212765193503,
+          -0.9575890404380968,
+          0.11468110534803094
+        ],
+        [
+          0.6356374817244346,
+          0.26240931781055044,
+          0.726020896223532
+        ],
+        [
+          -0.7253230439728359,
+          -0.11901503921373409,
+          0.6780426994835451
+        ]
+      ],
+      "a": 0.9345079806308467,
+      "B": [
+        [
+          0.7751505721207483,
+          -0.016582814362034713,
+          -0.0012650372692209544
+        ],
+        [
+          -0.01658281436203471,
+          0.7961228095788954,
+          0.009713932314677523
+        ],
+        [
+          -0.0012650372692209534,
+          0.009713932314677516,
+          0.7626561329940023
+        ]
+      ]
+    },
+    {
+      "F": [
+        [
+          1.0402408542795818,
+          -0.19625309130496796,
+          0.01006313719421876
+        ],
+        [
+          0.007238932218802421,
+          0.8088286705315384,
+          0.009845261102469874
+        ],
+        [
+          0.06510041302418217,
+          0.0018275575060753288,
+          1.013639560747427
+        ]
+      ],
+      "p": 1.7999999999999998,
+      "R_A": [
+        [
+          0.29341126925836425,
+          0.9152829472267426,
+          0.2759836110860996
+        ],
+        [
+          -0.9559765975822712,
+          0.27961434696460297,
+          0.08902000812504525
+        ],
+        [
+          0.004309518212067334,
+          -0.28995334708791765,
+          0.9570310781606277
+        ]
+      ],
+      "a": 0.9342384028628444,
+      "B": [
+        [
+          0.7860612920925284,
+          -0.019506793793094057,
+          -0.003418521540751781
+        ],
+        [
+          -0.019506793793094064,
+          0.7885615875686709,
+          0.008341803639186055
+        ],
+        [
+          -0.0034185215407517844,
+          0.008341803639186053,
+          0.762859878549004
+        ]
+      ]
+    }
+  ],
+  "refinement": [
+    {
+      "step": 0.02,
+      "energy_stress": 0.009965042904005385,
+      "pore_volume": 2.8713505390843773e-05,
+      "pressure": 8.76682139900447e-08
+    },
+    {
+      "step": 0.01,
+      "energy_stress": 0.0024905821603808842,
+      "pore_volume": 7.1773228451465634e-06,
+      "pressure": 2.191719831279141e-08
+    },
+    {
+      "step": 0.005,
+      "energy_stress": 0.0006226031444011137,
+      "pore_volume": 1.7942648817635734e-06,
+      "pressure": 5.478235358467293e-09
+    },
+    {
+      "step": 0.0025,
+      "energy_stress": 0.0001556481367379402,
+      "pore_volume": 4.4856210178621856e-07,
+      "pressure": 1.3692823363901025e-09
+    },
+    {
+      "step": 0.00125,
+      "energy_stress": 3.891186780458094e-05,
+      "pore_volume": 1.1214025748323349e-07,
+      "pressure": 3.449047903641781e-10
+    }
+  ],
+  "observed_orders": {
+    "energy_stress": [
+      2.000393012499165,
+      2.0000982358920414,
+      2.0000245566022015,
+      2.0000061686822797
+    ],
+    "pore_volume": [
+      2.0002117462768627,
+      2.0000529298573895,
+      2.0000132466282188,
+      2.0000034473694046
+    ],
+    "pressure": [
+      1.9999904675326707,
+      2.0002802353889626,
+      2.0002912982606142,
+      1.989149879277319
+    ]
+  },
+  "noncoaxial_commutator": 0.1815654919475954,
+  "instantaneous_times_pressure_error": 0.23887239106565072,
+  "quadrature_error": 2.6852648697597256e-13,
+  "versions": {
+    "python": "3.10.12",
+    "numpy": "1.26.4",
+    "scipy": "1.15.3"
+  },
+  "source_sha256": {
+    "examples/conformal_model.py": "035928bacd7aa2baa243f720215337e031fa7da816672efe2dad26c642ba0b0a",
+    "examples/verify_conformal.py": "412f0fb8afe994d1718289a1850c36ac00d76ef5a1fc05b0b42aceda3351a3cb"
+  },
+  "scope": "Homogeneous material-point implementation, analytical, convergence, and finite-deformation checks; no FE or physical validation."
+}

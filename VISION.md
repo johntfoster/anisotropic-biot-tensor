@@ -1,22 +1,31 @@
 # Vision
 
-This repository develops a self-contained theoretical paper extending the
-finite-deformation, one-solid/one-fluid Biot construction of Foster and Xu to
-anisotropic mineral and skeleton response. The paper retains the
-distention--true-deformation kinematics needed to define the true mineral
-volume ratio, derives a finite-deformation Biot tensor from pressure
-conjugacy and a Legendre transform, and specializes that construction to a
-stable generalized-Hooke energy with independent skeleton, mineral, and
-coupling daughter tensors.
+This repository develops a self-contained theoretical paper for one elastic
+solid and one fluid. The derivation begins with current-volume-weighted
+phase stresses and reversible work, follows the companion's equivalent
+volumetric energy construction, and extends it to an anisotropic mineral
+with a logarithmic generalized Hooke law.
 
-The work distinguishes a general objective finite-deformation kinematic and
-thermodynamic result from its small-strain stiffness-tensor realization. It
-derives the isotropic-mineral and anisotropic-mineral limits, identifies the
-additional coupling calibration required by the classical fully isotropic
-coefficient, and recovers \(B=1-K/K_s\) through a calibrated volumetric
-specialization.
+The current model permits a scalar dilation times a proper rotation, with
+an objective anisotropic mineral energy and volume-only distention energy.
+The internal rotation changes the mineral stress frame but cancels from
+physical response when that stress is rotated into the mixture frame. It preserves the full
+spatial phase stress balance and derives the restriction required to
+reproduce a complete drained logarithmic Hooke law. The additional drained
+compliance must produce spherical strain alone. Skeleton and mineral
+stiffness tensors are therefore not arbitrary independent inputs.
+The mineral equation determines the finite-deformation Biot tensor and
+recovers the isotropic scalar law, reference stress/storage coefficients,
+and a finite homogeneous unjacketed path.
 
-The repository must build from a clean clone, preserve a clear chain from the
-source paper to the new theoretical contribution, and keep agent workflows,
-citations, and review records reproducible without relying on the parent
-repository.
+The paper uses `\mathbb{}` for fourth-order tensors, upright bold
+`\mathbf{}` for second-order tensors and vectors, and John Foster's
+explanatory prose. New notation is introduced only when necessary.
+Assumptions, derived restrictions, and experimental validation are kept
+explicit. Anisotropy due to pore shape and nonspherical distention requires
+additional mechanics and is not supplied by a logarithmic spring analogy.
+
+The canonical root is `main.tex` and the sole bibliography is
+`references.bib`. Source evidence, reproducible checks, and independent
+simulated reviews accompany the manuscript. Generated outputs remain in
+ignored runtime/build directories. The paper has no external build dependency.

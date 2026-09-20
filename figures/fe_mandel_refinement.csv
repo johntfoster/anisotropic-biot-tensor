@@ -1,0 +1,16 @@
+family,case,h,dt,end,metric,error
+linear_space_,linear_space_40,0.025,0.0002,0.1,pressure_max_normalized,0.0006364074509477726
+linear_space_,linear_space_20,0.05,0.0002,0.1,pressure_max_normalized,0.0004576366802955016
+linear_space_,linear_space_10,0.1,0.0002,0.1,pressure_max_normalized,0.002083243366629766
+linear_space_,linear_space_40,0.025,0.0002,0.1,profile_rms_normalized,0.00135196712828057
+linear_space_,linear_space_20,0.05,0.0002,0.1,profile_rms_normalized,0.0008847418785569988
+linear_space_,linear_space_10,0.1,0.0002,0.1,profile_rms_normalized,0.0036459951448248873
+linear_space_,linear_space_40,0.025,0.0002,0.1,profile_max_after_t001,0.0026160419192582584
+linear_space_,linear_space_20,0.05,0.0002,0.1,profile_max_after_t001,0.002457622745179614
+linear_space_,linear_space_10,0.1,0.0002,0.1,profile_max_after_t001,0.006072676367426522
+linear_time_,linear_time_0.001,0.025,0.001,0.1,pressure_max_normalized,0.003657958974355574
+linear_time_,linear_time_0.002,0.025,0.002,0.1,pressure_max_normalized,0.0071039215708695895
+linear_time_,linear_time_0.001,0.025,0.001,0.1,profile_rms_normalized,0.0050402326713803215
+linear_time_,linear_time_0.002,0.025,0.002,0.1,profile_rms_normalized,0.008360922908840593
+linear_time_,linear_time_0.001,0.025,0.001,0.1,profile_max_after_t001,0.013317740879085129
+linear_time_,linear_time_0.002,0.025,0.002,0.1,profile_max_after_t001,0.026462332815873953

@@ -1,0 +1,18 @@
+{
+  "errors": {
+    "compliance": 1.3877787807814457e-16,
+    "drained_energy": 1.1102230246251565e-15,
+    "drained_hooke": 6.439293542825908e-15,
+    "minimization": 2.728350281810954e-09,
+    "work_equivalence": 5.040758921381894e-10,
+    "unjacketed": 5.090372567906343e-14,
+    "reference_biot": 2.220446049250313e-16,
+    "reference_storage": 4.001660114383299e-12,
+    "isotropic_eos": 2.220446049250313e-15,
+    "isotropic_biot": 1.1102230246251565e-16
+  },
+  "seed": 20260920,
+  "materials": 20,
+  "incompatible_pairs_rejected": 20,
+  "minimum_drained_eigenvalue": 1.8415045063808817
+}

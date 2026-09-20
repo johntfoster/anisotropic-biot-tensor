@@ -1,0 +1,26 @@
+version: 1
+configuration: total_Lagrangian_3D_constitutive_plane_strain
+objects:
+  ConformalMaterial:
+    family: AD_material
+    equations: [eq:anisotropic-mineral-eos, eq:trace-mineral-stability-domain, eq:equivalent-anisotropic-energy, eq:constitutive-phase-stress-sum, eq:anisotropic-biot-explicit, eq:log-frechet-spectral-form]
+    consumes: [ux_gradient, uy_gradient, pressure, pressure_gradient]
+    produces: [first_piola, fluid_mass, mass_flux, J, Jbar, solid_fraction, B12]
+    derivatives: implicit_mineral_root_lift_and_AD_resolvent_integrals
+    approximation: Gauss_Legendre_evaluation_of_matrix_logarithm_integrals
+  ReferenceMomentum:
+    family: AD_kernel
+    equation: integral_Grad_test_contract_first_Piola
+    variables: [ux, uy]
+    FE: Q2
+  ReferenceFluidMass:
+    family: AD_kernel
+    equation: integral_test_mass_increment_over_dt_minus_Grad_test_dot_mass_flux
+    variables: [p]
+    FE: Q1
+    closure: exponential_fluid_EOS_and_constant_isotropic_spatial_mobility
+    time_discretization: backward_Euler_on_reference_fluid_mass
+  EqualValueBoundaryConstraint:
+    family: framework_kinematic_nodal_constraint
+    equation: equal_top_normal_displacement_with_summed_force_residual
+    approximation: no_penalty_compliance_in_kinematic_formulation

@@ -1,0 +1,54 @@
+% !TeX root = ../main.tex
+\section{Converting logarithmic work to spatial stress}
+\label{sec:logarithmic-derivative}
+
+This appendix states the matrix derivative used in the finite-deformation
+stress and Biot tensor. Let \(\mathbf C=\mathbf F^T\mathbf F\) and
+\(\mathbf\varepsilon=\tfrac12\log\mathbf C\). If \(\mathbf T\)
+is symmetric and conjugate to \(\mathbf\varepsilon\), then
+\begin{align}
+ \delta W&=\mathbf T:\delta\mathbf\varepsilon,
+ \label{eq:logarithmic-conjugate-work}\\
+ &=\left\{\mathbf F\left[\pder{\log\mathbf C}{\mathbf C}:
+                         \mathbf T\right]\right\}:\delta\mathbf F.
+ \label{eq:logarithmic-work-to-piola}
+\end{align}
+Thus the corresponding spatial Kirchhoff stress is
+\begin{equation}
+ \mathbf\tau=\mathbf F\left[\pder{\log\mathbf C}{\mathbf C}:
+                         \mathbf T\right]\mathbf F^T.
+ \label{eq:log-stress-pushforward}
+\end{equation}
+The same formula with \(\bar{\mathbf F}\) and
+\(\mathbf T=\mathbb{C}_s:\bar{\mathbf\varepsilon}\) gives the intrinsic
+mineral Kirchhoff stress \(\widehat{\mathbf\tau}_s\) in the true-deformation
+frame. Equation \eqref{eq:rotated-mineral-kirchhoff} then maps it to the
+mixture frame. The symbol \(\mathbf T\) is used only here to
+state the derivative for an arbitrary symmetric conjugate stress.
+
+In an orthonormal eigenbasis of \(\mathbf C\), with positive eigenvalues
+\(\lambda_i\), the derivative acts componentwise as
+\begin{equation}
+ \left[\pder{\log\mathbf C}{\mathbf C}:\mathbf T\right]_{ij}
+ =\begin{cases}
+ \dfrac{\ln\lambda_i-\ln\lambda_j}{\lambda_i-\lambda_j}\,T_{ij},
+                       &\lambda_i\ne\lambda_j,\\[5pt]
+ T_{ij}/\lambda_i,      &\lambda_i=\lambda_j.
+ \end{cases}
+ \label{eq:log-frechet-spectral-form}
+\end{equation}
+The repeated-eigenvalue expression is the continuous limit, including
+isotropic stretches. The coefficient is symmetric in \(i,j\), which makes
+the derivative self-adjoint. The derivative maps \(\mathbf C\) to \(\mathbf I\).
+Consequently,
+\begin{align}
+ \tr\mathbf\tau
+ &=\mathbf C:\left[\pder{\log\mathbf C}{\mathbf C}:\mathbf T\right],
+ \label{eq:logarithmic-stress-trace-expansion}\\
+ &=\tr\mathbf T.
+ \label{eq:logarithmic-stress-trace}
+\end{align}
+For \(\mathbf T=\mathbf I\), it maps the logarithmic stress to the same
+spatial identity. In general the transformation retains the different
+principal directions of strain and stress; it cannot be replaced by a
+rotation of \(\mathbf T\).

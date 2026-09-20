@@ -1,0 +1,161 @@
+{
+  "note": "Force-controlled demonstrations with a kinematic rigid platen. Their decks solve a different problem from the reference-modulus isotropic Mandel series of the quarter-domain decks (phi_s0=0.6 and K=7 for the anisotropic and isotropic-comparison decks; the partial-drainage family additionally uses the square domain [-1,1]x[-1,1]), so no reference-normalized discrepancy is reported for them. Every listed quantity is a measured per-run diagnostic.",
+  "source_runs": [
+    "anisotropic_0",
+    "anisotropic_30",
+    "anisotropic_30_coarse",
+    "anisotropic_30_fine",
+    "anisotropic_45",
+    "anisotropic_90",
+    "isotropic",
+    "partial_0",
+    "partial_30",
+    "partial_30_coarse",
+    "partial_30_fine"
+  ],
+  "families": {
+    "anisotropic": {
+      "cases": [
+        "anisotropic_0",
+        "anisotropic_30",
+        "anisotropic_30_coarse",
+        "anisotropic_30_fine",
+        "anisotropic_45",
+        "anisotropic_90"
+      ],
+      "peak_pressure": [
+        0.20618076123919,
+        0.21577360606411
+      ],
+      "peak_time": [
+        0.002,
+        0.004
+      ],
+      "force_relative_max": 1.2764297555431118e-10,
+      "discrete_mass_mobilized_relative_max": 2.4698697504736024e-10
+    },
+    "isotropic": {
+      "cases": [
+        "isotropic"
+      ],
+      "peak_pressure": [
+        0.22382672333431,
+        0.22382672333431
+      ],
+      "peak_time": [
+        0.004,
+        0.004
+      ],
+      "force_relative_max": 3.2144128628682927e-12,
+      "discrete_mass_mobilized_relative_max": 7.586966636690598e-12
+    },
+    "partial": {
+      "cases": [
+        "partial_0",
+        "partial_30",
+        "partial_30_coarse",
+        "partial_30_fine"
+      ],
+      "peak_pressure": [
+        0.200515258783,
+        0.20162857565873
+      ],
+      "peak_time": [
+        0.002,
+        0.0035
+      ],
+      "force_relative_max": 2.0521425828487087e-10,
+      "discrete_mass_mobilized_relative_max": 4.6363477922709296e-10
+    }
+  },
+  "runs": {
+    "anisotropic_0": {
+      "peak_pressure": 0.20750216555185,
+      "peak_time": 0.003,
+      "force_relative": 4.000133557724439e-12,
+      "discrete_mass_absolute": 2.1823688689526222e-14,
+      "discrete_mass_mobilized_relative": 3.4965294088295212e-12,
+      "platen_equality_absolute": 6.999609225566417e-16
+    },
+    "anisotropic_30": {
+      "peak_pressure": 0.20675184523297,
+      "peak_time": 0.003,
+      "force_relative": 2.1428890408157844e-12,
+      "discrete_mass_absolute": 5.94402999043453e-14,
+      "discrete_mass_mobilized_relative": 1.2370904397879597e-11,
+      "platen_equality_absolute": 1.6991616447192825e-15
+    },
+    "anisotropic_30_coarse": {
+      "peak_pressure": 0.20618076123919,
+      "peak_time": 0.002,
+      "force_relative": 1.2764297555431118e-10,
+      "discrete_mass_absolute": 3.5122686009581017e-13,
+      "discrete_mass_mobilized_relative": 2.4698697504736024e-10,
+      "platen_equality_absolute": 3.210019056121283e-14
+    },
+    "anisotropic_30_fine": {
+      "peak_pressure": 0.20754766152996,
+      "peak_time": 0.004,
+      "force_relative": 4.0715050378789136e-12,
+      "discrete_mass_absolute": 5.595003627067996e-14,
+      "discrete_mass_mobilized_relative": 2.1454567719771327e-11,
+      "platen_equality_absolute": 3.400058012914542e-15
+    },
+    "anisotropic_45": {
+      "peak_pressure": 0.20805573093771,
+      "peak_time": 0.003,
+      "force_relative": 2.285632001124733e-12,
+      "discrete_mass_absolute": 2.4538530929429925e-14,
+      "discrete_mass_mobilized_relative": 9.974493608656834e-12,
+      "platen_equality_absolute": 2.1007501294079134e-15
+    },
+    "anisotropic_90": {
+      "peak_pressure": 0.21577360606411,
+      "peak_time": 0.003,
+      "force_relative": 1.6429714731559996e-12,
+      "discrete_mass_absolute": 2.6449328838218378e-14,
+      "discrete_mass_mobilized_relative": 7.864667490526537e-12,
+      "platen_equality_absolute": 1.0998146837692957e-15
+    },
+    "isotropic": {
+      "peak_pressure": 0.22382672333431,
+      "peak_time": 0.004,
+      "force_relative": 3.2144128628682927e-12,
+      "discrete_mass_absolute": 2.671387416830484e-14,
+      "discrete_mass_mobilized_relative": 7.586966636690598e-12,
+      "platen_equality_absolute": 9.003214840319629e-16
+    },
+    "partial_0": {
+      "peak_pressure": 0.200515258783,
+      "peak_time": 0.003,
+      "force_relative": 5.85706086805463e-12,
+      "discrete_mass_absolute": 2.9006658186503387e-13,
+      "discrete_mass_mobilized_relative": 3.561118131089207e-11,
+      "platen_equality_absolute": 3.1002977962657496e-14
+    },
+    "partial_30": {
+      "peak_pressure": 0.20109431301398,
+      "peak_time": 0.003,
+      "force_relative": 2.0521425828487087e-10,
+      "discrete_mass_absolute": 3.232684302537092e-13,
+      "discrete_mass_mobilized_relative": 4.6363477922709296e-10,
+      "platen_equality_absolute": 2.399816456666315e-14
+    },
+    "partial_30_coarse": {
+      "peak_pressure": 0.20136140523736,
+      "peak_time": 0.002,
+      "force_relative": 2.4071379810054948e-11,
+      "discrete_mass_absolute": 1.1482759187941838e-12,
+      "discrete_mass_mobilized_relative": 7.800880587141437e-11,
+      "platen_equality_absolute": 2.3002433291452462e-14
+    },
+    "partial_30_fine": {
+      "peak_pressure": 0.20162857565873,
+      "peak_time": 0.0035,
+      "force_relative": 3.671428240790777e-11,
+      "discrete_mass_absolute": 1.810418134851055e-13,
+      "discrete_mass_mobilized_relative": 1.2755987657065335e-10,
+      "platen_equality_absolute": 4.000272335602517e-14
+    }
+  }
+}

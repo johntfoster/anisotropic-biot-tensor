@@ -1,0 +1,224 @@
+\section{Coupled deformation and fluid transport}
+\label{sec:finite-elements}
+
+Spatially nonuniform drainage couples the constitutive response to fluid
+transport and mechanical equilibrium. We implement these balances in
+MOOSE~\cite{gaston2009moose}. We consider isothermal, quasistatic
+deformation of a saturated body, with no chemical reaction or gravity.
+The unknown fields are skeleton displacement \(\mathbf u\) and pore
+pressure \(p\). All balance equations are integrated over the reference
+mixture domain \(\Omega_0\), with
+\(\mathbf F=\mathbf I+\operatorname{Grad}\mathbf u\).
+The elastic law supplies total Cauchy stress through
+\eqref{eq:total-stress-phase-energy}; the corresponding first Piola stress is
+\begin{equation}
+ \mathbf P=J\mathbf\sigma\mathbf F^{-T}.
+ \label{eq:fe-total-first-piola}
+\end{equation}
+This stress already contains the fluid-pressure contribution. No additional
+effective-stress correction is applied in the momentum residual.
+
+\subsection{Fluid mass and the transport closure}
+\label{sec:fe-fluid-closure}
+
+The pore volume per reference mixture volume is
+\(J-\phi_{s0}\bar J\). Let \(\bar\rho_f\) be fluid intrinsic density
+and \(m_f\) be fluid mass per reference mixture volume. We prescribe a
+constant fluid bulk modulus \(K_f>0\), with density \(\bar\rho_{f0}\)
+at zero pressure:
+\begin{align}
+ \bar\rho_f(p)&=\bar\rho_{f0}\exp(p/K_f),
+ \label{eq:fe-fluid-eos}\\
+ m_f(\mathbf F,p)&=\bar\rho_f(p)
+       \left(J-\phi_{s0}\bar J(\mathbf F,p)\right).
+ \label{eq:fe-reference-fluid-mass}
+\end{align}
+The mineral volume is the solution of
+\eqref{eq:anisotropic-mineral-eos}, not an independent porosity law.
+All mass measures in this section are per unit reference mixture volume,
+whereas the intrinsic densities and volume fractions of the preceding sections
+are current-configuration measures; the two conventions differ by the factor
+\(J\) of \eqref{eq:true-mineral-jacobian}.
+The fluid equation of state is an additional constitutive assumption for
+the transport problem; it is separate from the elastic mineral law.
+
+For the hydraulic comparison we prescribe constant, isotropic permeability
+\(k>0\) in the current configuration and constant fluid viscosity
+\(\mu_f>0\). The Darcy volume flux relative to the skeleton is
+\(\mathbf q\), measured per current area. Its referential mass flux is
+\(\mathbf Q_f\):
+\begin{align}
+ \mathbf q&=-\frac{k}{\mu_f}\mathbf F^{-T}
+                 \operatorname{Grad}p,
+ \label{eq:fe-spatial-darcy-flux}\\
+ \mathbf Q_f&=J\bar\rho_f\mathbf F^{-1}\mathbf q,
+ \label{eq:fe-reference-mass-flux}\\
+ &=-\frac{J\bar\rho_f k}{\mu_f}
+      \mathbf F^{-1}\mathbf F^{-T}\operatorname{Grad}p.
+ \label{eq:fe-reference-darcy-law}
+\end{align}
+Keeping the spatial permeability isotropic separates the elastic
+directional response from anisotropy prescribed directly in the hydraulic
+law. A material permeability transported with the skeleton would be a
+different constitutive choice.
+
+The same mineral-volume response determines both storage and mechanical
+coupling. Differentiating \eqref{eq:fe-reference-fluid-mass} gives
+\begin{align}
+ \left.\pder{m_f}{p}\right|_{\mathbf F}
+ &=\bar\rho_f\left[
+       \frac{J-\phi_{s0}\bar J}{K_f}
+       -\phi_{s0}\left.\pder{\bar J}{p}\right|_{\mathbf F}
+                  \right],
+ \label{eq:fe-fluid-storage}\\
+ \left.\delta m_f\right|_p
+ &=\bar\rho_f J\mathbf B:
+                  (\delta\mathbf F\mathbf F^{-1}).
+ \label{eq:fe-fluid-deformation-coupling}
+\end{align}
+The second identity follows from
+\eqref{eq:biot-pore-volume-variation}. It supplies an independent check
+that the fluid-mass residual uses the same pressure-coupling tensor as
+the stress law. At the undeformed zero-pressure state, the total storage
+per reference fluid density is
+\begin{equation}
+ \frac{1}{\bar\rho_{f0}}
+ \left.\pder{m_f}{p}\right|_{\mathbf F=\mathbf I,p=0}
+ =\frac{1-\phi_{s0}}{K_f}+S_s,
+ \label{eq:fe-reference-total-storage}
+\end{equation}
+where \(S_s\) is the solid storage defined in
+\eqref{eq:reference-solid-storage-definition}.
+
+\subsection{Weak balances and plane strain}
+\label{sec:fe-weak-balances}
+
+Let \(\mathbf v\) and \(w\) be displacement and pressure test
+functions that vanish on their respective essential boundaries.
+Mechanical body force \(\mathbf b_0\) and fluid source \(s_f\) are
+specified per reference mixture volume. With outward reference normal
+\(\mathbf N\), reference traction \(\mathbf t_0\), and outward mass
+flux \(\bar Q_f\), the weak balances are
+\begin{align}
+ 0={}&\int_{\Omega_0}\operatorname{Grad}\mathbf v:\mathbf P\,\dd V_0
+      -\int_{\Omega_0}\mathbf v\cdot\mathbf b_0\,\dd V_0
+      -\int_{\Gamma_t}\mathbf v\cdot\mathbf t_0\,\dd A_0,
+ \label{eq:fe-momentum-residual}\\
+ 0={}&\int_{\Omega_0}w\dot m_f\,\dd V_0
+      -\int_{\Omega_0}\operatorname{Grad}w\cdot\mathbf Q_f\,\dd V_0
+      +\int_{\Gamma_Q}w\bar Q_f\,\dd A_0
+      -\int_{\Omega_0}w s_f\,\dd V_0.
+ \label{eq:fe-fluid-residual}
+\end{align}
+Here \(\Gamma_t\) and \(\Gamma_Q\) are the boundaries carrying
+prescribed traction and mass flux, respectively; on \(\Gamma_Q\),
+\(\mathbf Q_f\cdot\mathbf N=\bar Q_f\).
+The overdot denotes a time derivative following a material point of the
+skeleton. Backward Euler
+approximates the change of the full reference fluid mass:
+\begin{equation}
+ \dot m_f^{\,n}\simeq
+      \frac{m_f(\mathbf F^n,p^n)-m_f(\mathbf F^{n-1},p^{n-1})}
+           {t_n-t_{n-1}}.
+ \label{eq:fe-conservative-time-step}
+\end{equation}
+Thus a sealed, source-free body conserves its integrated fluid mass up to
+the nonlinear and discrete balance errors.
+
+Plane strain sets the out-of-plane displacement to zero while retaining
+the three-dimensional constitutive law. In particular, \(F_{33}=1\),
+and the out-of-plane normal stress is generally nonzero. The factors
+\(1/3\) in the logarithmic strain split are unchanged. Mineral volume
+is solved locally at each quadrature point on the branch satisfying
+\eqref{eq:trace-mineral-stability-domain}, with positive phase volumes.
+Its deformation and pressure derivatives follow by implicit
+differentiation of \eqref{eq:anisotropic-mineral-eos}.
+These derivatives enter both residuals; holding the local root fixed
+while differentiating would omit mechanical--hydraulic coupling.
+
+Rigid frictionless loading plates impose a common normal displacement
+and zero tangential traction. For force-controlled consolidation, the
+common normal displacement is unknown and the integrated plate reaction
+equals the prescribed resultant force. This boundary condition permits
+the normal traction to redistribute along a plate as drainage proceeds.
+It is distinct from prescribing the same normal traction at every
+point of that boundary.
+
+\subsection{Reference problems and error measures}
+\label{sec:fe-reference-problems}
+
+The isotropic reference is Mandel consolidation between frictionless rigid
+plates. We evaluate the pressure and displacement series independently,
+using the expressions in Walker et al.~\cite[appendix D]{walker2023poroelasticity}.
+The full reference rectangle is \([-a,a]\times[-b,b]\), with
+\(a=1\) and \(b=0.1\) in the selected length unit. Its vertical faces are
+drained and traction-free; the plates are impermeable. The applied mean
+compressive traction is \(q_L>0\), so the top compressive resultant is
+\(2a q_L\) per unit out-of-plane thickness. Reflection symmetry permits
+a quarter-domain calculation for this isotropic problem.
+
+The compatible material inputs, in one consistent nondimensional system,
+are \(\phi_{s0}=0.9\), \(K_s=2.5\), mineral shear modulus
+\(\mu_s=5/6\), \(K=1\), \(K_f=8\),
+\(\bar\rho_{f0}=1\), and \(k/\mu_f=1.5\).
+The compliance restriction gives drained shear modulus \(G=0.75\).
+The reference Biot coefficient is \(0.6\), and total storage is
+\(17/80\). These reference coefficients define the constant-coefficient
+analytical problem. The finite-deformation equations instead approach that
+problem as \(q_L/K\) tends to zero; they need not reproduce its series
+at a finite load.
+
+The undrained post-load state supplies initial displacement and pressure.
+At positive time the drained edge has zero pressure. The initial pressure
+therefore has an incompatible trace at the drainage boundary, and the
+earliest discrete profile contains an unresolved diffusion layer.
+We retain the maximum error over all positive output times and also compare
+profiles at common fixed positive times under separate spatial and temporal
+refinement. Pressure errors are normalized by the initial interior pressure,
+and displacement errors by the corresponding final drained displacement.
+Neither normalization divides by a transient value approaching zero.
+
+An independent manufactured solution checks off-axis coupling in the
+constant reference tangent. On the unit square, prescribe
+\begin{align}
+ u_1&=U\sin(\pi X_1)\sin(\pi X_2)\sin t,
+ \label{eq:fe-mms-u1}\\
+ u_2&=U\cos(\pi X_1)\sin(\pi X_2)\sin t,
+ \label{eq:fe-mms-u2}\\
+ p&=P_0\cos(\pi X_1)\cos(\pi X_2)\sin t,
+ \label{eq:fe-mms-pressure}
+\end{align}
+with \(U=P_0=0.01\). The mineral stiffness in
+\eqref{eq:example-mineral-stiffness} is rotated through \(30^\circ\)
+about the third material axis. The drained compliance, reference Biot tensor,
+and storage are calculated independently from the constitutive restrictions.
+Analytic differentiation of the prescribed fields then supplies the body
+force and fluid source. Exact displacement and pressure are prescribed on
+the boundary, and area-integrated errors are evaluated at a nonzero time.
+This test exercises mixed derivatives and off-diagonal pressure coupling;
+it does not by itself verify the nonlinear constitutive law.
+
+For a conservative backward-Euler solve, fluid discharge is accumulated
+with the same end-step quadrature as the mass residual. The balance error
+is normalized by the larger of the mobilized fluid mass and accumulated
+absolute discharge, with a stated small floor before drainage begins.
+The boundary reaction of the pressure residual provides a discrete
+conservative flux. A flux reconstructed from boundary pressure gradients
+is evaluated separately because its discretization error is not the
+algebraic mass-balance error.
+
+\paragraph{Scope of these results.}
+The coupled calculations are an implementation verification of the weak
+balances and of the constant reference tangent, and, at finite load and for
+prescribed mineral orientations, demonstrations of the constitutive response.
+They are not a quantitative verification of the nonlinear finite-deformation
+law, and they are not experimental validation: all parameters are synthetic.
+The rotated-anisotropy and partial-drainage runs are force-controlled
+calculations with a kinematically constrained rigid platen, so their platen
+reaction is an equilibrium residual rather than a prescribed displacement.
+The partial-drainage runs use a square domain, and their comparison with the
+slender Mandel reference geometry is therefore reported as not comparable and
+is excluded from the verification claims; only their mass-balance and
+platen-equality diagnostics and their maps are reported. The synthetic
+parameters and the absence of any laboratory or field comparison are recorded
+as a limitation.

@@ -1,0 +1,15 @@
+{
+  "inspected": "2026-09-19",
+  "companion_commit": "e62234c88f98337d4f517e3ffc67eeb892ed3e4e",
+  "shared_skill_commit": "46b234fb6ad30d5620decd9d02ed7b9050a1088d",
+  "source_sha256": {
+    "AGENTS.md": "9138064e9297db4233dc8308526c0bcf6aeff9f06dd8d8109425e898c44ea4a5",
+    "author_style_profile_2026-07-27.md": "2967415920decacb03e812985f0096ecb2bf3fb520501a2eb43b1b8d5092ca9f",
+    "paper/main.tex": "6650acfd7bf204d9357e853c83ad77828fd4c628144f32e7d53b2304004402e6",
+    "paper/defs.tex": "2ce1a86d727aa30144fa7fa620c6cabd15d0663d5c7a6e66e839055fbe085ab4",
+    "paper/sections/finite_deformation_biot.tex": "f1e657357afef3147ad395ee4e54b78840eb36e708f1fd108ac325ba044cab81",
+    "paper/sections/gajo_equivalence_appendix.tex": "2968c66d8ee1f16779e1e585b3df6a0e5e9530e0b694d7582f2c7b68ab9eeb50",
+    "all.bib": "4ca959adbebe893a12ecedcc7cb1d157dc5573bb224ece1a4a86d91afbf503b6"
+  },
+  "gajo_fulltext_sha256": "68d3bb7d6f726a41b7d76e8c13271d4bb5a886047445792b20dbccb0d0f47217"
+}

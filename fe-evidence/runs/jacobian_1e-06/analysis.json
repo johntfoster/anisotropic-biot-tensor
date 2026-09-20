@@ -1,0 +1,13 @@
+{
+  "case": "assembled_jacobian",
+  "fd_perturbation": 1e-06,
+  "relative_differences": [
+    2.10041e-07,
+    2.39529e-07,
+    2.38895e-07
+  ],
+  "max_relative_difference": 2.39529e-07,
+  "contract_target": 1e-06,
+  "passed": true,
+  "note": "Assembled coupled-Jacobian comparison ||J - Jfd||_F/||J||_F reported by MOOSE's -snes_test_jacobian for the 2x2 anisotropic deck; the finite-difference perturbation is the PETSc matrix-free parameter -mat_mffd_err. Across the recorded steps the largest reported difference is below the 1e-6 contract target. A wider sweep of the perturbation (1e-2 to 1e-10) performed while preparing this evidence left the reported difference inside 2.39e-7 +/- 4e-9 with no trend, so in this range the measured difference is not limited by the difference step."
+}
