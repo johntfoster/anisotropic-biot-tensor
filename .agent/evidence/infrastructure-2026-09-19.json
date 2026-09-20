@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "project": "anisotropic-biot-tensor",
+  "observed_at": "2026-09-20T01:21:05.700918+00:00",
+  "workflow_revision": "bd82f7bed44ecb3ae7e2e6895a990ef456b8c23c",
+  "scope": "Infrastructure-only migration; no manuscript build, edits, staging, or scientific-release certification.",
+  "local_container": {
+    "project": "anisotropic-biot-tensor",
+    "image": "mcr.microsoft.com/devcontainers/python@sha256:ca7b20585cf65295cd0cef8ae8f02a008c1c85e83909d1e2af8d19706d3f34ee",
+    "scope": "clean-clone infrastructure startup only; no manuscript/scientific build",
+    "exit_code": 0,
+    "tracked_and_untracked_status": ""
+  },
+  "hosted_codespace": {
+    "status": "passed",
+    "head": "66aad54237d9c583805d2211c61d484a15aa6ac0",
+    "instance": "expert-halibut-4pv9pv7pjh7gr",
+    "observed_at": "2026-09-20T01:11:46.144629+00:00",
+    "checks": [
+      "SSH access",
+      "post-create startup",
+      "pinned submodule initialization",
+      "agentctl check",
+      "manifest check",
+      "clean Git status"
+    ],
+    "scope": "source inspection and infrastructure; scientific toolchain not run",
+    "cleanup": "temporary Codespace deleted after verification"
+  },
+  "site": {
+    "project": "anisotropic-biot-tensor",
+    "url": "https://johntfoster.github.io/anisotropic-biot-tensor/",
+    "status": 200,
+    "title": "An anisotropic Biot tensor from mineral stress and volumetric work",
+    "sha256": "ca05e4ed1196b6d71d745c85bbe26c9412c7c16f7ccfa9e3901a04b147c0c38c"
+  },
+  "release": {
+    "project": "anisotropic-biot-tensor",
+    "head": "66aad54237d9c583805d2211c61d484a15aa6ac0",
+    "url": "https://github.com/johntfoster/anisotropic-biot-tensor/releases/tag/infrastructure-v0.2.1",
+    "prerelease": true,
+    "assets": [
+      {
+        "name": "environment-verification.json",
+        "sha256": "0fdf194a59f7803ba341fa0a096f60353e69a290255c9b13e8144f4532f21830",
+        "verification": "GitHub-reported uploaded-asset digest"
+      },
+      {
+        "name": "provenance.json",
+        "sha256": "4f6e987e32112669b089254dcd73f3eae4c1aa6d7f558b802be3106ae9ff6ecf",
+        "verification": "GitHub-reported uploaded-asset digest"
+      },
+      {
+        "name": "repository.bundle",
+        "sha256": "128da2384e6cc5659058d57e6665d49cd66f0e174310af8febdfcdd2ba3654f4",
+        "verification": "GitHub-reported uploaded-asset digest"
+      },
+      {
+        "name": "SHA256SUMS",
+        "sha256": "ca460ebe996c1ab1ccf684091543dda31270f08a5055d10071316fccd1358ec7",
+        "verification": "GitHub-reported uploaded-asset digest"
+      },
+      {
+        "name": "source.tar",
+        "sha256": "dcd0f7971a6525aa7ab2011c2b6b55762df24686bc6363970cf2ea7e23eeeafc",
+        "verification": "GitHub-reported uploaded-asset digest"
+      }
+    ]
+  },
+  "ci": {
+    "Companion website": {
+      "id": 35480706800,
+      "head_sha": "66aad54237d9c583805d2211c61d484a15aa6ac0",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/johntfoster/anisotropic-biot-tensor/actions/runs/35480706800"
+    },
+    "Research infrastructure": {
+      "id": 35480706702,
+      "head_sha": "66aad54237d9c583805d2211c61d484a15aa6ac0",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/johntfoster/anisotropic-biot-tensor/actions/runs/35480706702"
+    },
+    "Deploy documentation to GitHub Pages": {
+      "id": 34791503942,
+      "head_sha": "bd7bdd8bd7033567fed1d9c435c71dc7ae180328",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/johntfoster/anisotropic-biot-tensor/actions/runs/34791503942"
+    }
+  },
+  "preservation": {
+    "protected_files": 135,
+    "hashes_mtimes_inodes_unchanged": true,
+    "original_dirty_state_preserved": true
+  }
+}
