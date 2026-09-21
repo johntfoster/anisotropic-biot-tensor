@@ -1,0 +1,17 @@
+case,label,fabric_angle_deg,time,center_pressure,edge_ux,platen_max
+fabric_mandel_iso,no coupling,,0.0,0.0,0.0,0.0
+fabric_mandel_iso,no coupling,,0.001,3.5963621105535e-05,5.1591457496152e-05,-6.5757262383142e-06
+fabric_mandel_iso,no coupling,,0.002,3.6118969860806e-05,5.1405844220659e-05,-6.5863327110641e-06
+fabric_mandel_iso,no coupling,,0.003,3.6163929824772e-05,5.1237576569181e-05,-6.5959480051419e-06
+fabric_mandel_coup_a0,"coupling 0.4, $0^\circ$",0.0,0.0,0.0,0.0,0.0
+fabric_mandel_coup_a0,"coupling 0.4, $0^\circ$",0.0,0.001,4.3330727540272e-05,5.1137479220922e-05,-6.6352640255631e-06
+fabric_mandel_coup_a0,"coupling 0.4, $0^\circ$",0.0,0.002,4.3547277145466e-05,5.0955815670655e-05,-6.6512274186322e-06
+fabric_mandel_coup_a0,"coupling 0.4, $0^\circ$",0.0,0.003,4.3627593400865e-05,5.0791824728574e-05,-6.6656378672645e-06
+fabric_mandel_coup_a45,"coupling 0.4, $45^\circ$",45.0,0.0,0.0,0.0,0.0
+fabric_mandel_coup_a45,"coupling 0.4, $45^\circ$",45.0,0.001,4.8904094653176e-05,2.4048028440958e-05,-4.2877735041975e-06
+fabric_mandel_coup_a45,"coupling 0.4, $45^\circ$",45.0,0.002,4.9662083052464e-05,2.3856912596054e-05,-4.3070115913083e-06
+fabric_mandel_coup_a45,"coupling 0.4, $45^\circ$",45.0,0.003,4.9900848305106e-05,2.36852563503e-05,-4.324290145557e-06
+fabric_mandel_coup_a90,"coupling 0.4, $90^\circ$",90.0,0.0,0.0,0.0,0.0
+fabric_mandel_coup_a90,"coupling 0.4, $90^\circ$",90.0,0.001,5.4809271052585e-05,5.2262310918738e-05,-7.5488297872768e-06
+fabric_mandel_coup_a90,"coupling 0.4, $90^\circ$",90.0,0.002,5.5096916826199e-05,5.206078424011e-05,-7.5717635400597e-06
+fabric_mandel_coup_a90,"coupling 0.4, $90^\circ$",90.0,0.003,5.521105069019e-05,5.1878999174381e-05,-7.5924506919923e-06

@@ -1,28 +1,60 @@
 {
   "files": [
     {
-      "path": "moose_app/src/base/AnisotropicBiotApp.C",
-      "sha256": "2059936f46b77362f16fa72e6267b15a28dee978658ae0bc9e56354f93fbfd6c"
+      "path": "examples/conformal_experiments.py",
+      "sha256": "bd336d48bc29376681935a84e0fe96ef45f560cd198d47d43d3c4b940073bb7b"
     },
     {
-      "path": "moose_app/src/kernels/ReferenceBalance.C",
-      "sha256": "a02c52d671732eaf212eebffa0dbf08569a9231a2d6a24b599fce38d4900d375"
+      "path": "examples/conformal_model.py",
+      "sha256": "035928bacd7aa2baa243f720215337e031fa7da816672efe2dad26c642ba0b0a"
     },
     {
-      "path": "moose_app/src/main.C",
-      "sha256": "487819873df519dae81e95fc58a706113671e41733d11eeed2d70610a15dab9a"
+      "path": "examples/finite_pressure.py",
+      "sha256": "f9fc624a5ae3e3f60ee18e691c8ea6d71b4cce744ce9afd8460bf14b6b4aa1ba"
     },
     {
-      "path": "moose_app/src/materials/ConformalMaterial.C",
-      "sha256": "0589bff8ef5da8355be579aed52ddd15fd676d598fe1aa6405fb122e51fce54c"
+      "path": "examples/plot_anisotropy_2d.py",
+      "sha256": "b881b190df5bbe2f356f4ea46e4d63e740993fe9ca7815159ba1fb2220a235c4"
     },
     {
-      "path": "moose_app/src/postprocessors/DofReactionSum.C",
-      "sha256": "b0c63d9dea8b80b66ae64e835f323d640d61c1c223377abc6ff5e55540740757"
+      "path": "examples/plot_fabric_contours.py",
+      "sha256": "9c2bc8aa8cafc091d64dc0c3dc5928c885799734f7968e5964fb13345fd07e0d"
     },
     {
-      "path": "moose_app/src/postprocessors/ReferenceOutflow.C",
-      "sha256": "ae8f1a8fd0ff94c12d0e791e55aca38281ec6e025233e1135c53cdab852b6d29"
+      "path": "examples/plot_fabric_results.py",
+      "sha256": "ed4b81bd5575ae9888edbcc8cee613f4c126d7fa3ba55dd71307366532369128"
+    },
+    {
+      "path": "examples/plot_fe_results.py",
+      "sha256": "8b1da82090e8d3aacafefc412dbc90ce620c9a66501ca60ed24a8f97effcf868"
+    },
+    {
+      "path": "examples/plot_fe_verification.py",
+      "sha256": "132fa29062c7d439f78208f92b7982f98f28d01d04bd32ce3b748e8372da51b7"
+    },
+    {
+      "path": "examples/verify_conformal.py",
+      "sha256": "412f0fb8afe994d1718289a1850c36ac00d76ef5a1fc05b0b42aceda3351a3cb"
+    },
+    {
+      "path": "examples/verify_fabric.py",
+      "sha256": "22b7f4dacd7dbb5f148b4b697cb9efb78e7f2f61958b158366f8207ac08dc1c5"
+    },
+    {
+      "path": "examples/verify_fluid_coupling.py",
+      "sha256": "1d8d3d7a3a7e43ae4a2d21706d5d3679efeed39eeb54766e85c2fd061e8150de"
+    },
+    {
+      "path": "examples/verify_reconstruction.py",
+      "sha256": "38337139530999b52a3bef13b65d4b2f76955c6710bf48f07463bc398804e817"
+    },
+    {
+      "path": "examples/verify_tensor.py",
+      "sha256": "495cd3246c3b9914d70f6e56c0dbfa2e09d26aea9abd08479cfafc8007e8747d"
+    },
+    {
+      "path": "examples/weighted_stress.py",
+      "sha256": "b466f3ab843d84e090e7b29c501c1792f630bc18bb0c65a967f3efd4e2c81a91"
     },
     {
       "path": "moose_app/include/base/AnisotropicBiotApp.h",
@@ -37,6 +69,10 @@
       "sha256": "bd3e4796f30fc7bbaf444ccf84d81cf66f3360be5c41bd76062f34c04c8a6931"
     },
     {
+      "path": "moose_app/include/materials/FabricMaterial.h",
+      "sha256": "7e70dde139947b7611d582b7ea47d6b4b30a771ce7a97df686ed9c9bc94b5f74"
+    },
+    {
       "path": "moose_app/include/postprocessors/DofReactionSum.h",
       "sha256": "1d648c29bcacac3991bdceaf1403c4cce412964d85a9ba25580fa7d2bb098bd9"
     },
@@ -47,6 +83,30 @@
     {
       "path": "moose_app/include/utils/ConformalLaw.h",
       "sha256": "ca18175b202ebf1cba65c499f59ee1039d4a8611c3d27764adc229e329cd613c"
+    },
+    {
+      "path": "moose_app/include/utils/FabricLaw.h",
+      "sha256": "761334c6ce4919c1ff1dfb83b4b780ef4b9306f2e30dff4e4d63357cce497961"
+    },
+    {
+      "path": "moose_app/inputs/conformal_probe.i",
+      "sha256": "fbd86fc45328a05fb317f8981423fcb3d6fc54bad8cdd0715a2cc41420322a7a"
+    },
+    {
+      "path": "moose_app/inputs/fabric_contour.i",
+      "sha256": "284f042caf6702430438b71516278a0c4bd290132a34aac890607ed5117e2c02"
+    },
+    {
+      "path": "moose_app/inputs/fabric_mandel.i",
+      "sha256": "a1ae9148583b4209b16922f0c52425fe33825f7635ffadd3ad008a79d564b867"
+    },
+    {
+      "path": "moose_app/inputs/fabric_probe.i",
+      "sha256": "7c079ae819b23edba88ac07f52e9676e00a4641e70f3bae5410163c48da8720d"
+    },
+    {
+      "path": "moose_app/inputs/mandel_smoke.i",
+      "sha256": "c1ef5a950c6809f0da45d35750cb1acbde2d53a252766f028e4ddce39ee79fb9"
     },
     {
       "path": "moose_app/scripts/analyze_mandel.py",
@@ -85,44 +145,40 @@
       "sha256": "bcf5a2099ae4dc60f1a25e6142d8a504636c8d3a469698c1e3ec4305f2de4ca1"
     },
     {
-      "path": "moose_app/inputs/mandel_smoke.i",
-      "sha256": "c1ef5a950c6809f0da45d35750cb1acbde2d53a252766f028e4ddce39ee79fb9"
+      "path": "moose_app/src/base/AnisotropicBiotApp.C",
+      "sha256": "2059936f46b77362f16fa72e6267b15a28dee978658ae0bc9e56354f93fbfd6c"
     },
     {
-      "path": "examples/conformal_experiments.py",
-      "sha256": "bd336d48bc29376681935a84e0fe96ef45f560cd198d47d43d3c4b940073bb7b"
+      "path": "moose_app/src/kernels/ReferenceBalance.C",
+      "sha256": "a02c52d671732eaf212eebffa0dbf08569a9231a2d6a24b599fce38d4900d375"
     },
     {
-      "path": "examples/conformal_model.py",
-      "sha256": "035928bacd7aa2baa243f720215337e031fa7da816672efe2dad26c642ba0b0a"
+      "path": "moose_app/src/main.C",
+      "sha256": "487819873df519dae81e95fc58a706113671e41733d11eeed2d70610a15dab9a"
     },
     {
-      "path": "examples/finite_pressure.py",
-      "sha256": "f9fc624a5ae3e3f60ee18e691c8ea6d71b4cce744ce9afd8460bf14b6b4aa1ba"
+      "path": "moose_app/src/materials/ConformalMaterial.C",
+      "sha256": "0589bff8ef5da8355be579aed52ddd15fd676d598fe1aa6405fb122e51fce54c"
     },
     {
-      "path": "examples/plot_fe_results.py",
-      "sha256": "8b1da82090e8d3aacafefc412dbc90ce620c9a66501ca60ed24a8f97effcf868"
+      "path": "moose_app/src/materials/FabricMaterial.C",
+      "sha256": "9abcfab637c610ac9645105d72dcfd63ff19e550305bf8d772981f00ecc030c2"
     },
     {
-      "path": "examples/verify_conformal.py",
-      "sha256": "412f0fb8afe994d1718289a1850c36ac00d76ef5a1fc05b0b42aceda3351a3cb"
+      "path": "moose_app/src/postprocessors/DofReactionSum.C",
+      "sha256": "b0c63d9dea8b80b66ae64e835f323d640d61c1c223377abc6ff5e55540740757"
     },
     {
-      "path": "examples/verify_fluid_coupling.py",
-      "sha256": "1d8d3d7a3a7e43ae4a2d21706d5d3679efeed39eeb54766e85c2fd061e8150de"
+      "path": "moose_app/src/postprocessors/ReferenceOutflow.C",
+      "sha256": "ae8f1a8fd0ff94c12d0e791e55aca38281ec6e025233e1135c53cdab852b6d29"
     },
     {
-      "path": "examples/verify_reconstruction.py",
-      "sha256": "38337139530999b52a3bef13b65d4b2f76955c6710bf48f07463bc398804e817"
+      "path": "tools/rerun_fabric_contours.py",
+      "sha256": "9250df42de69c2d65e452f2ffe1bf01ca423a03c4ef22a199489d7ba7fb7b783"
     },
     {
-      "path": "examples/verify_tensor.py",
-      "sha256": "495cd3246c3b9914d70f6e56c0dbfa2e09d26aea9abd08479cfafc8007e8747d"
-    },
-    {
-      "path": "examples/weighted_stress.py",
-      "sha256": "b466f3ab843d84e090e7b29c501c1792f630bc18bb0c65a967f3efd4e2c81a91"
+      "path": "tools/rerun_fabric_decks.py",
+      "sha256": "589e0f8ac16447584c04d832991fb2669995e7005035a1e0901427c0602da417"
     },
     {
       "path": "validation/mandel_reference.py",

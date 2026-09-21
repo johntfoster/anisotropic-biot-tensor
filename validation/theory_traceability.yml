@@ -12,3 +12,16 @@ linear_reference_mode:
   stress: Cd_symmetric_grad_u_minus_B0_p
   mass_increment: rho0_B0_contract_symmetric_grad_u_plus_rho0_S_p
   distinction: reference_tangent_mode_not_finite_deformation_model
+fabric_distention:
+  section: sec:pore-fabric
+  material: FabricMaterial
+  law: moose_app/include/utils/FabricLaw.h
+  kinematics: A = R_A G^{1/2}, G = a^{2/3} H, H unimodular (eq:fabric-distention-polar, eq:fabric-tensor)
+  distention_strain: E_dis = ln(a)/3 I + ln(h) (1/2 I - 3/2 m(x)m) restricted to span(e1, e2)
+  retained_subspace: volumetric e1 = I/sqrt(3) and axial e2 = sqrt(3/2)(m(x)m - I/3); the four complementary symmetric modes are frozen to the mineral
+  distention_stiffness: positive definite 2x2 (volume, axial, volume-axial coupling); transversely isotropic about m (D:e3 = D:e6 = 0)
+  restriction: (C^d)^{-1} = (phi_s0 C_s)^{-1} + D^+ (eq:fabric-compliance-restriction, Moore-Penrose on range(D))
+  biot: B = I - C^d : C_s^{-1} : I (eq:reference-biot-compatibility), transversely isotropic (eq:fabric-transverse-biot)
+  equations: [eq:fabric-distention-polar, eq:fabric-volume-ratio, eq:fabric-tensor, eq:fabric-equivalent-energy, eq:fabric-distention-stress, eq:fabric-equilibrium, eq:fabric-compliance-restriction, eq:fabric-transverse-h, eq:fabric-transverse-strain, eq:fabric-shape-equilibrium, eq:fabric-transverse-biot, eq:fabric-biot-tensor, eq:reference-biot-compatibility]
+  approximation: reference_state_linearized; general finite-deformation fabric equilibrium out of scope
+  verification: examples/verify_fabric.py (independent NumPy re-implementation; worst probe-field difference 4.9e-15; H reconstruction 2.2e-16; rotation invariance 2.5e-16; conformal reduction vs ConformalMaterial 1.9e-14)

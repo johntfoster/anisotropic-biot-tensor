@@ -1,0 +1,369 @@
+% !TeX root = ../main.tex
+\section{Pore fabric and shape-changing distention}
+\label{sec:pore-fabric}
+
+The conformal specialization of
+\cref{sec:kinematics,sec:work-equivalence} lets the distention change pore
+volume and rotate the intermediate frame, but not change pore shape. The
+fabric literature summarized in \cref{sec:introduction} shows that pore
+shape and orientation, not porosity alone, set the effective poroelastic
+properties, and that reactions create and orient that structure. This
+section replaces the scalar dilation with a symmetric positive definite
+distention and derives the resulting energy, its work conjugate, the
+equilibrium that determines the fabric, and the Biot tensor. We state at
+each stage which assumptions are new modeling choices rather than
+consequences of the conformal model.
+
+\subsection{Kinematics of shape-changing distention}
+\label{sec:fabric-kinematics}
+
+Write the distention gradient in right polar form as a proper rotation
+times a symmetric positive definite stretch:
+\begin{equation}
+ \mathbf A=\mathbf R_A\mathbf G^{1/2},\qquad
+ \mathbf R_A^T\mathbf R_A=\mathbf I,\qquad \det\mathbf R_A=1,\qquad
+ \mathbf G=\mathbf G^T,\qquad \mathbf G\ \text{positive definite}.
+ \label{eq:fabric-distention-polar}
+\end{equation}
+Here \(\mathbf G=\mathbf A^T\mathbf A\) is the right Cauchy--Green tensor
+of the distention, \(\mathbf G^{1/2}\) its right stretch, and
+\(\mathbf R_A\) the distention rotation. The distention volume ratio is
+\begin{equation}
+ a=\det\mathbf A=\det\mathbf G^{1/2}=(\det\mathbf G)^{1/2}>0.
+ \label{eq:fabric-volume-ratio}
+\end{equation}
+The multiplicative decomposition and its inverse are
+\begin{equation}
+ \mathbf F=\mathbf A\bar{\mathbf F}
+        =\mathbf R_A\mathbf G^{1/2}\bar{\mathbf F},\qquad
+ J=a\bar J,\qquad
+ \bar{\mathbf F}=\mathbf G^{-1/2}\mathbf R_A^T\mathbf F.
+ \label{eq:fabric-multiplicative}
+\end{equation}
+The mineral right Cauchy--Green tensor follows:
+\begin{equation}
+ \bar{\mathbf C}=\bar{\mathbf F}^T\bar{\mathbf F}
+   =\mathbf F^T\mathbf R_A\mathbf G^{-1}\mathbf R_A^T\mathbf F.
+ \label{eq:fabric-mineral-metric}
+\end{equation}
+
+The volume-only model is the specialization
+\(\mathbf G=a^{2/3}\mathbf I\). Then
+\(\mathbf G^{1/2}=a^{1/3}\mathbf I\),
+\(\mathbf A=a^{1/3}\mathbf R_A\),
+\(\bar{\mathbf F}=a^{-1/3}\mathbf R_A^T\mathbf F\), and
+\(\bar{\mathbf C}=a^{-2/3}\mathbf C\), so
+\eqref{eq:fabric-multiplicative} and
+\eqref{eq:fabric-mineral-metric} reduce exactly to
+\eqref{eq:spherical-distention} and
+\eqref{eq:conformal-mineral-metric}. In that limit the identity stretch
+commutes with \(\mathbf R_A\), so the internal rotation cancels. For a
+general \(\mathbf G\) it does not: \(\bar{\mathbf C}\) retains
+\(\mathbf R_A\) through \(\mathbf R_A\mathbf G^{-1}\mathbf R_A^T\), and
+the relative orientation of the fabric and mineral frames is a physical
+datum. Throughout the remainder we express the fabric and the mineral
+stiffness in a common material frame, which amounts to fixing
+\(\mathbf R_A=\mathbf I\) in
+\eqref{eq:fabric-multiplicative}--\eqref{eq:fabric-mineral-metric}. This
+is a modeling choice; in the conformal specialization it is immaterial
+because \(\mathbf R_A\) cancels there.
+
+\subsection{Mass, volume, and the fabric tensor}
+\label{sec:fabric-mass}
+
+The distention volume ratio is \(a=\det\mathbf G^{1/2}\). Separate
+\(\mathbf G\) into its volumetric and isochoric parts. The pore-fabric
+orientation tensor is the unimodular part
+\begin{equation}
+ \mathbf H=(\det\mathbf G)^{-1/3}\mathbf G
+          =a^{-2/3}\mathbf G,\qquad
+ \mathbf H=\mathbf H^T,\qquad \det\mathbf H=1,\qquad
+ \mathbf G=a^{2/3}\mathbf H.
+ \label{eq:fabric-tensor}
+\end{equation}
+The scalar \(a\) sets the pore volume change; the unit-determinant tensor
+\(\mathbf H\) sets the shape and orientation of the pore space at fixed
+pore volume. Its eigenvalues are the squared principal shape ratios of the
+distention, and its eigenvectors are the fabric axes. This is the same role the
+fabric tensor plays in the elasticity-tensor literature
+\citep{cowin1985fabric,turnercowin1987,moesencardosocowin2012}, here
+attached to the distention rather than to the stiffness directly.
+
+Conservation of solid mass is unchanged in form because it involves only
+the determinant of \(\mathbf A\):
+\begin{equation}
+ J\rho_s=\phi_{s0}\bar\rho_{s0},\qquad
+ \bar J=\frac{\bar\rho_{s0}}{\bar\rho_s},\qquad
+ \phi_s=\frac{\phi_{s0}\bar J}{J},\qquad
+ \phi_s a=\phi_{s0}.
+ \label{eq:fabric-solid-mass}
+\end{equation}
+Thus \(\phi_s=\phi_{s0}/a\), the current solid volume fraction depends on
+the pore volume through the determinant of \(\mathbf G\) alone, and the
+fabric \(\mathbf H\) carries no mass. Its effect is purely energetic: it
+enters the distention energy below and thereby the stress and the Biot
+tensor.
+
+\subsection{Distention energy and its work conjugate}
+\label{sec:fabric-energy}
+
+The total energy per reference mixture volume is
+\begin{equation}
+ W_s(\mathbf F,\mathbf G)=W_{\mathrm{dis}}(\mathbf G)
+   +\phi_{s0}\bar W_s(\bar{\mathbf F}),\qquad
+ \bar{\mathbf F}=\mathbf G^{-1/2}\mathbf R_A^T\mathbf F.
+ \label{eq:fabric-equivalent-energy}
+\end{equation}
+The distention energy \(W_{\mathrm{dis}}(\mathbf G)\) now depends on the full symmetric
+tensor \(\mathbf G\), replacing the volume-only energy \(W_A(a)\). Its
+work conjugate is the symmetric distention stress per reference mixture
+volume in the intermediate frame,
+\begin{equation}
+ \bar{\mathbf S}_{\mathrm{dis}}=2\pder{W_{\mathrm{dis}}}{\mathbf G},\qquad
+ \delta W_{\mathrm{dis}}=\tfrac12\bar{\mathbf S}_{\mathrm{dis}}:\delta\mathbf G.
+ \label{eq:fabric-distention-stress}
+\end{equation}
+Equivalently, with the distention logarithmic strain
+\(\mathbf E_{\mathrm{dis}}=\ln\mathbf G^{1/2}=\tfrac12\ln\mathbf G\) and
+\(\mathbf S_{\mathrm{dis}}=\partial W_{\mathrm{dis}}/\partial\mathbf E_{\mathrm{dis}}\),
+\(\delta W_{\mathrm{dis}}=\mathbf S_{\mathrm{dis}}:\delta\mathbf E_{\mathrm{dis}}\); the two stresses are
+related by the self-adjoint matrix-logarithm derivative of
+\cref{sec:logarithmic-derivative}. The scalar driving term
+\(\partial W_A/\partial\ln a=\tfrac13\tr\mathbf\tau'\) of
+\eqref{eq:energy-returned-pressure-balance} is replaced by this tensor:
+its spherical part carries the volume response and its deviatoric part the
+shape response.
+
+Carry the variation of
+\eqref{eq:fabric-multiplicative} into the coupled work
+\eqref{eq:coupled-energy-work}:
+\begin{align}
+ \delta\mathbf F\mathbf F^{-1}
+ &=\delta\mathbf R_A\mathbf R_A^T
+   +\mathbf R_A\left[\delta(\mathbf G^{1/2})\mathbf G^{-1/2}\right]
+        \mathbf R_A^T
+ \nonumber\\
+ &\quad+\mathbf R_A\mathbf G^{1/2}
+        (\delta\bar{\mathbf F}\bar{\mathbf F}^{-1})
+        \mathbf G^{-1/2}\mathbf R_A^T.
+ \label{eq:fabric-virtual-deformation}
+\end{align}
+Contracting with the symmetric effective stress
+\(\mathbf\tau'\), and writing
+\(\widetilde{\mathbf\tau}=\mathbf R_A^T\mathbf\tau'\mathbf R_A\), removes
+the skew rotation increment and, after the phase balance
+\eqref{eq:constitutive-kirchhoff-phase-stress} cancels the pressure term,
+gives
+\begin{align}
+ \delta W_s
+ &=\widetilde{\mathbf\tau}:
+   \left[\delta(\mathbf G^{1/2})\mathbf G^{-1/2}\right]
+ \nonumber\\
+ &\quad+\phi_{s0}\mathbf G^{1/2}
+        \widehat{\mathbf\tau}_s\mathbf G^{-1/2}:
+        (\delta\bar{\mathbf F}\bar{\mathbf F}^{-1}).
+ \label{eq:fabric-phase-work}
+\end{align}
+In the conformal limit \(\mathbf G^{1/2}=a^{1/3}\mathbf I\) the first term
+becomes \(\tfrac13\tr\mathbf\tau'\,\delta\ln a\) and the second
+\(\phi_{s0}\widehat{\mathbf\tau}_s:(\delta\bar{\mathbf F}\bar{\mathbf F}^{-1})\),
+recovering \eqref{eq:distention-mineral-energy-work} exactly. The first
+term of \eqref{eq:fabric-phase-work} is the tensorial distention work; it
+reduces to the scalar pressure-like work of the conformal model and adds
+the shape-changing work of the fabric.
+
+\subsection{Equilibrium and material symmetry}
+\label{sec:fabric-equilibrium}
+
+At fixed deformation and pressure the fabric is determined by the
+equilibrium that minimizes the potential over \(\mathbf G\):
+\begin{equation}
+ \pder{}{\mathbf G}
+ \left[W_{\mathrm{dis}}(\mathbf G)+\phi_{s0}\bar W_s(\bar{\mathbf F})
+        +\phi_{s0}p\bar J\right]=0,\qquad
+ \bar J=J(\det\mathbf G)^{-1/2}.
+ \label{eq:fabric-equilibrium}
+\end{equation}
+This is the tensorial generalization of the pressure equilibrium
+\eqref{eq:pressure-conjugacy}. The minimization is restricted to
+distentions whose logarithmic strain lies in the retained subspace
+\(\operatorname{range}\mathbb{D}\) of \cref{sec:fabric-biot}: on the
+complement \(\mathbb{D}\) vanishes, the potential does not depend on the
+complementary modes, and those modes are frozen to the mineral rather than
+equilibrated. Equation \eqref{eq:fabric-equilibrium} is therefore read on
+that subspace, where the quadratic potential is strictly convex and its
+stationary point exists and is unique. Differentiating along the conformal
+submanifold \(\mathbf G=a^{2/3}\mathbf I\), on which only \(a\) varies,
+reduces \eqref{eq:fabric-equilibrium} to
+\(\partial W_A/\partial\ln a
+=\tfrac{\phi_{s0}}3\tr\bar{\mathbf\tau}_s+\phi_{s0}p\bar J\), which is
+\eqref{eq:energy-returned-pressure-balance}. The remaining retained
+components of \eqref{eq:fabric-equilibrium} are new: in the
+volumetric--axial model of \cref{sec:fe-fabric} one shape component
+equilibrates the
+fabric shape against the mineral stress, with no external conjugate force.
+Treating the fabric as an elastically equilibrated, nondissipative
+internal variable is a new modeling choice; a viscous or reaction-driven
+evolution law for \(\mathbf H\) would lie outside the present elastic
+scope.
+
+Objectivity restricts \(W_{\mathrm{dis}}\). Under a superposed spatial rotation
+\(\mathbf A\mapsto\mathbf Q\mathbf A\) the tensor
+\(\mathbf G=\mathbf A^T\mathbf A\) is invariant, so \(W_{\mathrm{dis}}(\mathbf G)\)
+and \eqref{eq:fabric-equivalent-energy} are spatial-objective. The
+distention stress \eqref{eq:fabric-distention-stress} is symmetric. For
+the fabric, not an arbitrary frame, to govern the distention energy,
+\(W_{\mathrm{dis}}\) must be an isotropic scalar function of the fabric tensor, that
+is, depend only on the three invariants
+\(\tr\mathbf G\), \(\tr\mathbf G^2\), \(\tr\mathbf G^3\). If the mineral
+carries its own material symmetry group with structural tensors,
+\(W_{\mathrm{dis}}\) is instead an isotropic function of \(\mathbf G\) and those
+structural tensors. This is the fabric-tensor requirement of
+\citet{cowin1985fabric}, applied to the distention energy rather than to
+the stiffness; it is the generalization of the conformal assumption that
+\(W_A\) depends only on \(a=(\det\mathbf G)^{1/2}\).
+
+\subsection{The Biot tensor with fabric coupling}
+\label{sec:fabric-biot}
+
+The Biot tensor retains the form
+\eqref{eq:finite-biot-tensor},
+\begin{equation}
+ \mathbf B=\mathbf I-\frac{\phi_{s0}}J
+   \left.\pder{\bar J}{\mathbf F}\right|_p\mathbf F^T,
+ \label{eq:fabric-biot-tensor}
+\end{equation}
+but \(\bar J=J(\det\mathbf G)^{-1/2}\) now varies with \(\mathbf F\)
+both directly through \(J\) and through the equilibrated fabric
+\(\mathbf G(\mathbf F,p)\). The result is a symmetric tensor whose
+directional pressure response carries both mineral anisotropy and fabric
+anisotropy. In the conformal model the shape terms were absent because
+\(\mathbf G\) had only the volume degree of freedom; here they are present
+and are determined by the distention stiffness.
+
+The rank-one structure of the conformal compliance restriction relaxes. In
+the reference state \(\mathbf F=\mathbf G=\mathbf I\), linearize
+\eqref{eq:fabric-multiplicative} and \eqref{eq:fabric-mineral-metric}. To
+first order the logarithmic strains add:
+\begin{equation}
+ \bar{\mathbf\varepsilon}=\mathbf\varepsilon-\mathbf E_{\mathrm{dis}}.
+ \label{eq:fabric-additive-strain}
+\end{equation}
+With a quadratic reference distention energy
+\(W_{\mathrm{dis}}=\tfrac12\mathbf E_{\mathrm{dis}}:\mathbb{D}:\mathbf E_{\mathrm{dis}}\), the
+distention stiffness tensor \(\mathbb D\) is symmetric and positive
+semidefinite: positive definite on the subspace of distention strains the
+model retains and zero on its complement. The minimization in
+\eqref{eq:fabric-equivalent-energy} is therefore over
+\(\mathbf E_{\mathrm{dis}}\in\operatorname{range}\mathbb{D}\), not over all
+symmetric tensors; the complementary modes are kinematically frozen to the
+mineral, which carries them at its own compliance. On that subspace the
+quadratic potential is strictly convex, so the stationary point of
+\eqref{eq:fabric-equilibrium} is unique and minimizing at fixed
+\(\mathbf\varepsilon\) gives the drained compliance
+\begin{equation}
+ (\mathbb{C}^d)^{-1}
+ =(\phi_{s0}\mathbb{C}_s)^{-1}+\mathbb{D}^{+}.
+ \label{eq:fabric-compliance-restriction}
+\end{equation}
+with \(\mathbb D^{+}\) the Moore--Penrose inverse: the ordinary inverse on
+\(\operatorname{range}\mathbb{D}\), extended by zero on the complement.
+Here \(\mathbb{D}\) has major and minor symmetry and the material symmetry
+of the fabric. In the conformal case \(W_{\mathrm{dis}}\) depends only on
+\(\tr\mathbf E_{\mathrm{dis}}=\ln a\), so \(\mathbb{D}\propto\mathbf I\otimes\mathbf I\)
+is rank one and \eqref{eq:fabric-compliance-restriction} reduces to
+\eqref{eq:drained-compliance-restriction}, with \(\mathbb{D}^{+}\) the
+corresponding rank-one inverse on the volume direction. Retaining a
+wider subspace relaxes the additional compliance from a spherical rank-one
+tensor to a fabric-symmetric fourth-order tensor supported on that subspace.
+The model implemented in \cref{sec:fe-fabric} retains the two-dimensional
+axisymmetric subspace spanned by the volumetric direction
+\(\mathbf e_1=\mathbf I/\sqrt3\) and the axial (degree-two) direction
+\(\mathbf e_2=\sqrt{3/2}\,(\mathbf m\otimes\mathbf m-\mathbf I/3)\),
+where \(\mathbf m\) is the unit material fabric axis; its
+distention stiffness is the positive definite \(2\times2\) block
+\((k_v,k_a,k_c)\) in that basis, of rank two on the six-dimensional space of
+symmetric tensors, and the four complementary modes are frozen to the
+mineral compliance through the zero eigenvalues of \(\mathbb D^{+}\). Let
+\(\mathbf p_1,\mathbf p_2\) be orthonormal vectors spanning the plane normal
+to \(\mathbf m\). That reduced \(\mathbb{D}\) is transversely isotropic
+about \(\mathbf m\): it annihilates both members of the coupled in-plane
+pair
+\(\mathbf e_3=(\mathbf p_1\otimes\mathbf p_1-\mathbf p_2\otimes\mathbf p_2)/\sqrt2\)
+and \(\mathbf e_6=\sqrt2\operatorname{sym}(\mathbf p_1\otimes\mathbf p_2)\),
+so it commutes with rotations about \(\mathbf m\). The labels
+\(\mathbf e_1,\dots,\mathbf e_6\) denote this fabric-adapted orthonormal
+basis of symmetric tensors, not the Mandel component indices of
+\eqref{eq:example-mineral-stiffness}. Two stiffnesses
+selected independently therefore satisfy the generalized restriction when
+their difference is this distention compliance, not only a spherical
+contribution. The reference Biot tensor
+\(\mathbf B_0=\mathbf I-\mathbb{C}^d:\mathbb{C}_s^{-1}:\mathbf I\) of
+\eqref{eq:reference-biot-compatibility} keeps its form with the
+generalized \(\mathbb{C}^d\) and becomes a general anisotropic tensor;
+its couplings arise from both the mineral and the fabric.
+
+\subsection{Transverse isotropy of the pore fabric}
+\label{sec:fabric-transverse}
+
+Let the fabric be transversely isotropic about a unit material axis
+\(\mathbf m\), and restrict the distention logarithmic strain to the
+axisymmetric subspace \(\operatorname{span}(\mathbf e_1,\mathbf e_2)\) of
+\cref{sec:fabric-biot}. Then
+\begin{equation}
+ \mathbf H=h^{-2}\mathbf m\otimes\mathbf m
+   +h(\mathbf I-\mathbf m\otimes\mathbf m),\qquad h>0,
+ \label{eq:fabric-transverse-h}
+\end{equation}
+so \(\det\mathbf H=1\) and
+\(\mathbf G=a^{2/3}\left[h^{-2}\mathbf m\otimes\mathbf m
++h(\mathbf I-\mathbf m\otimes\mathbf m)\right]\). The distention has two
+scalar degrees of freedom, the volume ratio \(a\) and the fabric shape
+parameter \(h\), and \(W_{\mathrm{dis}}=W_{\mathrm{dis}}(a,h)\). With the
+strain in that subspace the inverse relation is exact: the distention
+logarithmic strain is
+\begin{equation}
+ \mathbf E_{\mathrm{dis}}=\frac{\ln a}{3}\mathbf I
+   +\ln h\left(\tfrac12\mathbf I-\tfrac32\mathbf m\otimes\mathbf m\right),
+ \label{eq:fabric-transverse-strain}
+\end{equation}
+twice whose exponential, \(\exp(2\mathbf E_{\mathrm{dis}})=\mathbf G
+=a^{2/3}\mathbf H\), reconstructs \eqref{eq:fabric-transverse-h},
+whose unimodular eigenvalues are \(h^{-2},h,h\). The retained model of
+\cref{sec:fe-fabric} holds exactly in this subspace, so the reported shape
+scalar is the logarithm of the unimodular transverse fabric eigenvalue
+\(h=\mathrm{e}^{\ln h}\), not a projection of it.
+The equilibrium \eqref{eq:fabric-equilibrium} splits into a volume balance
+for \(a\), which couples to pressure and reduces to the conformal pressure
+equation, and a shape balance for \(h\),
+\begin{equation}
+ \pder{}{h}\left[W_{\mathrm{dis}}+\phi_{s0}\bar W_s\right]=0,
+ \label{eq:fabric-shape-equilibrium}
+\end{equation}
+which has no external conjugate. Because \(\bar J=J/a\) is independent of
+\(h\), the fabric shape is set by the balance between the distention
+stiffness and the mineral stress, not by the fluid pressure directly.
+
+For an isotropic mineral the drained compliance
+\eqref{eq:fabric-compliance-restriction} is then transversely isotropic,
+with a distention stiffness \(\mathbb D\) described by the volumetric and
+axial-shape fabric moduli. The Biot tensor takes the form
+\begin{equation}
+ \mathbf B=B_\parallel\,\mathbf m\otimes\mathbf m
+   +B_\perp(\mathbf I-\mathbf m\otimes\mathbf m),
+ \label{eq:fabric-transverse-biot}
+\end{equation}
+with distinct axial and transverse coupling coefficients \(B_\parallel\)
+and \(B_\perp\). Their difference measures how the axial and in-plane pore
+opening resistances differ and vanishes when the fabric is isotropic
+(\(h\equiv1\) with \(W_{\mathrm{dis}}\) independent of \(h\)), in which case
+\eqref{eq:fabric-transverse-biot} returns the scalar Biot coefficient of
+the conformal model. The extension therefore predicts that a
+reaction-induced pore fabric aligned along a preferred axis can produce a
+directionally asymmetric pressure coupling even when the mineral itself is
+isotropic. In the retained volumetric--axial energy used in
+\cref{sec:fe-fabric} that
+directional coupling is carried by the volume--axial coupling modulus of the
+distention stiffness: with that modulus zero, the drained
+compliance is transversely isotropic for an isotropic mineral while
+\(\mathbf B\) stays spherical.

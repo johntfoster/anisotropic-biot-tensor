@@ -23,8 +23,8 @@
 \date{}
 \hypersetup{pdftitle={An anisotropic Biot tensor from mineral stress and distention work},pdfauthor={John T. Foster}}
 \begin{document}
-\embedfile[filespec=conformal-2026-09-20-v1.zip,mimetype=application/zip,
- desc={Versioned numerical sources, verification, and figure data}]{build/conformal-2026-09-20-v1.zip}
+\embedfile[filespec=anisotropic-biot-2026-09-20-v2.zip,mimetype=application/zip,
+ desc={Versioned numerical sources, verification, and figure data}]{build/anisotropic-biot-2026-09-20-v2.zip}
 \maketitle
 \begin{abstract}
 We derive the finite-deformation Biot tensor of a saturated elastic porous
@@ -38,7 +38,7 @@ nevertheless be rotated into the mixture frame before the phase stresses
 are added. A generalized Hooke law in material logarithmic strain gives an
 implicit mineral-volume equation and an explicit pressure-coupling tensor.
 The drained compliance equals the mineral compliance divided by the
-reference solid fraction plus a spherical, rank-one contribution.
+reference solid fraction, plus a spherical, rank-one contribution.
 Mineral volume--shape coupling produces directional
 pressure sensitivity, whereas an isotropic mineral recovers the scalar
 nonlinear Biot coefficient. Numerical experiments compare these responses
@@ -51,9 +51,20 @@ and, in the same limit, the constant-coefficient consolidation reference, and
 exercised on rotated-anisotropy
 and partial-drainage demonstrations at finite load; no quantitative
 finite-deformation verification and no experimental validation are claimed for
-those demonstrations. The construction
-isolates anisotropy inherited from the mineral; shape-changing distention
-requires an additional constitutive law.
+those demonstrations. The tensorial distention law is implemented in its
+reference-state linearization and checked at the material point against an
+independent re-implementation
+of the section equations, and demonstrated in a coupled calculation whose
+pressure response rotates with the pore fabric behind an isotropic mineral.
+The construction
+isolates anisotropy inherited from the mineral. Replacing the scalar
+dilation with a symmetric positive definite distention whose unimodular
+part is a pore-fabric tensor supplies the additional constitutive law for
+shape-changing distention: it relaxes the rank-one drained-compliance
+restriction to a fabric-symmetric compliance supported on the retained
+volumetric--axial distention subspace and yields an anisotropic Biot tensor
+driven by both mineral
+and pore-fabric anisotropy.
 \end{abstract}
 \noindent\textbf{Keywords:} anisotropic poroelasticity; finite deformation;
 Biot tensor; mineral compression; logarithmic strain; finite-element
@@ -92,6 +103,49 @@ porous materials and hydraulic crack growth raise related questions about solid
 and pore-volume change \citep{macminnetal2016,chaubazantsu2016}, for which
 polymer-network thermodynamics supplies classical volumetric relations
 \citep{flory1961}.
+
+A second-rank fabric tensor condenses the orientation and shape of the
+pore space. Cowin showed that the elasticity tensor of a solid with a
+known fabric is an isotropic function of that fabric, so a second-rank
+fabric tensor determines the anisotropic elastic constants
+\citep{cowin1985fabric,turnercowin1987}, and a symmetry-invariant form of
+that relation is given by Moesen, Cardoso, and Cowin
+\citep{moesencardosocowin2012}. The same construction extends to
+poroelasticity, where the fabric supplies the anisotropic poroelastic
+coefficients \citep{cowin2004fabric,cowinmehrabadi2007}, again by assigning
+the fabric-dependent coefficients to the solid directly, and at small strain;
+Thompson and
+Willis reformulate the anisotropic poroelasticity equations in a form that
+exposes the tensor structure of that coupling
+\citep{thompsonwillis1991}, and oriented cracks provide a concrete fabric
+whose elastic consequences are described by Hudson \citep{hudson1981}.
+
+Reactions do more than change pore volume: they create and orient the pore
+structure. Serpentinization and carbonation of peridotite generate
+reaction-induced cracking whose porosity and geometry are measured by
+three-dimensional microtomography \citep{rudgekelemen2010,jons2017}, and
+volatile-consuming reactions fracture rock and self-accelerate fluid flow
+\citep{uno2022}. At the mineral scale, interface-coupled dissolution and
+precipitation replace one solid by another while preserving and shaping
+the pore space, a pseudomorphic process documented across silicate,
+carbonate, and oxide systems
+\citep{putnis2002,putnis2009,ruizagudo2014,geisler2007,altreewilliams2015}.
+
+Together these observations establish two facts: fabric, not porosity
+alone, controls the effective poroelastic properties, and reactions create
+and orient pore structure. Among the fabric-elasticity and
+fabric-poroelasticity constructions surveyed here, we are not aware of a
+tensorial distention law, a constitutive relation stating how the shape and
+orientation of the pore space enter a finite-deformation poromechanical
+energy and the Biot tensor derived from it. The route taken here is
+distinct from the fabric-elasticity and fabric-poroelasticity constructions
+above: the fabric tensor does not stand in for anisotropic elastic
+constants of the solid, but enters the distention energy of the pore space,
+from which the anisotropic Biot tensor follows through the mineral-volume
+response. \Cref{sec:pore-fabric}
+derives that law by extending the volume-only conformal distention to a
+symmetric positive definite distention whose unimodular part is the pore
+fabric.
 
 We consider an anisotropic mineral and allow the distention gradient to
 contain both a dilation and a proper rotation. This conformal distention
@@ -164,6 +218,12 @@ A bar on a stress denotes its representation in the mixture frame, whereas a hat
 the true frame. A bar on a prescribed boundary datum, such as the mass flux
 \(\bar Q_f\) of \eqref{eq:fe-fluid-residual}, denotes its prescribed value on that
 boundary.
+A superscript \(d\) denotes the drained skeleton, as in the drained
+stiffness \(\mathbb{C}^d\) of \eqref{eq:drained-stiffness-restriction}. The
+distention quantities instead carry the subscript \(\mathrm{dis}\):
+\(W_{\mathrm{dis}}\), \(\mathbf E_{\mathrm{dis}}\), and
+\(\mathbf S_{\mathrm{dis}}\) in \cref{sec:pore-fabric}. The two labels are
+kept distinct throughout, so \(d\) never means distention.
 The two stress representations differ by the rotation \eqref{eq:rotated-mineral-cauchy}.
 Fourth-order tensors are set in blackboard bold and second-order tensors in
 upright bold. Conservation of solid mass gives
@@ -474,6 +534,7 @@ infinitesimal pressure increment; a finite change from the drained stress
 requires the integral in \eqref{eq:integrated-pressure-response}.
 
 \input{sections/limits}
+\input{sections/pore_fabric}
 \input{sections/experiments}
 \input{sections/finite_elements}
 
@@ -501,12 +562,20 @@ discretization of the coupled deformation and fluid-transport balances
 reproduces the constant-coefficient consolidation reference in the
 constant-tangent limit and satisfies a manufactured-solution convergence test
 for that reference tangent. At finite load the nonlinear solutions approach
-the reference as the load decreases, but their normalized pressure discrepancy
-floors at about \(3.2\times10^{-3}\) at \(nx=20\), \(dt=10^{-3}\) rather than
-decaying to it. The finite-load
-rotated-anisotropy and partial-drainage calculations are reported as
-demonstrations, not as quantitative verification of the nonlinear law or as
-experimental validation.
+the reference as the load decreases, but at \(nx=20\), \(dt=10^{-3}\) their
+normalized pressure discrepancy floors at about \(3.2\times10^{-3}\) rather
+than decaying as the load tends to \(10^{-4}\). The floor is attributable to the fixed-step backward-Euler temporal error: the linear
+step-refinement runs give \(3.7\times10^{-3}\) and \(7.1\times10^{-3}\) at
+\(dt=10^{-3}\) and \(2\times10^{-3}\) (ratio \(1.94\), first order in \(dt\)),
+and the fixed-mesh successive-difference temporal orders at \(nx=16/32/64\)
+are \(0.98\)--\(1.40\), including values above one; these are measurements
+from a sequence that retains a mesh-step cross term, and no order above one
+is asserted. \Cref{fig:fe-verification} displays these measurements and
+\cref{fig:fe-reference-comparison} the reference comparison. The finite-load
+rotated-anisotropy, partial-drainage, and rotated-pore-fabric calculations are
+reported as demonstrations, not as quantitative verification of the nonlinear
+law or as experimental validation; the fabric law itself is checked at the
+material point against an independent re-implementation of its equations.
 
 Conformal distention requires the skeleton and mineral to share their
 normalized right stretch, while allowing a relative rotation. With a
@@ -519,6 +588,24 @@ its work. Two independently selected anisotropic stiffnesses will generally
 fail \eqref{eq:drained-compliance-restriction}; that failure identifies
 missing deformation mechanisms rather than a pressure coefficient to be
 chosen independently.
+
+\Cref{sec:pore-fabric} supplies that law. Replacing the scalar dilation
+with a symmetric positive definite distention \(\mathbf G\) makes the
+fabric tensor a constitutive variable with its own energy
+\(W_{\mathrm{dis}}(\mathbf G)\) and symmetric work conjugate
+\eqref{eq:fabric-distention-stress}. The equilibrium
+\eqref{eq:fabric-equilibrium} that determines the fabric generalizes the
+pressure equation: its volume component recovers the conformal result
+exactly, and its shape components equilibrate the fabric against the
+mineral stress with no external conjugate. The rank-one drained compliance
+restriction relaxes to the full fabric-symmetric distention compliance
+\eqref{eq:fabric-compliance-restriction}, and the Biot tensor gains
+directional coupling from the pore fabric in addition to the mineral. In
+the transversely isotropic fabric case the Biot tensor has distinct axial
+and transverse coefficients, predicting directionally asymmetric pressure
+coupling even when the mineral itself is isotropic. This is the mechanism
+by which a reaction-induced pore fabric would enter the poromechanical
+response.
 
 The conformal restriction is a constitutive specialization, not a
 consequence of stress symmetry alone. In the equilibrium similarity
@@ -540,14 +627,15 @@ coefficients in logarithmic strain define an elastic energy; measured
 finite-pressure acoustic stiffnesses include the tangent about a stressed
 state and need separate interpretation \citep{zha1996forsterite}.
 A general distention gradient can additionally represent changes in pore
-shape. Its work requires a tensorial constitutive law. Restricting an
+shape. Its work requires a tensorial constitutive law, which
+\cref{sec:pore-fabric} supplies. Restricting an
 already prescribed tensorial distention energy to a dilation times a
 rotation need not recover the volume-only energy assumed here; couplings
-to orientation or skeleton deformation can remain. The present result
-applies locally to the stated conformal, volume-only model. Compatibility
-of independently prescribed distention fields is a separate boundary-value
-question. These distinctions provide a basis for adding pore-shape
-deformation while retaining the phase-work balance.
+to orientation or skeleton deformation can remain. The conformal result of
+\cref{sec:finite-biot} applies locally to that specialization, and
+compatibility of independently prescribed distention fields is a separate
+boundary-value question. The phase-work balance is the same in both
+models; only the distention law that closes it differs.
 
 \appendix
 \input{sections/logarithmic_derivative}

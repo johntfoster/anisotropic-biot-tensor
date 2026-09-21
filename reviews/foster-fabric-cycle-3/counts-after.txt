@@ -1,0 +1,14 @@
+Foster reviewer/editor cycle 3 — counts AFTER prose pass
+Counted with the identical method to cycles 1-2: fixed-string Python .count()
+on the backslash-prefixed commands. \cite also matches \citep and \citet;
+\cref matches only lowercase \cref (\Cref is excluded, case-sensitively).
+
+File                                     label      ref     cref    eqref     cite  begin{equation}  begin{align}
+--------------------------------------  -------  -------  -------  -------  -------  -------  -------
+main.tex                                    41        0        3       18       24       17       10
+sections/experiments.tex                     9        6        0        9        1        3        0
+sections/finite_elements.tex                22        0        2        9        2        3        5
+sections/limits.tex                          9        0        0        4        1        5        1
+sections/logarithmic_derivative.tex          7        0        0        1        0        2        2
+sections/stress_reconstruction.tex          21        0        1        9        0        8        8
+sections/pore_fabric.tex                    25        0        5       28        2       16        2

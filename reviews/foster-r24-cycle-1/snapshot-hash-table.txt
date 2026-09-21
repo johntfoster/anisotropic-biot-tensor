@@ -1,0 +1,14 @@
+Foster reviewer/editor cycle 1 (round-24) — snapshot hash table
+Base snapshot: round-24 1dea9e121e8d763dc0b4008d9b430026a17d600fbdd67d5f085a7d6f2617b423
+
+File                                    current sha256                                                    round-24 manifest                      differs?
+--------------------------------------  ---------------------------------------------------------------  ---------------------------------------  --------
+main.tex                                4d2b75d11ccca155c7da59725be210e5f380c5b7716d3d393175b6e8b63787af  4d2b75d11ccca155c7da59725be210e5f380c5b7716d3d393175b6e8b63787af  no
+sections/experiments.tex                c82c9512672d58bbdc6d4ab5355f5f4562cc0edb20f4f17d79f2f90e2f774ee6  c82c9512672d58bbdc6d4ab5355f5f4562cc0edb20f4f17d79f2f90e2f774ee6  no
+sections/finite_elements.tex            2b111db8b87c77bcc1f9648b009198f9882dcb388299d768150975232fff7feb  2b111db8b87c77bcc1f9648b009198f9882dcb388299d768150975232fff7feb  no
+sections/limits.tex                     a8547e6de42d0d0207a3ea58fc5135651aeec5aa82878622164ef79e2691afd3  a8547e6de42d0d0207a3ea58fc5135651aeec5aa82878622164ef79e2691afd3  no
+sections/logarithmic_derivative.tex     9696e29663c8d8e2d2bfef29299fc9dca8fa39b4c92253feb8c034865925f7b1  9696e29663c8d8e2d2bfef29299fc9dca8fa39b4c92253feb8c034865925f7b1  no
+sections/stress_reconstruction.tex      ad50c93c254f5a231b1c152dc04abcae852ffb8dd9a9c508ec42a6015df593fe  ad50c93c254f5a231b1c152dc04abcae852ffb8dd9a9c508ec42a6015df593fe  no
+sections/pore_fabric.tex                62338e73769b00c3f0c4bfce3e29aa969a95086a592d709aa5971c2d24ce1a27  62338e73769b00c3f0c4bfce3e29aa969a95086a592d709aa5971c2d24ce1a27  no
+
+Summary: 0 of 7 files differ from the round-24 manifest (expected: none).

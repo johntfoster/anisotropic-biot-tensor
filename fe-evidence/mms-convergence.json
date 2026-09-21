@@ -1,6 +1,6 @@
 {
   "method": "successive differences of exact-solution L2 error norms at fixed mesh",
-  "runs_dir": "/home/jfoster/projects/research/reactive_transport/anisotropic-biot-tensor/.agent-runtime/moose-fe-goal-2026-09-20/implementation/runs",
+  "runs_dir": "fe-evidence/runs",
   "required_runs": [
     "mms_space_4",
     "mms_space_8",

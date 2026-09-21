@@ -8,6 +8,15 @@ objects:
     produces: [first_piola, fluid_mass, mass_flux, J, Jbar, solid_fraction, B12]
     derivatives: implicit_mineral_root_lift_and_AD_resolvent_integrals
     approximation: Gauss_Legendre_evaluation_of_matrix_logarithm_integrals
+  FabricMaterial:
+    family: AD_material
+    equations: [eq:fabric-distention-polar, eq:fabric-volume-ratio, eq:fabric-tensor, eq:fabric-equivalent-energy, eq:fabric-distention-stress, eq:fabric-equilibrium, eq:fabric-compliance-restriction, eq:fabric-transverse-h, eq:fabric-transverse-strain, eq:fabric-shape-equilibrium, eq:fabric-transverse-biot, eq:fabric-biot-tensor, eq:reference-biot-compatibility]
+    consumes: [ux_gradient, uy_gradient, pressure]
+    produces: [first_piola, fluid_mass, J, Jbar, solid_fraction, B, distention_strain, distention_stress]
+    derivatives: linearized_reference_state_stationarity
+    retained_subspace: span(e1 = I/sqrt(3), e2 = sqrt(3/2)(m(x)m - I/3)); distention stiffness positive definite 2x2 (volume, axial, volume-axial coupling) and zero on the four complementary modes, frozen to the mineral
+    symmetry: transversely_isotropic_about_m; verified D:e3 = D:e6 = 0 and rotation invariance 2.5e-16; H reconstruction of eq:fabric-transverse-h exact to 2.2e-16 with eigenvalues (h^-2, h, h)
+    approximation: reference_state_linearized_axisymmetric_distention_energy_and_reference_biot_limit; general_finite_deformation_fabric_equilibrium_out_of_scope
   ReferenceMomentum:
     family: AD_kernel
     equation: integral_Grad_test_contract_first_Piola

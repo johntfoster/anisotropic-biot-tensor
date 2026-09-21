@@ -1,0 +1,14 @@
+Foster reviewer/editor cycle 3 (round-27 tree) — snapshot hash table
+
+Compare: .agent-runtime/review-snapshots/round-27/source-manifest.json
+(round-27 ACCEPT snapshot c5050c77…, 591 files)
+
+file                                       round-27 manifest    current              differs
+------------------------------------------ -------------------- -------------------- -------
+main.tex                                   70e2cf277cac7878e5bc 70e2cf277cac7878e5bc no
+sections/experiments.tex                   c82c9512672d58bbdc6d c82c9512672d58bbdc6d no
+sections/finite_elements.tex               f254a8c239ab99ca96a5 f254a8c239ab99ca96a5 no
+sections/limits.tex                        a8547e6de42d0d0207a3 a8547e6de42d0d0207a3 no
+sections/logarithmic_derivative.tex        9696e29663c8d8e2d2bf 9696e29663c8d8e2d2bf no
+sections/stress_reconstruction.tex         ad50c93c254f5a231b1c ad50c93c254f5a231b1c no
+sections/pore_fabric.tex                   7c35f66706dc83f06130 7c35f66706dc83f06130 no

@@ -42,7 +42,7 @@ local fallback. A complete system installation needs no fallback.
 Generate the tables and figures before the LaTeX build with the commands
 above. The conformal experiments use NumPy, SciPy, and Matplotlib. Build
 products, CSV data, and verification JSON stay under `build/`.
-The packaging command creates `build/conformal-2026-09-20-v1.zip`, embedded
+The packaging command creates `build/anisotropic-biot-2026-09-20-v2.zip`, embedded
 as an attachment in the article PDF. It contains standalone numerical sources,
 data, figures, reproduction instructions, and a file-hash manifest. Extract it
 with an attachment-capable PDF viewer or `pdfdetach -saveall build/main.pdf`.
@@ -76,6 +76,23 @@ calibration. See `examples/conformal_model.py` for the equation mapping.
 it does not generate current manuscript results. Earlier reviews retain
 their original hashes and are not acceptance evidence for the current paper.
 See `reviews/README.md` for the active review cycle.
+
+The pore-fabric distention law is re-checked independently with
+`python3 examples/verify_fabric.py`, which compares a NumPy re-implementation
+of the section equations with the recorded runs under `fe-evidence/runs`
+(refresh them with `python3 tools/rerun_fabric_decks.py` followed by
+`python3 tools/rerun_fabric_decks.py --analysis-only`). Its figures are drawn
+by `python3 examples/plot_fabric_results.py --runs fe-evidence/runs`. The
+refined (\(40\times8\)) contour runs are recorded under
+`fe-evidence/runs/fabric_contour_*` (refresh them with
+`python3 tools/rerun_fabric_contours.py`), and their field figures are drawn
+from the recorded Exodus files by
+`python3 examples/plot_fabric_contours.py --runs fe-evidence/runs --output figures`.
+The
+finite-element verification displays are assembled from the recorded
+artifacts with `python3 examples/plot_fe_verification.py`, which writes the
+manufactured-solution, temporal-order, finite-load-floor, and
+reference-comparison figures used in `sections/finite_elements.tex`.
 
 ## Instructions and provenance
 

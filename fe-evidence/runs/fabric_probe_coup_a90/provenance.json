@@ -1,0 +1,22 @@
+{
+  "application": "anisotropic_biot-opt (FabricMaterial)",
+  "application_sha256": "ff0272fc279fcf91f6acd0c4a2e0ce436e8b165ad68b15549c27e6845dfdd31e",
+  "application_library_sha256": "9636d01a153320d6575b3a5ffc51b2cb17432328dd9a53629857e3fa37a9ac43",
+  "git_revision": "ab46ebe44b7f7a08c06f31b1f2c8a77deb7e464c",
+  "input_deck": "fabric_probe.i",
+  "command_overrides": [
+    "Materials/law/fabric_angle=90",
+    "Materials/law/fabric_coupling=0.4"
+  ],
+  "command": [
+    "./moose_app/anisotropic_biot-opt",
+    "-i",
+    "moose_app/inputs/fabric_probe.i",
+    "Outputs/file_base=...",
+    "Materials/law/fabric_angle=90",
+    "Materials/law/fabric_coupling=0.4"
+  ],
+  "recorded_utc": "2026-09-21T02:56:40.387580+00:00",
+  "exit_status": "success",
+  "source": "moose_app/include/utils/FabricLaw.h, moose_app/src/materials/FabricMaterial.C"
+}

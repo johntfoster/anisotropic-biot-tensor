@@ -1,0 +1,20 @@
+Foster reviewer/editor cycle 2 — counts AFTER prose pass
+Counted with grep -oF (fixed-string), identical method to counts-before.txt.
+Cycle 2 made ZERO prose edits, so every column is unchanged from
+counts-before.txt by construction; re-verified programmatically (see
+verify_integrity.py output in cycle-report.md).
+
+File                          label   ref   cref   eqref   cite   begin{equation}   begin{align}
+----------------------------  -----   ---   ----   -----   ----   ---------------   -----------
+main.tex                      41      0     3      18      24     17                10
+sections/experiments.tex      9       6     0      9       1      3                 0
+sections/finite_elements.tex  22      0     2      9       2      3                 5
+sections/limits.tex           9       0     0      4       1      5                 1
+sections/logarithmic_derivative.tex  7  0   0      1       0      2                 2
+sections/stress_reconstruction.tex   21 0   1      9       0      8                 8
+sections/pore_fabric.tex      25      0     5      28      2      16                2
+
+Verification: every column is unchanged from counts-before.txt (TRUE, checked
+programmatically). The digit-literal multiset (all maximal digit runs) is also
+identical per file — the seven files' sha256 hashes are byte-identical to the
+cycle-2 snapshot-hash-table.txt pre-edit values (0 of 7 differ).

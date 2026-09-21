@@ -150,11 +150,11 @@ point of that boundary.
 The isotropic reference is Mandel consolidation between frictionless rigid
 plates. We evaluate the pressure and displacement series independently,
 using the expressions in Walker et al.~\cite[appendix D]{walker2023poroelasticity}.
-The full reference rectangle is \([-a,a]\times[-b,b]\), with
-\(a=1\) and \(b=0.1\) in the selected length unit. Its vertical faces are
+The full reference rectangle is \([-L_x,L_x]\times[-L_y,L_y]\), with
+\(L_x=1\) and \(L_y=0.1\) in the selected length unit. Its vertical faces are
 drained and traction-free; the plates are impermeable. The applied mean
 compressive traction is \(q_L>0\), so the top compressive resultant is
-\(2a q_L\) per unit out-of-plane thickness. Reflection symmetry permits
+\(2L_x q_L\) per unit out-of-plane thickness. Reflection symmetry permits
 a quarter-domain calculation for this isotropic problem.
 
 The compatible material inputs, in one consistent nondimensional system,
@@ -198,6 +198,53 @@ the boundary, and area-integrated errors are evaluated at a nonzero time.
 This test exercises mixed derivatives and off-diagonal pressure coupling;
 it does not by itself verify the nonlinear constitutive law.
 
+\Cref{fig:fe-verification} collects the measured verification evidence for
+the constant reference tangent. Panel (a) gives the manufactured-solution
+spatial \(L^2\) errors and the measured adjacent orders: pressure
+\(2.00\) and \(2.00\), \(u_x\) \(2.99\) and \(2.96\), \(u_y\)
+\(3.00\) and \(2.96\), consistent with quadratic displacement and linear
+pressure. Panel (b) gives the temporal order measured by successive
+differences at fixed mesh for \(nx=16,32,64\); the values lie near one and
+include one above one, and no order above one is asserted. Panel (c) gives
+the linear step refinement whose measured ratio is \(1.94\), first order in
+\(\Delta t\). Panel (d)
+compares the finite-deformation solutions with the linear reference as the
+load decreases at fixed mesh and step; the pressure discrepancy floors at
+\(3.2\times10^{-3}\), so it demonstrates the discretization floor rather
+than a verified limit. \Cref{fig:fe-reference-comparison} shows the
+constant-reference-tangent comparison itself, the center-pressure history
+and the pressure profiles against the independently evaluated series.
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=\textwidth]{figures/fe_verification_convergence.pdf}
+ \caption{Measured finite-element verification, read from the recorded
+artifacts with no fitted rate. (a) Manufactured-solution \(L^2\) errors
+against mesh size at the fixed final time; the annotated numbers are the
+measured adjacent orders. (b) Temporal order from successive differences of
+the exact-solution error norms at fixed mesh for \(nx=16,32,64\); the
+dashed line is first order, the values include one above unity, and no
+order above one is asserted. (c) Linear step refinement of the
+constant-tangent comparison; the annotated ratio is the measured
+coarse-to-fine error ratio. (d) The finite-deformation solutions compared
+with the linear Mandel series as the compressive load decreases at fixed
+mesh and time step; the pressure discrepancy floors at
+\(3.2\times10^{-3}\), so this panel is a finite-load demonstration, not a
+verified limit toward the linear solution.}
+ \label{fig:fe-verification}
+\end{figure}
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=.95\textwidth]{figures/fe_reference_comparison.pdf}
+ \caption{Linear constant-reference-tangent Mandel comparison from the
+recorded runs. (a) Center pressure against time: the independently
+evaluated series against the finite-element history at identical saved
+times. (b) Pressure along the sampled horizontal line at the saved
+comparison times. Neither panel interpolates in time or fits a coefficient.}
+ \label{fig:fe-reference-comparison}
+\end{figure}
+
 For a conservative backward-Euler solve, fluid discharge is accumulated
 with the same end-step quadrature as the mass residual. The balance error
 is normalized by the larger of the mobilized fluid mass and accumulated
@@ -207,12 +254,140 @@ conservative flux. A flux reconstructed from boundary pressure gradients
 is evaluated separately because its discretization error is not the
 algebraic mass-balance error.
 
+\subsection{Pore-fabric demonstration}
+\label{sec:fe-fabric}
+
+The tensorial distention law of \cref{sec:pore-fabric} is implemented as a
+material that evaluates the reference-state drained stiffness, the Biot
+tensor, and the distention strains. The compiled law retains the
+two-dimensional axisymmetric distention subspace of
+\cref{sec:fabric-biot}: the distention stiffness is positive definite on the
+volumetric--axial block and the four complementary modes are frozen to the
+mineral. With that restriction the reconstructed fabric is exactly
+\eqref{eq:fabric-transverse-h}, and the independent script confirms it
+numerically---the reconstruction differs from
+\(h^{-2}\mathbf m\otimes\mathbf m+h(\mathbf I-\mathbf m\otimes\mathbf m)\)
+by \(2.2\times10^{-16}\), \(\det\mathbf H-1=-3.3\times10^{-16}\) with
+eigenvalues \(h^{-2},h,h\), the stiffness annihilates the coupled in-plane
+pair \(\lVert\mathbb D:\mathbf e_3\rVert=1.6\times10^{-16}\) and
+\(\mathbb D:\mathbf e_6=\mathbf 0\), and its invariance under a rotation
+about \(\mathbf m\) is \(2.5\times10^{-16}\). An independent NumPy
+re-implementation
+of the section equations, evaluated at the same prescribed states,
+reproduces the compiled fields with a worst absolute difference of
+\(4.9\times10^{-15}\) over \(B_\parallel\), \(B_\perp\), the distention
+strains, the volume ratios, the stresses, and the solid fraction. That
+agreement is an implementation check, not an independent derivation:
+\nolinkurl{examples/verify_fabric.py} re-derives the section equations but
+shares their modelling conventions with the compiled material---the
+distention basis, the equilibrium, and the reported sign convention for
+\(\ln h\). In the volume-only limit the same material reproduces the
+conformal material used in \cref{sec:fe-reference-problems} to
+\(1.9\times10^{-14}\). This is an
+implementation check: the script shares the section's basis and reported-scalar
+sign conventions, so it verifies the compiled material against the equations
+rather than re-deriving the conventions themselves.
+\Cref{fig:fe-fabric-probe} shows the corresponding axial and transverse
+Biot coefficients, their difference, and the fabric shape (deviatoric)
+distention \(\ln h\) of the uncoupled probes.
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=\textwidth]{figures/fe_fabric_probe.pdf}
+ \caption{Reference-state pore-fabric probe under a uniform prescribed
+deformation. (a) Axial and transverse Biot coefficients. (b) Their
+difference. With an isotropic mineral the Biot tensor remains spherical
+when the distention stiffness carries no volume--axial coupling, so the
+directional coupling in (b) is supplied by that modulus. (c) The reported
+shape scalar \(\ln h\) against fabric orientation for the uncoupled
+probes; with the distention restricted to the volumetric--axial subspace
+this is exactly the logarithm of the unimodular transverse fabric
+eigenvalue \(h=\mathrm{e}^{\ln h}\) of
+\eqref{eq:fabric-transverse-h}. Values are
+the recorded material-point outputs with no fitted curve.}
+ \label{fig:fe-fabric-probe}
+\end{figure}
+
+A coupled transient calculation then rotates the fabric in the plane while
+the mineral stays isotropic and unrotated, so a directional difference
+isolates the pore fabric. The peak centre pressure is
+\(4.36\times10^{-5}\) for a fabric axis along \(X_1\),
+\(4.99\times10^{-5}\) at \(45^\circ\), and \(5.52\times10^{-5}\) along
+the other in-plane axis, against \(3.62\times10^{-5}\) for the same deck
+with the volume--axial coupling switched off. Each peak coincides with the
+final recorded state rather than a transient overshoot.
+\Cref{fig:fe-fabric-mandel} shows the centre-pressure histories and the peak
+pressures from which these values are read. To resolve the fields behind those
+histories, the same coupled problem is rerun on a refined
+\(40\times8\) mesh of the \(1\times0.1\) strip, with the same boundary
+conditions, material and fabric parameters, and time integration, but a smaller
+step so the Exodus output records eleven evenly spaced field snapshots across
+the run. \Cref{fig:fe-fabric-contours} shows the pore pressure and the
+displacement magnitude at the final recorded state for the isotropic
+(uncoupled) fabric and for fabric axes at \(0^\circ\), \(45^\circ\), and
+\(90^\circ\). The peak pressure at that time is \(3.61\times10^{-5}\) for the
+isotropic case and \(4.35\), \(4.97\), and \(5.50\times10^{-5}\) for the
+\(0^\circ\), \(45^\circ\), and \(90^\circ\) axes, respectively; in every case
+the maximum lies on the \(X_1=0\) symmetry line and the pressure falls to zero
+at the drained edge \(X_1=1\). The displacement magnitude peaks at
+\(5.18\times10^{-5}\) (isotropic), \(5.14\times10^{-5}\) (\(0^\circ\)),
+\(2.38\times10^{-5}\) (\(45^\circ\)), and \(5.26\times10^{-5}\) (\(90^\circ\)).
+\Cref{fig:fe-fabric-diffusion} shows the drainage front advancing from the
+drained right edge into the strip for the isotropic case and the \(45^\circ\)
+case on a common colour scale. These are demonstrations on the synthetic
+parameters of this section; no mesh-convergence claim is made for these runs.
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=.95\textwidth]{figures/fe_fabric_mandel.pdf}
+ \caption{Coupled consolidation with the pore fabric rotated in the plane,
+behind an isotropic and unrotated mineral. (a) Centre pressure against
+recorded time. (b) Peak centre pressure against fabric orientation, with the
+uncoupled-fabric reference dashed. The spread across orientations comes from
+the pore fabric alone. These are finite-load demonstrations of the
+fabric-coupled model, not quantitative verification of the tensorial
+distention law.}
+  \label{fig:fe-fabric-mandel}
+\end{figure}
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=\textwidth]{figures/fe_fabric_contours.pdf}
+ \caption{Refined (\(40\times8\)) coupled consolidation contours at the common
+ final recorded time. Top row: pore pressure. Bottom row: displacement
+ magnitude. Columns: isotropic (uncoupled) fabric, then fabric axis
+ \(0^\circ\), \(45^\circ\), and \(90^\circ\) behind an isotropic, unrotated
+ mineral; the orange arrow marks the fabric axis (the isotropic column carries
+ none). Equal aspect preserves the \(1\times0.1\) domain. Values are read from
+ the recorded Exodus fields; the runs are finite-load demonstrations on
+ synthetic parameters, not a mesh-convergence study.}
+ \label{fig:fe-fabric-contours}
+\end{figure}
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=\textwidth]{figures/fe_fabric_diffusion.pdf}
+ \caption{Refined (\(40\times8\)) coupled consolidation: pore-pressure
+ snapshots at six recorded times, isotropic (uncoupled) row above and coupled
+ \(45^\circ\)-fabric row below on a shared colour scale. The drainage front
+ starts at the drained right edge and propagates into the strip, so the
+ interior pressure is a genuine diffusion field rather than a uniform or
+ degenerate state. Equal aspect preserves the \(1\times0.1\) domain. Values
+ are read from the recorded Exodus fields; the runs are finite-load
+ demonstrations on synthetic parameters, not a mesh-convergence study.}
+ \label{fig:fe-fabric-diffusion}
+\end{figure}
+
 \paragraph{Scope of these results.}
 The coupled calculations are an implementation verification of the weak
 balances and of the constant reference tangent, and, at finite load and for
 prescribed mineral orientations, demonstrations of the constitutive response.
 They are not a quantitative verification of the nonlinear finite-deformation
 law, and they are not experimental validation: all parameters are synthetic.
+The pore-fabric runs are force-controlled demonstrations of the tensorial
+distention law at the same load; their fabric moduli are synthetic and
+uncalibrated, so they serve as a demonstration of the coupling mechanism and
+not as a quantitative validation of it.
 The rotated-anisotropy and partial-drainage runs are force-controlled
 calculations with a kinematically constrained rigid platen, so their platen
 reaction is an equilibrium residual rather than a prescribed displacement.

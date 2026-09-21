@@ -1,0 +1,32 @@
+{
+  "B_anisotropy": 1.1102230246252e-16,
+  "B_par": 0.6,
+  "B_per": 0.6,
+  "J": 1.005,
+  "Jbar": 0.99777777777778,
+  "drained_c11": 1.9999999999985,
+  "drained_c12": 0.50000000000075,
+  "energy": 0.00013999999999988,
+  "ln_a": 0.0072222222222222,
+  "ln_h": -1.2499999999981e-14,
+  "mass": 0.10725,
+  "sigma11": 0.0054999999999813,
+  "sigma22": -0.016999999999991,
+  "solid_fraction": 0.89353233830846,
+  "time": 1.0,
+  "verification": {
+    "fields_checked": [
+      "B_par",
+      "B_per",
+      "ln_a",
+      "ln_h",
+      "J",
+      "Jbar",
+      "solid_fraction",
+      "sigma11",
+      "sigma22"
+    ],
+    "independent_max_abs_diff": 2.220446049250313e-15,
+    "reference": "examples/verify_fabric.py (NumPy re-implementation of sections/pore_fabric.tex)"
+  }
+}

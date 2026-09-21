@@ -1,0 +1,12 @@
+{
+  "J": 1.005,
+  "Jbar": 0.99777777777778,
+  "sigma11": 0.0055,
+  "sigma22": -0.017,
+  "solid_fraction": 0.89353233830846,
+  "time": 1.0,
+  "verification": {
+    "max_abs_diff_vs_independent": 1.8741952434453424e-14,
+    "role": "reference run of the reviewed ConformalMaterial at the same prescribed state"
+  }
+}

@@ -1,0 +1,39 @@
+Foster reviewer/editor cycle 2 (round-24) — counts AFTER prose pass
+Counted with the verify_integrity.py method (fixed-string .count()), identical
+to cycles 1 and 3. \cite also matches \citep and \citet; \cref matches \Cref only
+case-sensitively (so \Cref is excluded from the \cref column).
+
+This cycle made ZERO manuscript edits. The two fabric files changed between the
+before and after runs, but only because the concurrent round-25 writer applied
+the R24-3-1 wording fix; the count columns and digit-literal multisets are
+unchanged. The after-state values below are the current on-disk values.
+
+File                                    label   ref   cref   eqref   cite   begin{equation}   begin{align}
+--------------------------------------  -----   ---   ----   -----   ----   ---------------   -----------
+main.tex                                41      0     5      19      24     17                10
+sections/experiments.tex                9       6     0      9       1      3                 0
+sections/finite_elements.tex            26      0     3      11      2      3                 5
+sections/limits.tex                     9       0     0      4       1      5                 1
+sections/logarithmic_derivative.tex     7       0     0      1       0      2                 2
+sections/stress_reconstruction.tex      21      0     1      9       0      8                 8
+sections/pore_fabric.tex                25      0     9      32      2      16                2
+
+Every column is identical to counts-before.txt (verified programmatically:
+`diff` over the counts/digit lines of the before/after verifier output shows
+only the two sha256 lines differing). Digit-literal multiset (sorted maximal
+digit runs) is identical per file.
+
+File                                    digit-run multiset sha256                                        run count
+--------------------------------------  ---------------------------------------------------------------  ---------
+main.tex                                8b4600e84e1e129ab8e40b270ddda0cea6d717aa0357d5e398a2879af2d59980  177
+sections/experiments.tex                d56d27d46400a753a8bad523da198f181c6e0c43e9ed9c2e3a5608ee78a930c6  136
+sections/finite_elements.tex            7230b955aa8f30ce2b0bc75a364ab3c29d59f175e8f14b450e9095332ec7a3d3  225
+sections/limits.tex                     49869ba32085f76abb988c44ffddc910a1b70692b6dc0cdac0f45a2a287468f9  32
+sections/logarithmic_derivative.tex     14c2a5e6e3dd1c5e78453f8447a9375e933036d10b62d09256776e3c082a3816  2
+sections/stress_reconstruction.tex      bf9bfacd4178c158d5625f4988128abea4f8c432e7f6663a1fbe59ea88ff0729  83
+sections/pore_fabric.tex                2051e15648f0d829c35e5a52db0b527ef84c40e87f14be71148c9629c3d8d8cd  143
+
+Proof: `diff reviews/foster-r24-cycle-2/verify-before.txt
+reviews/foster-r24-cycle-2/verify-after.txt` shows only the sha256 lines for
+sections/finite_elements.tex (2b111db8…→f254a8c2…) and sections/pore_fabric.tex
+(62338e73…→98184b99…) changed; no count line and no digit-multiset line differs.

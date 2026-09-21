@@ -91,16 +91,16 @@ spherical Biot tensor are constant along this isochoric path.
 \end{figure}
 
 The tensor also gives the pressure sensitivity of traction on a plane.
-For current unit normal \(\mathbf n\) and tangent \(\mathbf t\), define
+For current unit normal \(\mathbf n\) and unit tangent \(\mathbf e_t\), define
 \begin{equation}
  \mathbf n=(\cos\theta,\sin\theta,0)^T,\qquad
- \mathbf t=(-\sin\theta,\cos\theta,0)^T.
+ \mathbf e_t=(-\sin\theta,\cos\theta,0)^T.
  \label{eq:experiment-plane-directions}
 \end{equation}
 Equation \eqref{eq:cauchy-pressure-tangent} gives the negative pressure
 derivatives of normal and tangential traction as
 \(\mathbf n\cdot\mathbf B\mathbf n\) and
-\(\mathbf t\cdot\mathbf B\mathbf n\), respectively.
+\(\mathbf e_t\cdot\mathbf B\mathbf n\), respectively.
 Figure~\ref{fig:conformal-directional} compares the undeformed skeleton
 with \eqref{eq:experiment-shear-gradient} at \(\gamma=0.65\), both at
 \(p=2K_*\). Anisotropy is visible both in the normal sensitivity and in
@@ -208,8 +208,8 @@ outside the plotted range. Local scalar stability does not establish
 stability against all deformation modes.
 
 \paragraph{Code and data availability.}
-The numerical supplement is embedded in the PDF as
-\texttt{conformal-\allowbreak2026-\allowbreak09-\allowbreak20-\allowbreak v1.zip}.
+The numerical supplement is embedded in the PDF as the attachment
+\texttt{anisotropic-\allowbreak biot-\allowbreak2026-\allowbreak09-\allowbreak20-\allowbreak v2.zip}.
 It contains the numerical sources,
 parameter matrices, CSV figure data, and verification reports. The archive's
 \nolinkurl{manifest.json} identifies its version and SHA-256 hashes of all
@@ -217,10 +217,19 @@ payload files; its README gives the reproduction commands. Download the PDF
 and use an attachment-capable viewer to save the archive, or extract it with
 \texttt{pdfdetach -saveall article.pdf}. This supplement is self-contained
 and does not require the companion repository, and it covers the
-constitutive verification only. The coupled finite-element implementation of
-section~\ref{sec:finite-elements} is not part of that archive: its
-application sources, deck inputs, per-run analyses, figure data, and the
-machine-readable verification-evidence file travel with the manuscript sources
+constitutive and material-point verification. The archive does ship the
+pore-fabric constitutive law, the material that registers it, and their
+coupled decks under \nolinkurl{moose_app/}: the \nolinkurl{FabricLaw.h}
+distention law, the \nolinkurl{FabricMaterial.h} and
+\nolinkurl{FabricMaterial.C} material, and the \nolinkurl{fabric_probe.i},
+\nolinkurl{conformal_probe.i}, and \nolinkurl{fabric_mandel.i} decks, together
+with the recorded run histories those scripts read. Those decks are inputs,
+not a runnable build: reproducing them requires the repository application
+build, whose remaining sources the archive does not ship. The rest of the coupled
+finite-element implementation of section~\ref{sec:finite-elements} is not
+part of that archive: its remaining application sources, deck inputs,
+per-run analyses, figure data, and the machine-readable
+verification-evidence file travel with the manuscript sources
 in the repository
 \url{https://github.com/johntfoster/anisotropic-biot-tensor}: the application
 sources under \nolinkurl{moose_app/}, the independent reference and validation

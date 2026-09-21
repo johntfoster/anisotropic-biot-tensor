@@ -1,0 +1,115 @@
+
+[36m
+*** Info ***
+'execute_on' parameter specified in [Outputs] block is ignored for object 'checkpoint'.
+Define this object in its own sub-block of [Outputs] to modify its execution schedule.[39m
+Framework Information:
+MOOSE Version:           git commit abafb58b on 2026-02-20
+LibMesh Version:         
+PETSc Version:           3.24.4
+SLEPc Version:           3.24.0
+Current Time:            Sun Sep 20 21:56:43 2026
+Executable Timestamp:    Sun Sep 20 21:56:16 2026
+
+Input File(s):
+  /home/jfoster/projects/research/reactive_transport/anisotropic-biot-tensor/moose_app/inputs/fabric_probe.i
+
+Command Line Argument(s):
+  --n-threads=1
+
+Command Line Input Argument(s):
+  Outputs/file_base=/tmp/tmp5vopjtue/solution
+  Materials/law/fabric_axial_modulus=1e6
+
+Checkpoint:
+  Wall Time Interval:      Every 3600 s
+  User Checkpoint:         Disabled
+  # Checkpoints Kept:      2
+  Execute On:              TIMESTEP_END 
+
+Parallelism:
+  Num Processors:          1
+  Num Threads:             1
+
+Mesh: 
+  Parallel Type:           replicated
+  Mesh Dimension:          2
+  Spatial Dimension:       2
+  Nodes:                   4
+  Elems:                   1
+  Num Subdomains:          1
+
+Nonlinear System:
+  Num DOFs:                12
+  Num Local DOFs:          12
+  Variables:               { "ux" "uy" "p" } 
+  Finite Element Types:    "LAGRANGE" 
+  Approximation Orders:    "FIRST" 
+
+Auxiliary System:
+  Num DOFs:                15
+  Num Local DOFs:          15
+  Variables:               { "B_par" "B_per" "B_anisotropy" "ln_a" "ln_h" ... "drained_c11" "drained_c12" 
+                             "sigma11" "sigma22" "solid_fraction" } 
+  Finite Element Types:    "MONOMIAL" 
+  Approximation Orders:    "CONSTANT" 
+
+Execution Information:
+  Executioner:             Transient
+  TimeStepper:             ConstantDT
+  TimeIntegrator(s):       ImplicitEuler
+  Solver Mode:             Preconditioned JFNK 
+  PETSc Preconditioner:    lu 
+  MOOSE Preconditioner:    SMP 
+[31mLEGACY MODES ENABLED:[39m
+ This application uses the legacy material output option: material properties are output only on TIMESTEP_END, not INITIAL. To remove this message, set 'use_legacy_material_output' to false in this application. If there are gold output files that contain material property output for which output occurs on INITIAL, then these will generate diffs due to zero values being stored, and these tests should be re-golded.
+[39m
+[31mLEGACY MODES ENABLED:[39m
+ This application uses the legacy initial residual evaluation behavior. The legacy behavior performs an often times redundant residual evaluation before the solution modifying objects are executed prior to the initial (0th nonlinear iteration) residual evaluation. The new behavior skips that redundant residual evaluation unless the parameter Executioner/use_pre_smo_residual is set to true. To remove this message and enable the new behavior, set the parameter 'use_legacy_initial_residual_evaluation_behavior' to false in *App.C. Some tests that rely on the side effects of the legacy behavior may fail/diff and should be re-golded.
+[39m
+
+Time Step 0, time = 0
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| time           | B_anisotropy   | B_par          | B_per          | J              | Jbar           | drained_c11    |
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| time           | drained_c12    | energy         | ln_a           | ln_h           | mass           | sigma11        |
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
++----------------+----------------+----------------+
+| time           | sigma22        | solid_fraction |
++----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+
+
+
+Time Step 1, time = 1, dt = 1
+ * Nonlinear |R| = [32m4.301163e-02[39m (Before preset BCs, predictors, correctors, and constraints)
+ 0 Nonlinear |R| = [32m0.000000e+00[39m
+[32m Solve Converged![39m
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| time           | B_anisotropy   | B_par          | B_per          | J              | Jbar           | drained_c11    |
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |   1.110223e-16 |   8.838710e-01 |   8.838710e-01 |   1.005000e+00 |   9.936774e-01 |   1.290321e+00 |
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+| time           | drained_c12    | energy         | ln_a           | ln_h           | mass           | sigma11        |
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |  -2.096767e-01 |   1.538386e-04 |   1.132258e-02 |  -1.249998e-08 |   1.109403e-01 |  -3.725825e-03 |
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+
++----------------+----------------+----------------+
+| time           | sigma22        | solid_fraction |
++----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |  -2.622580e-02 |   8.898604e-01 |
++----------------+----------------+----------------+
+

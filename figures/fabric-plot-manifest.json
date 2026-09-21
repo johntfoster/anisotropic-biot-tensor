@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "generator": "examples/plot_fabric_results.py",
+  "versions": {
+    "python": "3.10.12",
+    "numpy": "2.2.6",
+    "matplotlib": "3.10.8"
+  },
+  "figures": [
+    {
+      "id": "fe_fabric_probe",
+      "files": [
+        "fe_fabric_probe.pdf",
+        "fe_fabric_probe.png"
+      ],
+      "caption": "Reference-state pore-fabric probes (uniform prescribed deformation, one QUAD4 element: eps11=0.01, eps22=-0.005, p=0.02). (a) Axial and transverse Biot coefficients from the recorded final state. The conformal-limit case reduces to the reviewed ConformalMaterial. (b) B_par - B_per: with an isotropic mineral the Biot tensor stays isotropic unless the volume-axial coupling of the distention stiffness is nonzero, so the coupling rows carry the directional coupling. (c) ln h, the fabric shape (deviatoric) distention, against fabric orientation for the uncoupled probes; the Biot tensor of those probes is isotropic and is plotted in (a,b) only for the coupled variants. Values are read from the recorded run histories with no fitting or interpolation.",
+      "cases": [
+        "fabric_probe_iso",
+        "fabric_probe_coup_a0",
+        "fabric_probe_coup_a45",
+        "fabric_probe_coup_a90",
+        "fabric_probe_stiffaxial",
+        "fabric_probe_softaxial",
+        "fabric_probe_conformal",
+        "fabric_probe_a0",
+        "fabric_probe_a45",
+        "fabric_probe_a90"
+      ],
+      "data": [
+        "fe_fabric_probe.csv"
+      ]
+    },
+    {
+      "id": "fe_fabric_mandel",
+      "files": [
+        "fe_fabric_mandel.pdf",
+        "fe_fabric_mandel.png"
+      ],
+      "caption": "Coupled transient consolidation (quarter Mandel geometry, isotropic and unrotated mineral) with the pore fabric rotated in the plane. (a) Center pressure against recorded time for each fabric orientation. (b) Peak center pressure against fabric orientation, with the uncoupled fabric reference drawn as a dashed line. Because the mineral is isotropic and unrotated, the directional difference isolates the pore fabric. These are finite-load demonstrations of the coupled model, not quantitative verification of the nonlinear law and not experimental validation.",
+      "cases": [
+        "fabric_mandel_iso",
+        "fabric_mandel_coup_a0",
+        "fabric_mandel_coup_a45",
+        "fabric_mandel_coup_a90"
+      ],
+      "data": [
+        "fe_fabric_mandel_history.csv",
+        "fe_fabric_mandel_peak.csv"
+      ]
+    }
+  ],
+  "missing": [],
+  "input_sha256": {
+    "examples/plot_fabric_results.py": "ed4b81bd5575ae9888edbcc8cee613f4c126d7fa3ba55dd71307366532369128",
+    "fe-evidence/runs/fabric_probe_iso/solution.csv": "9ee163f46dd58330fa00501cb83b409b64533c0df586bf274cca1ac80e4b6feb",
+    "fe-evidence/runs/fabric_probe_coup_a0/solution.csv": "3d25162ad03f033da50c6d3aa30e3a923a4898e38e19025e1a054a403a425dc4",
+    "fe-evidence/runs/fabric_probe_coup_a45/solution.csv": "72dc9cec5646dfe1a9949d2f27016ccab032d0d014e57133153ca2cbb3829306",
+    "fe-evidence/runs/fabric_probe_coup_a90/solution.csv": "54cc098dcd74bb961bc4704b297fa0eefcdfceaa1eb72b94a03d18eb51c33558",
+    "fe-evidence/runs/fabric_probe_stiffaxial/solution.csv": "81a013f6dbb077a33c58d8df4392e4aff8439d66f06b7e50d16fb6f91861ca1f",
+    "fe-evidence/runs/fabric_probe_softaxial/solution.csv": "86084271d0178947a84906426d9343d36cf1e0722bd720997756e0d9b07a450e",
+    "fe-evidence/runs/fabric_probe_conformal/solution.csv": "01dd6cf941c67e8256dfad0343bc72d8d17607eeb62daec40935d55bbc0797de",
+    "fe-evidence/runs/fabric_probe_a0/solution.csv": "9ee163f46dd58330fa00501cb83b409b64533c0df586bf274cca1ac80e4b6feb",
+    "fe-evidence/runs/fabric_probe_a45/solution.csv": "5ab7218523a31dcf8e725f4e7ae7f2633cfbd7fc36aa510d9a0e1b96561f631f",
+    "fe-evidence/runs/fabric_probe_a90/solution.csv": "cdd0a52292b6a5e53465e42aef8be8fb4c4d0a0c7c3ed871fa80cc3b172801c8",
+    "fe-evidence/runs/fabric_mandel_iso/solution.csv": "132b15c4ac2998f1e5b3866744885fed56eeb761aeb4392e31e66df05e034d21",
+    "fe-evidence/runs/fabric_mandel_coup_a0/solution.csv": "cba10fee832c8fa14ae87a881457bb940f767c44ed54a05c45c0a34d633be4e2",
+    "fe-evidence/runs/fabric_mandel_coup_a45/solution.csv": "fcfe60b03ad7e749be036893a6c51492fb746dd864bd581607edeea8b675b901",
+    "fe-evidence/runs/fabric_mandel_coup_a90/solution.csv": "4fdbf792cee11f734622c9fe376316d06c9f0186bacf6bf86e20c7f15abaf91a"
+  },
+  "output_sha256": {
+    "fe_fabric_probe.csv": "3fe15c0e9d1ec0c9ae024c7fb374a676b8392424788e5893eb7e21c92f50caa3",
+    "fe_fabric_probe.pdf": "bee6757e3d1fdabf8484167f3904cecb3aa91226b8b5d953f11f2f695d1f1a15",
+    "fe_fabric_probe.png": "4159c83dc94386017c6ac573edc82486414e13bec81388273991a5e60ca6f002",
+    "fe_fabric_mandel_history.csv": "822bfda28e447ca69f2959abc9318102d6878d8db3566e8ec5d01b6ac17ac952",
+    "fe_fabric_mandel_peak.csv": "1ad9aba1e1cd83e18ebde3205393454180f6300708289e9ecf8a61f7a8799c8e",
+    "fe_fabric_mandel.pdf": "bbcb68d834914ece3fa77c06efa012b6fcec3b98f7e7911fef91d86f7ff445b4",
+    "fe_fabric_mandel.png": "697804467cb5ca1c9d0f54f438634f9cc90a2991dab392f89b0b4f9420c63f17"
+  },
+  "limitations": [
+    "Only recorded successful runs are plotted; this does not certify their scientific acceptance.",
+    "The probe figure is a uniform prescribed-deformation comparison, not a boundary-value verification.",
+    "The coupled fabric runs are finite-load demonstrations, not quantitative verification and not experimental validation.",
+    "Parameters are synthetic; physical validation has not been performed."
+  ]
+}

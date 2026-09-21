@@ -1,0 +1,5 @@
+case,label,fabric_angle_deg,peak_center_pressure,final_center_pressure,final_time,peak_stability
+fabric_mandel_iso,no coupling,,3.6163929824772e-05,3.6163929824772e-05,0.003,2.5
+fabric_mandel_coup_a0,"coupling 0.4, $0^\circ$",0.0,4.3627593400865e-05,4.3627593400865e-05,0.003,2.5
+fabric_mandel_coup_a45,"coupling 0.4, $45^\circ$",45.0,4.9900848305106e-05,4.9900848305106e-05,0.003,2.5
+fabric_mandel_coup_a90,"coupling 0.4, $90^\circ$",90.0,5.521105069019e-05,5.521105069019e-05,0.003,2.5

@@ -1,0 +1,8 @@
+file                                       round-24 manifest  current            differs
+main.tex                                   4d2b75d11ccca155   70e2cf277cac7878   YES
+sections/experiments.tex                   c82c9512672d58bb   c82c9512672d58bb   no
+sections/finite_elements.tex               2b111db8b87c77bc   f254a8c239ab99ca   YES
+sections/limits.tex                        a8547e6de42d0d02   a8547e6de42d0d02   no
+sections/logarithmic_derivative.tex        9696e29663c8d8e2   9696e29663c8d8e2   no
+sections/stress_reconstruction.tex         ad50c93c254f5a23   ad50c93c254f5a23   no
+sections/pore_fabric.tex                   62338e73769b00c3   98184b99287a577d   YES

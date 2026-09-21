@@ -1,0 +1,21 @@
+# Foster reviewer/editor cycle 2 — snapshot hash table (pre-edit)
+
+Base snapshot: round-21 `f4c43aeea1590c8e166d3ffab342e5da92094443e55b4df4d47b69bbad8c673f`
+Cycle 1 (complete) applied 3 prose edits; this table records the sha256 of the
+seven manuscript sources at the START of cycle 2 (i.e., the cycle-1 post-edit
+state).
+
+File                                 sha256
+----------------------------------   ----------------------------------------------------------------
+main.tex                             c67c00b8a17aaf0ecaa314857f66fc99e95324996587804c1b87807254a5d334
+sections/experiments.tex             a452cf5dd67bb9aa76d40a7833116bdc77d172eafddc348be699822155333b86
+sections/finite_elements.tex         ee24fa81182649e33d81b6a316b5c9b1b2f6a9f4b6bce7b8de600c2c8931c9f4
+sections/limits.tex                  a8547e6de42d0d0207a3ea58fc5135651aeec5aa82878622164ef79e2691afd3
+sections/logarithmic_derivative.tex  9696e29663c8d8e2d2bfef29299fc9dca8fa39b4c92253feb8c034865925f7b1
+sections/stress_reconstruction.tex   ad50c93c254f5a231b1c152dc04abcae852ffb8dd9a9c508ec42a6015df593fe
+sections/pore_fabric.tex             31a5a9fc0b644fd698f7d49b17d08278a16122e1f3916c316dd29d7d24f4daf6
+
+Cross-check against cycle 1:
+- cycle 1 reported post-edit main.tex       = c67c00b8a17aaf0ecaa314857f66fc99e95324996587804c1b87807254a5d334  (match)
+- cycle 1 reported post-edit pore_fabric.tex = 31a5a9fc0b644fd698f7d49b17d08278a16122e1f3916c316dd29d7d24f4daf6  (match)
+- cycle 1 reported pre-edit hashes for the other five files (unchanged) match the values above.

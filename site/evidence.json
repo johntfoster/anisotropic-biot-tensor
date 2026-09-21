@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "version": "moose-fe-pending-2026-09-20",
+  "version": "anisotropic-biot-2026-09-20-v2",
   "title": "An anisotropic Biot tensor: finite-element verification",
   "summary": "This companion records the evidence for the conformal-distention model and its MOOSE implementation. Constitutive, fluid-coupling, analytical reference, and manufactured-solution convergence checks pass and are published here with regenerated figures; finite-deformation demonstrations and physical validation remain pending or not performed.",
   "provenance": {
-    "source_revision": "ecfe4a22a094d3b346ea89287f9a23e1917f017c",
+    "source_revision": "ab46ebe44b7f7a08c06f31b1f2c8a77deb7e464c",
     "scientific_snapshot": "scientific-snapshot",
     "note": "The base commit predates this working revision. The finite-element sources and evidence are provided under the repository-relative paths moose_app/, validation/, fe-evidence/, figures/ and site/; the scientific-snapshot artifact lists the exact files with SHA-256 hashes, and the review snapshot pinned in the review record is the authoritative frozen artifact for the checks below."
   },
@@ -26,14 +26,19 @@
         "conformal-verification",
         "tensor-verification",
         "reconstruction-verification",
-        "cpp-python-constitutive"
+        "cpp-python-constitutive",
+        "fabric-verification",
+        "fe-fabric-contours",
+        "fe-fabric-diffusion"
       ]
     },
     "convergence": {
       "status": "passed",
       "summary": "Manufactured-solution L2 convergence at a fixed final time: spatial order is consistent with Q2 displacement and Q1 pressure (ux 2.99/2.96, uy 3.00/2.96, p 2.00/2.00 over nx=4,8,16 at dt=1e-4). The temporal order is measured by successive differences of the exact-solution error norms at fixed mesh, which cancels the mesh-dependent spatial floor; the nx=16 triple (ux 1.093, uy 0.978, p 1.015) bounds the temporal order near one (at most about 1.1), consistent with backward Euler and not higher. At finer meshes the same measure gives nx=32 (ux 1.397, uy 1.018, p 1.125) and nx=64 (ux 1.396, uy 1.076, p 1.252). Those measured successive-difference orders belong to this mesh and step sequence and include values above one (ux is about 1.4); they are reported as measurements and no order above one is asserted. The departure from one at fixed mesh is a mesh-step cross term in the error balance: successive differences cancel a time-step-independent mesh floor exactly, so no order above one is claimed; naive error-ratio orders at fixed step are dominated by the spatial error and are never reported as temporal order. The isotropic Mandel spatial refinement is non-monotone at the finest level because of the initial drainage boundary discontinuity and is reported separately.",
       "evidence": [
-        "mms-convergence"
+        "mms-convergence",
+        "fe-verification-convergence",
+        "fe-reference-comparison"
       ]
     },
     "finite_deformation": {
@@ -75,9 +80,188 @@
         "finite-deformation-summary",
         "fe-map-partial-0"
       ]
+    },
+    {
+      "title": "Pore-fabric distention probe and rotated-fabric consolidation",
+      "status": "pending",
+      "description": "Reference-state axisymmetric distention law: the Biot tensor, the shape response and the conformal reduction are checked against an independent NumPy implementation of the section equations (worst absolute difference 4.9e-15), and the coupled transient problem is run with the fabric rotated in the plane behind an isotropic, unrotated mineral. The coupled cases are finite-load demonstrations, not quantitative verification of the nonlinear law and not experimental validation.",
+      "artifacts": [
+        "fabric-verification",
+        "fe-fabric-probe",
+        "fe-fabric-probe-data",
+        "fe-fabric-mandel",
+        "fe-fabric-mandel-history",
+        "fe-fabric-mandel-peak"
+      ]
+    },
+    {
+      "title": "Manufactured-solution and reference-comparison displays",
+      "status": "passed",
+      "description": "The manuscript's finite-element verification claims are displayed from the recorded artifacts: manufactured-solution spatial orders, the fixed-mesh successive-difference temporal orders (measurements that include one value above one; no order above one is asserted), the finite-load pressure floor (about 3.2e-3, a discretization floor), and the constant-reference-tangent Mandel comparison of center pressure and pressure profiles against the independently evaluated series.",
+      "artifacts": [
+        "fe-verification-convergence",
+        "fe-reference-comparison",
+        "mms-convergence",
+        "fe-mms-convergence",
+        "fe-load-limit",
+        "fe-mandel-history",
+        "fe-mandel-profiles"
+      ]
     }
   ],
   "artifacts": [
+    {
+      "id": "conformal-verification",
+      "path": "site/reports/conformal-verification.json",
+      "destination": "conformal-verification.json",
+      "kind": "report",
+      "label": "conformal constitutive verification suite",
+      "sha256": "adc2b3820015e90d240401851a122352dcf678c80d6e0e975616a37fd8596799"
+    },
+    {
+      "id": "cpp-python-constitutive",
+      "path": "site/reports/cpp-python-constitutive.json",
+      "destination": "cpp-python-constitutive.json",
+      "kind": "report",
+      "label": "C++ versus independent Python constitutive evaluation",
+      "sha256": "9c2263fc789ab7381f2f40a2bcf9119568023b5d786bb5d81741504186a035d3"
+    },
+    {
+      "id": "fabric-contours-script",
+      "kind": "source",
+      "label": "plot_fabric_contours.py (reads recorded Exodus fields)",
+      "path": "examples/plot_fabric_contours.py",
+      "destination": "source/plot_fabric_contours.py",
+      "sha256": "9c2bc8aa8cafc091d64dc0c3dc5928c885799734f7968e5964fb13345fd07e0d"
+    },
+    {
+      "id": "fabric-law-source",
+      "kind": "source",
+      "label": "FabricLaw.h (transversely isotropic distention law)",
+      "path": "moose_app/include/utils/FabricLaw.h",
+      "destination": "source/FabricLaw.h",
+      "sha256": "761334c6ce4919c1ff1dfb83b4b780ef4b9306f2e30dff4e4d63357cce497961"
+    },
+    {
+      "id": "fabric-material-source",
+      "kind": "source",
+      "label": "FabricMaterial.C (registered material)",
+      "path": "moose_app/src/materials/FabricMaterial.C",
+      "destination": "source/FabricMaterial.C",
+      "sha256": "9abcfab637c610ac9645105d72dcfd63ff19e550305bf8d772981f00ecc030c2"
+    },
+    {
+      "id": "fabric-verification",
+      "kind": "report",
+      "label": "Pore-fabric distention verification",
+      "path": "site/reports/fabric-verification.json",
+      "destination": "reports/fabric-verification.json",
+      "sha256": "8027c7cd265021d9e2970d7abf2c0d132765f8f3fe168587ec538f8cf143086e"
+    },
+    {
+      "id": "fabric-verify-script",
+      "kind": "source",
+      "label": "verify_fabric.py (independent NumPy re-implementation)",
+      "path": "examples/verify_fabric.py",
+      "destination": "source/verify_fabric.py",
+      "sha256": "22b7f4dacd7dbb5f148b4b697cb9efb78e7f2f61958b158366f8207ac08dc1c5"
+    },
+    {
+      "id": "fe-fabric-contour-deck",
+      "kind": "deck",
+      "label": "fabric_contour.i (refined 40 x 8 coupled fabric deck)",
+      "path": "moose_app/inputs/fabric_contour.i",
+      "destination": "deck/fabric_contour.i",
+      "sha256": "284f042caf6702430438b71516278a0c4bd290132a34aac890607ed5117e2c02"
+    },
+    {
+      "id": "fe-fabric-contours",
+      "kind": "figure",
+      "label": "Refined coupled consolidation contours: pressure and displacement magnitude",
+      "path": "figures/fe_fabric_contours.png",
+      "destination": "figures/fe_fabric_contours.png",
+      "sha256": "a2ddeb8d66342fa6b95fb040433cc7da721d71412de0d27f7a0b87988cec0576"
+    },
+    {
+      "id": "fe-fabric-contours-data",
+      "kind": "data",
+      "label": "Refined contour extrema and pressure-maximum locations",
+      "path": "figures/fe_fabric_contours.csv",
+      "destination": "data/fe_fabric_contours.csv",
+      "sha256": "8a618ffc6cee7f95d32b4f52109361a4487b9f4ee0f195eea14c5d10a4a2f7a6"
+    },
+    {
+      "id": "fe-fabric-diffusion",
+      "kind": "figure",
+      "label": "Refined coupled consolidation diffusion snapshots",
+      "path": "figures/fe_fabric_diffusion.png",
+      "destination": "figures/fe_fabric_diffusion.png",
+      "sha256": "391c5a6b3b09d293126b289eab8dc39bbc06d1627a107de93a33349fe4d6fe4c"
+    },
+    {
+      "id": "fe-fabric-diffusion-data",
+      "kind": "data",
+      "label": "Diffusion snapshot extrema and pressure-maximum locations",
+      "path": "figures/fe_fabric_diffusion.csv",
+      "destination": "data/fe_fabric_diffusion.csv",
+      "sha256": "41a66a5d072c4e3b904ac4730a27e7c839723ff432139f7f31d75eb5e37fc48b"
+    },
+    {
+      "id": "fe-fabric-mandel",
+      "kind": "figure",
+      "label": "Rotated-fabric consolidation: pressure response",
+      "path": "figures/fe_fabric_mandel.png",
+      "destination": "figures/fe_fabric_mandel.png",
+      "sha256": "697804467cb5ca1c9d0f54f438634f9cc90a2991dab392f89b0b4f9420c63f17"
+    },
+    {
+      "id": "fe-fabric-mandel-history",
+      "kind": "data",
+      "label": "Rotated-fabric consolidation histories",
+      "path": "figures/fe_fabric_mandel_history.csv",
+      "destination": "data/fe_fabric_mandel_history.csv",
+      "sha256": "822bfda28e447ca69f2959abc9318102d6878d8db3566e8ec5d01b6ac17ac952"
+    },
+    {
+      "id": "fe-fabric-mandel-peak",
+      "kind": "data",
+      "label": "Rotated-fabric peak pressure by orientation",
+      "path": "figures/fe_fabric_mandel_peak.csv",
+      "destination": "data/fe_fabric_mandel_peak.csv",
+      "sha256": "1ad9aba1e1cd83e18ebde3205393454180f6300708289e9ecf8a61f7a8799c8e"
+    },
+    {
+      "id": "fe-fabric-probe",
+      "kind": "figure",
+      "label": "Pore-fabric probe: Biot tensor and shape response",
+      "path": "figures/fe_fabric_probe.png",
+      "destination": "figures/fe_fabric_probe.png",
+      "sha256": "4159c83dc94386017c6ac573edc82486414e13bec81388273991a5e60ca6f002"
+    },
+    {
+      "id": "fe-fabric-probe-data",
+      "kind": "data",
+      "label": "Pore-fabric probe values",
+      "path": "figures/fe_fabric_probe.csv",
+      "destination": "data/fe_fabric_probe.csv",
+      "sha256": "3fe15c0e9d1ec0c9ae024c7fb374a676b8392424788e5893eb7e21c92f50caa3"
+    },
+    {
+      "id": "fe-load-limit",
+      "path": "figures/fe_load_limit.png",
+      "destination": "fe_load_limit.png",
+      "kind": "figure",
+      "label": "finite-load comparison at decreasing compressive load (small-load error floor)",
+      "sha256": "ef8fe419ecdcf35bb1f08dfc453e1a97b81dc09235e04acb39ce5f6761be6934"
+    },
+    {
+      "id": "fe-load-limit-data",
+      "path": "figures/fe_load_limit.csv",
+      "destination": "fe_load_limit.csv",
+      "kind": "data",
+      "label": "finite-load comparison at decreasing compressive load (small-load error floor) (data)",
+      "sha256": "78be5974f732514554acd500618db82c08e7f2eeae01e249da654b5b9f3ec831"
+    },
     {
       "id": "fe-mandel-history",
       "path": "figures/fe_mandel_history.png",
@@ -127,38 +311,6 @@
       "sha256": "4ba439e5250e8a209171f43b43234ea19b2dad1a0279a6cbf159a27e2d1e870d"
     },
     {
-      "id": "fe-mms-convergence",
-      "path": "figures/fe_mms_convergence.png",
-      "destination": "fe_mms_convergence.png",
-      "kind": "figure",
-      "label": "manufactured-solution spatial convergence",
-      "sha256": "91c5afbd928b37b4b84c5d73109a90a3295e66f24582a8ded2dc8863c559c11b"
-    },
-    {
-      "id": "fe-mms-convergence-data",
-      "path": "figures/fe_mms_convergence.csv",
-      "destination": "fe_mms_convergence.csv",
-      "kind": "data",
-      "label": "manufactured-solution spatial convergence (data)",
-      "sha256": "e171cf31b809f677f8eb76426a74b22a632f647cc6511c2d495144a2c36b8feb"
-    },
-    {
-      "id": "fe-load-limit",
-      "path": "figures/fe_load_limit.png",
-      "destination": "fe_load_limit.png",
-      "kind": "figure",
-      "label": "finite-load comparison at decreasing compressive load (small-load error floor)",
-      "sha256": "ef8fe419ecdcf35bb1f08dfc453e1a97b81dc09235e04acb39ce5f6761be6934"
-    },
-    {
-      "id": "fe-load-limit-data",
-      "path": "figures/fe_load_limit.csv",
-      "destination": "fe_load_limit.csv",
-      "kind": "data",
-      "label": "finite-load comparison at decreasing compressive load (small-load error floor) (data)",
-      "sha256": "78be5974f732514554acd500618db82c08e7f2eeae01e249da654b5b9f3ec831"
-    },
-    {
       "id": "fe-map-anisotropic-30",
       "path": "figures/fe_map_anisotropic_30.png",
       "destination": "fe_map_anisotropic_30.png",
@@ -175,36 +327,60 @@
       "sha256": "b168a20f5addcbf66bb980e3cb15eabd6950b961d6b031b318dadb6472d54af4"
     },
     {
+      "id": "fe-mms-convergence",
+      "path": "figures/fe_mms_convergence.png",
+      "destination": "fe_mms_convergence.png",
+      "kind": "figure",
+      "label": "manufactured-solution spatial convergence",
+      "sha256": "91c5afbd928b37b4b84c5d73109a90a3295e66f24582a8ded2dc8863c559c11b"
+    },
+    {
+      "id": "fe-mms-convergence-data",
+      "path": "figures/fe_mms_convergence.csv",
+      "destination": "fe_mms_convergence.csv",
+      "kind": "data",
+      "label": "manufactured-solution spatial convergence (data)",
+      "sha256": "e171cf31b809f677f8eb76426a74b22a632f647cc6511c2d495144a2c36b8feb"
+    },
+    {
+      "id": "fe-reference-comparison",
+      "kind": "figure",
+      "label": "Constant-reference-tangent Mandel comparison: pressure history and profiles",
+      "path": "figures/fe_reference_comparison.png",
+      "destination": "figures/fe_reference_comparison.png",
+      "sha256": "3fa5d03e1225e68c3fa744e262f5ed9bc5e77b61eae6a5a49b830c8de25b57f2"
+    },
+    {
+      "id": "fe-verification-convergence",
+      "kind": "figure",
+      "label": "Measured finite-element verification: manufactured solution, temporal order, finite-load floor",
+      "path": "figures/fe_verification_convergence.png",
+      "destination": "figures/fe_verification_convergence.png",
+      "sha256": "5a9387457be3716e75d395c0aff876e392d72ae054179a4254e5b0d1ab57d07e"
+    },
+    {
+      "id": "fe-verification-script",
+      "kind": "source",
+      "label": "plot_fe_verification.py (finite-element verification displays)",
+      "path": "examples/plot_fe_verification.py",
+      "destination": "source/plot_fe_verification.py",
+      "sha256": "132fa29062c7d439f78208f92b7982f98f28d01d04bd32ce3b748e8372da51b7"
+    },
+    {
+      "id": "finite-deformation-summary",
+      "path": "site/reports/finite-deformation-summary.json",
+      "destination": "finite-deformation-summary.json",
+      "kind": "report",
+      "label": "measured diagnostics of the anisotropic, isotropic-comparison, and partial-drainage demonstrations",
+      "sha256": "dc139b0bd97a4fd2be89ff4b728954017242799e2512ad5beb0be690806663d1"
+    },
+    {
       "id": "fluid-coupling-verification",
       "path": "site/reports/fluid-coupling-verification.json",
       "destination": "fluid-coupling-verification.json",
       "kind": "report",
       "label": "fluid EOS and reference-mass derivative checks",
       "sha256": "5842f2eb55c05ea98abec204e0030db87e3f53ba8bd7b56b965a04b9621f7e76"
-    },
-    {
-      "id": "conformal-verification",
-      "path": "site/reports/conformal-verification.json",
-      "destination": "conformal-verification.json",
-      "kind": "report",
-      "label": "conformal constitutive verification suite",
-      "sha256": "6ffa6e02427b6178ed9aeb64e8c6f1a15603682f6730934dfcd818eeae7b2d0a"
-    },
-    {
-      "id": "tensor-verification",
-      "path": "site/reports/tensor-verification.json",
-      "destination": "tensor-verification.json",
-      "kind": "report",
-      "label": "spherical-gauge tensor verification suite",
-      "sha256": "f6a17c90c258a14a8f002934250c9d933bcf6f25238ea9ad7ff8978991ebf900"
-    },
-    {
-      "id": "reconstruction-verification",
-      "path": "site/reports/reconstruction-verification.json",
-      "destination": "reconstruction-verification.json",
-      "kind": "report",
-      "label": "work-equivalence and unjacketed reconstruction suite",
-      "sha256": "c9bbc67e2dce6e3ee104b9d9234e8fa5fd7a8af277f9679650a1bfd7bec53f99"
     },
     {
       "id": "mandel-reference",
@@ -239,20 +415,12 @@
       "sha256": "87e1d95bb87b4535e5e5389d8d19bc4d5ca97d0a38e95ebc703bff6c5b977887"
     },
     {
-      "id": "cpp-python-constitutive",
-      "path": "site/reports/cpp-python-constitutive.json",
-      "destination": "cpp-python-constitutive.json",
+      "id": "reconstruction-verification",
+      "path": "site/reports/reconstruction-verification.json",
+      "destination": "reconstruction-verification.json",
       "kind": "report",
-      "label": "C++ versus independent Python constitutive evaluation",
-      "sha256": "9c2263fc789ab7381f2f40a2bcf9119568023b5d786bb5d81741504186a035d3"
-    },
-    {
-      "id": "finite-deformation-summary",
-      "path": "site/reports/finite-deformation-summary.json",
-      "destination": "finite-deformation-summary.json",
-      "kind": "report",
-      "label": "measured diagnostics of the anisotropic, isotropic-comparison, and partial-drainage demonstrations",
-      "sha256": "dc139b0bd97a4fd2be89ff4b728954017242799e2512ad5beb0be690806663d1"
+      "label": "work-equivalence and unjacketed reconstruction suite",
+      "sha256": "c9bbc67e2dce6e3ee104b9d9234e8fa5fd7a8af277f9679650a1bfd7bec53f99"
     },
     {
       "id": "scientific-snapshot",
@@ -260,7 +428,15 @@
       "destination": "scientific-snapshot.json",
       "kind": "provenance",
       "label": "exact FE source and evidence snapshot",
-      "sha256": "250ed9d5c48d0df22506f2b5d8474d61552119af10685fdec7e2574a1896059b"
+      "sha256": "00c454ccc508d8eb7d58d0461fe05c687b18c6a6d1b96cccae90f2b5609849b0"
+    },
+    {
+      "id": "tensor-verification",
+      "path": "site/reports/tensor-verification.json",
+      "destination": "tensor-verification.json",
+      "kind": "report",
+      "label": "spherical-gauge tensor verification suite",
+      "sha256": "29602ee893a8edeb9a053d0a3254ea292d780ad256a446b9710cf859c8a1c347"
     }
   ],
   "figures": [
@@ -298,6 +474,36 @@
       "artifact": "fe-map-partial-0",
       "caption": "partial-drainage two-dimensional map",
       "alt": "partial-drainage two-dimensional map generated from the recorded MOOSE runs"
+    },
+    {
+      "artifact": "fe-fabric-probe",
+      "caption": "reference-state pore-fabric probe: axial and transverse Biot coefficients and the directional coupling produced by the volume-axial distention coupling (isotropic mineral, uniform prescribed deformation)",
+      "alt": "bar charts of Biot coefficient components and of the directional Biot difference for the recorded pore-fabric probe runs"
+    },
+    {
+      "artifact": "fe-fabric-mandel",
+      "caption": "coupled consolidation with the pore fabric rotated in the plane and an isotropic unrotated mineral: the direction dependence of the center pressure is produced by the pore fabric alone (finite-load demonstration)",
+      "alt": "center-pressure histories and peak center pressure against fabric orientation from the recorded rotated-fabric consolidation runs"
+    },
+    {
+      "artifact": "fe-verification-convergence",
+      "caption": "measured finite-element verification displays built from the recorded artifacts: manufactured-solution spatial errors and orders, the fixed-mesh successive-difference temporal orders, and the finite-load pressure floor",
+      "alt": "log-log refinement curves for the manufactured solution, measured temporal orders against mesh size, and the finite-load discrepancy at fixed mesh"
+    },
+    {
+      "artifact": "fe-reference-comparison",
+      "caption": "linear constant-reference-tangent Mandel comparison: center-pressure history and pressure profiles against the independently evaluated series at identical saved times",
+      "alt": "center pressure against time and pressure profiles at saved times, finite-element curves against the analytical Mandel series"
+    },
+    {
+      "artifact": "fe-fabric-contours",
+      "caption": "refined (40 x 8) coupled consolidation contours at the common final recorded time: pore pressure and displacement magnitude for the isotropic fabric and fabric axes at 0, 45 and 90 deg (finite-load demonstration on synthetic parameters)",
+      "alt": "filled contours of pore pressure and displacement magnitude across the four fabric variants on the 1 x 0.1 strip"
+    },
+    {
+      "artifact": "fe-fabric-diffusion",
+      "caption": "refined coupled consolidation pressure snapshots at six recorded times showing the Mandel-type drainage front for the isotropic and 45 deg fabric cases",
+      "alt": "pressure contour snapshots at successive times for the isotropic and coupled fabric cases"
     }
   ],
   "reproduction": [
@@ -319,7 +525,17 @@
     {
       "title": "Plots",
       "description": "Regenerate figures from the recorded runs.",
-      "command": "python3 examples/plot_fe_results.py"
+      "command": "python3 examples/plot_fe_results.py && python3 examples/plot_fe_verification.py"
+    },
+    {
+      "title": "Pore-fabric distention verification",
+      "description": "Independent NumPy re-implementation of the distention equations compared against the compiled FabricMaterial fields, the reduced-distention symmetry checks, and the conformal reduction.",
+      "command": "python3 examples/verify_fabric.py && python3 examples/plot_fabric_results.py --runs fe-evidence/runs --output build/fabric-plots"
+    },
+    {
+      "title": "Pore-fabric contour fields",
+      "description": "Read the recorded refined (40 x 8) Exodus fields and regenerate the contour and diffusion figures.",
+      "command": "python3 examples/plot_fabric_contours.py --runs fe-evidence/runs --output figures"
     }
   ],
   "limitations": [
@@ -327,6 +543,7 @@
     "The drained and mineral stiffness tensors must obey the spherical rank-one compliance restriction; they are not independent inputs.",
     "The model describes mineral anisotropy; shape-changing distention and pore-shape anisotropy require additional constitutive mechanics.",
     "Rotated-anisotropy and partial-drainage runs are force-controlled demonstrations with a kinematic rigid platen, not verified quantitative predictions.",
-    "Parameters are synthetic; agreement with numerical and analytical checks is not experimental validation."
+    "Parameters are synthetic; agreement with numerical and analytical checks is not experimental validation.",
+    "The pore-fabric extension relaxes the drained-compliance restriction to a fabric-symmetric form derived from the distention energy; with an isotropic mineral the Biot tensor is directionally anisotropic only when the volume-axial distention coupling is nonzero. The implemented model retains the two-dimensional axisymmetric distention subspace (volumetric and axial), so the fabric tensor takes exactly the transversely isotropic form of eq:fabric-transverse-h and the reported shape scalar is the logarithm of the unimodular transverse fabric eigenvalue."
   ]
 }

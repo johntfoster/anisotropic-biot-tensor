@@ -59,8 +59,9 @@ def main():
     for name in sorted(os.listdir(os.path.join(REPO, 'tools'))):
         if name.endswith('.py'):
             files.add(os.path.join('tools', name))
-    files.update(('build/main.pdf', 'build/main.log', 'build/conformal-2026-09-20-v1.zip'))
-    for sub in ('conformal', 'weighted-stress'):
+    files.update(('build/main.pdf', 'build/main.log',
+                  'build/anisotropic-biot-2026-09-20-v2.zip'))
+    for sub in ('conformal', 'weighted-stress', 'fabric'):
         walk(os.path.join('build', sub), os.path.join('build', sub), files)
     walk('moose_app', 'moose_app', files, skip_dirs=('build', 'lib', '.libs'))
 

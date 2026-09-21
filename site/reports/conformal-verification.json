@@ -1275,7 +1275,7 @@
   "quadrature_error": 2.6852648697597256e-13,
   "versions": {
     "python": "3.10.12",
-    "numpy": "1.26.4",
+    "numpy": "2.2.6",
     "scipy": "1.15.3"
   },
   "source_sha256": {

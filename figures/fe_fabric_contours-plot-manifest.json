@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "generator": "examples/plot_fabric_contours.py",
+  "versions": {
+    "python": "3.10.12",
+    "numpy": "2.2.6",
+    "matplotlib": "3.10.8",
+    "netCDF4": "1.7.4"
+  },
+  "figures": [
+    {
+      "id": "fe_fabric_contours",
+      "files": [
+        "fe_fabric_contours.pdf",
+        "fe_fabric_contours.png"
+      ],
+      "caption": "Refined (40 x 8) coupled consolidation contours at the common recorded time t = 0.003. Top row: pore pressure. Bottom row: displacement magnitude. Columns: isotropic (uncoupled) fabric, then fabric axis 0, 45 and 90 deg behind an isotropic, unrotated mineral. The orange arrow marks the fabric axis; the isotropic column carries no arrow because its distention stiffness has no directional coupling. Equal aspect preserves the 1 x 0.1 domain. These are finite-load demonstrations on synthetic parameters, not a mesh-convergence study.",
+      "cases": [
+        "fabric_contour_iso",
+        "fabric_contour_a0",
+        "fabric_contour_a45",
+        "fabric_contour_a90"
+      ],
+      "data": [
+        "fe_fabric_contours.csv"
+      ]
+    },
+    {
+      "id": "fe_fabric_diffusion",
+      "files": [
+        "fe_fabric_diffusion.pdf",
+        "fe_fabric_diffusion.png"
+      ],
+      "caption": "Refined (40 x 8) coupled consolidation: pore-pressure snapshots at six recorded times, isotropic (uncoupled) row above and coupled $45^\\circ$ fabric row below on a shared colour scale. The drainage front starts at the drained right edge and propagates into the strip; the interior pressure is a genuine diffusion field, not a uniform or degenerate state. Equal aspect preserves the 1 x 0.1 domain. These are finite-load demonstrations on synthetic parameters, not a mesh-convergence study.",
+      "cases": [
+        "fabric_contour_iso",
+        "fabric_contour_a45"
+      ],
+      "data": [
+        "fe_fabric_diffusion.csv"
+      ]
+    }
+  ],
+  "input_sha256": {
+    "examples/plot_fabric_contours.py": "9c2bc8aa8cafc091d64dc0c3dc5928c885799734f7968e5964fb13345fd07e0d",
+    "fe-evidence/runs/fabric_contour_iso/solution.e": "7b79a565d9d2dd8bf16cc04f3bd25ef599d6576c2db37b200b8cbfa31ff80ac9",
+    "fe-evidence/runs/fabric_contour_a0/solution.e": "8fba1339ef50626f70fede4efc20279266813c6d4d161c7fd40b810fecd72221",
+    "fe-evidence/runs/fabric_contour_a45/solution.e": "9dd707938ef8e56e2dccc0ced4498bd3c54f5c7037bb3145b7d51f0ac9599478",
+    "fe-evidence/runs/fabric_contour_a90/solution.e": "f8f5f3617c2df91f0bf319e411c2c954bf390f834ccce304b621e136730fe1e6"
+  },
+  "output_sha256": {
+    "fe_fabric_contours.csv": "8a618ffc6cee7f95d32b4f52109361a4487b9f4ee0f195eea14c5d10a4a2f7a6",
+    "fe_fabric_contours.pdf": "d2dcc0c5d0a82ef15103dd94ef6cbd48da7dd37fdff14e89ff568c271003093e",
+    "fe_fabric_contours.png": "a2ddeb8d66342fa6b95fb040433cc7da721d71412de0d27f7a0b87988cec0576",
+    "fe_fabric_diffusion.csv": "41a66a5d072c4e3b904ac4730a27e7c839723ff432139f7f31d75eb5e37fc48b",
+    "fe_fabric_diffusion.pdf": "5ce18742184855f96461fc4e282223de73c673233901f7def7c888fff76abf4b",
+    "fe_fabric_diffusion.png": "391c5a6b3b09d293126b289eab8dc39bbc06d1627a107de93a33349fe4d6fe4c"
+  },
+  "limitations": [
+    "Fields are read from the recorded Exodus files only; no time interpolation.",
+    "The refined runs are finite-load demonstrations on synthetic parameters, not a mesh-convergence study.",
+    "The displacement magnitude is evaluated at the recorded nodal positions from ux and uy.",
+    "Physical validation has not been performed."
+  ]
+}
