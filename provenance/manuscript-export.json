@@ -3,7 +3,6 @@
   "description": "Paths belonging to the public anisotropic-Biot theoretical paper repository.",
   "paths": [
     ".latexmkrc",
-    ".vscode",
     "AGENTS.md",
     "VISION.md",
     "README.md",
