@@ -66,7 +66,24 @@ stiffness in a common material frame, which amounts to fixing
 \(\mathbf R_A=\mathbf I\) in
 \eqref{eq:fabric-multiplicative}--\eqref{eq:fabric-mineral-metric}. This
 is a modeling choice; in the conformal specialization it is immaterial
-because \(\mathbf R_A\) cancels there.
+because \(\mathbf R_A\) cancels there. Fixing the rotation has three
+consequences. The distention is symmetric in the material frame, so
+\(\mathbf G\) carries both the shape and the orientation of the
+distention, and the orientation of the pore fabric relative to the
+mineral enters as prescribed material data rather than as a quantity the
+deformation determines. The construction therefore carries no rotational
+fabric variable, it represents no rotation of the pore fabric relative to
+the mineral matrix, and the elastic equilibrium of
+\cref{sec:fabric-equilibrium} dissipates no work in such a rotation. The
+drained compliance relation and the Biot tensor derived below are
+properties of this fixed-orientation construction, in which the pore
+fabric sets the anisotropy of the pressure coupling at a fixed
+orientation and only its shape changes. A relative rotation at the
+fabric--mineral interface, resisted by friction or by viscous slip, would
+require a constitutive relation for \(\mathbf R_A\), the couple conjugate
+to its rate, and the work that the resistance dissipates. The fixed
+rotation is the limiting case in which the resisting mechanism prevents
+relative rotation, and we leave the dissipative case to future work.
 
 \subsection{Mass, volume, and the fabric tensor}
 \label{sec:fabric-mass}
