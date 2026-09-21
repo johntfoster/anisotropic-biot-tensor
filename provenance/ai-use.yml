@@ -33,11 +33,47 @@
       "name": "OpenAI Codex",
       "provider": "OpenAI",
       "model_versions": [
+        "GPT-5.6 Sol",
         "GPT-5.6 Terra",
         "GPT-6 Astra"
       ],
-      "model_versions_status": "historical survey and current session status"
+      "model_versions_status": "recorded_versions_recovered_history_incomplete",
+      "model_identifiers": [
+        "gpt-5.6-sol",
+        "gpt-5.6-terra",
+        "gpt-6-astra"
+      ]
+    },
+    {
+      "name": "GitHub Copilot",
+      "provider": "GitHub",
+      "model_versions": [
+        "DeepSeek V4 Flash",
+        "DeepSeek V4 Pro",
+        "Qwen3-Coder-Next (Q4_K_M)",
+        "Qwen3.6 (27B)"
+      ],
+      "model_versions_status": "recorded_versions_recovered_history_incomplete",
+      "model_identifiers": [
+        "deepseek/deepseek-v4-flash",
+        "deepseek/deepseek-v4-pro",
+        "qwen3-coder-next:q4_K_M",
+        "qwen3.6:27b"
+      ]
+    },
+    {
+      "name": "OpenClaw",
+      "provider": "OpenClaw",
+      "model_versions": [
+        "GPT-5.6 Sol",
+        "DeepSeek V4 Flash"
+      ],
+      "model_versions_status": "recorded_versions_recovered_history_incomplete",
+      "model_identifiers": [
+        "gpt-5.6-sol",
+        "deepseek-v4-flash"
+      ]
     }
   ],
-  "journal_statement": "The author used OpenAI Codex (GPT-5.6 Terra and GPT-6 Astra) to assist with manuscript drafting, derivation checks, numerical implementation, figure preparation, and simulated peer review. The current working revision includes AI-assisted work through 20 September 2026. The scientific scope and modeling choices were directed by the author. Numerical verification and independent AI reviews support preparation of this draft; they do not constitute journal peer review or final author approval. The author retains responsibility for the scientific content and will review the final manuscript before submission. AI output is not cited as a scholarly source or credited with authorship. Reproducible code and review records accompany the manuscript."
+  "journal_statement": "The author used OpenAI Codex (GPT-5.6 Sol, GPT-5.6 Terra, and GPT-6 Astra), GitHub Copilot (DeepSeek V4 Flash, DeepSeek V4 Pro, Qwen3-Coder-Next (Q4_K_M), and Qwen3.6 (27B)), and OpenClaw (GPT-5.6 Sol and DeepSeek V4 Flash) to assist with manuscript drafting, derivation checks, numerical implementation, figure preparation, and simulated peer review. The current working revision includes AI-assisted work through 21 September 2026. The scientific scope and modeling choices were directed by the author. Numerical verification and independent AI reviews support preparation of this draft; they do not constitute journal peer review or final author approval. The author retains responsibility for the scientific content and will review the final manuscript before submission. AI output is not cited as a scholarly source or credited with authorship. Reproducible code and review records accompany the manuscript."
 }

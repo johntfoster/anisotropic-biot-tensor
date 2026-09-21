@@ -193,10 +193,8 @@ a reconstruction suite checks work equivalence and finite unjacketed
 compression. Numerical differentiation supports implementation verification,
 not experimental validation or a proof of global stability.
 
-The implementation is in \nolinkurl{examples/conformal_model.py}.
-The scripts \nolinkurl{examples/conformal_experiments.py} and
-\nolinkurl{examples/verify_conformal.py} generate the examples and run
-the checks, respectively. The repository records the parameter matrices, loading paths,
+The implementation and its verification scripts travel with the manuscript
+sources. The repository records the parameter matrices, loading paths,
 solver residuals, software versions, and figure data as JSON and CSV files.
 All plotted states satisfy positive phase volumes and the scalar stability
 condition \eqref{eq:trace-mineral-stability-domain}. At negative pressure,
@@ -208,37 +206,19 @@ outside the plotted range. Local scalar stability does not establish
 stability against all deformation modes.
 
 \paragraph{Code and data availability.}
-The numerical supplement is embedded in the PDF as the attachment
-\texttt{anisotropic-\allowbreak biot-\allowbreak2026-\allowbreak09-\allowbreak20-\allowbreak v2.zip}.
-It contains the numerical sources,
-parameter matrices, CSV figure data, and verification reports. The archive's
-\nolinkurl{manifest.json} identifies its version and SHA-256 hashes of all
-payload files; its README gives the reproduction commands. Download the PDF
-and use an attachment-capable viewer to save the archive, or extract it with
-\texttt{pdfdetach -saveall article.pdf}. This supplement is self-contained
-and does not require the companion repository, and it covers the
-constitutive and material-point verification. The archive does ship the
-pore-fabric constitutive law, the material that registers it, and their
-coupled decks under \nolinkurl{moose_app/}: the \nolinkurl{FabricLaw.h}
-distention law, the \nolinkurl{FabricMaterial.h} and
-\nolinkurl{FabricMaterial.C} material, and the \nolinkurl{fabric_probe.i},
-\nolinkurl{conformal_probe.i}, and \nolinkurl{fabric_mandel.i} decks, together
-with the recorded run histories those scripts read. Those decks are inputs,
-not a runnable build: reproducing them requires the repository application
-build, whose remaining sources the archive does not ship. The rest of the coupled
-finite-element implementation of section~\ref{sec:finite-elements} is not
-part of that archive: its remaining application sources, deck inputs,
-per-run analyses, figure data, and the machine-readable
-verification-evidence file travel with the manuscript sources
-in the repository
-\url{https://github.com/johntfoster/anisotropic-biot-tensor}: the application
-sources under \nolinkurl{moose_app/}, the independent reference and validation
-scripts under \nolinkurl{validation/}, the deck inputs and per-run analyses
-under \nolinkurl{fe-evidence/runs/} (each case directory holds its input deck,
-run provenance, per-run analysis, and scalar history), the manufactured-solution
-convergence analysis under \nolinkurl{fe-evidence/mms-convergence.json}, figure
-data under \nolinkurl{figures/}, and the verification-evidence file at
-\nolinkurl{site/evidence.json}, which records the inspected source revision and
-pins the SHA-256 hashes of the implementation and evidence files it reports.
-The public source location and inspected commit of the unpublished companion
-manuscript are given in reference~\citep{foster2026poroplastic}.
+The numerical supplement is embedded in the PDF as an attachment. It carries
+the numerical sources, parameter matrices, CSV figure data, and verification
+reports, together with a manifest that identifies its version and the SHA-256
+hashes of its payload files and a README that gives the reproduction commands.
+Download the PDF and use an attachment-capable viewer to save the archive, or
+extract it with \texttt{pdfdetach -saveall article.pdf}. The supplement is
+self-contained and does not require the companion repository, and it covers
+the constitutive and material-point verification. The remaining coupled
+finite-element application sources of section~\ref{sec:finite-elements}, the
+deck inputs and per-run analyses, the manufactured-solution convergence
+analysis, the figure data, and the machine-readable verification-evidence file
+travel with the manuscript sources in the repository named in the
+data-availability statement, whose evidence file records the inspected source
+revision and pins the SHA-256 hashes of the files it reports. The public source
+location and inspected commit of the unpublished companion manuscript are
+given in reference~\citep{foster2026poroplastic}.
