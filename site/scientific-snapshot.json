@@ -30,7 +30,7 @@
     },
     {
       "path": "examples/plot_fe_verification.py",
-      "sha256": "132fa29062c7d439f78208f92b7982f98f28d01d04bd32ce3b748e8372da51b7"
+      "sha256": "0b0be26cb8f2f642d07d7965363645fe8819bb735dab48756aaaa6ba3c798db1"
     },
     {
       "path": "examples/verify_conformal.py",

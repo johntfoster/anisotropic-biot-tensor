@@ -168,7 +168,7 @@ def convergence_figure(report):
         'final time; the annotated numbers are the measured adjacent orders, not '
         'a fitted rate. (b) Temporal order measured by successive differences of '
         'the exact-solution error norms at fixed mesh for $nx=16,32,64$; the '
-        'values include one above unity, and no order above one is asserted. '
+        'values include entries above unity, and no order above one is asserted. '
         '(c) Linear step refinement of the constant-tangent comparison: the '
         'normalized center-pressure error against the time step, with the measured '
         'coarse/fine ratio annotated. (d) The finite-deformation solutions compared '

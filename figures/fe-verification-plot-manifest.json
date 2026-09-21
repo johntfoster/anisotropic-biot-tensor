@@ -2,8 +2,8 @@
   "schema_version": 1,
   "generator": "examples/plot_fe_verification.py",
   "versions": {
-    "python": "3.14.0",
-    "numpy": "2.4.2",
+    "python": "3.10.12",
+    "numpy": "2.2.6",
     "matplotlib": "3.10.8"
   },
   "figures": [
@@ -13,7 +13,7 @@
         "fe_verification_convergence.pdf",
         "fe_verification_convergence.png"
       ],
-      "caption": "Finite-element verification displays, all read from recorded artifacts. (a) Manufactured-solution $L^2$ errors against mesh size at the fixed final time; the annotated numbers are the measured adjacent orders, not a fitted rate. (b) Temporal order measured by successive differences of the exact-solution error norms at fixed mesh for $nx=16,32,64$; the values include one above unity, and no order above one is asserted. (c) Linear step refinement of the constant-tangent comparison: the normalized center-pressure error against the time step, with the measured coarse/fine ratio annotated. (d) The finite-deformation solutions compared with the linear Mandel series as the compressive load decreases at fixed mesh and time step; the pressure discrepancy floors rather than decaying to the linear reference, so this panel is a demonstration, not a verified limit.",
+      "caption": "Finite-element verification displays, all read from recorded artifacts. (a) Manufactured-solution $L^2$ errors against mesh size at the fixed final time; the annotated numbers are the measured adjacent orders, not a fitted rate. (b) Temporal order measured by successive differences of the exact-solution error norms at fixed mesh for $nx=16,32,64$; the values include entries above unity, and no order above one is asserted. (c) Linear step refinement of the constant-tangent comparison: the normalized center-pressure error against the time step, with the measured coarse/fine ratio annotated. (d) The finite-deformation solutions compared with the linear Mandel series as the compressive load decreases at fixed mesh and time step; the pressure discrepancy floors rather than decaying to the linear reference, so this panel is a demonstration, not a verified limit.",
       "sources": [
         "figures/fe_mms_convergence.csv",
         "fe-evidence/mms-convergence.json",
@@ -37,17 +37,17 @@
   "missing": [],
   "input_sha256": {
     "figures/fe_mms_convergence.csv": "e171cf31b809f677f8eb76426a74b22a632f647cc6511c2d495144a2c36b8feb",
-    "fe-evidence/mms-convergence.json": "87e1d95bb87b4535e5e5389d8d19bc4d5ca97d0a38e95ebc703bff6c5b977887",
+    "fe-evidence/mms-convergence.json": "de2ca677a47f3c7745a9cc748ad7be768e4884b7b6934878df853036508419a0",
     "figures/fe_mandel_refinement.csv": "4ba439e5250e8a209171f43b43234ea19b2dad1a0279a6cbf159a27e2d1e870d",
     "figures/fe_load_limit.csv": "78be5974f732514554acd500618db82c08e7f2eeae01e249da654b5b9f3ec831",
     "figures/fe_mandel_history.csv": "f38dd4be7520364f7dfdfa3cedfc238f69ad9c13e978b7344adf3b73cde13d97",
     "figures/fe_mandel_profiles.csv": "94eaf1a5a616504aacfa5d86e56f61983839bf409ec8d70876af123e7abe90a1"
   },
   "output_sha256": {
-    "fe_verification_convergence.pdf": "12cdde8ebd569d5dab0f1598bfa93e392cd6908e573f5edeb9bf79288763d755",
-    "fe_verification_convergence.png": "5a9387457be3716e75d395c0aff876e392d72ae054179a4254e5b0d1ab57d07e",
-    "fe_reference_comparison.pdf": "4d5a499c40824119b5b870984faa4d10bed92905f6cbe4ea87cb4e9b28e57550",
-    "fe_reference_comparison.png": "3fa5d03e1225e68c3fa744e262f5ed9bc5e77b61eae6a5a49b830c8de25b57f2"
+    "fe_verification_convergence.pdf": "a7bebca7b89a9c5d8397a92bedfa0bf549c5750eb26e343e5fa16f7a810c61ec",
+    "fe_verification_convergence.png": "c5d8de253fb42d0df84c5436d871672d7d2e9a5f0bb8cc5a67bedc19feefcb2c",
+    "fe_reference_comparison.pdf": "d42df6413254a058157ab49de223ee5398462783bb8e736887be380af90b07f7",
+    "fe_reference_comparison.png": "86707f8dc2b25414c3cb60d6509466f52ca7706c1ffb851f222007d49bbcda01"
   },
   "limitations": [
     "Every curve is read from a recorded artifact; this does not certify its scientific acceptance.",

@@ -4,7 +4,7 @@
   "title": "An anisotropic Biot tensor: finite-element verification",
   "summary": "This companion records the evidence for the conformal-distention model and its MOOSE implementation. Constitutive, fluid-coupling, analytical reference, and manufactured-solution convergence checks pass and are published here with regenerated figures; finite-deformation demonstrations and physical validation remain pending or not performed.",
   "provenance": {
-    "source_revision": "ab46ebe44b7f7a08c06f31b1f2c8a77deb7e464c",
+    "source_revision": "97e862b30e176b8fa1f223abef9adfef78d4cfc3",
     "scientific_snapshot": "scientific-snapshot",
     "note": "The base commit predates this working revision. The finite-element sources and evidence are provided under the repository-relative paths moose_app/, validation/, fe-evidence/, figures/ and site/; the scientific-snapshot artifact lists the exact files with SHA-256 hashes, and the review snapshot pinned in the review record is the authoritative frozen artifact for the checks below."
   },
@@ -348,7 +348,7 @@
       "label": "Constant-reference-tangent Mandel comparison: pressure history and profiles",
       "path": "figures/fe_reference_comparison.png",
       "destination": "figures/fe_reference_comparison.png",
-      "sha256": "3fa5d03e1225e68c3fa744e262f5ed9bc5e77b61eae6a5a49b830c8de25b57f2"
+      "sha256": "86707f8dc2b25414c3cb60d6509466f52ca7706c1ffb851f222007d49bbcda01"
     },
     {
       "id": "fe-verification-convergence",
@@ -356,7 +356,7 @@
       "label": "Measured finite-element verification: manufactured solution, temporal order, finite-load floor",
       "path": "figures/fe_verification_convergence.png",
       "destination": "figures/fe_verification_convergence.png",
-      "sha256": "5a9387457be3716e75d395c0aff876e392d72ae054179a4254e5b0d1ab57d07e"
+      "sha256": "c5d8de253fb42d0df84c5436d871672d7d2e9a5f0bb8cc5a67bedc19feefcb2c"
     },
     {
       "id": "fe-verification-script",
@@ -364,7 +364,7 @@
       "label": "plot_fe_verification.py (finite-element verification displays)",
       "path": "examples/plot_fe_verification.py",
       "destination": "source/plot_fe_verification.py",
-      "sha256": "132fa29062c7d439f78208f92b7982f98f28d01d04bd32ce3b748e8372da51b7"
+      "sha256": "0b0be26cb8f2f642d07d7965363645fe8819bb735dab48756aaaa6ba3c798db1"
     },
     {
       "id": "finite-deformation-summary",
@@ -428,7 +428,7 @@
       "destination": "scientific-snapshot.json",
       "kind": "provenance",
       "label": "exact FE source and evidence snapshot",
-      "sha256": "00c454ccc508d8eb7d58d0461fe05c687b18c6a6d1b96cccae90f2b5609849b0"
+      "sha256": "b43662d7817cfc71d40abfd049d0d1d14e8582bbc1a24b3c447ac8c35d0299d9"
     },
     {
       "id": "tensor-verification",

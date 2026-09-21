@@ -52,9 +52,10 @@ exercised on rotated-anisotropy
 and partial-drainage demonstrations at finite load; no quantitative
 finite-deformation verification and no experimental validation are claimed for
 those demonstrations. The tensorial distention law is implemented in its
-reference-state linearization and checked at the material point against an
-independent re-implementation
-of the section equations, and demonstrated in a coupled calculation whose
+reference-state linearization and checked at the material point against a
+separate re-implementation
+of the section equations that shares their modelling conventions, and
+demonstrated in a coupled calculation whose
 pressure response rotates with the pore fabric behind an isotropic mineral.
 The construction
 isolates anisotropy inherited from the mineral. Replacing the scalar
@@ -64,7 +65,9 @@ shape-changing distention: it relaxes the rank-one drained-compliance
 restriction to a fabric-symmetric compliance supported on the retained
 volumetric--axial distention subspace and yields an anisotropic Biot tensor
 driven by both mineral
-and pore-fabric anisotropy.
+and pore-fabric anisotropy, with the pore-fabric orientation prescribed as
+material data and no relative rotation of the fabric and the mineral matrix
+represented.
 \end{abstract}
 \noindent\textbf{Keywords:} anisotropic poroelasticity; finite deformation;
 Biot tensor; mineral compression; logarithmic strain; finite-element
@@ -215,11 +218,15 @@ state reached by removing the distention in \eqref{eq:spherical-distention}.
 A bar on an intrinsic density denotes the per-phase-volume value
 \(\bar\rho_\xi=\rho_\xi/\phi_\xi\), which is the mineral state for the solid.
 A bar on a stress denotes its representation in the mixture frame, whereas a hat denotes
-the true frame. A bar on a prescribed boundary datum, such as the mass flux
+the true frame; written on the distention stress \(\bar{\mathbf S}_{\mathrm{dis}}\) of
+\eqref{eq:fabric-distention-stress}, a bar instead denotes that stress in the
+intermediate frame, normalized per reference mixture volume. A bar on a
+prescribed boundary datum, such as the mass flux
 \(\bar Q_f\) of \eqref{eq:fe-fluid-residual}, denotes its prescribed value on that
 boundary.
 A superscript \(d\) denotes the drained skeleton, as in the drained
-stiffness \(\mathbb{C}^d\) of \eqref{eq:drained-stiffness-restriction}. The
+stiffness \(\mathbb{C}^d\) of \eqref{eq:drained-stiffness-restriction} and
+the drained energy \(W^d\) of \eqref{eq:prescribed-logarithmic-energies}. The
 distention quantities instead carry the subscript \(\mathrm{dis}\):
 \(W_{\mathrm{dis}}\), \(\mathbf E_{\mathrm{dis}}\), and
 \(\mathbf S_{\mathrm{dis}}\) in \cref{sec:pore-fabric}. The two labels are
@@ -575,7 +582,8 @@ is asserted. \Cref{fig:fe-verification} displays these measurements and
 rotated-anisotropy, partial-drainage, and rotated-pore-fabric calculations are
 reported as demonstrations, not as quantitative verification of the nonlinear
 law or as experimental validation; the fabric law itself is checked at the
-material point against an independent re-implementation of its equations.
+material point against a separate re-implementation of its equations, which
+shares the section's modelling conventions.
 
 Conformal distention requires the skeleton and mineral to share their
 normalized right stretch, while allowing a relative rotation. With a
