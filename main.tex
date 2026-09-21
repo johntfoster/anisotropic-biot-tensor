@@ -224,12 +224,12 @@ A bar on a stress denotes its representation in the mixture frame, whereas a hat
 the true frame. The barred stresses also carry different normalizations:
 \(\bar{\mathbf\sigma}_s\) is per current mineral volume,
 \(\bar{\mathbf\tau}_s=\bar J\bar{\mathbf\sigma}_s\) of
-\eqref{eq:kirchhoff-volume-conventions} is per reference mineral volume, and
-written on the distention stress \(\bar{\mathbf S}_{\mathrm{dis}}\) of
-\eqref{eq:fabric-distention-stress}, a bar instead marks the member of the
+\eqref{eq:kirchhoff-volume-conventions} is per reference mineral volume.
+When the bar is written on the distention stress \(\bar{\mathbf S}_{\mathrm{dis}}\)
+of \eqref{eq:fabric-distention-stress} it instead marks the member of the
 work-conjugate pair that is conjugate to the distention tensor \(\mathbf G\),
-per reference mixture volume in the intermediate frame, its unbarred partner
-\(\mathbf S_{\mathrm{dis}}\) being conjugate to the distention logarithmic
+per reference mixture volume in the intermediate frame; its unbarred partner
+\(\mathbf S_{\mathrm{dis}}\) is conjugate to the distention logarithmic
 strain \(\mathbf E_{\mathrm{dis}}\) in that same frame and normalization. A bar on a
 prescribed boundary datum, such as the mass flux
 \(\bar Q_f\) of \eqref{eq:fe-fluid-residual}, denotes its prescribed value on that
@@ -249,7 +249,8 @@ distention quantities instead carry the subscript \(\mathrm{dis}\):
 \(W_{\mathrm{dis}}\), \(\mathbf E_{\mathrm{dis}}\), and
 \(\mathbf S_{\mathrm{dis}}\) in \cref{sec:pore-fabric}, together with the
 scalar volume-only distention energy \(W_A(a)\) of \cref{sec:work-equivalence},
-of which \(W_{\mathrm{dis}}\) is the tensorial generalization. The two labels are
+of which \(W_{\mathrm{dis}}\) is the tensorial generalization; both energies are
+normalized per reference mixture volume. The two labels are
 kept distinct throughout, so \(d\) never means distention.
 The two stress representations differ by the rotation \eqref{eq:rotated-mineral-cauchy}.
 Fourth-order tensors are set in blackboard bold and second-order tensors in
@@ -262,6 +263,9 @@ upright bold. Conservation of solid mass gives
  \phi_s a=\phi_{s0}.
  \label{eq:distention}
 \end{align}
+For an incompressible solid phase the intrinsic density is constant,
+\(\bar\rho_s=\bar\rho_{s0}\), so \eqref{eq:distention} gives \(\bar J=1\); the
+present construction is the compressible generalization of that limit.
 The reference solid fraction satisfies \(0<\phi_{s0}<1\). Full saturation
 gives fluid fraction \(1-\phi_s\). We retain states with positive mineral
 volume and \(0<\phi_s<1\).
