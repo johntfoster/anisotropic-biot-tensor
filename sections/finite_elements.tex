@@ -15,8 +15,8 @@ The elastic law supplies total Cauchy stress through
  \mathbf P=J\mathbf\sigma\mathbf F^{-T}.
  \label{eq:fe-total-first-piola}
 \end{equation}
-This stress already contains the fluid-pressure contribution. No additional
-effective-stress correction is applied in the momentum residual.
+This stress already contains the fluid-pressure contribution. The momentum
+residual applies no additional effective-stress correction.
 
 \subsection{Fluid mass and the transport closure}
 \label{sec:fe-fluid-closure}
@@ -141,8 +141,8 @@ and zero tangential traction. For force-controlled consolidation, the
 common normal displacement is unknown and the integrated plate reaction
 equals the prescribed resultant force. This boundary condition permits
 the normal traction to redistribute along a plate as drainage proceeds.
-It is distinct from prescribing the same normal traction at every
-point of that boundary.
+This condition is distinct from prescribing the same normal traction at
+every point of that boundary.
 
 \subsection{Reference problems and error measures}
 \label{sec:fe-reference-problems}
@@ -174,7 +174,7 @@ therefore has an incompatible trace at the drainage boundary, and the
 earliest discrete profile contains an unresolved diffusion layer.
 We retain the maximum error over all positive output times and also compare
 profiles at common fixed positive times under separate spatial and temporal
-refinement. Pressure errors are normalized by the initial interior pressure,
+refinement. We normalize pressure errors by the initial interior pressure,
 and displacement errors by the corresponding final drained displacement.
 Neither normalization divides by a transient value approaching zero.
 
@@ -246,19 +246,19 @@ comparison times. Neither panel interpolates in time or fits a coefficient.}
  \label{fig:fe-reference-comparison}
 \end{figure}
 
-For a conservative backward-Euler solve, fluid discharge is accumulated
-with the same end-step quadrature as the mass residual. The balance error
-is normalized by the larger of the mobilized fluid mass and accumulated
+For a conservative backward-Euler solve, we accumulate the fluid discharge
+with the same end-step quadrature as the mass residual. We normalize the
+balance error by the larger of the mobilized fluid mass and accumulated
 absolute discharge, with a stated small floor before drainage begins.
 The boundary reaction of the pressure residual provides a discrete
-conservative flux. A flux reconstructed from boundary pressure gradients
-is evaluated separately because its discretization error is not the
-algebraic mass-balance error.
+conservative flux. We evaluate a flux reconstructed from boundary pressure
+gradients separately because its discretization error is not the algebraic
+mass-balance error.
 
 \subsection{Pore-fabric demonstration}
 \label{sec:fe-fabric}
 
-The tensorial distention law of \cref{sec:pore-fabric} is implemented as a
+We implement the tensorial distention law of \cref{sec:pore-fabric} as a
 material that evaluates the reference-state drained stiffness, the Biot
 tensor, and the distention strains. The compiled law retains the
 two-dimensional axisymmetric distention subspace of
@@ -316,7 +316,7 @@ with the volume--axial coupling switched off. Each peak coincides with the
 final recorded state rather than a transient overshoot.
 \Cref{fig:fe-fabric-mandel} shows the centre-pressure histories and the peak
 pressures from which these values are read. To resolve the fields behind those
-histories, the same coupled problem is rerun on a refined
+histories, we rerun the same coupled problem on a refined
 \(40\times8\) mesh of the \(1\times0.1\) strip, with the same boundary
 conditions, material and fabric parameters, and time integration, but a smaller
 step so the Exodus output records eleven evenly spaced field snapshots across

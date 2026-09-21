@@ -45,7 +45,8 @@ The energies, zero in the undeformed state, are
  W^d=\frac12\mathbf\varepsilon:\mathbb{C}^d:\mathbf\varepsilon.
  \label{eq:prescribed-logarithmic-energies}
 \end{equation}
-The first is per reference mineral volume and the second per reference
+The mineral energy \(\bar W_s\) is normalized per reference mineral
+volume, and the drained energy \(W^d\) is normalized per reference
 mixture volume. At zero pressure the coupled energy must recover \(W^d\).
 
 We first determine the scalar distention energy from a spherical drained
@@ -114,10 +115,10 @@ from the prescribed mineral Hooke law. It vanishes for an isotropic mineral.
 The final term is the mineral shape energy, weighted by reference solid
 fraction.
 
-Pressure equilibrium is enforced by differentiating this energy at fixed
-\(\mathbf F\).
-Both \(J\) and skeleton shape then remain fixed while distention changes
-with mineral volume. Multiplying the derivative by \(\bar J\) gives
+We enforce pressure equilibrium by differentiating this energy at fixed
+\(\mathbf F\). At fixed skeleton deformation, \(J\) and the skeleton shape
+remain fixed, and the distention changes only through the mineral volume.
+Multiplying the derivative by \(\bar J\) gives
 \begin{align}
  -\phi_{s0}p\bar J
  &=-\frac{K\ln(J/\bar J)}{1-K/(\phi_{s0}K_s)}
@@ -150,8 +151,9 @@ local minimum of \(W_s+\phi_{s0}p\bar J\) with respect to mineral volume.
 At negative pressure this minimum need not be global. Positive phase volumes
 and stability against general deformation must be checked separately.
 
-The spherical drained path fixed \(W_A\). Reproducing the entire drained
-Hooke law places a further restriction on \(\mathbb{C}^d\).
+The spherical drained path determines the distention energy \(W_A\).
+Requiring the model to reproduce the entire drained Hooke law places a
+further restriction on \(\mathbb{C}^d\).
 Setting \(p=0\) in \eqref{eq:anisotropic-mineral-eos} gives
 \begin{equation}
  \ln a=\frac1{3K_s}\left(1-\frac K{\phi_{s0}K_s}\right)

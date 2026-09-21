@@ -282,6 +282,7 @@ def main():
             'The refined runs are finite-load demonstrations on synthetic parameters, not a mesh-convergence study.',
             'The displacement magnitude is evaluated at the recorded nodal positions from ux and uy.',
             'Physical validation has not been performed.',
+            'The recorded Exodus files embed a per-run wall-clock line in their information records, so their raw bytes are not reproducible across runs; the recorded CSV histories and the field arrays are.',
         ])
     (args.output / 'fe_fabric_contours-plot-manifest.json').write_text(
         json.dumps(report, indent=2) + '\n')

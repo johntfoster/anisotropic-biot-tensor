@@ -4,7 +4,7 @@
   "title": "An anisotropic Biot tensor: finite-element verification",
   "summary": "This companion records the evidence for the conformal-distention model and its MOOSE implementation. Constitutive, fluid-coupling, analytical reference, and manufactured-solution convergence checks pass and are published here with regenerated figures; finite-deformation demonstrations and physical validation remain pending or not performed.",
   "provenance": {
-    "source_revision": "40a49aeed3c02e074029f2ec6f75b4b444ded9a4",
+    "source_revision": "8d8372606cab5ebd7eb31dcd9b247f5ee585cb22",
     "scientific_snapshot": "scientific-snapshot",
     "note": "The base commit predates this working revision. The finite-element sources and evidence are provided under the repository-relative paths moose_app/, validation/, fe-evidence/, figures/ and site/; the scientific-snapshot artifact lists the exact files with SHA-256 hashes, and the review snapshot pinned in the review record is the authoritative frozen artifact for the checks below."
   },
@@ -132,7 +132,7 @@
       "label": "plot_fabric_contours.py (reads recorded Exodus fields)",
       "path": "examples/plot_fabric_contours.py",
       "destination": "source/plot_fabric_contours.py",
-      "sha256": "9c2bc8aa8cafc091d64dc0c3dc5928c885799734f7968e5964fb13345fd07e0d"
+      "sha256": "8eaa896dfdeeae0ced6c892a0266cbb8bd58fdc402b8cce8607fba74e6c14efe"
     },
     {
       "id": "fabric-law-source",
@@ -375,14 +375,6 @@
       "sha256": "dc139b0bd97a4fd2be89ff4b728954017242799e2512ad5beb0be690806663d1"
     },
     {
-      "id": "fluid-coupling-verification",
-      "path": "site/reports/fluid-coupling-verification.json",
-      "destination": "fluid-coupling-verification.json",
-      "kind": "report",
-      "label": "fluid EOS and reference-mass derivative checks",
-      "sha256": "5842f2eb55c05ea98abec204e0030db87e3f53ba8bd7b56b965a04b9621f7e76"
-    },
-    {
       "id": "mandel-reference",
       "path": "site/reports/mandel-reference.json",
       "destination": "mandel-reference.json",
@@ -428,7 +420,7 @@
       "destination": "scientific-snapshot.json",
       "kind": "provenance",
       "label": "exact FE source and evidence snapshot",
-      "sha256": "7f82918f7ae5cddb3256dc3dd13ce7ad8061778b3feb3c61009f40bf5c8d678a"
+      "sha256": "03416f4ff92859c275d5710fa6c401fa8412d46c859cb72b213d976a6112edf4"
     },
     {
       "id": "tensor-verification",

@@ -30,8 +30,8 @@
 \begin{abstract}
 We derive the finite-deformation Biot tensor of a saturated elastic porous
 solid from the volume-fraction-weighted phase stresses and their reversible
-work. The distention gradient consists of a dilation and a proper rotation,
-so mineral deformation and changes in pore volume are distinguished without
+work. We write the distention gradient as a dilation times a proper rotation, so
+mineral deformation and changes in pore volume are distinguished without
 fixing the orientation of the intermediate frame. For an objective mineral
 energy and a distention energy depending only on volume, the internal
 rotation cancels from the constitutive response. The mineral stress must
@@ -62,13 +62,12 @@ The conformal construction
 isolates the anisotropy inherited from the mineral. Replacing the scalar
 dilation with a symmetric positive definite distention whose unimodular
 part is a pore-fabric tensor supplies the additional constitutive law for
-shape-changing distention: it relaxes the rank-one drained-compliance
-restriction to a fabric-symmetric compliance supported on the retained
-volumetric--axial distention subspace and yields an anisotropic Biot tensor
-driven by both mineral
-and pore-fabric anisotropy, with the pore-fabric orientation prescribed as
+shape-changing distention. With the pore-fabric orientation prescribed as
 material data and no relative rotation of the fabric and the mineral matrix
-represented.
+represented, it relaxes the rank-one drained-compliance restriction to a
+fabric-symmetric compliance supported on the retained volumetric--axial
+distention subspace and yields an anisotropic Biot tensor driven by both
+mineral and pore-fabric anisotropy.
 \end{abstract}
 \noindent\textbf{Keywords:} anisotropic poroelasticity; finite deformation;
 Biot tensor; mineral compression; logarithmic strain; finite-element
@@ -153,12 +152,12 @@ fabric.
 
 We consider an anisotropic mineral and allow the distention gradient
 \(\mathbf A\) of \eqref{eq:true-mineral-jacobian}, with \(J=a\bar J\), to
-contain both a dilation and a proper rotation. This conformal distention
-changes pore volume while leaving the shape of the mineral
-unchanged. The rotation changes the frame in which mineral stress is
-represented. Carrying it through the virtual work identifies the phase
-stress in the mixture frame and determines whether that rotation affects
-the constitutive response. Applying the complete mineral Hooke law then gives both the
+contain both a dilation and a proper rotation. The dilation changes pore
+volume while leaving the shape of the mineral unchanged. The rotation
+changes only the frame in which the mineral stress is represented.
+Carrying that rotation through the virtual work identifies the phase
+stress in the mixture frame and determines whether it affects the
+constitutive response. Applying the complete mineral Hooke law then gives both the
 volumetric work and the shear work. These requirements restrict the two
 elastic stiffness tensors: the additional drained compliance must produce
 only a spherical change in strain. We derive that restriction rather than prescribe
@@ -227,8 +226,11 @@ the true frame. The barred stresses also carry different normalizations:
 \(\bar{\mathbf\tau}_s=\bar J\bar{\mathbf\sigma}_s\) of
 \eqref{eq:kirchhoff-volume-conventions} is per reference mineral volume, and
 written on the distention stress \(\bar{\mathbf S}_{\mathrm{dis}}\) of
-\eqref{eq:fabric-distention-stress}, a bar instead denotes that stress in the
-intermediate frame, normalized per reference mixture volume. A bar on a
+\eqref{eq:fabric-distention-stress}, a bar instead marks the member of the
+work-conjugate pair that is conjugate to the distention tensor \(\mathbf G\),
+per reference mixture volume in the intermediate frame, its unbarred partner
+\(\mathbf S_{\mathrm{dis}}\) being conjugate to the distention logarithmic
+strain \(\mathbf E_{\mathrm{dis}}\) in that same frame and normalization. A bar on a
 prescribed boundary datum, such as the mass flux
 \(\bar Q_f\) of \eqref{eq:fe-fluid-residual}, denotes its prescribed value on that
 boundary. A single prime denotes the effective stress that carries the full
@@ -236,13 +238,18 @@ pore-pressure term, as in \(\mathbf\sigma'\) of
 \eqref{eq:total-cauchy-single-prime}, and a double prime denotes the
 fixed-pressure stress \(\mathbf P''\) of \eqref{eq:fixed-pressure-stress}, so
 that \(\mathbf\sigma=\mathbf\sigma''-p\mathbf B\) in
-\eqref{eq:finite-biot-tensor}.
+\eqref{eq:finite-biot-tensor}. The same two marks name the reduced energies of
+\cref{sec:finite-biot} at the prescribed pressure: \(W''\) of
+\eqref{eq:reduced-energy} and its fixed-pressure companion \(W'\) of
+\eqref{eq:legendre-energy}.
 A superscript \(d\) denotes the drained skeleton, as in the drained
 stiffness \(\mathbb{C}^d\) of \eqref{eq:drained-stiffness-restriction} and
 the drained energy \(W^d\) of \eqref{eq:prescribed-logarithmic-energies}. The
 distention quantities instead carry the subscript \(\mathrm{dis}\):
 \(W_{\mathrm{dis}}\), \(\mathbf E_{\mathrm{dis}}\), and
-\(\mathbf S_{\mathrm{dis}}\) in \cref{sec:pore-fabric}. The two labels are
+\(\mathbf S_{\mathrm{dis}}\) in \cref{sec:pore-fabric}, together with the
+scalar volume-only distention energy \(W_A(a)\) of \cref{sec:work-equivalence},
+of which \(W_{\mathrm{dis}}\) is the tensorial generalization. The two labels are
 kept distinct throughout, so \(d\) never means distention.
 The two stress representations differ by the rotation \eqref{eq:rotated-mineral-cauchy}.
 Fourth-order tensors are set in blackboard bold and second-order tensors in
@@ -370,9 +377,10 @@ leaving mineral work weighted by the reference solid fraction. This
 cancellation does not require the mineral stress and strain to have common
 principal directions.
 
-We assume that the remaining distention energy depends only on its volume
-ratio, \(W_A(a)\), with no separate fabric or orientation energy.
-Integrating the mineral work at fixed distention then gives
+The distention energy is the remaining constitutive input. We assume that it
+depends only on its volume ratio, \(W_A(a)\), with no separate fabric or
+orientation energy. Integrating the mineral work at fixed distention then
+gives
 \begin{equation}
  W_s(\mathbf F,\bar J)=W_A(a)+\phi_{s0}\bar W_s(\bar{\mathbf F}),
  \qquad a=\frac J{\bar J},\qquad
@@ -425,8 +433,9 @@ For a purely volumetric mineral variation,
  \label{eq:equivalent-volumetric-work}
 \end{equation}
 This is the volume-work relation used in the scalar companion derivation.
-The distinction between reference mixture volume and reference mineral
-volume accounts for the factor \(\phi_{s0}\).
+The factor \(\phi_{s0}\) appears because the mineral energy is normalized
+per reference mineral volume while the skeleton work is normalized per
+reference mixture volume.
 
 \input{sections/stress_reconstruction}
 
@@ -442,7 +451,7 @@ At a prescribed pressure, solve \eqref{eq:anisotropic-mineral-eos} for
  W'(\mathbf F,p)&=W''(\mathbf F,p)+\phi_{s0}p\bar J(\mathbf F,p).
  \label{eq:legendre-energy}
 \end{align}
-The double-prime stress is obtained by differentiating \(W''\) at fixed pressure.
+Differentiating \(W''\) at fixed pressure gives the double-prime stress.
 The derivative of \(W'\) at fixed pressure equals the derivative of
 \(W_s\) at fixed mineral volume because the mineral-response terms cancel
 by \eqref{eq:pressure-conjugacy}. Thus
@@ -520,8 +529,8 @@ The energy depends on material strain, so a superposed spatial rotation
 \mathbf Q^T\). The matrix-logarithm derivative maps symmetric tensors
 to symmetric tensors; hence \(\mathbf B\) is symmetric.
 
-There are two useful checks on the stress interpretation. First, direct
-energy differentiation retains the complete phase balance:
+The energy also provides two useful checks on the stress interpretation.
+First, direct energy differentiation retains the complete phase balance:
 \begin{equation}
  \mathbf\sigma
  =\frac{\phi_{s0}}J\bar{\mathbf\tau}_s
@@ -564,16 +573,18 @@ requires the integral in \eqref{eq:integrated-pressure-response}.
 
 We derived the mixture energy by equating the reversible work of the
 volume-fraction-weighted phase stresses to the work of mineral deformation
-and distention. Writing the distention as a dilation times a proper rotation makes that change of variables explicit;
-the skew rotation variation performs no work against a symmetric stress.
+and distention. Writing the distention as a dilation times a proper rotation separates the
+volume change from the frame rotation; the skew rotation variation performs no
+work against a symmetric stress.
 The mineral contribution is its prescribed energy multiplied by the
 reference solid fraction. The drained spherical response then determines
 the distention energy, and the complete drained Hooke law gives the
 compliance restriction in \eqref{eq:drained-compliance-restriction}.
 
-The mineral-volume equation retains the coupling between volume and shape
-in the anisotropic mineral law. Its derivative produces a directional Biot
-tensor while preserving the full spatial phase stress balance. The
+The mineral-volume equation couples mineral volume to the shape of the
+skeleton through the anisotropic mineral law. Its derivative produces a
+directional Biot tensor while preserving the full spatial phase stress
+balance. The
 isotropic reduction recovers the logarithmic scalar relation used by Gajo
 and the companion manuscript. The reference stress and storage coefficients,
 together with the finite unjacketed path, provide additional checks. Independent

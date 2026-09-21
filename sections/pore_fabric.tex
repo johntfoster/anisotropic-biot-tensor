@@ -69,9 +69,9 @@ is a modeling choice; in the conformal specialization it is immaterial
 because \(\mathbf R_A\) cancels there. Fixing the rotation has three
 consequences. The distention is symmetric in the material frame, so
 \(\mathbf G\) carries both the shape and the orientation of the
-distention, and the orientation of the pore fabric relative to the
-mineral enters as prescribed material data rather than as a quantity the
-deformation determines. The construction therefore carries no rotational
+distention. The orientation of the pore fabric relative to the mineral
+therefore enters as prescribed material data rather than as a quantity
+the deformation determines. The construction therefore carries no rotational
 fabric variable, it represents no rotation of the pore fabric relative to
 the mineral matrix, and the elastic equilibrium of
 \cref{sec:fabric-equilibrium} dissipates no work in such a rotation. The
@@ -213,7 +213,8 @@ construction and frozen to the mineral rather than equilibrated. Equation
 \eqref{eq:fabric-equilibrium} is therefore read on that subspace, where the
 retained quadratic distention potential is strictly convex and the mineral term
 contributes a positive-definite stiffness in the same strain, so the stationary
-point exists and is unique. Differentiating along the conformal
+point exists and is unique in the reference quadratic model of
+\cref{sec:fabric-biot}. Differentiating along the conformal
 submanifold \(\mathbf G=a^{2/3}\mathbf I\), on which only \(a\) varies,
 reduces \eqref{eq:fabric-equilibrium} to
 \(\partial W_A/\partial\ln a
@@ -262,7 +263,9 @@ anisotropy. In the conformal model the shape terms were absent because
 \(\mathbf G\) had only the volume degree of freedom; here they are present
 and are determined by the distention stiffness.
 
-The rank-one structure of the conformal compliance restriction relaxes. In
+The conformal restriction is rank one because the distention energy there
+depends only on the volume. For a fabric distention the retained subspace is
+wider, so the restriction must be derived again. In
 the reference state \(\mathbf F=\mathbf G=\mathbf I\), linearize
 \eqref{eq:fabric-multiplicative} and \eqref{eq:fabric-mineral-metric}. To
 first order the logarithmic strains add:
@@ -278,13 +281,10 @@ model retains and zero on its complement. The minimization in
 \eqref{eq:fabric-equilibrium} is therefore over
 \(\mathbf E_{\mathrm{dis}}\in\operatorname{range}\mathbb{D}\), not over all
 symmetric tensors; the complementary modes are kinematically frozen to the
-mineral, which carries them at its own compliance. On that subspace the
-quadratic potential is strictly convex and the mineral term contributes a
-positive-definite stiffness in the same strain, so
-\(\mathbb{D}+\phi_{s0}\mathbb{C}_s\) is positive definite there and the
-stationary point of
-\eqref{eq:fabric-equilibrium} is unique; minimizing at fixed
-\(\mathbf\varepsilon\) gives the drained compliance
+mineral, which carries them at its own compliance. On that subspace
+\(\mathbb{D}+\phi_{s0}\mathbb{C}_s\) is positive definite, which is the condition
+for the unique stationary point of \eqref{eq:fabric-equilibrium} used above;
+minimizing at fixed \(\mathbf\varepsilon\) gives the drained compliance
 \begin{equation}
  (\mathbb{C}^d)^{-1}
  =(\phi_{s0}\mathbb{C}_s)^{-1}+\mathbb{D}^{+}.

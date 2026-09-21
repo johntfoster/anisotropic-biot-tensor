@@ -82,7 +82,10 @@ The models are synthetic
 constitutive calculations, not physical validation or finite-element
 simulations. The archive additionally ships recorded finite-element run
 histories under `fe-evidence/runs` for the pore-fabric decks; those runs are
-demonstrations of the coupled model, not physical validation. No companion
+demonstrations of the coupled model, not physical validation. The recorded
+Exodus field files carry a per-run wall-clock line in their information records,
+so their raw bytes are not reproducible across runs; the recorded CSV histories
+and the field arrays are. No companion
 checkout is required.
 
 Extract the archive, then run from its root in a Python environment:

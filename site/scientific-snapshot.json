@@ -18,7 +18,7 @@
     },
     {
       "path": "examples/plot_fabric_contours.py",
-      "sha256": "9c2bc8aa8cafc091d64dc0c3dc5928c885799734f7968e5964fb13345fd07e0d"
+      "sha256": "8eaa896dfdeeae0ced6c892a0266cbb8bd58fdc402b8cce8607fba74e6c14efe"
     },
     {
       "path": "examples/plot_fabric_results.py",

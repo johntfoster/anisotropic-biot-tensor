@@ -3,9 +3,10 @@
 \label{sec:logarithmic-derivative}
 
 This appendix states the matrix derivative used in the finite-deformation
-stress and Biot tensor. Let \(\mathbf C=\mathbf F^T\mathbf F\) and
-\(\mathbf\varepsilon=\tfrac12\log\mathbf C\). If \(\mathbf T\)
-is symmetric and conjugate to \(\mathbf\varepsilon\), then
+stress and Biot tensor. Let \(\mathbf C=\mathbf F^T\mathbf F\) be the
+right Cauchy--Green tensor and \(\mathbf\varepsilon=\tfrac12\log\mathbf C\)
+its logarithmic strain. If \(\mathbf T\) is symmetric and conjugate to
+\(\mathbf\varepsilon\), then
 \begin{align}
  \delta W&=\mathbf T:\delta\mathbf\varepsilon,
  \label{eq:logarithmic-conjugate-work}\\
@@ -39,7 +40,8 @@ In an orthonormal eigenbasis of \(\mathbf C\), with positive eigenvalues
 \end{equation}
 The repeated-eigenvalue expression is the continuous limit, including
 isotropic stretches. The coefficient is symmetric in \(i,j\), which makes
-the derivative self-adjoint. The derivative maps \(\mathbf C\) to \(\mathbf I\).
+the derivative self-adjoint. The derivative maps the metric \(\mathbf C\)
+to the identity \(\mathbf I\).
 Consequently,
 \begin{align}
  \tr\mathbf\tau
