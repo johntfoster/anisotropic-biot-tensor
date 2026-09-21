@@ -146,5 +146,7 @@
     "solution_profile_0066.csv": "442408fc23f29a49da1e95c71fc284df766500a2b430e0b6dc7a8dbc6713df11",
     "solution_profile_0019.csv": "fcb77e59f7656b6bae6b69216de106617a600b80a63b451d367c40b70048212d",
     "solution_profile_0100.csv": "7f47c636b5d2d8e6df42839df89062ffb64b31c961aaa1533709fb0c6b7cf96c"
-  }
+  },
+  "git_revision": "40a49aeed3c02e074029f2ec6f75b4b444ded9a4",
+  "git_revision_basis": "recorded source_sha256 digests matched byte-for-byte against this commit's tree via the git object database; the run harness did not record a revision at run time, so this is the revision whose sources match, not necessarily the revision the run was made from"
 }

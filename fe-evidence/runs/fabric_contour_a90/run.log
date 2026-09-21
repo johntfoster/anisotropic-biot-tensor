@@ -8,7 +8,7 @@ MOOSE Version:           git commit abafb58b on 2026-02-20
 LibMesh Version:         
 PETSc Version:           3.24.4
 SLEPc Version:           3.24.0
-Current Time:            Mon Sep 21 18:03:21 2026
+Current Time:            Mon Sep 21 18:21:28 2026
 Executable Timestamp:    Sun Sep 20 23:20:55 2026
 
 Input File(s):
@@ -18,7 +18,7 @@ Command Line Argument(s):
   --n-threads=1
 
 Command Line Input Argument(s):
-  Outputs/file_base=/tmp/tmpeo3zddn3/solution
+  Outputs/file_base=solution
   Materials/law/fabric_angle=90
 
 Checkpoint:
@@ -1177,4 +1177,4 @@ Postprocessor Values:
 |   3.000000e-03 |       8.999972e-01 |   2.500000e+00 |   2.500000e+00 |  -1.000000e-04 |
 +----------------+--------------------+----------------+----------------+----------------+
 
-Finished Executing                                                                       [[33m 18.98 s[39m] [[33m  155 MB[39m]
+Finished Executing                                                                       [[33m 19.01 s[39m] [[33m  155 MB[39m]

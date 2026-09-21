@@ -43,10 +43,10 @@
   ],
   "input_sha256": {
     "examples/plot_fabric_contours.py": "9c2bc8aa8cafc091d64dc0c3dc5928c885799734f7968e5964fb13345fd07e0d",
-    "fe-evidence/runs/fabric_contour_iso/solution.e": "7b79a565d9d2dd8bf16cc04f3bd25ef599d6576c2db37b200b8cbfa31ff80ac9",
-    "fe-evidence/runs/fabric_contour_a0/solution.e": "8fba1339ef50626f70fede4efc20279266813c6d4d161c7fd40b810fecd72221",
-    "fe-evidence/runs/fabric_contour_a45/solution.e": "9dd707938ef8e56e2dccc0ced4498bd3c54f5c7037bb3145b7d51f0ac9599478",
-    "fe-evidence/runs/fabric_contour_a90/solution.e": "f8f5f3617c2df91f0bf319e411c2c954bf390f834ccce304b621e136730fe1e6"
+    "fe-evidence/runs/fabric_contour_iso/solution.e": "3dfe02ae921075727d0999c83fd9991562cbc1a660096e80ebfd35a7ebaedcad",
+    "fe-evidence/runs/fabric_contour_a0/solution.e": "e615b78160aeb0fcc89cfae7f9d7ef94cf53177ed0f08e439aff927cd590ee52",
+    "fe-evidence/runs/fabric_contour_a45/solution.e": "2ab3a3ca95c0023c54cc8fda56ea2092be0989fcd19359f63ceb81b4adb7fd53",
+    "fe-evidence/runs/fabric_contour_a90/solution.e": "8eb00e29510deb943fef9c714a3a12c43eda15d4cdfc52c12c55e59704f75e00"
   },
   "output_sha256": {
     "fe_fabric_contours.csv": "8a618ffc6cee7f95d32b4f52109361a4487b9f4ee0f195eea14c5d10a4a2f7a6",

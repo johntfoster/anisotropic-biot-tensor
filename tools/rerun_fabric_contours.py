@@ -27,6 +27,8 @@ SOURCE_FILES = ('moose_app/include/utils/FabricLaw.h',
                 'moose_app/include/materials/FabricMaterial.h',
                 'moose_app/src/materials/FabricMaterial.C')
 CONTOUR_DECK = 'moose_app/inputs/fabric_contour.i'
+PLOT_SCRIPT = 'examples/plot_fabric_contours.py'
+PLOT_MANIFEST = 'figures/fe_fabric_contours-plot-manifest.json'
 
 # case -> command-line overrides (deck defaults: coupling 0.4, angle 0)
 CASES = [
@@ -47,12 +49,19 @@ def revision():
 
 
 def run_case(case, overrides):
+    # The deck runs inside the temporary directory with a *relative* output base.
+    # MOOSE records the output base as the Exodus `title` attribute, so an
+    # absolute temporary path would embed a fresh random directory name in every
+    # regeneration and make the shipped bytes irreproducible. A relative base
+    # keeps `title = solution.e` for every run, so identical inputs give
+    # identical Exodus bytes.
     with tempfile.TemporaryDirectory() as tmp:
         out = Path(tmp)
-        command = ['./moose_app/anisotropic_biot-opt', '-i', 'moose_app/inputs/fabric_contour.i',
-                   f'Outputs/file_base={out}/solution', '--n-threads=1'] + overrides
+        deck = ROOT / CONTOUR_DECK
+        command = [str(BIN), '-i', str(deck),
+                   'Outputs/file_base=solution', '--n-threads=1'] + overrides
         start = dt.datetime.now(dt.timezone.utc)
-        proc = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
+        proc = subprocess.run(command, cwd=out, capture_output=True, text=True)
         end = dt.datetime.now(dt.timezone.utc)
         status = 'success' if proc.returncode == 0 else 'failed'
         if (DEST / case).exists():
@@ -72,7 +81,7 @@ def run_case(case, overrides):
             time_control='dt=0.0003, end_time=0.003 (implicit-euler; 11 field snapshots incl. initial)',
             command_overrides=overrides,
             command=['./moose_app/anisotropic_biot-opt', '-i', 'moose_app/inputs/fabric_contour.i',
-                     'Outputs/file_base=...'] + overrides,
+                     'Outputs/file_base=solution'] + overrides,
             recorded_utc=end.isoformat(),
             exit_status=status,
             source=SOURCE,
@@ -86,6 +95,11 @@ def run_case(case, overrides):
                 json.dumps(dict(provenance, exit_status='failed-no-history'), indent=2) + '\n')
             return 'failed-no-history'
         shutil.copy2(out / 'solution.csv', DEST / case / 'solution.csv')
+        # Write the per-run analysis here rather than only under --analysis-only:
+        # the case directory was just replaced, so leaving it to a later step
+        # would ship an evidence set with analysis.json silently absent.
+        (DEST / case / 'analysis.json').write_text(
+            json.dumps(final_row(case), indent=2, sort_keys=True) + '\n')
         exodus = out / 'solution.e'
         if not exodus.is_file():
             (DEST / case / 'provenance.json').write_text(
@@ -109,10 +123,27 @@ def regenerate_analysis():
     print('regenerated analysis.json for', len(CASES), 'contour cases')
 
 
+def refresh_figures():
+    """Regenerate the contour figure data and re-verify their declared digests.
+
+    Order is the point: these decks rewrite the recorded Exodus files that the
+    contour plot manifest hashes, so the figure data and the manifest must be
+    rebuilt *after* the decks and then re-checked. Skipping the last step is
+    what let a stale ``input_sha256`` ship in an earlier round.
+    """
+    subprocess.run(['python3', PLOT_SCRIPT, '--runs', 'fe-evidence/runs',
+                    '--output', 'figures'], cwd=ROOT, check=True)
+    subprocess.run(['python3', 'tools/check_figure_manifests.py', PLOT_MANIFEST],
+                   cwd=ROOT, check=True)
+    print('figure data and plot manifest regenerated, then re-verified')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--analysis-only', action='store_true',
                         help='regenerate analysis.json from the recorded histories')
+    parser.add_argument('--no-figures', action='store_true',
+                        help='skip regenerating the contour figures and plot manifest')
     args = parser.parse_args()
     if args.analysis_only:
         regenerate_analysis()
@@ -125,6 +156,8 @@ def main():
     print(json.dumps(results, indent=2))
     if any(status != 'success' for status in results.values()):
         raise SystemExit('one or more contour decks failed')
+    if not args.no_figures:
+        refresh_figures()
 
 
 if __name__ == '__main__':

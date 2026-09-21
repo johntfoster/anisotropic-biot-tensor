@@ -174,7 +174,7 @@
     },
     {
       "path": "tools/rerun_fabric_contours.py",
-      "sha256": "420c236c3795802584a6b281204e7fb1e04e4f544736020ebfc8eef261fb6ea8"
+      "sha256": "0403edf4b95c684b2232a6d0dfef4dadbb5ccc2aa078eede70b5f54f95c96e63"
     },
     {
       "path": "tools/rerun_fabric_decks.py",

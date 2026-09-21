@@ -3,7 +3,7 @@
   "application_sha256": "ff0272fc279fcf91f6acd0c4a2e0ce436e8b165ad68b15549c27e6845dfdd31e",
   "application_library_sha256": "cdd1ebf65d9b9561816c43fe9a90cda9e2d937743553aa943fa65776b5cd6fbd",
   "binary_sha256": "ff0272fc279fcf91f6acd0c4a2e0ce436e8b165ad68b15549c27e6845dfdd31e",
-  "git_revision": "b6d72721414a0c09aa6492465acd3a4c8d07e31b",
+  "git_revision": "40a49aeed3c02e074029f2ec6f75b4b444ded9a4",
   "input_sha256": "284f042caf6702430438b71516278a0c4bd290132a34aac890607ed5117e2c02",
   "source_sha256": {
     "moose_app/include/utils/FabricLaw.h": "761334c6ce4919c1ff1dfb83b4b780ef4b9306f2e30dff4e4d63357cce497961",
@@ -21,11 +21,11 @@
     "./moose_app/anisotropic_biot-opt",
     "-i",
     "moose_app/inputs/fabric_contour.i",
-    "Outputs/file_base=...",
+    "Outputs/file_base=solution",
     "Materials/law/fabric_coupling=0",
     "Materials/law/fabric_angle=0"
   ],
-  "recorded_utc": "2026-09-21T23:02:54.887693+00:00",
+  "recorded_utc": "2026-09-21T23:21:02.334187+00:00",
   "exit_status": "success",
   "source": "moose_app/include/utils/FabricLaw.h, moose_app/src/materials/FabricMaterial.C"
 }
