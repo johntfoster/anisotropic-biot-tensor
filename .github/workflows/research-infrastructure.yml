@@ -8,6 +8,6 @@ permissions:
   contents: read
 jobs:
   conformance:
-    uses: johntfoster/research-agent-workflows/.github/workflows/research-conformance.yml@bd82f7bed44ecb3ae7e2e6895a990ef456b8c23c
+    uses: johntfoster/research-agent-workflows/.github/workflows/research-conformance.yml@74309a56c009d65aa83f7729e6775fb8fea340ce
   package:
-    uses: johntfoster/research-agent-workflows/.github/workflows/research-release.yml@bd82f7bed44ecb3ae7e2e6895a990ef456b8c23c
+    uses: johntfoster/research-agent-workflows/.github/workflows/research-release.yml@74309a56c009d65aa83f7729e6775fb8fea340ce
