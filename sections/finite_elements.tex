@@ -204,8 +204,9 @@ spatial \(L^2\) errors and the measured adjacent orders: pressure
 \(2.00\) and \(2.00\), \(u_x\) \(2.99\) and \(2.96\), \(u_y\)
 \(3.00\) and \(2.96\), consistent with quadratic displacement and linear
 pressure. Panel (b) gives the temporal order measured by successive
-differences at fixed mesh for \(nx=16,32,64\); the values lie near one and
-include one above one, and no order above one is asserted. Panel (c) gives
+differences at fixed mesh for \(nx=16,32,64\); the values lie between
+\(0.98\) and \(1.40\), so they scatter about one with entries above unity,
+and no order above one is asserted. Panel (c) gives
 the linear step refinement whose measured ratio is \(1.94\), first order in
 \(\Delta t\). Panel (d)
 compares the finite-deformation solutions with the linear reference as the
@@ -271,7 +272,7 @@ by \(2.2\times10^{-16}\), \(\det\mathbf H-1=-3.3\times10^{-16}\) with
 eigenvalues \(h^{-2},h,h\), the stiffness annihilates the coupled in-plane
 pair \(\lVert\mathbb D:\mathbf e_3\rVert=1.6\times10^{-16}\) and
 \(\mathbb D:\mathbf e_6=\mathbf 0\), and its invariance under a rotation
-about \(\mathbf m\) is \(2.5\times10^{-16}\). An independent NumPy
+about \(\mathbf m\) is \(2.5\times10^{-16}\). A separate NumPy
 re-implementation
 of the section equations, evaluated at the same prescribed states,
 reproduces the compiled fields with a worst absolute difference of
@@ -283,10 +284,7 @@ shares their modelling conventions with the compiled material---the
 distention basis, the equilibrium, and the reported sign convention for
 \(\ln h\). In the volume-only limit the same material reproduces the
 conformal material used in \cref{sec:fe-reference-problems} to
-\(1.9\times10^{-14}\). This is an
-implementation check: the script shares the section's basis and reported-scalar
-sign conventions, so it verifies the compiled material against the equations
-rather than re-deriving the conventions themselves.
+\(1.9\times10^{-14}\).
 \Cref{fig:fe-fabric-probe} shows the corresponding axial and transverse
 Biot coefficients, their difference, and the fabric shape (deviatoric)
 distention \(\ln h\) of the uncoupled probes.
@@ -397,3 +395,4 @@ is excluded from the verification claims; only their mass-balance and
 platen-equality diagnostics and their maps are reported. The synthetic
 parameters and the absence of any laboratory or field comparison are recorded
 as a limitation.
+\FloatBarrier

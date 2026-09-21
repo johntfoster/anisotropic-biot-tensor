@@ -31,6 +31,9 @@ BIN = ROOT / 'moose_app/anisotropic_biot-opt'
 LIB = ROOT / 'moose_app/lib/libanisotropic_biot-opt.so.0.0.0'
 DEST = ROOT / 'fe-evidence/runs'
 SOURCE = 'moose_app/include/utils/FabricLaw.h, moose_app/src/materials/FabricMaterial.C'
+SOURCE_FILES = ('moose_app/include/utils/FabricLaw.h',
+                'moose_app/include/materials/FabricMaterial.h',
+                'moose_app/src/materials/FabricMaterial.C')
 FIELDS = ['B_par', 'B_per', 'ln_a', 'ln_h', 'J', 'Jbar', 'solid_fraction',
           'sigma11', 'sigma22']
 
@@ -83,7 +86,10 @@ def run_case(case, deck, overrides):
             application='anisotropic_biot-opt (FabricMaterial)',
             application_sha256=sha(BIN),
             application_library_sha256=sha(LIB),
+            binary_sha256=sha(BIN),
             git_revision=revision(),
+            input_sha256=sha(ROOT / 'moose_app/inputs' / deck),
+            source_sha256={path: sha(ROOT / path) for path in SOURCE_FILES},
             input_deck=deck,
             command_overrides=overrides,
             command=['./moose_app/anisotropic_biot-opt', '-i', f'moose_app/inputs/{deck}',

@@ -231,12 +231,12 @@
     },
     {
       "path": "runs/conformal_probe_ref/provenance.json",
-      "sha256": "c1c3044265085b581b6e699508f1e2096a2eebf17786f38f5658f9836cdb39df",
-      "bytes": 694
+      "sha256": "10b74e876433e67df4745be29132d5d75c6a771b41b2deb792495cc89f038bb5",
+      "bytes": 1239
     },
     {
       "path": "runs/conformal_probe_ref/run.log",
-      "sha256": "518571f1873a213a2a7e66431191788a91ee6d84b91923433220557a3d9e6563",
+      "sha256": "0370f62e6b26997ceaf28ca84093b450666a84a58d2c22f748e27d2c98e0575e",
       "bytes": 4378
     },
     {
@@ -256,12 +256,12 @@
     },
     {
       "path": "runs/fabric_contour_a0/provenance.json",
-      "sha256": "a9e73c16f3cd9b1767c0a5e355d768767c65da66ec488e908c62ce50284061da",
-      "bytes": 915
+      "sha256": "1dab9e9df05cce4a81afc294240a607e1c83916cf5c081b4d3e3562e73f3e949",
+      "bytes": 1460
     },
     {
       "path": "runs/fabric_contour_a0/run.log",
-      "sha256": "35824945005b7558d904ffa0c05da61a5d3fcf727fdd751966c177b752389449",
+      "sha256": "85aa117ef48009f2666d8c2c884abc8fe6f776ae50939e7acd1d4f97c0df6f8e",
       "bytes": 66517
     },
     {
@@ -271,7 +271,7 @@
     },
     {
       "path": "runs/fabric_contour_a0/solution.e",
-      "sha256": "8fba1339ef50626f70fede4efc20279266813c6d4d161c7fd40b810fecd72221",
+      "sha256": "ca9ad4777414db319734f55a8dbe80248649d41216f55442a0de18c63626e74d",
       "bytes": 994588
     },
     {
@@ -286,12 +286,12 @@
     },
     {
       "path": "runs/fabric_contour_a45/provenance.json",
-      "sha256": "f500d6bb6929dc061b3c5a385a3c949bef480ef43fa40320dee9ce1211826a46",
-      "bytes": 917
+      "sha256": "8327bcc53cbdb51307c36b0d372ccbdaa653e8ce98883123b0b1fb2866227de9",
+      "bytes": 1462
     },
     {
       "path": "runs/fabric_contour_a45/run.log",
-      "sha256": "9482a46e2fcbd86223349b61765d1f32c51afee69890e36486e57cbe0ce8b9e1",
+      "sha256": "de0b7e4236ce658ab4a187da0a4f817f5d636cfd313d73939f29a61b62347a95",
       "bytes": 65416
     },
     {
@@ -301,7 +301,7 @@
     },
     {
       "path": "runs/fabric_contour_a45/solution.e",
-      "sha256": "9dd707938ef8e56e2dccc0ced4498bd3c54f5c7037bb3145b7d51f0ac9599478",
+      "sha256": "36c8fb10f98569d5250dc7e9071b2f1894f4b5b37d3491fa2ea257f3cc7bd323",
       "bytes": 994588
     },
     {
@@ -316,12 +316,12 @@
     },
     {
       "path": "runs/fabric_contour_a90/provenance.json",
-      "sha256": "ac1ab8af32a220f8bf23628aa17e454a75e270c3b678bbb9bf7e413d88b13569",
-      "bytes": 917
+      "sha256": "a706f268b3ef65e480e129fbb4668d339ebcf5062fd41780b1956dbaec4d4353",
+      "bytes": 1462
     },
     {
       "path": "runs/fabric_contour_a90/run.log",
-      "sha256": "feddcab456bbffa318570fd30f80d7662f3bc583d9724fae16f5279cc42c27c9",
+      "sha256": "7256297498885a483e6c2c7a74c17ea7633061e39826fb9d539aaf5725fbeac6",
       "bytes": 79452
     },
     {
@@ -331,7 +331,7 @@
     },
     {
       "path": "runs/fabric_contour_a90/solution.e",
-      "sha256": "f8f5f3617c2df91f0bf319e411c2c954bf390f834ccce304b621e136730fe1e6",
+      "sha256": "604d9fcc2f8065532965b40996f6f69f5433b0ac7e6a4741c10b680639c85dfc",
       "bytes": 994588
     },
     {
@@ -346,12 +346,12 @@
     },
     {
       "path": "runs/fabric_contour_iso/provenance.json",
-      "sha256": "76e0aafa668542de8116ad5150aec8ab0520740e562726f62ab4d4abdb14c199",
-      "bytes": 993
+      "sha256": "bf39f1c3a1eceea35a3685cd3474bf71bde2514fc037219cfafe48330c8d6486",
+      "bytes": 1538
     },
     {
       "path": "runs/fabric_contour_iso/run.log",
-      "sha256": "aab78c569fc84413f2a692c5ec3c464a3b27234f1485465e0839799d4db91ad5",
+      "sha256": "3a9a3e737d9b90ca1bf74e8937d59bcf33ca2550e15d3ead83874d591360de6f",
       "bytes": 66023
     },
     {
@@ -361,7 +361,7 @@
     },
     {
       "path": "runs/fabric_contour_iso/solution.e",
-      "sha256": "7b79a565d9d2dd8bf16cc04f3bd25ef599d6576c2db37b200b8cbfa31ff80ac9",
+      "sha256": "0f281f7a5b74da6a1980f49be86a3238d3640c9aa4796718cdf37388ea52b9fd",
       "bytes": 994668
     },
     {
@@ -376,12 +376,12 @@
     },
     {
       "path": "runs/fabric_mandel_coup_a0/provenance.json",
-      "sha256": "0841965abd07049ee1e6df76d0a17b9a87efc065686d790a80a3fec4ccd95ba4",
-      "bytes": 764
+      "sha256": "fc97954a78b04c1bf579214bad4592632abdf721cf48855ece5ef10703584dc0",
+      "bytes": 1309
     },
     {
       "path": "runs/fabric_mandel_coup_a0/run.log",
-      "sha256": "34250fdc739fd09d4703ac0c66275302fc9c24c1b9614e7e9bd6c12ba99aec70",
+      "sha256": "65fb40413d75b3c0197be76285655ad1ff1dafb31b8b75cd4c66a5434044315b",
       "bytes": 17873
     },
     {
@@ -421,12 +421,12 @@
     },
     {
       "path": "runs/fabric_mandel_coup_a45/provenance.json",
-      "sha256": "3035856f0f36409243c7c49f5c7ade65a78703cffc1bb81771a031b829cda38b",
-      "bytes": 766
+      "sha256": "a8268dd8e4f318d5677d96fac70f46a4cdbedaaae9edd534eb8be11909f1e645",
+      "bytes": 1311
     },
     {
       "path": "runs/fabric_mandel_coup_a45/run.log",
-      "sha256": "1cc6548b361ea3f6aa546e1e25b60e5c163535c155207b339752b2d620bde812",
+      "sha256": "a6e24770ace8d905bd6ee2b0997c410148637f8c816f9ceae0588f08738dbec2",
       "bytes": 18444
     },
     {
@@ -466,12 +466,12 @@
     },
     {
       "path": "runs/fabric_mandel_coup_a90/provenance.json",
-      "sha256": "5a2232028a45ac1447708dd56cf47e2e854d4a60d87b44863d2d3a37136f61fe",
-      "bytes": 766
+      "sha256": "9d978b04a05235292fc74d464dcaad6d831af1eadeace9e2eee126eb2df671c5",
+      "bytes": 1311
     },
     {
       "path": "runs/fabric_mandel_coup_a90/run.log",
-      "sha256": "675007fc58caa8a4dcbd2657ba64f1ebed2e43ac74bacc2feb8a11fb7b2823a1",
+      "sha256": "1365f7e7892dff0ccdb0d16cabc0313fd5ea9b7efad0aac5ae08ada3418fee30",
       "bytes": 17874
     },
     {
@@ -511,12 +511,12 @@
     },
     {
       "path": "runs/fabric_mandel_iso/provenance.json",
-      "sha256": "b6ccbeedbbfc5426e3617b944db17538b9a40f8b674e09d84337ab5ce49addc6",
-      "bytes": 770
+      "sha256": "c43e7f1b11db168703ab17c8c205cd68c6d53d0da1f12c9327029878c9c7ec4a",
+      "bytes": 1315
     },
     {
       "path": "runs/fabric_mandel_iso/run.log",
-      "sha256": "16506be58b026279ffab25347647f1781e42f132fe8dd49bc107e17f9d3668c9",
+      "sha256": "f769032301926304dc63174369bdc517aaf372d40af3b3930354c79222b52200",
       "bytes": 17876
     },
     {
@@ -556,12 +556,12 @@
     },
     {
       "path": "runs/fabric_probe_a0/provenance.json",
-      "sha256": "d74757509c3f57d30c48f20854046b2ebf53f91853ca65fa011b14d7cc65d012",
-      "bytes": 762
+      "sha256": "f4bcf6237eb0b951725805a166fcc8859a4138c025059b6693f4738a2eec52e4",
+      "bytes": 1307
     },
     {
       "path": "runs/fabric_probe_a0/run.log",
-      "sha256": "7015dfc51c36cc352d69a4c0cbd018ac9d402a933b0bac3a7796ed045b1ce473",
+      "sha256": "6f9b48ef19b490f75451b1860f676e5343e3be57192c16ac153ca5de1878156f",
       "bytes": 6605
     },
     {
@@ -581,12 +581,12 @@
     },
     {
       "path": "runs/fabric_probe_a45/provenance.json",
-      "sha256": "a16c36b586452a1ba88168155f0c657de5ccdb4fbfede77c518a7d76b66730c3",
-      "bytes": 764
+      "sha256": "7c43877ef3596976a0acc087dac9d56a16c1fa727e3af1f81f018f5eb29faca7",
+      "bytes": 1309
     },
     {
       "path": "runs/fabric_probe_a45/run.log",
-      "sha256": "99e03f3874f917b1c056481fa3b06b8e4f984c03ef8c14a0df4d65426c4360d4",
+      "sha256": "11cf29e38f7ed2f29b819e97053444f8dbe1514803ae88db111855f2e79c28a5",
       "bytes": 6606
     },
     {
@@ -606,12 +606,12 @@
     },
     {
       "path": "runs/fabric_probe_a90/provenance.json",
-      "sha256": "19a293dec4bb54007bd52d93119a325991f0ba6b916ad2c2872cc880a4188fbc",
-      "bytes": 764
+      "sha256": "27975f022a6aae6b36e0ecccd948a71b27d21162e1e960cb0e8c70b1d37f7311",
+      "bytes": 1309
     },
     {
       "path": "runs/fabric_probe_a90/run.log",
-      "sha256": "02395e0f9da2a38026877d86bb8b33087250b7bd2e9920ad5061180637275f31",
+      "sha256": "929ab11e43845a740c7a602eaec8c42d382fdc20871b4edf83ec96127ceb51ff",
       "bytes": 6606
     },
     {
@@ -631,12 +631,12 @@
     },
     {
       "path": "runs/fabric_probe_conformal/provenance.json",
-      "sha256": "e044441df9ab066a5ff10bf3fef23362271e1d61cf3c02505798a00ea6a23954",
-      "bytes": 868
+      "sha256": "535baf6e71757060946c329b32fb8259ebcd7c38dbc185b9999876551c342223",
+      "bytes": 1413
     },
     {
       "path": "runs/fabric_probe_conformal/run.log",
-      "sha256": "8a6640c73aa0440da4aae10f4551f55f8ee0e74c8cf4b4bb416bddf376fa1d94",
+      "sha256": "1aa7da785f62726ba7f2de7586dd1cf11cec79fd242b4a417794c5348791c83e",
       "bytes": 6653
     },
     {
@@ -656,12 +656,12 @@
     },
     {
       "path": "runs/fabric_probe_coup_a0/provenance.json",
-      "sha256": "93e91e5a7d40e12d8cf7cdc8c25e0fa3130e92476f52385f31bf36fb1e850632",
-      "bytes": 844
+      "sha256": "509590cb56734c37ff652f435c1a2c0e61d2a0aa4fe315b56c3ccb786c3b9667",
+      "bytes": 1389
     },
     {
       "path": "runs/fabric_probe_coup_a0/run.log",
-      "sha256": "075b0ac5a6dea75b4d250acdba2ea269e1afa4cf131b2e944b796d1aa6896218",
+      "sha256": "15d30b9efaf420e65367e3bed78dd94a422ed7a7a93466a22f902f9d68a3f8ff",
       "bytes": 6641
     },
     {
@@ -681,12 +681,12 @@
     },
     {
       "path": "runs/fabric_probe_coup_a45/provenance.json",
-      "sha256": "36e0e1907bd871d6bc88a8bc60738b9b299d9d61260782a6b83795243ccd876e",
-      "bytes": 846
+      "sha256": "cae356662b1224d6f50a3236f309d676a6661a94b629a26c10a402c74209ce88",
+      "bytes": 1391
     },
     {
       "path": "runs/fabric_probe_coup_a45/run.log",
-      "sha256": "7000d147c16c123599a7b9cdb3cac9681d7f446e9cc39939717c4a35353400d7",
+      "sha256": "ab402a1e110cef059f7089e10909f8f36c4b2f75d50319cdf104ea11b259f53e",
       "bytes": 6642
     },
     {
@@ -706,12 +706,12 @@
     },
     {
       "path": "runs/fabric_probe_coup_a90/provenance.json",
-      "sha256": "aa959534d09b5b7f100fcb3e7a224d0fda69d5ca70a757e7fc61df2a00bd0763",
-      "bytes": 846
+      "sha256": "bdc3d7853ee2b86deda491591f2534754f74fc9265ca45b3f2c2e5353fc78f06",
+      "bytes": 1391
     },
     {
       "path": "runs/fabric_probe_coup_a90/run.log",
-      "sha256": "c2fede912eb658a75e00177742ce5ee40b923153e12589ff5f99129daf48e4ea",
+      "sha256": "5c62708427bc985e63dec03847dbf42f66624e580ff5f34aa8199e7531311582",
       "bytes": 6642
     },
     {
@@ -731,12 +731,12 @@
     },
     {
       "path": "runs/fabric_probe_iso/provenance.json",
-      "sha256": "8a5098c99eab69bd801abb4227ea614f91ba8d7e48bc37f38b216a647457d3ee",
-      "bytes": 768
+      "sha256": "c345c521d2d283475adbb03ec2dd62d5c4456935429d06b10bb4e2e9cabf08e2",
+      "bytes": 1313
     },
     {
       "path": "runs/fabric_probe_iso/run.log",
-      "sha256": "e0b53d13bc1d4365af998819dff9ac308c50e9ca02e5d73d62642ee7155e3fb0",
+      "sha256": "aa9204d11f0aab47d8a03b24aba4e998300f172c92b8732071244f16aeb67c6b",
       "bytes": 6608
     },
     {
@@ -756,12 +756,12 @@
     },
     {
       "path": "runs/fabric_probe_softaxial/provenance.json",
-      "sha256": "bbe2b1a472046f2171ba342788d3872a548943711e0a20c7e14da677898f3f11",
-      "bytes": 782
+      "sha256": "d2a7ac688e7b7ea94bc36458b3d9e8e1ba9707ab68edb431536f8079dc4183f5",
+      "bytes": 1327
     },
     {
       "path": "runs/fabric_probe_softaxial/run.log",
-      "sha256": "d07144ff86588a836864a78d8ecb02fed48288cdc5d876e5471942a73b886d63",
+      "sha256": "d7bf5e3714c8008de0d5bf8d6d4c72a5bcc67e0f108e21f76fc70ab05c1a8dad",
       "bytes": 6615
     },
     {
@@ -781,12 +781,12 @@
     },
     {
       "path": "runs/fabric_probe_stiffaxial/provenance.json",
-      "sha256": "8e05f3536ed10230408e51ba07c2f65751e67a90b31b4524623b8b1c4f4393c4",
-      "bytes": 782
+      "sha256": "9cae305bfc5d31b98cfdca2fcb79aa780e8adb0dc59e0ce84fbbdffbe38b7884",
+      "bytes": 1327
     },
     {
       "path": "runs/fabric_probe_stiffaxial/run.log",
-      "sha256": "55f5da21ad7561588262714ea41096b57318e2888f272e0016ce67b5b15061f6",
+      "sha256": "bd0070966f1ec7bfd544a989e3517bedb351cac046f92becebde653611c955d6",
       "bytes": 6615
     },
     {
@@ -5595,6 +5595,8 @@
     "not_applicable lists recorded run files that are deliberately not shipped (the non-comparable demonstration/Jacobian/MMS/one-element decks do not solve the reference-modulus Mandel problem, so they carry no reference_comparison.csv).",
     "provenance.json binary_sha256 is the digest of the compiled application that produced the run. The binary is not shipped; every recorded source_sha256 digest is verified against the shipped sources by tools/materialize_fe_evidence.py, which fails if any does not match.",
     "The assembled-Jacobian decks ship analysis.json with the recorded ||J - Jfd||_F/||J||_F values; the Jacobian decks do not emit a per-run reference_comparison.csv.",
-    "runs/fabric_* entries are the pore-fabric probe and rotated-fabric consolidation decks, together with the paired conformal reference deck runs/conformal_probe_ref. Their provenance.json records application_sha256 rather than binary_sha256 and declares no outputs map, so provenance_outputs_total is zero and provenance_outputs_unshipped is empty; every file shipped in each case directory is registered here."
+    "runs/fabric_* entries are the pore-fabric probe and rotated-fabric consolidation decks, together with the paired conformal reference deck runs/conformal_probe_ref. Their provenance.json records application_sha256 rather than binary_sha256 and declares no outputs map, so provenance_outputs_total is zero and provenance_outputs_unshipped is empty; every file shipped in each case directory is registered here.",
+    "fe-evidence/mms-convergence.json and site/reports/mms-convergence.json are deliberately separate copies: the first is the recorded convergence analysis read by figures/fe-verification-plot-manifest.json, the second is the copy published on the verification site and declared by site/evidence.json. They carry the same convergence data under different paths and are not expected to have equal digests.",
+    "runs/fabric_* entries are the pore-fabric probe and rotated-fabric consolidation decks, together with the paired conformal reference deck runs/conformal_probe_ref. Their provenance.json records the compiled binary digest, the fabric source digests, and the input deck digest alongside the revision they were run from, and declares no outputs map, so provenance_outputs_total is zero and provenance_outputs_unshipped is empty; every file shipped in each case directory is registered here."
   ]
 }

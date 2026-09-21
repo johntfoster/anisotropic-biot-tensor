@@ -1,8 +1,15 @@
 {
   "application": "anisotropic_biot-opt (FabricMaterial)",
   "application_sha256": "ff0272fc279fcf91f6acd0c4a2e0ce436e8b165ad68b15549c27e6845dfdd31e",
-  "application_library_sha256": "9636d01a153320d6575b3a5ffc51b2cb17432328dd9a53629857e3fa37a9ac43",
-  "git_revision": "ab46ebe44b7f7a08c06f31b1f2c8a77deb7e464c",
+  "application_library_sha256": "cdd1ebf65d9b9561816c43fe9a90cda9e2d937743553aa943fa65776b5cd6fbd",
+  "binary_sha256": "ff0272fc279fcf91f6acd0c4a2e0ce436e8b165ad68b15549c27e6845dfdd31e",
+  "git_revision": "b6d72721414a0c09aa6492465acd3a4c8d07e31b",
+  "input_sha256": "284f042caf6702430438b71516278a0c4bd290132a34aac890607ed5117e2c02",
+  "source_sha256": {
+    "moose_app/include/utils/FabricLaw.h": "761334c6ce4919c1ff1dfb83b4b780ef4b9306f2e30dff4e4d63357cce497961",
+    "moose_app/include/materials/FabricMaterial.h": "7e70dde139947b7611d582b7ea47d6b4b30a771ce7a97df686ed9c9bc94b5f74",
+    "moose_app/src/materials/FabricMaterial.C": "9abcfab637c610ac9645105d72dcfd63ff19e550305bf8d772981f00ecc030c2"
+  },
   "input_deck": "fabric_contour.i",
   "mesh": "nx=40 ny=8 on [0,1] x [0,0.1] (QUAD9)",
   "time_control": "dt=0.0003, end_time=0.003 (implicit-euler; 11 field snapshots incl. initial)",
@@ -16,7 +23,7 @@
     "Outputs/file_base=...",
     "Materials/law/fabric_angle=45"
   ],
-  "recorded_utc": "2026-09-21T03:01:27.543575+00:00",
+  "recorded_utc": "2026-09-21T23:03:19.746074+00:00",
   "exit_status": "success",
   "source": "moose_app/include/utils/FabricLaw.h, moose_app/src/materials/FabricMaterial.C"
 }

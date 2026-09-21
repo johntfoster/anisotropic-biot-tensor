@@ -174,11 +174,11 @@
     },
     {
       "path": "tools/rerun_fabric_contours.py",
-      "sha256": "9250df42de69c2d65e452f2ffe1bf01ca423a03c4ef22a199489d7ba7fb7b783"
+      "sha256": "420c236c3795802584a6b281204e7fb1e04e4f544736020ebfc8eef261fb6ea8"
     },
     {
       "path": "tools/rerun_fabric_decks.py",
-      "sha256": "589e0f8ac16447584c04d832991fb2669995e7005035a1e0901427c0602da417"
+      "sha256": "24b8fc00f770d3edb12f74d8cf3c8103de3ec0b49f3ff6c691cebf4dbdf71694"
     },
     {
       "path": "validation/mandel_reference.py",

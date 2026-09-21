@@ -23,6 +23,10 @@ BIN = ROOT / 'moose_app/anisotropic_biot-opt'
 LIB = ROOT / 'moose_app/lib/libanisotropic_biot-opt.so.0.0.0'
 DEST = ROOT / 'fe-evidence/runs'
 SOURCE = 'moose_app/include/utils/FabricLaw.h, moose_app/src/materials/FabricMaterial.C'
+SOURCE_FILES = ('moose_app/include/utils/FabricLaw.h',
+                'moose_app/include/materials/FabricMaterial.h',
+                'moose_app/src/materials/FabricMaterial.C')
+CONTOUR_DECK = 'moose_app/inputs/fabric_contour.i'
 
 # case -> command-line overrides (deck defaults: coupling 0.4, angle 0)
 CASES = [
@@ -59,7 +63,10 @@ def run_case(case, overrides):
             application='anisotropic_biot-opt (FabricMaterial)',
             application_sha256=sha(BIN),
             application_library_sha256=sha(LIB),
+            binary_sha256=sha(BIN),
             git_revision=revision(),
+            input_sha256=sha(ROOT / CONTOUR_DECK),
+            source_sha256={path: sha(ROOT / path) for path in SOURCE_FILES},
             input_deck='fabric_contour.i',
             mesh='nx=40 ny=8 on [0,1] x [0,0.1] (QUAD9)',
             time_control='dt=0.0003, end_time=0.003 (implicit-euler; 11 field snapshots incl. initial)',

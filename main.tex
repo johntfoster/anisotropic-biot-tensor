@@ -5,6 +5,7 @@
 \unimathsetup{mathbf=sym,bold-style=upright}
 \setmathfont{Latin Modern Math}
 \usepackage{booktabs}
+\usepackage{placeins}
 \usepackage{graphicx}
 \makeatletter
 \let\tablerows\@@input
@@ -54,11 +55,11 @@ finite-deformation verification and no experimental validation are claimed for
 those demonstrations. The tensorial distention law is implemented in its
 reference-state linearization and checked at the material point against a
 separate re-implementation
-of the section equations that shares their modelling conventions, and
+of the section equations that shares the same modelling conventions, and
 demonstrated in a coupled calculation whose
 pressure response rotates with the pore fabric behind an isotropic mineral.
-The construction
-isolates anisotropy inherited from the mineral. Replacing the scalar
+The conformal construction
+isolates the anisotropy inherited from the mineral. Replacing the scalar
 dilation with a symmetric positive definite distention whose unimodular
 part is a pore-fabric tensor supplies the additional constitutive law for
 shape-changing distention: it relaxes the rank-one drained-compliance
@@ -99,7 +100,7 @@ We follow the same physical sequence: phase stress balance, reversible
 work, equivalent energy, and implicit differentiation of mineral volume.
 Anisotropic poroelastic coefficients are measured in shales, claystones, and
 cracked rock and are related to laboratory stiffnesses
-\citep{cheng1997,wong2017,braun2020,sviridov2017,makhnenkolabuz2016}, and they
+\citep{cheng1997,wong2017,braun2021,sviridov2017,makhnenkolabuz2016}, and they
 enter continuum frameworks for coupled deformation and flow in anisotropic
 elastoplastic porous media \citep{zhaoborja2020}. Large deformations of soft
 porous materials and hydraulic crack growth raise related questions about solid
@@ -150,7 +151,8 @@ derives that law by extending the volume-only conformal distention to a
 symmetric positive definite distention whose unimodular part is the pore
 fabric.
 
-We consider an anisotropic mineral and allow the distention gradient to
+We consider an anisotropic mineral and allow the distention gradient
+\(\mathbf A\) of \eqref{eq:true-mineral-jacobian}, with \(J=a\bar J\), to
 contain both a dilation and a proper rotation. This conformal distention
 changes pore volume while leaving the shape of the mineral
 unchanged. The rotation changes the frame in which mineral stress is
@@ -214,16 +216,26 @@ shear and describe a different deformation mechanism.
 Let \(\bar\rho_s\) be solid intrinsic density, \(\phi_s\) the current
 solid volume fraction, and \(\rho_s=\phi_s\bar\rho_s\) the solid mass
 per current mixture volume. Throughout, a bar on a kinematic or energetic quantity denotes the mineral
-state reached by removing the distention in \eqref{eq:spherical-distention}.
+state reached by removing the distention in the general multiplicative
+decomposition \eqref{eq:true-mineral-jacobian}, of which the conformal factor
+\eqref{eq:spherical-distention} is the specialization.
 A bar on an intrinsic density denotes the per-phase-volume value
 \(\bar\rho_\xi=\rho_\xi/\phi_\xi\), which is the mineral state for the solid.
 A bar on a stress denotes its representation in the mixture frame, whereas a hat denotes
-the true frame; written on the distention stress \(\bar{\mathbf S}_{\mathrm{dis}}\) of
+the true frame. The barred stresses also carry different normalizations:
+\(\bar{\mathbf\sigma}_s\) is per current mineral volume,
+\(\bar{\mathbf\tau}_s=\bar J\bar{\mathbf\sigma}_s\) of
+\eqref{eq:kirchhoff-volume-conventions} is per reference mineral volume, and
+written on the distention stress \(\bar{\mathbf S}_{\mathrm{dis}}\) of
 \eqref{eq:fabric-distention-stress}, a bar instead denotes that stress in the
 intermediate frame, normalized per reference mixture volume. A bar on a
 prescribed boundary datum, such as the mass flux
 \(\bar Q_f\) of \eqref{eq:fe-fluid-residual}, denotes its prescribed value on that
-boundary.
+boundary. A single prime denotes the effective stress that carries the full
+pore-pressure term, as in \(\mathbf\sigma'\) of
+\eqref{eq:constitutive-kirchhoff-phase-stress}, and a double prime denotes the
+fixed-pressure stress of \eqref{eq:cauchy-pressure-tangent}, so that
+\(\mathbf\sigma=\mathbf\sigma''-p\mathbf B\).
 A superscript \(d\) denotes the drained skeleton, as in the drained
 stiffness \(\mathbb{C}^d\) of \eqref{eq:drained-stiffness-restriction} and
 the drained energy \(W^d\) of \eqref{eq:prescribed-logarithmic-energies}. The
@@ -397,10 +409,11 @@ deformation, a change in mineral volume instead gives
 \end{align}
 Here \(\dev\bar{\mathbf\tau}_s=\bar{\mathbf\tau}_s
 -\tr(\bar{\mathbf\tau}_s)\mathbf I/3\) removes the mean stress.
-The second line uses pressure equilibrium. Substituting it into the first
-recovers \eqref{eq:constitutive-kirchhoff-phase-stress}, including all shear
-components. Thus the integrated energy and the weighted phase stress give
-the same response.
+The second line uses pressure equilibrium, the trace form of
+\eqref{eq:constitutive-kirchhoff-phase-stress}. Substituting it into the
+first recovers \eqref{eq:constitutive-kirchhoff-phase-stress}, including all
+shear components, so the integrated energy and the weighted phase stress
+give the same response.
 
 For a purely volumetric mineral variation,
 \(\delta\bar{\mathbf F}\bar{\mathbf F}^{-1}

@@ -42,10 +42,12 @@ def walk(root, repo_rel, out, skip_dirs=()):
 def main():
     files = set()
     for name in ('AGENTS.md', 'README.md', 'VISION.md', 'LICENSES.md', 'LICENSE',
-                 'author_style_profile.md', 'main.tex', 'references.bib'):
+                 'author_style_profile.md', 'main.tex', 'references.bib',
+                 '.latexmkrc', 'Makefile'):
         files.add(name)
     for directory in ('sections', 'provenance', 'licenses', 'site', 'validation',
-                      'figures', 'fe-evidence', 'agent_local'):
+                      'figures', 'fe-evidence', 'agent_local', 'agent_environment',
+                      'agent_workflows'):
         walk(directory, directory, files, skip_dirs=())
     walk('references/notes', 'references/notes', files)
     # Reviewers must not read other reviewers' reports or prior-round votes, so

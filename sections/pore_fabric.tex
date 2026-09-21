@@ -147,7 +147,9 @@ Equivalently, with the distention logarithmic strain
 related by the self-adjoint matrix-logarithm derivative of
 \cref{sec:logarithmic-derivative}. The scalar driving term
 \(\partial W_A/\partial\ln a=\tfrac13\tr\mathbf\tau'\) of
-\eqref{eq:energy-returned-pressure-balance} is replaced by this tensor:
+\eqref{eq:energy-returned-pressure-balance} --- equivalently, the trace of
+\eqref{eq:constitutive-kirchhoff-phase-stress} --- is replaced by this
+tensor:
 its spherical part carries the volume response and its deviatoric part the
 shape response.
 
@@ -204,12 +206,13 @@ equilibrium that minimizes the potential over \(\mathbf G\):
 This is the tensorial generalization of the pressure equilibrium
 \eqref{eq:pressure-conjugacy}. The minimization is restricted to
 distentions whose logarithmic strain lies in the retained subspace
-\(\operatorname{range}\mathbb{D}\) of \cref{sec:fabric-biot}: on the
-complement \(\mathbb{D}\) vanishes, the potential does not depend on the
-complementary modes, and those modes are frozen to the mineral rather than
-equilibrated. Equation \eqref{eq:fabric-equilibrium} is therefore read on
-that subspace, where the quadratic potential is strictly convex and its
-stationary point exists and is unique. Differentiating along the conformal
+\(\operatorname{range}\mathbb{D}\) of \cref{sec:fabric-biot}. On the
+complement \(\mathbb{D}\) vanishes, so the distention energy is independent
+of the complementary modes; those modes are dropped from the minimization by
+construction and frozen to the mineral rather than equilibrated. Equation
+\eqref{eq:fabric-equilibrium} is therefore read on that subspace, where the
+quadratic distention potential is strictly convex and its stationary point
+exists and is unique. Differentiating along the conformal
 submanifold \(\mathbf G=a^{2/3}\mathbf I\), on which only \(a\) varies,
 reduces \eqref{eq:fabric-equilibrium} to
 \(\partial W_A/\partial\ln a
@@ -271,7 +274,7 @@ With a quadratic reference distention energy
 distention stiffness tensor \(\mathbb D\) is symmetric and positive
 semidefinite: positive definite on the subspace of distention strains the
 model retains and zero on its complement. The minimization in
-\eqref{eq:fabric-equivalent-energy} is therefore over
+\eqref{eq:fabric-equilibrium} is therefore over
 \(\mathbf E_{\mathrm{dis}}\in\operatorname{range}\mathbb{D}\), not over all
 symmetric tensors; the complementary modes are kinematically frozen to the
 mineral, which carries them at its own compliance. On that subspace the
@@ -305,13 +308,14 @@ mineral compliance through the zero eigenvalues of \(\mathbb D^{+}\). Let
 \(\mathbf p_1,\mathbf p_2\) be orthonormal vectors spanning the plane normal
 to \(\mathbf m\). That reduced \(\mathbb{D}\) is transversely isotropic
 about \(\mathbf m\) because \(\mathbf e_1\) and \(\mathbf e_2\) are
-invariant under rotations about \(\mathbf m\); equivalently, it annihilates
-the four complementary modes of this basis, the coupled in-plane pair
+invariant under rotations about \(\mathbf m\); and, concretely, it
+annihilates the four complementary modes of this basis, the coupled
+in-plane pair
 \(\mathbf e_3=(\mathbf p_1\otimes\mathbf p_1-\mathbf p_2\otimes\mathbf p_2)/\sqrt2\)
 and \(\mathbf e_6=\sqrt2\operatorname{sym}(\mathbf p_1\otimes\mathbf p_2)\)
 together with the two axial-shear modes
-\(\operatorname{sym}(\mathbf m\otimes\mathbf p_1)\) and
-\(\operatorname{sym}(\mathbf m\otimes\mathbf p_2)\). The labels
+\(\mathbf e_4=\sqrt2\operatorname{sym}(\mathbf m\otimes\mathbf p_1)\) and
+\(\mathbf e_5=\sqrt2\operatorname{sym}(\mathbf m\otimes\mathbf p_2)\). The labels
 \(\mathbf e_1,\dots,\mathbf e_6\) denote this fabric-adapted orthonormal
 basis of symmetric tensors, not the Mandel component indices of
 \eqref{eq:example-mineral-stiffness}. Two stiffnesses
@@ -351,8 +355,8 @@ twice whose exponential, \(\exp(2\mathbf E_{\mathrm{dis}})=\mathbf G
 =a^{2/3}\mathbf H\), reconstructs \eqref{eq:fabric-transverse-h},
 whose unimodular eigenvalues are \(h^{-2},h,h\). The retained model of
 \cref{sec:fe-fabric} holds exactly in this subspace, so the reported shape
-scalar is the logarithm of the unimodular transverse fabric eigenvalue
-\(h=\mathrm{e}^{\ln h}\), not a projection of it.
+scalar is exactly \(\ln h\), the logarithm of the unimodular transverse
+fabric eigenvalue, and not a projection of \(h\).
 The equilibrium \eqref{eq:fabric-equilibrium} splits into a volume balance
 for \(a\), which couples to pressure and reduces to the conformal pressure
 equation, and a shape balance for \(h\),

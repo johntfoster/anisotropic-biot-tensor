@@ -8,8 +8,8 @@ MOOSE Version:           git commit abafb58b on 2026-02-20
 LibMesh Version:         
 PETSc Version:           3.24.4
 SLEPc Version:           3.24.0
-Current Time:            Sun Sep 20 22:00:51 2026
-Executable Timestamp:    Sun Sep 20 21:56:16 2026
+Current Time:            Mon Sep 21 18:02:43 2026
+Executable Timestamp:    Sun Sep 20 23:20:55 2026
 
 Input File(s):
   /home/jfoster/projects/research/reactive_transport/anisotropic-biot-tensor/moose_app/inputs/fabric_contour.i
@@ -18,7 +18,7 @@ Command Line Argument(s):
   --n-threads=1
 
 Command Line Input Argument(s):
-  Outputs/file_base=/tmp/tmp38vtwout/solution
+  Outputs/file_base=/tmp/tmpzwc21mkj/solution
   Materials/law/fabric_coupling=0
   Materials/law/fabric_angle=0
 
@@ -872,4 +872,4 @@ Postprocessor Values:
 |   3.000000e-03 |       8.999992e-01 |   2.500000e+00 |   2.500000e+00 |  -1.000000e-04 |
 +----------------+--------------------+----------------+----------------+----------------+
 
-Finished Executing                                                                       [[33m 10.79 s[39m] [[33m  155 MB[39m]
+Finished Executing                                                                       [[33m 11.03 s[39m] [[33m  155 MB[39m]

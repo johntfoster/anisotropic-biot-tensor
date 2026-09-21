@@ -292,9 +292,10 @@ FABRIC_REFERENCE_CASES = sorted(set(fabric_cases) | {"conformal_probe_ref"})
 
 FABRIC_NOTE = ("runs/fabric_* entries are the pore-fabric probe and rotated-fabric "
                "consolidation decks, together with the paired conformal reference "
-               "deck runs/conformal_probe_ref. Their provenance.json records "
-               "application_sha256 rather than binary_sha256 and declares no outputs "
-               "map, so provenance_outputs_total is zero and "
+               "deck runs/conformal_probe_ref. Their provenance.json records the "
+               "compiled binary digest, the fabric source digests, and the input "
+               "deck digest alongside the revision they were run from, and declares "
+               "no outputs map, so provenance_outputs_total is zero and "
                "provenance_outputs_unshipped is empty; every file shipped in each case "
                "directory is registered here.")
 
@@ -318,9 +319,17 @@ for case in FABRIC_REFERENCE_CASES:
         reference_comparison_present=(case_dir / "reference_comparison.csv").is_file(),
         provenance_outputs_total=len(provenance.get("outputs", {})),
         provenance_outputs_unshipped=[],
-        binary_sha256=provenance.get("application_sha256"),
+        binary_sha256=provenance.get("binary_sha256", provenance.get("application_sha256")),
     ))
 fe["runs"].sort(key=lambda record: record["case"])
+TWO_MMS_NOTE = ("fe-evidence/mms-convergence.json and site/reports/mms-convergence.json are "
+                "deliberately separate copies: the first is the recorded convergence analysis "
+                "read by figures/fe-verification-plot-manifest.json, the second is the copy "
+                "published on the verification site and declared by site/evidence.json. "
+                "They carry the same convergence data under different paths and are not "
+                "expected to have equal digests.")
+if TWO_MMS_NOTE not in fe["notes"]:
+    fe["notes"].append(TWO_MMS_NOTE)
 if FABRIC_NOTE not in fe["notes"]:
     fe["notes"].append(FABRIC_NOTE)
 

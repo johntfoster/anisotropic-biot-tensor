@@ -8,8 +8,8 @@ MOOSE Version:           git commit abafb58b on 2026-02-20
 LibMesh Version:         
 PETSc Version:           3.24.4
 SLEPc Version:           3.24.0
-Current Time:            Sun Sep 20 21:56:57 2026
-Executable Timestamp:    Sun Sep 20 21:56:16 2026
+Current Time:            Mon Sep 21 18:02:42 2026
+Executable Timestamp:    Sun Sep 20 23:20:55 2026
 
 Input File(s):
   /home/jfoster/projects/research/reactive_transport/anisotropic-biot-tensor/moose_app/inputs/fabric_mandel.i
@@ -18,7 +18,7 @@ Command Line Argument(s):
   --n-threads=1
 
 Command Line Input Argument(s):
-  Outputs/file_base=/tmp/tmpdbo6wpqh/solution
+  Outputs/file_base=/tmp/tmp2orv32fa/solution
   Materials/law/fabric_angle=90
 
 Checkpoint:
