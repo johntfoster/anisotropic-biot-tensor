@@ -4,7 +4,7 @@
   "title": "An anisotropic Biot tensor: finite-element verification",
   "summary": "This companion records the evidence for the conformal-distention model and its MOOSE implementation. Constitutive, fluid-coupling, analytical reference, and manufactured-solution convergence checks pass and are published here with regenerated figures; finite-deformation demonstrations and physical validation remain pending or not performed.",
   "provenance": {
-    "source_revision": "caac406917e5e01d0468ed805a7c8bfd50ec4586",
+    "source_revision": "6d47dfc86c7295b6ffd58f61efac85a2f2b90a71",
     "scientific_snapshot": "scientific-snapshot",
     "note": "The base commit predates this working revision. The finite-element sources and evidence are provided under the repository-relative paths moose_app/, validation/, fe-evidence/, figures/ and site/; the scientific-snapshot artifact lists the exact files with SHA-256 hashes, and the review snapshot pinned in the review record is the authoritative frozen artifact for the checks below."
   },
@@ -373,6 +373,14 @@
       "kind": "report",
       "label": "measured diagnostics of the anisotropic, isotropic-comparison, and partial-drainage demonstrations",
       "sha256": "dc139b0bd97a4fd2be89ff4b728954017242799e2512ad5beb0be690806663d1"
+    },
+    {
+      "id": "fluid-coupling-verification",
+      "path": "site/reports/fluid-coupling-verification.json",
+      "destination": "fluid-coupling-verification.json",
+      "kind": "report",
+      "label": "fluid EOS and reference-mass derivative checks",
+      "sha256": "5842f2eb55c05ea98abec204e0030db87e3f53ba8bd7b56b965a04b9621f7e76"
     },
     {
       "id": "mandel-reference",

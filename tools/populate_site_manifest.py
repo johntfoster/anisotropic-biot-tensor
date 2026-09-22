@@ -80,8 +80,18 @@ def main():
                                     'C++ versus independent Python constitutive evaluation'),
     }
     for ident, (src, label) in reports.items():
+        # A report that has already been published is itself a valid source: the
+        # build directory is ignored and ephemeral, so a later regeneration must
+        # not silently drop an artifact the categories still cite. Prefer the
+        # build copy when it exists, otherwise keep the published one.
+        published = ROOT / 'site/reports' / (ident + '.json')
+        if not src.is_file():
+            src = published
         if src.is_file():
-            dst = copy(src, ROOT / 'site/reports' / (ident + '.json'))
+            if src.resolve() == published.resolve():
+                dst = published
+            else:
+                dst = copy(src, published)
             add(ident, dst, ident + '.json', 'report', label)
             # Ship the data artifacts a report declares, alongside the report,
             # so every declared SHA-256 resolves inside the published package.
@@ -343,6 +353,17 @@ def main():
         'Rotated-anisotropy and partial-drainage runs are force-controlled demonstrations with a kinematic rigid platen, not verified quantitative predictions.',
         'Parameters are synthetic; agreement with numerical and analytical checks is not experimental validation.',
     ]
+
+    # The published manifest must not cite an evidence id it does not register:
+    # every category and case reference has to resolve to a written artifact.
+    registered = {a['id'] for a in manifest['artifacts']}
+    referenced = [ident for item in manifest['categories'].values()
+                  for ident in item.get('evidence', [])]
+    referenced += [ident for case in manifest.get('cases', [])
+                   for ident in case.get('artifacts', [])]
+    unknown = sorted(set(referenced) - registered)
+    if unknown:
+        raise SystemExit('evidence ids cited but not registered: ' + ', '.join(unknown))
 
     (ROOT / 'site/evidence.json').write_text(json.dumps(manifest, indent=2) + '\n')
     print(json.dumps(dict(artifacts=len(artifacts), figures=len(figures),

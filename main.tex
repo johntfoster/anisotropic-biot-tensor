@@ -222,7 +222,7 @@ A bar on an intrinsic density denotes the per-phase-volume value:
 \(\bar\rho_s=\rho_s/\phi_s\) for the solid, which is the mineral state, and
 \(\bar\rho_f=\rho_f/\phi_f\) for the fluid.
 A bar on a stress denotes its representation in the mixture frame, whereas a hat denotes
-the true frame. The barred stresses also carry different normalizations:
+the true frame with the mineral normalization. The barred stresses also carry different normalizations:
 \(\bar{\mathbf\sigma}_s\) is per current mineral volume,
 \(\bar{\mathbf\tau}_s=\bar J\bar{\mathbf\sigma}_s\) of
 \eqref{eq:kirchhoff-volume-conventions} is per reference mineral volume.
@@ -236,13 +236,18 @@ prescribed boundary datum, such as the mass flux
 \(\bar Q_f\) of \eqref{eq:fe-fluid-residual}, denotes its prescribed value on that
 boundary. A single prime denotes the effective stress that carries the full
 pore-pressure term, as in \(\mathbf\sigma'\) of
-\eqref{eq:total-cauchy-single-prime}, and a double prime denotes the
-fixed-pressure stress \(\mathbf P''\) of \eqref{eq:fixed-pressure-stress}, so
-that \(\mathbf\sigma=\mathbf\sigma''-p\mathbf B\) in
-\eqref{eq:finite-biot-tensor}. The same two marks name the reduced energies of
-\cref{sec:finite-biot} at the prescribed pressure: \(W''\) of
-\eqref{eq:reduced-energy} and its fixed-pressure companion \(W'\) of
-\eqref{eq:legendre-energy}.
+\eqref{eq:total-cauchy-single-prime}, and a double prime denotes its reduced
+counterpart at the prescribed pressure, the stress \(\mathbf P''\) of
+\eqref{eq:fixed-pressure-stress}, so that
+\(\mathbf\sigma=\mathbf\sigma''-p\mathbf B\) in
+\eqref{eq:finite-biot-tensor}. The same two marks name the two prescribed-pressure potentials of
+\cref{sec:finite-biot}: the reduced potential
+\(W''\) of \eqref{eq:reduced-energy}, whose prescribed-pressure derivative is
+the double-primed stress \(\mathbf P''\) of \eqref{eq:fixed-pressure-stress},
+and its single-primed companion
+\(W'\) of \eqref{eq:legendre-energy}, whose prescribed-pressure derivative
+\(\mathbf P'\) of \eqref{eq:fixed-mineral-state-stress} carries the full
+pore-pressure term.
 A superscript \(d\) denotes the drained skeleton, as in the drained
 stiffness \(\mathbb{C}^d\) of \eqref{eq:drained-stiffness-restriction} and
 the drained energy \(W^d\) of \eqref{eq:prescribed-logarithmic-energies}. The
@@ -258,7 +263,18 @@ marks a quantity of the reference configuration, as in \(\phi_{s0}\) and
 \(\bar\rho_{s0}\). A wide tilde denotes the representation of a mixture-frame
 quantity in the true (mineral) frame, obtained by the inverse rotation
 \(\mathbf R_A^T\), as in \(\widetilde{\mathbf\tau}=\mathbf R_A^T\mathbf\tau'\mathbf R_A\) of
-\eqref{eq:fabric-phase-work}.
+\eqref{eq:fabric-phase-work}. The hat and the wide tilde both place their
+object in that same true frame, so the criterion that separates them is
+normalization, not frame: a hat marks a mineral-normalized quantity, per
+mineral volume, as in the intrinsic mineral stresses
+\(\widehat{\mathbf\sigma}_s\), per current mineral volume, and
+\(\widehat{\mathbf\tau}_s\), per reference mineral volume; a wide tilde marks a
+mixture-normalized quantity rotated into the true frame, as in
+\(\widetilde{\mathbf\tau}\), whose partner \(\mathbf\tau'\) is the skeleton
+effective Kirchhoff stress per reference mixture volume. A mineral-normalized
+stress therefore keeps its hat in the true frame however it is reached, so
+\(\widehat{\mathbf\tau}_s=\mathbf R_A^T\bar{\mathbf\tau}_s\mathbf R_A\) in
+\eqref{eq:rotated-mineral-kirchhoff}, and no tilde is written for it.
 The mixture-frame and true-frame stress representations differ by the rotation \eqref{eq:rotated-mineral-cauchy}.
 Fourth-order tensors are set in blackboard bold and second-order tensors in
 upright bold. Conservation of solid mass gives
@@ -569,7 +585,7 @@ containing zero, integrating this derivative gives
        -\int_0^p\mathbf B(\mathbf F,\pi)\,\dd\pi.
  \label{eq:integrated-pressure-response}
 \end{equation}
-The fixed-pressure effective stress \(\mathbf\sigma''\) itself depends
+The reduced effective stress \(\mathbf\sigma''\) itself depends
 on pressure. The instantaneous coupling tensor therefore applies to an
 infinitesimal pressure increment; a finite change from the drained stress
 requires the integral in \eqref{eq:integrated-pressure-response}.

@@ -9,8 +9,8 @@ for the cases whose deck solves the same reference-modulus quarter-domain
 Mandel problem. `manifest.json` records per case whether `analysis.json` and
 `reference_comparison.csv` are present and lists the intentionally unshipped
 source-run outputs (`provenance_outputs_unshipped`); a `reference_note` in
-each non-comparable `analysis.json` states why no Mandel-normalized metric is
-reported.
+each `analysis.json` whose analysis records `reference_comparable:false`
+states why no Mandel-normalized metric is reported.
 
 `mms-convergence.json` is the manufactured-solution convergence analysis and
 `compute_mms_order.py` recomputes it. `manifest.json` lists SHA-256 digests.
