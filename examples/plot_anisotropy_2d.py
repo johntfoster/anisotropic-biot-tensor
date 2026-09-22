@@ -18,6 +18,8 @@ from pathlib import Path
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from figure_style import COLORS, apply_style, publication_size
+apply_style()
 import netCDF4
 import numpy as np
 
@@ -102,12 +104,12 @@ def main():
         angles.append(angle)
         edge_ux.append(d['vals']['ux'][right].mean())
         peak_p.append(d['vals']['p'].max())
-    ax.plot(angles, 1e3 * np.array(edge_ux), 'o-', color='tab:red', label='mean $u_1$ on $X_1=+1$')
+    ax.plot(angles, 1e3 * np.array(edge_ux), 'o-', color=COLORS[0], label='mean $u_1$ on $X_1=+1$')
     ax.set_xlabel('mineral orientation $\\theta$ (degrees)', fontsize=9)
     ax.set_ylabel('$u_1$ ($\\times10^{-3}$)', fontsize=9)
     ax.grid(alpha=.25)
     ax2 = ax.twinx()
-    ax2.plot(angles, peak_p, 's--', color='tab:blue', label='peak $p$')
+    ax2.plot(angles, peak_p, 's--', color=COLORS[1], label='peak $p$')
     ax2.set_ylabel('peak $p$', fontsize=9)
     ax.set_title('Orientation effect on lateral flow-driven deformation', fontsize=10)
     h1, l1 = ax.get_legend_handles_labels()
@@ -131,6 +133,7 @@ def main():
                  f'(load $q$ = {scalar["load"]}, modulus rotation in the $X_1$-$X_2$ plane)',
                  fontsize=11.5)
     OUT.mkdir(parents=True, exist_ok=True)
+    publication_size(fig)
     fig.savefig(OUT / 'fe_anisotropy_2d.png', dpi=200, metadata={'Creator': 'plot_anisotropy_2d.py'})
     fig.savefig(OUT / 'fe_anisotropy_2d.pdf', metadata={'Creator': 'plot_anisotropy_2d.py'})
 

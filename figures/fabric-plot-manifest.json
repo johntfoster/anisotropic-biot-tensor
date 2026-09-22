@@ -2,8 +2,8 @@
   "schema_version": 1,
   "generator": "examples/plot_fabric_results.py",
   "versions": {
-    "python": "3.10.12",
-    "numpy": "2.2.6",
+    "python": "3.14.0",
+    "numpy": "2.4.2",
     "matplotlib": "3.10.8"
   },
   "figures": [
@@ -51,7 +51,8 @@
   ],
   "missing": [],
   "input_sha256": {
-    "examples/plot_fabric_results.py": "ed4b81bd5575ae9888edbcc8cee613f4c126d7fa3ba55dd71307366532369128",
+    "examples/plot_fabric_results.py": "552efce63e931a5aa5a733e1507471fa86254a95d622625f1509fcec985debd8",
+    "examples/figure_style.py": "35119cbb69f5552cd3df3209079b050225b5568624a3260136fbad751a377237",
     "fe-evidence/runs/fabric_probe_iso/solution.csv": "9ee163f46dd58330fa00501cb83b409b64533c0df586bf274cca1ac80e4b6feb",
     "fe-evidence/runs/fabric_probe_coup_a0/solution.csv": "3d25162ad03f033da50c6d3aa30e3a923a4898e38e19025e1a054a403a425dc4",
     "fe-evidence/runs/fabric_probe_coup_a45/solution.csv": "72dc9cec5646dfe1a9949d2f27016ccab032d0d014e57133153ca2cbb3829306",
@@ -69,12 +70,12 @@
   },
   "output_sha256": {
     "fe_fabric_probe.csv": "3fe15c0e9d1ec0c9ae024c7fb374a676b8392424788e5893eb7e21c92f50caa3",
-    "fe_fabric_probe.pdf": "bee6757e3d1fdabf8484167f3904cecb3aa91226b8b5d953f11f2f695d1f1a15",
-    "fe_fabric_probe.png": "4159c83dc94386017c6ac573edc82486414e13bec81388273991a5e60ca6f002",
+    "fe_fabric_probe.pdf": "bd721095486ccf2ced5866d68a35e5c17f0271be5b8a18d0462202a56010779c",
+    "fe_fabric_probe.png": "85500c39e837b740887b4f3082531c177f7bad3add916cdf3cf0fd468c8addd4",
     "fe_fabric_mandel_history.csv": "822bfda28e447ca69f2959abc9318102d6878d8db3566e8ec5d01b6ac17ac952",
     "fe_fabric_mandel_peak.csv": "1ad9aba1e1cd83e18ebde3205393454180f6300708289e9ecf8a61f7a8799c8e",
-    "fe_fabric_mandel.pdf": "bbcb68d834914ece3fa77c06efa012b6fcec3b98f7e7911fef91d86f7ff445b4",
-    "fe_fabric_mandel.png": "697804467cb5ca1c9d0f54f438634f9cc90a2991dab392f89b0b4f9420c63f17"
+    "fe_fabric_mandel.pdf": "911251ca062e31a7f29bc05055c04a9f07ba4f83a4863a893afbe48612b3d8e3",
+    "fe_fabric_mandel.png": "3de5992ec0121df280134480136ecce19c295f2aff4d960565aab58660c5a545"
   },
   "limitations": [
     "Only recorded successful runs are plotted; this does not certify their scientific acceptance.",

@@ -15,7 +15,7 @@ protected:
   const ADVariableGradient & _gx, &_gy, &_gp;
   const ADVariableValue & _p;
   Fabric::Law _law;
-  bool _linear;
+  bool _linear, _scalar_coupling;
   ADMaterialProperty<ADRankTwoTensor> & _P;
   ADMaterialProperty<RealVectorValue> & _flux;
   ADMaterialProperty<Real> & _mass;

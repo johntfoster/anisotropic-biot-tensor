@@ -3,7 +3,7 @@
 # with a transversely isotropic pore fabric on the same 1 x 0.1 quarter-Mandel
 # domain, boundary conditions, material and fabric parameters, and time
 # integration scheme as fabric_mandel.i, but on a mesh fine enough to resolve
-# the diffusion field (nx=40, ny=8) and with a smaller step so the Exodus output
+# the diffusion field (nx=40, ny=4) and with a smaller step so the Exodus output
 # carries about eleven evenly spaced field snapshots across the run
 # (dt = 0.0003, end_time = 0.003 -> t = 0, 0.0003, ..., 0.003). The mineral
 # stiffness is isotropic and unrotated, so every directional effect reported
@@ -15,7 +15,7 @@
     type = GeneratedMeshGenerator
     dim = 2
     nx = 40
-    ny = 8
+    ny = 4
     xmin = 0
     xmax = 1
     ymin = 0

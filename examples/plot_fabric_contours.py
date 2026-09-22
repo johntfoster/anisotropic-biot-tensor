@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Plot the recorded pore-fabric contour fields from the refined (40 x 8) runs.
+"""Plot the recorded pore-fabric contour fields from the refined (40 x 4) runs.
 
 Reads only the recorded Exodus field files under ``fe-evidence/runs`` (netCDF4)
 and emits two figures plus CSV sidecars:
@@ -8,7 +8,7 @@ and emits two figures plus CSV sidecars:
 ``fe_fabric_contours``
     Pore pressure ``p`` and displacement magnitude ``|u|`` at one common time,
     one column per fabric variant (isotropic, axis 0/45/90 deg), as filled
-    contours with colourbars, equal aspect, a domain outline, and a fabric-axis
+    contours with shared colourbars, displaced boundaries, and a fabric-axis
     indicator.
 
 ``fe_fabric_diffusion``
@@ -55,11 +55,8 @@ DIFFUSION_COUPLED = 'fabric_contour_a45'
 # Recorded time indices for the diffusion figure (of the 11 snapshots).
 DIFFUSION_TIME_IDX = [0, 2, 4, 6, 8, 10]
 
-plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 8,
-                     'axes.labelsize': 8, 'legend.fontsize': 7,
-                     'axes.titlesize': 9, 'lines.linewidth': 1.2,
-                     'pdf.fonttype': 42, 'savefig.bbox': 'tight',
-                     'axes.spines.top': False, 'axes.spines.right': False})
+from figure_style import COLORS, apply_style, publication_size
+apply_style()
 
 
 def sha(path):
@@ -91,127 +88,119 @@ def pressure_extrema(field, x, y):
                 p_max_x=float(x[i]), p_max_y=float(y[i]))
 
 
-def outline(ax):
-    ax.plot([0, 1, 1, 0, 0], [0, 0, 0.1, 0.1, 0], color='k', lw=0.9, clip_on=False)
+# One displacement multiplier for every case and time in both figures.
+DISPLACEMENT_SCALE = 500.0
 
 
-def fabric_indicator(ax, angle_deg):
-    """Draw a fabric-axis arrow centred on the domain."""
-    th = np.radians(angle_deg)
-    cx, cy = 0.5, 0.05
-    length = 0.045
-    dx, dy = length * np.cos(th), length * np.sin(th)
-    ax.annotate('', xy=(cx + dx, cy + dy), xytext=(cx - dx, cy - dy),
-                arrowprops=dict(arrowstyle='-|>', color='#D55E00', lw=1.6,
-                                mutation_scale=12))
+def geometry(f, ti):
+    return (f['x'] + DISPLACEMENT_SCALE * f['ux'][ti],
+            f['y'] + DISPLACEMENT_SCALE * f['uy'][ti])
+
+
+def panel(ax, f, ti, key, levels, angle=None):
+    x, y = geometry(f, ti)
+    cf = ax.tricontourf(x, y, f[key][ti], levels=levels, cmap='viridis')
+    cf.set_zorder(-1)
+    ax.set_rasterization_zorder(0)
+    # Draw each boundary in reference-coordinate order, then displace its nodes.
+    for coordinate, value, order in [('x', 0., 'y'), ('x', 1., 'y'),
+                                     ('y', 0., 'x'), ('y', .1, 'x')]:
+        indices = np.flatnonzero(np.isclose(f[coordinate], value))
+        indices = indices[np.argsort(f[order][indices])]
+        ax.plot(x[indices], y[indices], color='k', lw=.65)
+    ax.plot([0, 1, 1, 0, 0], [0, 0, .1, .1, 0], '--', color='.55', lw=.6)
+    if angle is not None:
+        # The arrow denotes the reference fabric, in axes coordinates so its
+        # direction is not distorted by the enlarged vertical display scale.
+        th = np.radians(angle)
+        dx, dy = .12*np.cos(th), .12*np.sin(th)/.38
+        ax.annotate('', xy=(.5+dx, .5+dy), xytext=(.5-dx, .5-dy),
+                    xycoords='axes fraction',
+                    arrowprops=dict(arrowstyle='-|>', color='#D55E00', lw=1.1))
+    ax.set_xlim(-.035, 1.045)
+    ax.set_ylim(-.01, .11)
+    ax.set_box_aspect(.38)
+    ax.set_xticks([0, .5, 1])
+    ax.set_yticks([0, .1])
+    return cf
 
 
 def contours_figure(fields, out_dir, manifest):
-    # One common time: the final recorded state (where the peak pressures are read).
     ti = len(fields['fabric_contour_iso']['t']) - 1
     t_common = float(fields['fabric_contour_iso']['t'][ti])
-
-    fig, axes = plt.subplots(2, 4, figsize=(12.0, 4.4), layout='constrained')
+    fig, axes = plt.subplots(2, 4, figsize=(6.35, 2.77), layout='constrained')
     rows = [('p', r'pore pressure $p$'), ('u_mag', r'displacement $|\mathbf{u}|$')]
     csv_rows = []
-    for j, (case, label, angle) in enumerate(CASES):
-        f = fields[case]
-        for r, (key, _) in enumerate(rows):
-            ax = axes[r][j]
-            field = f[key][ti]
-            if key == 'p':
-                vmax = float(field.max())
-            else:
-                vmax = float(field.max())
-            levels = np.linspace(0.0, vmax, 21)
-            cf = ax.tricontourf(f['x'], f['y'], field, levels=levels, cmap='viridis')
-            fig.colorbar(cf, ax=ax, fraction=0.03, pad=0.02)
-            ax.set_aspect('equal')
-            outline(ax)
-            if angle is not None:
-                fabric_indicator(ax, angle)
-            ax.set_xlim(-0.02, 1.02)
-            ax.set_ylim(-0.012, 0.112)
-            ax.set_xticks([])
-            ax.set_yticks([])
+    for r, (key, label) in enumerate(rows):
+        minimum = min(float(f[key][ti].min()) for f in fields.values())
+        maximum = max(float(f[key][ti].max()) for f in fields.values())
+        levels = np.linspace(minimum, maximum, 91)
+        for j, (case, title, angle) in enumerate(CASES):
+            cf = panel(axes[r,j], fields[case], ti, key, levels, angle)
             if r == 0:
-                ax.set_title(f'{label}', fontsize=9)
-            if j == 0:
-                ax.set_ylabel(rows[r][1])
-        # Record extrema and pressure-max location from the recorded fields.
-        pfield = f['p'][ti]
-        ext = pressure_extrema(pfield, f['x'], f['y'])
+                axes[r,j].set_title(title)
+            if j:
+                axes[r,j].set_yticklabels([])
+        cb = fig.colorbar(cf, ax=list(axes[r]), fraction=.025, pad=.025, shrink=.55,
+                         format='%.1e', label=label)
+        cb.set_ticks(np.linspace(max(0., minimum), maximum, 3))
+    for case, label, angle in CASES:
+        f = fields[case]
+        ext = pressure_extrema(f['p'][ti], f['x'], f['y'])
         umag = f['u_mag'][ti]
         iu = int(np.argmax(umag))
-        csv_rows.append(dict(
-            case=case, label=label, fabric_angle_deg=(angle if angle is not None else ''),
-            time=t_common, p_min=ext['p_min'], p_max=ext['p_max'],
-            p_max_x=ext['p_max_x'], p_max_y=ext['p_max_y'],
-            u_mag_min=float(umag.min()), u_mag_max=float(umag.max()),
+        csv_rows.append(dict(case=case, label=label,
+            fabric_angle_deg=angle if angle is not None else '', time=t_common,
+            **ext, u_mag_min=float(umag.min()), u_mag_max=float(umag.max()),
             u_mag_max_x=float(f['x'][iu]), u_mag_max_y=float(f['y'][iu])))
-
+    fig.supxlabel(r'$X_1+500u_1$')
+    fig.supylabel(r'$X_2+500u_2$')
     manifest.csv('fe_fabric_contours', csv_rows)
-    caption = ('Refined (40 x 8) coupled consolidation contours at the common '
-               'recorded time t = %.6g. Top row: pore pressure. Bottom row: '
-               'displacement magnitude. Columns: isotropic (uncoupled) fabric, '
-               'then fabric axis 0, 45 and 90 deg behind an isotropic, unrotated '
-               'mineral. The orange arrow marks the fabric axis; the isotropic '
-               'column carries no arrow because its distention stiffness has no '
-               'directional coupling. Equal aspect preserves the 1 x 0.1 domain. '
-               'These are finite-load demonstrations on synthetic parameters, '
-               'not a mesh-convergence study.' % t_common)
+    caption = ('Coupled consolidation on the 40 x 4 mesh of the 1 x 0.1 domain '
+               f'at t = {t_common:g}. Pressure above, displacement magnitude below; '
+               'one colour scale and colourbar per quantity across all cases. '
+               'Displacements are magnified 500 times, with dashed reference '
+               'boundaries; the panel aspect ratio is 0.38. Orange arrows denote '
+               'reference fabric directions. These are finite-load demonstrations '
+               'on synthetic parameters, not a mesh-convergence study.')
     manifest.save(fig, 'fe_fabric_contours', caption,
                   [c for c, _, _ in CASES], ['fe_fabric_contours.csv'])
 
 
 def diffusion_figure(fields, out_dir, manifest):
     iso = fields['fabric_contour_iso']
-    coup = fields[DIFFUSION_COUPLED]
-    times = [iso['t'][i] for i in DIFFUSION_TIME_IDX]
-
-    # Common colour scale across both rows and all times (honest contrast).
-    vmax = max(float(iso['p'].max()), float(coup['p'].max()))
-    levels = np.linspace(0.0, vmax, 21)
-
-    rows = [('fabric_contour_iso', 'isotropic', iso),
-            (DIFFUSION_COUPLED, 'coupled, $45^\\circ$', coup)]
-    fig, axes = plt.subplots(2, len(DIFFUSION_TIME_IDX), figsize=(13.0, 3.6),
-                             layout='constrained')
+    selected = [fields['fabric_contour_iso'], fields[DIFFUSION_COUPLED]]
+    minimum = min(float(f['p'][DIFFUSION_TIME_IDX].min()) for f in selected)
+    maximum = max(float(f['p'][DIFFUSION_TIME_IDX].max()) for f in selected)
+    levels = np.linspace(minimum, maximum, 91)
+    fig, axes = plt.subplots(4, 3, figsize=(6.35, 5.6), layout='constrained')
     csv_rows = []
-    for r, (case, label, f) in enumerate(rows):
+    for group, (case, label, f) in enumerate([
+            ('fabric_contour_iso', 'isotropic', iso),
+            (DIFFUSION_COUPLED, r'fabric $45^\circ$', selected[1])]):
         for c, ti in enumerate(DIFFUSION_TIME_IDX):
-            ax = axes[r][c]
-            field = f['p'][ti]
-            cf = ax.tricontourf(f['x'], f['y'], field, levels=levels, cmap='viridis')
-            ax.set_aspect('equal')
-            outline(ax)
-            ax.set_xlim(-0.02, 1.02)
-            ax.set_ylim(-0.012, 0.112)
-            ax.set_xticks([])
-            ax.set_yticks([])
-            if r == 0:
-                ax.set_title(f'$t={times[c]:.4g}$', fontsize=9)
-            if c == 0:
-                ax.set_ylabel(label)
-            ext = pressure_extrema(field, f['x'], f['y'])
-            csv_rows.append(dict(
-                case=case, label=label,
-                fabric_angle_deg=('' if case == 'fabric_contour_iso' else '45'),
-                time=float(times[c]), p_min=ext['p_min'], p_max=ext['p_max'],
-                p_max_x=ext['p_max_x'], p_max_y=ext['p_max_y']))
-    # Shared colourbar spanning the grid.
-    fig.colorbar(cf, ax=axes.ravel().tolist(), fraction=0.025, pad=0.01,
-                 label='pore pressure $p$')
-
+            ax = axes[2*group+c//3, c%3]
+            cf = panel(ax, f, ti, 'p', levels)
+            ax.set_title(f'{label}, $t={f["t"][ti]:.4g}$')
+            if c%3:
+                ax.set_yticklabels([])
+            ext = pressure_extrema(f['p'][ti], f['x'], f['y'])
+            csv_rows.append(dict(case=case, label=label,
+                fabric_angle_deg='' if group == 0 else '45',
+                time=float(f['t'][ti]), **ext))
+    cb = fig.colorbar(cf, ax=axes.ravel().tolist(), fraction=.025, pad=.025,
+                     label='pore pressure $p$', format='%.1e')
+    cb.set_ticks(np.linspace(max(0., minimum), maximum, 5))
+    fig.supxlabel(r'$X_1+500u_1$')
+    fig.supylabel(r'$X_2+500u_2$')
     manifest.csv('fe_fabric_diffusion', csv_rows)
-    caption = ('Refined (40 x 8) coupled consolidation: pore-pressure snapshots at '
-               'six recorded times, isotropic (uncoupled) row above and coupled '
-               '$45^\\circ$ fabric row below on a shared colour scale. The drainage '
-               'front starts at the drained right edge and propagates into the '
-               'strip; the interior pressure is a genuine diffusion field, not a '
-               'uniform or degenerate state. Equal aspect preserves the 1 x 0.1 '
-               'domain. These are finite-load demonstrations on synthetic '
-               'parameters, not a mesh-convergence study.')
+    caption = ('Coupled consolidation on the 40 x 4 mesh of the 1 x 0.1 domain: '
+               'six recorded pressure snapshots for isotropic fabric (upper two '
+               'rows) and coupled 45-degree fabric (lower two rows). All panes '
+               'share one colour scale and colourbar. Displacements are magnified '
+               '500 times, with dashed reference boundaries and panel aspect 0.38. '
+               'These are finite-load demonstrations on synthetic parameters, '
+               'not a mesh-convergence study.')
     manifest.save(fig, 'fe_fabric_diffusion', caption,
                   ['fabric_contour_iso', DIFFUSION_COUPLED], ['fe_fabric_diffusion.csv'])
 
@@ -222,6 +211,7 @@ class Manifest:
         self.output.mkdir(parents=True, exist_ok=True)
         self.inputs, self.outputs, self.figures = {}, {}, []
         self.source(ROOT / 'examples/plot_fabric_contours.py')
+        self.source(ROOT / 'examples/figure_style.py')
 
     def source(self, path):
         path = Path(path).resolve()
@@ -235,12 +225,13 @@ class Manifest:
             return
         path = self.output / (name + '.csv')
         with path.open('w', newline='') as stream:
-            writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
+            writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator='\n')
             writer.writeheader()
             writer.writerows(rows)
         self.outputs[path.name] = sha(path)
 
     def save(self, fig, name, caption, cases, data):
+        publication_size(fig)
         files = []
         for ext in ('pdf', 'png'):
             path = self.output / (name + '.' + ext)
@@ -266,6 +257,16 @@ def main():
         fields[case] = load_exodus(case, args.runs)
         manifest.source(args.runs / case / 'solution.e')
 
+    reference = fields['fabric_contour_iso']
+    for case, f in fields.items():
+        if not np.array_equal(f['t'], reference['t']):
+            raise ValueError('Recorded times differ: ' + case)
+        if not (np.isclose(f['x'].max(), 1.) and np.isclose(f['y'].max(), .1)):
+            raise ValueError('Unexpected domain: ' + case)
+        if len(np.unique(f['x'])) != 81 or len(np.unique(f['y'])) != 9:
+            raise ValueError('Expected the 40 x 4 QUAD9 mesh: ' + case)
+        if not all(np.isfinite(f[key]).all() for key in ('p', 'ux', 'uy')):
+            raise ValueError('Nonfinite field: ' + case)
     contours_figure(fields, args.output, manifest)
     diffusion_figure(fields, args.output, manifest)
 
@@ -275,6 +276,8 @@ def main():
         versions=dict(python=platform.python_version(), numpy=np.__version__,
                       matplotlib=matplotlib.__version__, netCDF4=netCDF4.__version__),
         figures=manifest.figures,
+        display=dict(displacement_scale=DISPLACEMENT_SCALE, panel_aspect=.38,
+                     reference_domain=[1., .1], mesh=[40, 4]),
         input_sha256=manifest.inputs,
         output_sha256=manifest.outputs,
         limitations=[

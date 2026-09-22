@@ -1,0 +1,186 @@
+\subsection{Pressure-induced shear behind an isotropic mineral}
+\label{sec:fabric-pressure-shear}
+
+A pressure increment in a specimen held at fixed deformation requires
+boundary reactions. Their shear component provides a direct test of the
+nonspherical Biot tensor. We use an isotropic mineral with
+\(K_s=2.5K_*\), shear modulus \(5K_*/6\), and
+\(\phi_{s0}=0.9\). The retained distention block of
+\cref{sec:fabric-biot} has \(k_v=5.4K_*\), \(k_a=K_*\), and
+\(k_c=0.4K_*\). This positive definite block couples volume and shape.
+The comparison with \(k_c=0\) retains shape compliance; the conformal
+comparison freezes shape and retains the same volumetric modulus.
+
+Write the prescribed in-plane axis as
+\(\mathbf m=(\cos\theta,\sin\theta,0)^T\). At the reference state,
+\eqref{eq:fabric-transverse-biot} and the pressure tangent give
+\begin{equation}
+ \left.\frac{\partial\sigma_{12}}{\partial p}\right|_{\mathbf F=\mathbf I,p=0}
+ =-(B_\parallel-B_\perp)\sin\theta\cos\theta.
+ \label{eq:fabric-pressure-shear-reaction}
+\end{equation}
+Thus the shear reaction reverses with the fabric angle and vanishes when
+the axis lies along either coordinate direction. Its largest magnitude
+occurs at \(45^\circ\). \Cref{fig:fe-fabric-probe} evaluates the
+reference law, with the pressure reactions checked independently by
+eliminating the two distention strains. An uncoupled shape compliance can
+change the drained stiffness while leaving the pressure reaction
+spherical. Volume--shape coupling is what makes this experiment distinguish
+the fabric model from the conformal specialization. The modulus sweep
+in panel (b) keeps \(k_v\) fixed and varies \(k_a/k_v\) and
+\(k_c/\sqrt{k_vk_a}\). The latter lies between \(-0.9\) and
+\(0.9\), so every distention block remains positive definite.
+The zero reaction at \(k_c=0\) persists across the entire range of
+shape stiffness, while its magnitude and sign change with volume--shape
+coupling.
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=\textwidth]{build/insight/fabric_pressure_shear.pdf}
+ \caption{Pressure-induced shear reaction at fixed deformation for an
+ isotropic mineral. (a) Reaction per pressure increment against fabric
+ orientation. (b) Reaction per pressure increment at \(45^\circ\) as
+ shape stiffness and volume--shape coupling vary within the positive
+ definite domain. The circle marks the moduli used in panel (a). The
+ uncoupled and conformal curves in panel (a) coincide at zero shear reaction. All moduli and states are synthetic.}
+ \label{fig:fe-fabric-probe}
+\end{figure}
+
+\subsection{Consolidation with tensor and scalar pressure coupling}
+\label{sec:fabric-scalar-comparison}
+
+A scalar coefficient calibrated to a mean pressure reaction need not
+reproduce a constrained specimen's settlement and lateral reaction.
+We compare the reference fabric law with a scalar approximation calibrated
+to preserve \(\tr\mathbf B_0/3\). Both use the same drained stiffness,
+fixed-strain storage, and isotropic mobility. Solid storage is evaluated
+from the reference fabric equilibrium using
+\eqref{eq:reference-solid-storage-definition}. The scalar coefficient
+replaces the tensor in both stress and fluid mass:
+\begin{align}
+ \mathbf\sigma_{\mathrm{scalar}}
+ &=\mathbb C^d:\mathbf\varepsilon
+       -\frac{\tr\mathbf B_0}{3}p\mathbf I,
+ \label{eq:fabric-scalar-stress}\\
+ \frac{m_{f,\mathrm{scalar}}}{\bar\rho_{f0}}
+ &=1-\phi_{s0}+\frac{\tr\mathbf B_0}{3}\tr\mathbf\varepsilon
+       +\left(\frac{1-\phi_{s0}}{K_f}+S_s\right)p.
+ \label{eq:fabric-scalar-mass}
+\end{align}
+Here the reference strain is
+\(\mathbf\varepsilon=\operatorname{sym}\operatorname{Grad}\mathbf u\).
+The tensor model replaces the scalar strain contraction by
+\(\mathbf B_0:\mathbf\varepsilon\) and the pressure term in stress by
+\(-p\mathbf B_0\). Using the same coupling in both equations preserves
+reciprocity. A prescribed-deformation material test checks both compiled
+stress and mass against a separate linear solve after this substitution.
+For an anisotropic mineral, pressure differentiation of the compiled
+mineral volume also agrees with the solid part of the fluid-mass storage.
+With positive storage and positive definite drained stiffness,
+each model has a positive definite energy in strain and fluid content.
+The scalar model is a phenomenological comparison; its internal fabric
+variables are not interpreted as mineral-volume predictions.
+
+The plane-strain strip occupies \(0\le X_1\le1\),
+\(0\le X_2\le0.1\). Both vertical sides have \(u_1=0\), the bottom
+has \(u_2=0\), and the upper surface carries a uniform prescribed vertical traction.
+Settlement is the mean vertical displacement of that surface. Tangential
+tractions on the horizontal boundaries are zero. Only the right side
+drains, with \(p=0\); the remaining boundaries are impermeable.
+Starting from zero displacement and pressure, the compressive traction
+increases linearly to \(10^{-4}K_*\) at \(t=0.01\) and remains constant
+until \(t=0.75\). We use \(K_f=8K_*\), reference fluid density one,
+and constant isotropic mobility \(k/\mu_f=1.5\) in the consistent
+nondimensional units of the calculation. Lengths are normalized by the
+strip width, and the time unit is chosen to give this nondimensional
+mobility. The prescribed fabric angles
+are \(0^\circ\), \(45^\circ\), and \(90^\circ\); each scalar/tensor
+pair has identical mechanical and hydraulic boundary conditions.
+
+\input{build/insight/comparison_summary.tex}
+For these parameters and constraints, pressure is more sensitive to the
+scalar approximation than settlement. The shared drained stiffness gives
+each scalar/tensor pair the same fully drained settlement.
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=\textwidth]{build/insight/fabric_comparison.pdf}
+ \caption{Consolidation from rest through a load ramp and subsequent
+ drainage. Solid curves use the tensor coupling and dashed curves its
+ mean scalar approximation, with the drained stiffness, storage and
+ mobility held fixed within each orientation. The panels show pressure
+ at the sealed lower-left corner, mean settlement of the loaded upper surface, and
+ horizontal reaction on the constrained right side. The final panel
+ quantifies scalar-approximation errors relative to the tensor histories;
+ the norm and refinement comparison are stated in the text.}
+ \label{fig:fe-fabric-mandel}
+\end{figure}
+
+\subsection{Finite pure shear with equilibrated pore volume and shape}
+\label{sec:fabric-finite-benchmark}
+
+To separate finite mineral-volume effects from transport, we prescribe a
+homogeneous isochoric pure stretch with principal axes oblique to the
+coordinate axes. Let \(\mathbf m\) be the fabric axis at
+\(45^\circ\), and let \(\mathbf n\) be its in-plane unit normal.
+We prescribe
+\begin{equation}
+ \mathbf F=\exp\left[\gamma
+       (\mathbf m\otimes\mathbf m-\mathbf n\otimes\mathbf n)\right],
+ \qquad J=1,
+ \qquad -0.6\le\gamma\le0.6.
+ \label{eq:fabric-finite-pure-shear}
+\end{equation}
+The principal stretches are \(e^\gamma,e^{-\gamma},1\). For this
+isotropic mineral, the distention, mineral stretch, and mineral stress
+commute, satisfying \eqref{eq:fabric-commuting-work}. The off-diagonal
+spatial stress is nevertheless nonzero because the common axes are
+oblique. This is a finite pure-shear material experiment, separate from
+the reference-state finite-element calculations.
+
+We use the same distention moduli as in
+\cref{sec:fabric-pressure-shear} and retain the quadratic energy in
+\(\mathbf E_{\mathrm{dis}}=\tfrac12\log\mathbf G\), but solve
+\eqref{eq:fabric-equilibrium} with the exact exponential mineral volume
+\(\bar J=J/a\). Both \(\ln a\) and \(\ln h\) equilibrate at every
+state. The comparison evaluates the reference linear constitutive law
+on the same logarithmic strain \(\mathbf\varepsilon=\log\mathbf F\).
+This convention isolates constitutive truncation from an additional
+replacement of logarithmic strain by engineering strain.
+
+\Cref{fig:fabric-finite} compares the responses at \(p=0.5K_*\) and
+maps the stress discrepancy over \(0\le p/K_*\le1\). Subtracting the
+zero-pressure stress at each fixed deformation isolates the pressure-induced
+shear reaction. Although total shear stress is dominated by the elastic
+shape response, its pressure-induced part changes with deformation.
+Pore volume also differs from the linear prediction even though the total
+volume remains fixed. The shape panel reports the pressure-induced change
+in \(\ln h\), exposing the volume--shape coupling in the equilibrium.
+
+Independent central differences of the unreduced spectral mineral energy
+at the converged states check all nine spatial stress components, with a
+maximum Frobenius-norm discrepancy of \(1.1\times10^{-8}K_*\) at the
+smallest perturbation. Re-solving the equilibrium under pressure increments
+checks the complete pressure tangent to \(1.3\times10^{-11}\).
+An independent minimization of that spectral energy reproduces the two
+internal strains to \(1.1\times10^{-8}\). Reducing deformation and
+pressure together gives stress errors of second order, with measured
+orders \(1.9989\)--\(1.9997\), recovering the reference linearization.
+All plotted states have positive phase volumes and positive internal
+Hessians. These checks establish local internal equilibrium and work
+consistency on the commuting family; they do not establish stability
+against every deformation mode or a general noncoaxial finite law.
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=\textwidth]{build/insight/fabric_finite.pdf}
+ \caption{Finite pure shear with oblique fabric, using exact exponential
+ volumes and equilibrated volume and shape strains. Panels (a)--(c) use
+ \(p=0.5K_*\): pressure-induced shear stress, pore volume per reference
+ mixture volume, and pressure-induced shape change. Each pressure-induced
+ quantity subtracts the zero-pressure state at the same deformation.
+ Panel (d) shows the full stress error of the reference linearization,
+ normalized by the mineral bulk modulus. The finite calculation is
+ restricted to commuting mineral stress and distention.}
+ \label{fig:fabric-finite}
+\end{figure}

@@ -17,6 +17,12 @@ objects:
     retained_subspace: span(e1 = I/sqrt(3), e2 = sqrt(3/2)(m(x)m - I/3)); distention stiffness positive definite 2x2 (volume, axial, volume-axial coupling) and zero on the four complementary modes, frozen to the mineral
     symmetry: transversely_isotropic_about_m; verified D:e3 = D:e6 = 0 and rotation invariance 2.5e-16; H reconstruction of eq:fabric-transverse-h exact to 2.2e-16 with eigenvalues (h^-2, h, h)
     approximation: reference_state_linearized_axisymmetric_distention_energy_and_reference_biot_limit; general_finite_deformation_fabric_equilibrium_out_of_scope
+    scalar_comparison:
+      equations: [eq:fabric-scalar-stress, eq:fabric-scalar-mass]
+      parameter: scalar_coupling
+      substitution: trace_B_over_3_I_in_both_stress_and_mass
+      preserves: [drained_stiffness, fixed_strain_storage, isotropic_mobility]
+      test_deck: moose_app/inputs/fabric_comparison.i
   ReferenceMomentum:
     family: AD_kernel
     equation: integral_Grad_test_contract_first_Piola

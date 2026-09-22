@@ -8,9 +8,11 @@ volume and rotate the intermediate frame, but not change pore shape. The
 fabric literature summarized in \cref{sec:introduction} shows that pore
 shape and orientation, not porosity alone, set the effective poroelastic
 properties, and that reactions create and orient that structure. This
-section replaces the scalar dilation with a symmetric positive definite
-distention and derives the resulting energy, its work conjugate, the
-equilibrium that determines the fabric, and the Biot tensor. We state at
+section introduces a symmetric positive definite distention and derives
+its reference-state response. At finite deformation we restrict energy--work
+equivalence to states in which distention and mineral stress commute.
+This restriction permits a finite pure-shear benchmark with oblique fabric;
+it does not establish a general noncoaxial extension. We state at
 each stage which assumptions are new modeling choices rather than
 consequences of the conformal model.
 
@@ -61,11 +63,14 @@ commutes with \(\mathbf R_A\), so the internal rotation cancels. For a
 general \(\mathbf G\) it does not: \(\bar{\mathbf C}\) retains
 \(\mathbf R_A\) through \(\mathbf R_A\mathbf G^{-1}\mathbf R_A^T\), and
 the relative orientation of the fabric and mineral frames is a physical
-datum. Throughout the remainder we express the fabric and the mineral
-stiffness in a common material frame, which amounts to fixing
-\(\mathbf R_A=\mathbf I\) in
-\eqref{eq:fabric-multiplicative}--\eqref{eq:fabric-mineral-metric}. This
-is a modeling choice; in the conformal specialization it is immaterial
+datum. For the reference linearization and the finite pure-stretch paths below,
+we express the fabric and mineral stiffness in their common reference
+axes and set \(\mathbf R_A=\mathbf I\) in
+\eqref{eq:fabric-multiplicative}--\eqref{eq:fabric-mineral-metric}. Under a superposed rigid rotation \(\mathbf Q\), both \(\mathbf F\) and
+\(\mathbf R_A\) transform on the left by \(\mathbf Q\); setting
+\(\mathbf R_A=\mathbf I\) specifies the unrotated calculation, not a
+spatially fixed fabric under rotation of the body. The prescribed relative
+orientation is a modeling choice; in the conformal specialization it is immaterial
 because \(\mathbf R_A\) cancels there. Fixing the rotation has three
 consequences. The distention is symmetric in the material frame, so
 \(\mathbf G\) carries both the shape and the orientation of the
@@ -124,7 +129,8 @@ tensor.
 \subsection{Distention energy and its work conjugate}
 \label{sec:fabric-energy}
 
-The total energy per reference mixture volume is
+For commuting distention and mineral stress, the energy per reference
+mixture volume takes the form
 \begin{equation}
  W_s(\mathbf F,\mathbf G)=W_{\mathrm{dis}}(\mathbf G)
    +\phi_{s0}\bar W_s(\bar{\mathbf F}),\qquad
@@ -186,16 +192,30 @@ gives
 In the conformal limit \(\mathbf G^{1/2}=a^{1/3}\mathbf I\) the first term
 becomes \(\tfrac13\tr\mathbf\tau'\,\delta\ln a\) and the second
 \(\phi_{s0}\widehat{\mathbf\tau}_s:(\delta\bar{\mathbf F}\bar{\mathbf F}^{-1})\),
-recovering \eqref{eq:distention-mineral-energy-work} exactly. The first
-term of \eqref{eq:fabric-phase-work} is the tensorial distention work; it
-reduces to the scalar pressure-like work of the conformal model and adds
-the shape-changing work of the fabric.
+recovering \eqref{eq:distention-mineral-energy-work} exactly. The mineral term equals the variation of the prescribed mineral energy
+only under the additional restriction
+\begin{equation}
+ \mathbf G^{1/2}\widehat{\mathbf\tau}_s
+ =\widehat{\mathbf\tau}_s\mathbf G^{1/2}.
+ \label{eq:fabric-commuting-work}
+\end{equation}
+Then the similarity transform in \eqref{eq:fabric-phase-work} drops out,
+and the remaining work defines the distention contribution in
+\eqref{eq:fabric-equivalent-energy}. We impose this restriction for the
+finite fabric benchmark. It holds for an isotropic mineral on the coaxial
+pure-stretch paths used below. For general noncoaxial states the displayed
+energy cannot be inferred from the stated spatial phase balance: the
+transformed mineral work would require additional constitutive mechanics.
+At the unstressed reference state this discrepancy enters beyond the
+quadratic energy, so the reference linearization below remains available
+for arbitrary small symmetric strains.
 
 \subsection{Equilibrium and material symmetry}
 \label{sec:fabric-equilibrium}
 
-At fixed deformation and pressure the fabric is determined by the
-equilibrium that minimizes the potential over \(\mathbf G\):
+Within the commuting finite specialization, or its reference quadratic
+linearization, the retained fabric variables minimize the potential at
+fixed deformation and pressure:
 \begin{equation}
  \pder{}{\mathbf G}
  \left[W_{\mathrm{dis}}(\mathbf G)+\phi_{s0}\bar W_s(\bar{\mathbf F})
@@ -233,17 +253,16 @@ Objectivity restricts \(W_{\mathrm{dis}}\). Under a superposed spatial rotation
 \(\mathbf A\mapsto\mathbf Q\mathbf A\) the tensor
 \(\mathbf G=\mathbf A^T\mathbf A\) is invariant, so \(W_{\mathrm{dis}}(\mathbf G)\)
 and \eqref{eq:fabric-equivalent-energy} are spatial-objective. The
-distention stress \eqref{eq:fabric-distention-stress} is symmetric. For
-the fabric, not an arbitrary frame, to govern the distention energy,
-\(W_{\mathrm{dis}}\) must be an isotropic scalar function of the fabric tensor, that
-is, depend only on the three invariants
-\(\tr\mathbf G\), \(\tr\mathbf G^2\), \(\tr\mathbf G^3\). If the mineral
-carries its own material symmetry group with structural tensors,
-\(W_{\mathrm{dis}}\) is instead an isotropic function of \(\mathbf G\) and those
-structural tensors. This is the fabric-tensor requirement of
-\citet{cowin1985fabric}, applied to the distention energy rather than to
-the stiffness; it is the generalization of the conformal assumption that
-\(W_A\) depends only on \(a=(\det\mathbf G)^{1/2}\).
+distention stress \eqref{eq:fabric-distention-stress} is symmetric. The prescribed material fabric axis is a structural datum of the
+reference distention law. In the transversely isotropic specialization,
+\(W_{\mathrm{dis}}\) may depend on both \(\mathbf G\) and
+\(\mathbf m\otimes\mathbf m\), expressed in the common material axes.
+Spatial objectivity does not require material isotropy. An energy depending
+only on the invariants of \(\mathbf G\) would be materially isotropic and
+would not supply a preferred axis at \(\mathbf G=\mathbf I\).
+The prescribed axis therefore supplies the symmetry of the retained
+volumetric--axial stiffness, while the equilibrated eigenvalues describe
+its shape response.
 
 \subsection{The Biot tensor with fabric coupling}
 \label{sec:fabric-biot}
@@ -257,9 +276,10 @@ The Biot tensor retains the form
 \end{equation}
 but \(\bar J=J(\det\mathbf G)^{-1/2}\) now varies with \(\mathbf F\)
 both directly through \(J\) and through the equilibrated fabric
-\(\mathbf G(\mathbf F,p)\). The result is a symmetric tensor whose
-directional pressure response carries both mineral anisotropy and fabric
-anisotropy. In the conformal model the shape terms were absent because
+\(\mathbf G(\mathbf F,p)\). The reference result is a symmetric tensor whose directional pressure
+response carries both mineral anisotropy and fabric anisotropy. The finite
+benchmark evaluates this derivative only at states satisfying
+\eqref{eq:fabric-commuting-work}. In the conformal model the shape terms were absent because
 \(\mathbf G\) had only the volume degree of freedom; here they are present
 and are determined by the distention stiffness.
 

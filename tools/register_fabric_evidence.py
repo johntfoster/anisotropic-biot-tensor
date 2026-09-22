@@ -29,6 +29,7 @@ SNAPSHOT = ROOT / "site/scientific-snapshot.json"
 snapshot = json.loads(SNAPSHOT.read_text())
 known = {entry["path"] for entry in snapshot["files"]}
 NEW_FILES = [
+    "examples/figure_style.py",
     "moose_app/include/utils/FabricLaw.h",
     "moose_app/include/materials/FabricMaterial.h",
     "moose_app/src/materials/FabricMaterial.C",
@@ -68,6 +69,8 @@ EVIDENCE = ROOT / "site/evidence.json"
 manifest = json.loads(EVIDENCE.read_text())
 artifacts = {item["id"]: item for item in manifest["artifacts"]}
 NEW_ARTIFACTS = [
+    dict(id="figure-style-source", kind="source", label="Shared publication plot style",
+         path="examples/figure_style.py", destination="source/figure_style.py"),
     dict(id="fabric-verification", kind="report", label="Pore-fabric distention verification",
          path="site/reports/fabric-verification.json", destination="reports/fabric-verification.json"),
     dict(id="fabric-law-source", kind="source", label="FabricLaw.h (transversely isotropic distention law)",
@@ -104,7 +107,7 @@ NEW_ARTIFACTS = [
          label="plot_fabric_contours.py (reads recorded Exodus fields)",
          path="examples/plot_fabric_contours.py", destination="source/plot_fabric_contours.py"),
     dict(id="fe-fabric-contour-deck", kind="deck",
-         label="fabric_contour.i (refined 40 x 8 coupled fabric deck)",
+         label="fabric_contour.i (refined 40 x 4 coupled fabric deck)",
          path="moose_app/inputs/fabric_contour.i", destination="deck/fabric_contour.i"),
     dict(id="fe-verification-convergence", kind="figure",
          label="Measured finite-element verification: manufactured solution, temporal order, finite-load floor",
@@ -164,7 +167,7 @@ FIGURES = [
          alt="center pressure against time and pressure profiles at saved times, "
              "finite-element curves against the analytical Mandel series"),
     dict(artifact="fe-fabric-contours",
-         caption="refined (40 x 8) coupled consolidation contours at the common "
+         caption="refined (40 x 4) coupled consolidation contours at the common "
                  "final recorded time: pore pressure and displacement magnitude for "
                  "the isotropic fabric and fabric axes at 0, 45 and 90 deg "
                  "(finite-load demonstration on synthetic parameters)",
@@ -177,10 +180,15 @@ FIGURES = [
          alt="pressure contour snapshots at successive times for the isotropic and "
              "coupled fabric cases"),
 ]
-existing_figures = {item["artifact"] for item in manifest.get("figures", [])}
 for item in FIGURES:
-    if item["artifact"] not in existing_figures:
-        manifest.setdefault("figures", []).append(item)
+    manifest.setdefault("figures", [])[:] = [
+        old for old in manifest["figures"] if old["artifact"] != item["artifact"]]
+    manifest["figures"].append(item)
+contours = json.loads((ROOT / "figures/fe_fabric_contours-plot-manifest.json").read_text())
+for figure in contours["figures"]:
+    for item in manifest["figures"]:
+        if item["artifact"] == figure["id"].replace("_", "-"):
+            item["caption"] = figure["caption"]
 
 CASES = [
     dict(title="Pore-fabric distention probe and rotated-fabric consolidation",
@@ -239,7 +247,7 @@ reproduction = [item for item in manifest.get("reproduction", [])
 reproduction.append(COMMAND)
 # Refined contour fields are replotted from the recorded Exodus runs.
 CONTOUR_COMMAND = dict(title="Pore-fabric contour fields",
-                       description="Read the recorded refined (40 x 8) Exodus fields and "
+                       description="Read the recorded refined (40 x 4) Exodus fields and "
                                    "regenerate the contour and diffusion figures.",
                        command="python3 examples/plot_fabric_contours.py "
                                "--runs fe-evidence/runs --output figures")

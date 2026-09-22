@@ -37,11 +37,8 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUT = ROOT / 'figures'
-COLORS = ['#0072B2', '#D55E00', '#009E73']
-plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 9,
-    'axes.labelsize': 9, 'legend.fontsize': 7.5, 'axes.titlesize': 10,
-    'lines.linewidth': 1.4, 'pdf.fonttype': 42, 'savefig.bbox': 'tight',
-    'axes.spines.top': False, 'axes.spines.right': False})
+from figure_style import COLORS, apply_style, publication_size
+apply_style()
 
 
 def sha(path):
@@ -65,6 +62,7 @@ class Report:
         self.inputs[key] = sha(path)
 
     def save(self, fig, name, caption, sources):
+        publication_size(fig)
         files = []
         for ext in ('pdf', 'png'):
             path = self.output / (name + '.' + ext)
@@ -111,7 +109,7 @@ def convergence_figure(report):
         ax.loglog(x, y, 'o-', color=COLORS[j], label=field)
         observed = np.log(y[:-1] / y[1:]) / np.log(x[:-1] / x[1:])
         ax.annotate(', '.join(f'{v:.2f}' for v in observed), (x[0], y[0]),
-                    textcoords='offset points', xytext=(4, 5), fontsize=7,
+                    textcoords='offset points', xytext=(4, 5 if j != 2 else 20), fontsize=7,
                     color=COLORS[j])
     ax.set(xlabel='$h$ [length unit]', ylabel=r'$L^2$ error',
            title='(a) Manufactured solution, spatial')
@@ -145,6 +143,8 @@ def convergence_figure(report):
                     xytext=(6, 6), fontsize=7.5, color=COLORS[0])
     ax.set(xlabel=r'time step $\Delta t$', ylabel='normalized discrepancy',
            title='(c) Linear step refinement')
+    ax.set_xticks(x, [f'{value:g}' for value in x])
+    ax.xaxis.set_minor_locator(matplotlib.ticker.NullLocator())
     ax.grid(alpha=.2, which='both')
     ax.legend()
 
@@ -194,21 +194,23 @@ def reference_figure(report):
 
     ax = axes[0]
     ax.plot(history['time'], history['pressure_reference'], color='k', label='analytical')
-    ax.plot(history['time'], history['pressure'], '--', color=COLORS[0], label='MOOSE')
+    ax.plot(history['time'], history['pressure'], 'o', markevery=max(1, len(history)//20), color=COLORS[0], label='MOOSE')
     ax.set(xlabel='time', ylabel=r'center pressure [stress unit]',
            title='(a) Center-pressure history')
     ax.grid(alpha=.2)
     ax.legend()
 
     ax = axes[1]
-    for j, time in enumerate(sorted(set(profiles['time']))):
+    times = sorted(set(profiles['time']))
+    colors = plt.get_cmap('viridis')(np.linspace(0, 1, len(times)))
+    for j, time in enumerate(times):
         rows = [r for r in profiles if r['time'] == time]
         x = np.array([r['x'] for r in rows])
         order = np.argsort(x)
-        ax.plot(x[order], np.array([r['pressure'] for r in rows])[order], '-',
-                color=COLORS[j % len(COLORS)], label=f'MOOSE t={time:g}')
+        ax.plot(x[order], np.array([r['pressure'] for r in rows])[order], 'o', zorder=3, markevery=max(1, len(order)//20),
+                color=colors[j], label=f'MOOSE t={time:g}')
         ax.plot(x[order], np.array([r['pressure_reference'] for r in rows])[order],
-                '--', color='k', lw=.9,
+                '-', color=colors[j], lw=1.6,
                 label='analytical' if j == 0 else None)
     ax.set(xlabel='reference coordinate $X$', ylabel='pressure [stress unit]',
            title='(b) Pressure profiles at saved times')
@@ -217,8 +219,8 @@ def reference_figure(report):
 
     report.save(fig, 'fe_reference_comparison',
         'Linear constant-reference-tangent Mandel comparison from recorded runs. '
-        '(a) Center pressure against time: solid the independently evaluated '
-        'series, dashed the finite-element history at identical saved times. '
+        '(a) Center pressure against time: solid curves show the independently evaluated '
+        'series, hollow markers show the finite-element history at identical saved times. '
         '(b) Pressure along the sampled horizontal line at the saved comparison '
         'times. There is no temporal interpolation and no fitted coefficient in '
         'either panel.',
@@ -230,6 +232,8 @@ def main():
     parser.add_argument('--output', type=Path, default=DEFAULT_OUT)
     args = parser.parse_args()
     report = Report(args.output)
+    report.source(ROOT / 'examples/figure_style.py')
+    report.source(Path(__file__))
     convergence_figure(report)
     reference_figure(report)
     manifest = dict(schema_version=1, generator='examples/plot_fe_verification.py',

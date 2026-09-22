@@ -24,8 +24,8 @@
 \date{}
 \hypersetup{pdftitle={An anisotropic Biot tensor from mineral stress and distention work},pdfauthor={John T. Foster}}
 \begin{document}
-\embedfile[filespec=anisotropic-biot-2026-09-20-v2.zip,mimetype=application/zip,
- desc={Versioned numerical sources, verification, and figure data}]{build/anisotropic-biot-2026-09-20-v2.zip}
+\embedfile[filespec=anisotropic-biot-2026-09-22-v3.zip,mimetype=application/zip,
+ desc={Versioned numerical sources, verification, and figure data}]{build/anisotropic-biot-2026-09-22-v3.zip}
 \maketitle
 \begin{abstract}
 We derive the finite-deformation Biot tensor of a saturated elastic porous
@@ -52,22 +52,16 @@ and, in the same limit, the constant-coefficient consolidation reference, and
 exercised on rotated-anisotropy
 and partial-drainage demonstrations at finite load; no quantitative
 finite-deformation verification and no experimental validation are claimed for
-those demonstrations. The tensorial distention law is implemented in its
-reference-state linearization and checked at the material point against a
-separate re-implementation
-of the section equations that shares the same modelling conventions, and
-demonstrated in a coupled calculation whose
-pressure response rotates with the pore fabric behind an isotropic mineral.
-The conformal construction
-isolates the anisotropy inherited from the mineral. Replacing the scalar
-dilation with a symmetric positive definite distention whose unimodular
-part is a pore-fabric tensor supplies the additional constitutive law for
-shape-changing distention. With the pore-fabric orientation prescribed as
-material data and no relative rotation of the fabric and the mineral matrix
-represented, it relaxes the rank-one drained-compliance restriction to a
-fabric-symmetric compliance supported on the retained volumetric--axial
-distention subspace and yields an anisotropic Biot tensor driven by both
-mineral and pore-fabric anisotropy.
+those demonstrations. A reference-state fabric law adds pore-shape
+compliance and volume--shape coupling behind an isotropic mineral.
+Pressure-induced shear reactions and a coupled scalar-versus-tensor
+consolidation comparison expose the consequences of that coupling.
+For the finite fabric extension, equivalence with mineral work additionally
+requires commuting distention and mineral stress. A finite oblique pure-shear
+benchmark satisfies this condition, equilibrates pore volume and shape,
+and quantifies the error of the reference linearization. The reference
+fabric law relaxes the spherical rank-one compliance restriction to a
+fabric-symmetric compliance on the retained volumetric--axial subspace.
 \end{abstract}
 \noindent\textbf{Keywords:} anisotropic poroelasticity; finite deformation;
 Biot tensor; mineral compression; logarithmic strain; finite-element
@@ -146,9 +140,9 @@ above: the fabric tensor does not stand in for anisotropic elastic
 constants of the solid, but enters the distention energy of the pore space,
 from which the anisotropic Biot tensor follows through the mineral-volume
 response. \Cref{sec:pore-fabric}
-derives that law by extending the volume-only conformal distention to a
-symmetric positive definite distention whose unimodular part is the pore
-fabric.
+derives the reference-state law and a commuting finite specialization
+by extending the volume-only conformal distention to a symmetric positive
+definite distention whose unimodular part is the pore fabric.
 
 We consider an anisotropic mineral and allow the distention gradient
 \(\mathbf A\) of \eqref{eq:true-mineral-jacobian}, with \(J=a\bar J\), to
@@ -190,17 +184,17 @@ deformation from distention using \citep{drumheller2000}
 \end{equation}
 Here \(\bar J\) measures mineral volume change and \(a\) measures the
 additional volume change associated with the pore structure. The reference
-state has \(J=\bar J=a=1\). We specialize the distention gradient to
+state has \(J=\bar J=a=1\). We begin by specializing the distention gradient to
 \begin{equation}
  \mathbf A=a^{1/3}\mathbf R_A,\qquad
  \mathbf R_A^T\mathbf R_A=\mathbf I,\qquad \det\mathbf R_A=1,\qquad
  \bar{\mathbf F}=a^{-1/3}\mathbf R_A^T\mathbf F.
  \label{eq:spherical-distention}
 \end{equation}
-Here \(\mathbf R_A\) is a proper rotation and \(a\) is the determinant
-of \(\mathbf A\), not a principal stretch. The inverse distention gradient
-is \(a^{-1/3}\mathbf R_A^T\). This specialization allows a relative
-rotation and a change in volume, with no shape-changing distention.
+Here \(\mathbf R_A\) is a proper rotation and \(a=\det\mathbf A\) is the
+distention volume ratio. The inverse distention gradient is
+\(a^{-1/3}\mathbf R_A^T\). This specialization permits a relative rotation
+while the distention changes volume and preserves shape.
 In particular, the mineral right Cauchy--Green tensor satisfies
 \begin{equation}
  \bar{\mathbf C}=\bar{\mathbf F}^T\bar{\mathbf F}
@@ -633,9 +627,14 @@ is asserted. \Cref{fig:fe-verification} displays these measurements and
 \cref{fig:fe-reference-comparison} the reference comparison. The finite-load
 rotated-anisotropy, partial-drainage, and rotated-pore-fabric calculations are
 reported as demonstrations, not as quantitative verification of the nonlinear
-law or as experimental validation; the fabric law itself is checked at the
-material point against a separate re-implementation of its equations, which
-shares the section's modelling conventions.
+law or as experimental validation. The reference fabric implementation is
+checked against a separate re-implementation of its equations. The new
+pressure-reaction experiment isolates volume--shape coupling, and the
+scalar/tensor consolidation comparison measures its effect on pressure,
+settlement, and lateral reaction while holding transport properties fixed.
+The finite pure-shear benchmark independently checks spatial work and
+pressure derivatives on the commuting family and quantifies the error of
+the reference linearization.
 
 Conformal distention requires the skeleton and mineral to share their
 normalized right stretch, while allowing a relative rotation. With a
@@ -649,20 +648,23 @@ fail \eqref{eq:drained-compliance-restriction}; that failure identifies
 missing deformation mechanisms rather than a pressure coefficient to be
 chosen independently.
 
-\Cref{sec:pore-fabric} supplies that law. Replacing the scalar dilation
+\Cref{sec:pore-fabric} supplies a reference-state law and a commuting
+finite specialization. Replacing the scalar dilation
 with a symmetric positive definite distention \(\mathbf G\) makes the
 fabric tensor a constitutive variable with its own energy
 \(W_{\mathrm{dis}}(\mathbf G)\) and symmetric work conjugate
 \eqref{eq:fabric-distention-stress}. The equilibrium
 \eqref{eq:fabric-equilibrium} that determines the fabric generalizes the
-pressure equation: its volume component recovers the conformal result
-exactly, and its shape components equilibrate the fabric against the
-mineral stress with no external conjugate. The rank-one drained compliance
-restriction relaxes to the full fabric-symmetric distention compliance
+pressure equation. Restricting that equilibrium to spherical distention
+recovers the conformal result exactly; retaining shape components
+equilibrates the fabric against the mineral stress with no external
+conjugate. The rank-one drained compliance
+restriction relaxes, at the reference state, to the fabric-symmetric
+distention compliance
 \eqref{eq:fabric-compliance-restriction}, and the Biot tensor gains
 directional coupling from the pore fabric in addition to the mineral. In
-the transversely isotropic fabric case the Biot tensor has distinct axial
-and transverse coefficients, predicting directionally asymmetric pressure
+the transversely isotropic fabric case the Biot tensor can have distinct
+axial and transverse coefficients, predicting directionally asymmetric pressure
 coupling even when the mineral itself is isotropic. This is the mechanism
 by which a reaction-induced pore fabric would enter the poromechanical
 response.
@@ -687,15 +689,18 @@ coefficients in logarithmic strain define an elastic energy; measured
 finite-pressure acoustic stiffnesses include the tangent about a stressed
 state and need separate interpretation \citep{zha1996forsterite}.
 A general distention gradient can additionally represent changes in pore
-shape. Its work requires a tensorial constitutive law, which
-\cref{sec:pore-fabric} supplies. Restricting an
+shape. The reference law of \cref{sec:pore-fabric} supplies this mechanism
+at small strain. Its finite energy is consistent with the stated mineral
+work on the commuting paths of \eqref{eq:fabric-commuting-work}; a general
+noncoaxial finite extension requires additional mechanics. Restricting an
 already prescribed tensorial distention energy to a dilation times a
 rotation need not recover the volume-only energy assumed here; couplings
 to orientation or skeleton deformation can remain. The conformal result of
 \cref{sec:finite-biot} applies locally to that specialization, and
 compatibility of independently prescribed distention fields is a separate
-boundary-value question. The phase-work balance is the same in both
-models; only the distention law that closes it differs.
+boundary-value question. The finite pure-shear benchmark tests the complete spatial phase-work
+balance within that restriction, while the coupled consolidation study
+is confined to the reference-state fabric law.
 
 \appendix
 \input{sections/logarithmic_derivative}

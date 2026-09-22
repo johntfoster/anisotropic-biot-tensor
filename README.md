@@ -29,6 +29,11 @@ python3 examples/verify_reconstruction.py
 python3 examples/verify_tensor.py
 python3 examples/verify_conformal.py
 python3 examples/conformal_experiments.py
+python3 examples/verify_fabric.py
+python3 examples/plot_fe_verification.py
+python3 examples/fabric_insight.py
+python3 examples/plot_fabric_comparison.py
+python3 tools/verify_scalar_probe.py --analyze-only
 python3 tools/package_numerical_supplement.py
 latexmk -lualatex -interaction=nonstopmode -halt-on-error -outdir=build main.tex
 ```
@@ -42,7 +47,7 @@ local fallback. A complete system installation needs no fallback.
 Generate the tables and figures before the LaTeX build with the commands
 above. The conformal experiments use NumPy, SciPy, and Matplotlib. Build
 products, CSV data, and verification JSON stay under `build/`.
-The packaging command creates `build/anisotropic-biot-2026-09-20-v2.zip`, embedded
+The packaging command creates `build/anisotropic-biot-2026-09-22-v3.zip`, embedded
 as an attachment in the article PDF. It contains standalone numerical sources,
 data, figures, reproduction instructions, and a file-hash manifest. Extract it
 with an attachment-capable PDF viewer or `pdfdetach -saveall build/main.pdf`.
@@ -83,7 +88,7 @@ of the section equations with the recorded runs under `fe-evidence/runs`
 (refresh them with `python3 tools/rerun_fabric_decks.py` followed by
 `python3 tools/rerun_fabric_decks.py --analysis-only`). Its figures are drawn
 by `python3 examples/plot_fabric_results.py --runs fe-evidence/runs`. The
-refined (\(40\times8\)) contour runs are recorded under
+refined (\(40\times4\)) contour runs are recorded under
 `fe-evidence/runs/fabric_contour_*`. Refresh them, and the figures that hash
 them, in this order:
 
@@ -126,3 +131,37 @@ The manuscript tooling check is `tools/agentctl check --profile manuscript`.
 of this artifact; no shipped result, figure, or evidence file depends on it.
 The source comparison and current derivation record are in
 `references/notes/weighted-stress-reconsideration.md`.
+
+## Experiments that distinguish tensor coupling
+
+The main-text fabric figures use pressure-induced shear reactions, a coupled
+scalar-versus-tensor consolidation study, and finite pure shear with equilibrated
+pore volume and shape. Generate the material results and plot the recorded
+coupled histories with:
+
+```sh
+python3 examples/fabric_insight.py
+python3 examples/plot_fabric_comparison.py
+```
+
+The finite material calculation uses an isotropic mineral and commuting
+mineral stress and distention. It checks all spatial stress components and
+the pressure tangent on this restricted family; it does not implement a
+general noncoaxial finite fabric law. The coupled comparison uses the reference
+linear law. Its scalar approximation preserves the mean pressure reaction,
+drained stiffness, storage and isotropic mobility, with reciprocal coupling
+in stress and mass. It loads an initially resting strip and follows drainage.
+
+To regenerate the coupled histories, build the application in the verified
+MOOSE environment and run:
+
+```sh
+.agent/shared/skills/setup-moose-conda/scripts/moose_conda_env.sh run -- make -C moose_app -j2
+.agent/shared/skills/setup-moose-conda/scripts/moose_conda_env.sh run -- python tools/run_fabric_comparison.py
+python3 examples/plot_fabric_comparison.py
+```
+
+Recorded histories and run provenance are under `fe-evidence/insight/`.
+Material results, comparison diagnostics and paper-ready figures are generated
+under `build/insight/`. Run both generators before packaging the supplement
+and building the manuscript. All parameters are synthetic.

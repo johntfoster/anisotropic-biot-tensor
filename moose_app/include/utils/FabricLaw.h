@@ -503,16 +503,11 @@ public:
     Real traceB = Bt[0][0] + Bt[1][1] + Bt[2][2];
     b_per = 0.5 * (traceB - b_par);
     anisotropy = b_par - b_per;
-    // Reference total storage (1 - phi)/K_f + S_s with the manuscript solid
-    // storage S_s = (phi/K_s)(1 - K/(phi K_s)) (sections/limits.tex
-    // eq:reference-solid-storage), where K is the drained bulk modulus read
-    // from the drained stiffness C^d. This matches the published
-    // ConformalMaterial convention (alpha = 1 - K/(phi K_s)).
-    Real Kd = 0.;
-    for (unsigned i = 0; i < 3; ++i)
-      for (unsigned j = 0; j < 3; ++j)
-        Kd += cd[i][j] / 9.;
-    storage = (1. - phi) / Kf + (phi / Ks) * (1. - Kd / (phi * Ks));
+    // Fixed-strain storage follows the same retained mineral-volume
+    // equilibrium for isotropic and anisotropic mineral stiffnesses.
+    const auto pressure_compliance = mul(csinv, eI);
+    storage = (1. - phi) / Kf + phi * dot(eI, pressure_compliance)
+              - dot(pressure_compliance, mul(cdm, pressure_compliance));
 
     for (unsigned i = 0; i < 6; ++i)
       if (!(std::isfinite(bvec[i]) && std::isfinite(cd[i][i])))

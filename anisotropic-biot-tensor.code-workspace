@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "name": "anisotropic-biot-tensor",
+      "uri": "vscode-remote://ssh-remote+jfoster@euler.tail0d3885.ts.net/home/jfoster/projects/research/reactive_transport/anisotropic-biot-tensor"
+    }
+  ],
+  "remoteAuthority": "ssh-remote+jfoster@euler.tail0d3885.ts.net",
+  "settings": {
+    "remote.SSH.remotePlatform": {
+      "jfoster@euler.tail0d3885.ts.net": "linux"
+    },
+    "latex-workshop.formatting.latex": "latexindent",
+    "latex-workshop.formatting.latexindent.path": "latexindent"
+  }
+}

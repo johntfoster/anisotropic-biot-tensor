@@ -40,11 +40,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_RUNS = ROOT / 'fe-evidence/runs'
 DEFAULT_OUT = ROOT / 'build/fabric-plots'
 
-COLORS = ['#0072B2', '#D55E00', '#009E73', '#CC79A7', '#E69F00']
-plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 9,
-    'axes.labelsize': 9, 'legend.fontsize': 7.5, 'axes.titlesize': 10,
-    'lines.linewidth': 1.5, 'pdf.fonttype': 42, 'savefig.bbox': 'tight',
-    'axes.spines.top': False, 'axes.spines.right': False})
+from figure_style import COLORS, apply_style, publication_size
+apply_style()
 
 # Case -> (label, fabric angle in degrees, volume-axial coupling)
 PROBE_CASES = [
@@ -109,6 +106,7 @@ class Figures:
         self.outputs[path.name] = sha(path)
 
     def save(self, fig, name, caption, cases, data):
+        publication_size(fig)
         files = []
         for ext in ('pdf', 'png'):
             path = self.output / (name + '.' + ext)
@@ -171,7 +169,7 @@ def probe_figure(runs, figures):
     ax = axes[0]
     ax.barh(y - .19, par, height=.36, color=COLORS[0], label=r'$B_\parallel$')
     ax.barh(y + .19, per, height=.36, color=COLORS[1], label=r'$B_\perp$')
-    ax.set(yticks=y, yticklabels=names, xlabel=r'Biot coefficient', title='(a) Reference Biot tensor')
+    ax.set(yticks=y, yticklabels=names, xlabel=r'Biot coefficient', title='(a) Biot coefficients')
     ax.invert_yaxis()
     ax.legend(loc='lower right')
     ax.grid(alpha=.2, axis='x')
@@ -180,8 +178,8 @@ def probe_figure(runs, figures):
     ax = axes[1]
     aniso = [r['row']['B_anisotropy'] for r in records.values()]
     ax.barh(y, aniso, color='0.35')
-    ax.set(yticks=y, yticklabels=names, xlabel=r'$B_\parallel - B_\perp$',
-           title='(b) Directional coupling from the fabric')
+    ax.set(yticks=y, yticklabels=[], xlabel=r'$B_\parallel - B_\perp$',
+           title='(b) Directional difference')
     ax.invert_yaxis()
     ax.axvline(0, color='k', lw=.8)
     ax.grid(alpha=.2, axis='x')
@@ -193,8 +191,8 @@ def probe_figure(runs, figures):
         lhs = [r['row']['ln_h'] for r in shape.values()]
         order = np.argsort(angles)
         ax.plot(np.array(angles)[order], np.array(lhs)[order], 'o-', color=COLORS[0])
-        ax.set(xlabel='fabric orientation (degrees)',
-               title='(c) Distention shape response')
+        ax.set(xlabel='fabric angle (degrees)', ylabel=r'$\ln h$',
+               title='(c) Shape response')
     else:
         ax.text(.5, .5, 'Shape-response probes absent', ha='center', va='center',
                 transform=ax.transAxes)
@@ -248,7 +246,7 @@ def mandel_figure(runs, figures):
     ax = axes[0]
     for j, (case, item) in enumerate(series.items()):
         style = dict(color='k', ls='--') if item['angle'] is None else dict(color=COLORS[j % len(COLORS)])
-        ax.plot(item['data']['time'], item['data']['center_pressure'], **style, label=item['label'])
+        ax.plot(item['data']['time'], item['data']['center_pressure'], marker='o', markevery=max(1, len(item['data'])//20), **style, label=item['label'])
     ax.set(xlabel='time', ylabel='center pressure', title='(a) Center-pressure history')
     ax.grid(alpha=.2)
     ax.legend()
@@ -269,6 +267,7 @@ def mandel_figure(runs, figures):
     ax.grid(alpha=.2)
     ax.legend()
 
+    axes[0].xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(4))
     figures.csv('fe_fabric_mandel_history', rows)
     figures.csv('fe_fabric_mandel_peak', peak)
     figures.save(fig, 'fe_fabric_mandel',
@@ -289,6 +288,7 @@ def main():
     parser.add_argument('--output', type=Path, default=DEFAULT_OUT)
     args = parser.parse_args()
     figures = Figures(args.output)
+    figures.source(ROOT / 'examples/figure_style.py')
     probe_figure(args.runs, figures)
     mandel_figure(args.runs, figures)
     report = dict(

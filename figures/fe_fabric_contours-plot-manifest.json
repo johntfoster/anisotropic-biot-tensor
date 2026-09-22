@@ -2,8 +2,8 @@
   "schema_version": 1,
   "generator": "examples/plot_fabric_contours.py",
   "versions": {
-    "python": "3.10.12",
-    "numpy": "2.2.6",
+    "python": "3.14.0",
+    "numpy": "2.4.2",
     "matplotlib": "3.10.8",
     "netCDF4": "1.7.4"
   },
@@ -14,7 +14,7 @@
         "fe_fabric_contours.pdf",
         "fe_fabric_contours.png"
       ],
-      "caption": "Refined (40 x 8) coupled consolidation contours at the common recorded time t = 0.003. Top row: pore pressure. Bottom row: displacement magnitude. Columns: isotropic (uncoupled) fabric, then fabric axis 0, 45 and 90 deg behind an isotropic, unrotated mineral. The orange arrow marks the fabric axis; the isotropic column carries no arrow because its distention stiffness has no directional coupling. Equal aspect preserves the 1 x 0.1 domain. These are finite-load demonstrations on synthetic parameters, not a mesh-convergence study.",
+      "caption": "Coupled consolidation on the 40 x 4 mesh of the 1 x 0.1 domain at t = 0.003. Pressure above, displacement magnitude below; one colour scale and colourbar per quantity across all cases. Displacements are magnified 500 times, with dashed reference boundaries; the panel aspect ratio is 0.38. Orange arrows denote reference fabric directions. These are finite-load demonstrations on synthetic parameters, not a mesh-convergence study.",
       "cases": [
         "fabric_contour_iso",
         "fabric_contour_a0",
@@ -31,7 +31,7 @@
         "fe_fabric_diffusion.pdf",
         "fe_fabric_diffusion.png"
       ],
-      "caption": "Refined (40 x 8) coupled consolidation: pore-pressure snapshots at six recorded times, isotropic (uncoupled) row above and coupled $45^\\circ$ fabric row below on a shared colour scale. The drainage front starts at the drained right edge and propagates into the strip; the interior pressure is a genuine diffusion field, not a uniform or degenerate state. Equal aspect preserves the 1 x 0.1 domain. These are finite-load demonstrations on synthetic parameters, not a mesh-convergence study.",
+      "caption": "Coupled consolidation on the 40 x 4 mesh of the 1 x 0.1 domain: six recorded pressure snapshots for isotropic fabric (upper two rows) and coupled 45-degree fabric (lower two rows). All panes share one colour scale and colourbar. Displacements are magnified 500 times, with dashed reference boundaries and panel aspect 0.38. These are finite-load demonstrations on synthetic parameters, not a mesh-convergence study.",
       "cases": [
         "fabric_contour_iso",
         "fabric_contour_a45"
@@ -41,20 +41,33 @@
       ]
     }
   ],
+  "display": {
+    "displacement_scale": 500.0,
+    "panel_aspect": 0.38,
+    "reference_domain": [
+      1.0,
+      0.1
+    ],
+    "mesh": [
+      40,
+      4
+    ]
+  },
   "input_sha256": {
-    "examples/plot_fabric_contours.py": "8eaa896dfdeeae0ced6c892a0266cbb8bd58fdc402b8cce8607fba74e6c14efe",
-    "fe-evidence/runs/fabric_contour_iso/solution.e": "3dfe02ae921075727d0999c83fd9991562cbc1a660096e80ebfd35a7ebaedcad",
-    "fe-evidence/runs/fabric_contour_a0/solution.e": "e615b78160aeb0fcc89cfae7f9d7ef94cf53177ed0f08e439aff927cd590ee52",
-    "fe-evidence/runs/fabric_contour_a45/solution.e": "2ab3a3ca95c0023c54cc8fda56ea2092be0989fcd19359f63ceb81b4adb7fd53",
-    "fe-evidence/runs/fabric_contour_a90/solution.e": "8eb00e29510deb943fef9c714a3a12c43eda15d4cdfc52c12c55e59704f75e00"
+    "examples/plot_fabric_contours.py": "6823252cf3e34b8407b0f8fe80b6ad5db49ea95a97673edf3c4e955eb8b51509",
+    "examples/figure_style.py": "35119cbb69f5552cd3df3209079b050225b5568624a3260136fbad751a377237",
+    "fe-evidence/runs/fabric_contour_iso/solution.e": "9dfb1f0994fe593655e51e0dcffdb80953597bd392d2e9f128e794091605fa3f",
+    "fe-evidence/runs/fabric_contour_a0/solution.e": "0dc76c648f5d8ed53a980274c5746ecaea7799fd02f6853ed59ef0a80927dffc",
+    "fe-evidence/runs/fabric_contour_a45/solution.e": "93614ae09bb44cd6ec7dff3ae4521e62acc421554ae5f99e39cd4adb7ddd5161",
+    "fe-evidence/runs/fabric_contour_a90/solution.e": "7a60d848d2d766b8180f9c3096ed71b29b5e3d341df9695e7178f3b12b13b391"
   },
   "output_sha256": {
-    "fe_fabric_contours.csv": "8a618ffc6cee7f95d32b4f52109361a4487b9f4ee0f195eea14c5d10a4a2f7a6",
-    "fe_fabric_contours.pdf": "d2dcc0c5d0a82ef15103dd94ef6cbd48da7dd37fdff14e89ff568c271003093e",
-    "fe_fabric_contours.png": "a2ddeb8d66342fa6b95fb040433cc7da721d71412de0d27f7a0b87988cec0576",
-    "fe_fabric_diffusion.csv": "41a66a5d072c4e3b904ac4730a27e7c839723ff432139f7f31d75eb5e37fc48b",
-    "fe_fabric_diffusion.pdf": "5ce18742184855f96461fc4e282223de73c673233901f7def7c888fff76abf4b",
-    "fe_fabric_diffusion.png": "391c5a6b3b09d293126b289eab8dc39bbc06d1627a107de93a33349fe4d6fe4c"
+    "fe_fabric_contours.csv": "3beadfc163c4b588edcb2345e1f62521d0f0a7001634474f2dfecbf3d31f88a8",
+    "fe_fabric_contours.pdf": "abe76c698a7f05770d4d756e2f51ed6ead456e146416f78d298c2f0d92948373",
+    "fe_fabric_contours.png": "88b1916772b1be704c550bf9f7cae65aba680fae0f2f8897669803f307391db2",
+    "fe_fabric_diffusion.csv": "ff80664da8bbed798f6fe20f98f1a84525ea170268243a6e5e64904928fe69a0",
+    "fe_fabric_diffusion.pdf": "bbb8dd117da077aa1d0136d163490605ea48650e4f2949d6cca948492551629e",
+    "fe_fabric_diffusion.png": "1a0a0849645033461ab3519229fb1b4bb6316762197e03e0032aa606c886a63c"
   },
   "limitations": [
     "Fields are read from the recorded Exodus files only; no time interpolation.",

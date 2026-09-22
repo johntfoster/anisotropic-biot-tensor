@@ -246,123 +246,123 @@
     },
     {
       "path": "runs/fabric_contour_a0/analysis.json",
-      "sha256": "7f10999a59d37c9c4dfbf2158e427045ca21f1dd31c28f3ddfccc1ebb6e288c3",
-      "bytes": 748
+      "sha256": "e77bf66ee1904f3c970744ef82e4c49330e7e2f6979e158edd4d8b9301ffe404",
+      "bytes": 746
     },
     {
       "path": "runs/fabric_contour_a0/input.i",
-      "sha256": "284f042caf6702430438b71516278a0c4bd290132a34aac890607ed5117e2c02",
+      "sha256": "72be532848ce8a2e6466cf6d884d39959af675639a9770d08720ab1f3a786691",
       "bytes": 7292
     },
     {
       "path": "runs/fabric_contour_a0/provenance.json",
-      "sha256": "b5a9471f1ee82f8d71bbdb29c093f6de91c72d13d70f1dd33c20f522561822ed",
+      "sha256": "5b9976e8c14322b83ee90c77fa7f89b38ebf7e53d8bb93a20539bb9b109203f8",
       "bytes": 1465
     },
     {
       "path": "runs/fabric_contour_a0/run.log",
-      "sha256": "84c2633bde9556bc39efe01d2c62bb932fcb31738d864f353dfb64dcdee68549",
-      "bytes": 66500
+      "sha256": "b0658bca00c04e59a0baf447d3a9782255a9c425bcca7e5a94d1efee52a40c6c",
+      "bytes": 80375
     },
     {
       "path": "runs/fabric_contour_a0/solution.csv",
-      "sha256": "57f244ea9cddd8df6017f46140870f6e8f07107d154cd121ba1425ed2a6bd7b1",
-      "bytes": 4007
+      "sha256": "9d74d586b0bfd82dd44accfae2ed177cb3f43db676d4f71770b1b455881e0e37",
+      "bytes": 4005
     },
     {
       "path": "runs/fabric_contour_a0/solution.e",
-      "sha256": "e615b78160aeb0fcc89cfae7f9d7ef94cf53177ed0f08e439aff927cd590ee52",
-      "bytes": 994572
+      "sha256": "0dc76c648f5d8ed53a980274c5746ecaea7799fd02f6853ed59ef0a80927dffc",
+      "bytes": 591404
     },
     {
       "path": "runs/fabric_contour_a45/analysis.json",
-      "sha256": "08663ded25455ff22e988d946b06705d6c041625420b7db57b9e2c3cc1a58d27",
+      "sha256": "200829b2d6651c547324a31284a2548d88032aabe37f6bb94538dd860b582315",
       "bytes": 746
     },
     {
       "path": "runs/fabric_contour_a45/input.i",
-      "sha256": "284f042caf6702430438b71516278a0c4bd290132a34aac890607ed5117e2c02",
+      "sha256": "72be532848ce8a2e6466cf6d884d39959af675639a9770d08720ab1f3a786691",
       "bytes": 7292
     },
     {
       "path": "runs/fabric_contour_a45/provenance.json",
-      "sha256": "1c6bf67d38926e93a253b00eb099b6c5a59fcf08a93c91714b0b978b053d83f9",
+      "sha256": "555de4f710b664cdfa33ef1e6bfa4ca7b1f226bb22760c66f7b6a6d7639cff9d",
       "bytes": 1467
     },
     {
       "path": "runs/fabric_contour_a45/run.log",
-      "sha256": "a8717d003609de8a9ed78333f1a20404335d446adc08bf89b6f1774a5ae6661c",
-      "bytes": 65399
+      "sha256": "e7b675a43a13c2989910315cccdb2ce165ecbc6e9d97b54876a628628ac66de7",
+      "bytes": 72236
     },
     {
       "path": "runs/fabric_contour_a45/solution.csv",
-      "sha256": "63f093e6d7414aaea3a91cafff04b250859f683ac6216a951303574a01cfdf0d",
-      "bytes": 3999
+      "sha256": "85daee2273c17e8e4b2b7aa2fc04a6b2e0c79d944dfd6f707076bf0cf8867d02",
+      "bytes": 3997
     },
     {
       "path": "runs/fabric_contour_a45/solution.e",
-      "sha256": "2ab3a3ca95c0023c54cc8fda56ea2092be0989fcd19359f63ceb81b4adb7fd53",
-      "bytes": 994572
+      "sha256": "93614ae09bb44cd6ec7dff3ae4521e62acc421554ae5f99e39cd4adb7ddd5161",
+      "bytes": 591404
     },
     {
       "path": "runs/fabric_contour_a90/analysis.json",
-      "sha256": "ff65ff8667e077d0f577e018f9a39a24d76293effb12626fd473148a4597aec1",
+      "sha256": "91a6f66de27b3add1d485224a0154556f6a0431b202196a95ae2e358d4a740d2",
       "bytes": 745
     },
     {
       "path": "runs/fabric_contour_a90/input.i",
-      "sha256": "284f042caf6702430438b71516278a0c4bd290132a34aac890607ed5117e2c02",
+      "sha256": "72be532848ce8a2e6466cf6d884d39959af675639a9770d08720ab1f3a786691",
       "bytes": 7292
     },
     {
       "path": "runs/fabric_contour_a90/provenance.json",
-      "sha256": "a7758ccd93c4e8d60cbe520ad1a6e405231a6b0b86badd3b99c2663e9145d51d",
+      "sha256": "be6e0088bcbe92440fa0a486732ee6f94a3281b21c0dc35a2427d415b6a1e6a1",
       "bytes": 1467
     },
     {
       "path": "runs/fabric_contour_a90/run.log",
-      "sha256": "648fd15f5b70c3b5cfb41be4558fc2e2e7dbb4d7dced0eba6805df8fcd184564",
-      "bytes": 79435
+      "sha256": "281df9f4fba981a6276c74566de7b0b6aca686f990766a2880aa13e21dc6235a",
+      "bytes": 91066
     },
     {
       "path": "runs/fabric_contour_a90/solution.csv",
-      "sha256": "ce345c1de5af2cc52c447c25582f8928e4cfc529290889c835915fc34c796705",
-      "bytes": 3989
+      "sha256": "58e5e3edfba4cab745a6187f32a3760b8baaef099d84077d8b4b9f9f8276a943",
+      "bytes": 3964
     },
     {
       "path": "runs/fabric_contour_a90/solution.e",
-      "sha256": "8eb00e29510deb943fef9c714a3a12c43eda15d4cdfc52c12c55e59704f75e00",
-      "bytes": 994572
+      "sha256": "7a60d848d2d766b8180f9c3096ed71b29b5e3d341df9695e7178f3b12b13b391",
+      "bytes": 591404
     },
     {
       "path": "runs/fabric_contour_iso/analysis.json",
-      "sha256": "b5ef054a7b4aa57dab0987f1693d131001f40cb77b004ecf4b8131951c44aed6",
-      "bytes": 718
+      "sha256": "703e9bcd05d0e8f56ad1e207e977a236ca062d77f572b19246b4852b7ea9e39b",
+      "bytes": 709
     },
     {
       "path": "runs/fabric_contour_iso/input.i",
-      "sha256": "284f042caf6702430438b71516278a0c4bd290132a34aac890607ed5117e2c02",
+      "sha256": "72be532848ce8a2e6466cf6d884d39959af675639a9770d08720ab1f3a786691",
       "bytes": 7292
     },
     {
       "path": "runs/fabric_contour_iso/provenance.json",
-      "sha256": "f3e76a320db4845b10fb8a3183d46efe322e171c2e886d3fbea1e79ff18523bd",
+      "sha256": "7daa612bfef1d889c6849d3941f5761cb14838356fe984845f7ee5f0c42d0bd2",
       "bytes": 1543
     },
     {
       "path": "runs/fabric_contour_iso/run.log",
-      "sha256": "902cad5055fcd1a82802f4e835d74e8bcd45710d21887783592dc8e3f5919b81",
-      "bytes": 66006
+      "sha256": "bf5e15089b35014924d187a4bc50990db92606c46b88ae568c00a42f252dd022",
+      "bytes": 79661
     },
     {
       "path": "runs/fabric_contour_iso/solution.csv",
-      "sha256": "9be033279a6368db3ac59b76de9e81c711813e4dbb7f24db24880142348a6222",
-      "bytes": 3743
+      "sha256": "73da554d918dd7f389a39b3277c0ebca7dd58e01627600c8a3d31d019a2a3f14",
+      "bytes": 3751
     },
     {
       "path": "runs/fabric_contour_iso/solution.e",
-      "sha256": "3dfe02ae921075727d0999c83fd9991562cbc1a660096e80ebfd35a7ebaedcad",
-      "bytes": 994652
+      "sha256": "9dfb1f0994fe593655e51e0dcffdb80953597bd392d2e9f128e794091605fa3f",
+      "bytes": 591484
     },
     {
       "path": "runs/fabric_mandel_coup_a0/analysis.json",

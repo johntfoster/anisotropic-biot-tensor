@@ -1,0 +1,270 @@
+{
+  "category": "coupled_reference_law_comparison",
+  "checks": {
+    "tensor_0_coarse": {
+      "mass_balance_relative": 1.9267147536927216e-11,
+      "final_to_peak_pressure": 0.002556301122033926,
+      "peak_time": 0.01,
+      "peak_pressure": 7.9087701199087e-05,
+      "mean_final_settlement": 5.6154567143587e-06
+    },
+    "scalar_0_coarse": {
+      "mass_balance_relative": 2.0155280343470872e-11,
+      "final_to_peak_pressure": 0.0023650921202893957,
+      "peak_time": 0.01,
+      "peak_pressure": 7.860594944082e-05,
+      "mean_final_settlement": 5.6159023411188e-06
+    },
+    "tensor_0_fine": {
+      "mass_balance_relative": 1.919660918190946e-11,
+      "final_to_peak_pressure": 0.00248975034922336,
+      "peak_time": 0.01,
+      "peak_pressure": 7.9195712581499e-05,
+      "mean_final_settlement": 5.6155642152824e-06
+    },
+    "scalar_0_fine": {
+      "mass_balance_relative": 1.9885189888319164e-11,
+      "final_to_peak_pressure": 0.002301386566312649,
+      "peak_time": 0.01,
+      "peak_pressure": 7.8731268590939e-05,
+      "mean_final_settlement": 5.6160017126597e-06
+    },
+    "tensor_45_coarse": {
+      "mass_balance_relative": 2.2837915118209887e-11,
+      "final_to_peak_pressure": 0.0017045625267668287,
+      "peak_time": 0.01,
+      "peak_pressure": 7.330039956356e-05,
+      "mean_final_settlement": 5.0539851510754e-06
+    },
+    "scalar_45_coarse": {
+      "mass_balance_relative": 2.1344921702659988e-11,
+      "final_to_peak_pressure": 0.0018487385478175892,
+      "peak_time": 0.01,
+      "peak_pressure": 7.359679586234e-05,
+      "mean_final_settlement": 5.0537358568753e-06
+    },
+    "tensor_45_fine": {
+      "mass_balance_relative": 2.1263417768315927e-11,
+      "final_to_peak_pressure": 0.0016528365623233612,
+      "peak_time": 0.01,
+      "peak_pressure": 7.344490376158e-05,
+      "mean_final_settlement": 5.0540739811228e-06
+    },
+    "scalar_45_fine": {
+      "mass_balance_relative": 2.194872222998754e-11,
+      "final_to_peak_pressure": 0.0017941393954259031,
+      "peak_time": 0.01,
+      "peak_pressure": 7.3741062979838e-05,
+      "mean_final_settlement": 5.0538295920229e-06
+    },
+    "tensor_90_coarse": {
+      "mass_balance_relative": 1.8559942428398145e-11,
+      "final_to_peak_pressure": 0.002766372176929726,
+      "peak_time": 0.01,
+      "peak_pressure": 8.5887863864525e-05,
+      "mean_final_settlement": 6.5880775065051e-06
+    },
+    "scalar_90_coarse": {
+      "mass_balance_relative": 1.748479729285e-11,
+      "final_to_peak_pressure": 0.0034795530133889916,
+      "peak_time": 0.01,
+      "peak_pressure": 8.6156841617681e-05,
+      "mean_final_settlement": 6.5862550960611e-06
+    },
+    "tensor_90_fine": {
+      "mass_balance_relative": 1.7456697662117044e-11,
+      "final_to_peak_pressure": 0.00269657507707606,
+      "peak_time": 0.01,
+      "peak_pressure": 8.5995435116346e-05,
+      "mean_final_settlement": 6.5882127315045e-06
+    },
+    "scalar_90_fine": {
+      "mass_balance_relative": 1.6359532889142086e-11,
+      "final_to_peak_pressure": 0.003399351439204994,
+      "peak_time": 0.01,
+      "peak_pressure": 8.6246042515197e-05,
+      "mean_final_settlement": 6.5864185194307e-06
+    }
+  },
+  "errors": [
+    {
+      "angle": 0,
+      "field": "center_pressure",
+      "scalar_relative_L2_error": 0.016217178086705177,
+      "maximum_relative_refinement_difference": 0.003500691988549089
+    },
+    {
+      "angle": 0,
+      "field": "top_displacement",
+      "scalar_relative_L2_error": 0.004150940940573005,
+      "maximum_relative_refinement_difference": 0.0004916032744768768
+    },
+    {
+      "angle": 0,
+      "field": "right_reaction",
+      "scalar_relative_L2_error": 0.009812677852371407,
+      "maximum_relative_refinement_difference": 0.0004892868276820451
+    },
+    {
+      "angle": 45,
+      "field": "center_pressure",
+      "scalar_relative_L2_error": 0.011263840040711922,
+      "maximum_relative_refinement_difference": 0.003668689557429241
+    },
+    {
+      "angle": 45,
+      "field": "top_displacement",
+      "scalar_relative_L2_error": 0.002593061638868533,
+      "maximum_relative_refinement_difference": 0.0004605612602676919
+    },
+    {
+      "angle": 45,
+      "field": "right_reaction",
+      "scalar_relative_L2_error": 0.006497648256945688,
+      "maximum_relative_refinement_difference": 0.0011461312053009471
+    },
+    {
+      "angle": 90,
+      "field": "center_pressure",
+      "scalar_relative_L2_error": 0.0320309634659486,
+      "maximum_relative_refinement_difference": 0.003445760361494796
+    },
+    {
+      "angle": 90,
+      "field": "top_displacement",
+      "scalar_relative_L2_error": 0.008764000748052073,
+      "maximum_relative_refinement_difference": 0.0005151402717580958
+    },
+    {
+      "angle": 90,
+      "field": "right_reaction",
+      "scalar_relative_L2_error": 0.0070609512956328335,
+      "maximum_relative_refinement_difference": 0.0004199749464406632
+    }
+  ],
+  "refinement": [
+    {
+      "model": "tensor",
+      "angle": 0,
+      "field": "center_pressure",
+      "relative_history_difference": 0.003480951973664668
+    },
+    {
+      "model": "scalar",
+      "angle": 0,
+      "field": "center_pressure",
+      "relative_history_difference": 0.003500691988549089
+    },
+    {
+      "model": "tensor",
+      "angle": 0,
+      "field": "top_displacement",
+      "relative_history_difference": 0.0004916032744768768
+    },
+    {
+      "model": "scalar",
+      "angle": 0,
+      "field": "top_displacement",
+      "relative_history_difference": 0.0004828107813701942
+    },
+    {
+      "model": "tensor",
+      "angle": 0,
+      "field": "right_reaction",
+      "relative_history_difference": 0.0004423569970560936
+    },
+    {
+      "model": "scalar",
+      "angle": 0,
+      "field": "right_reaction",
+      "relative_history_difference": 0.0004892868276820451
+    },
+    {
+      "model": "tensor",
+      "angle": 45,
+      "field": "center_pressure",
+      "relative_history_difference": 0.003668689557429241
+    },
+    {
+      "model": "scalar",
+      "angle": 45,
+      "field": "center_pressure",
+      "relative_history_difference": 0.0036170730657703294
+    },
+    {
+      "model": "tensor",
+      "angle": 45,
+      "field": "top_displacement",
+      "relative_history_difference": 0.00045290652755096113
+    },
+    {
+      "model": "scalar",
+      "angle": 45,
+      "field": "top_displacement",
+      "relative_history_difference": 0.0004605612602676919
+    },
+    {
+      "model": "tensor",
+      "angle": 45,
+      "field": "right_reaction",
+      "relative_history_difference": 0.0011346937620167715
+    },
+    {
+      "model": "scalar",
+      "angle": 45,
+      "field": "right_reaction",
+      "relative_history_difference": 0.0011461312053009471
+    },
+    {
+      "model": "tensor",
+      "angle": 90,
+      "field": "center_pressure",
+      "relative_history_difference": 0.003445760361494796
+    },
+    {
+      "model": "scalar",
+      "angle": 90,
+      "field": "center_pressure",
+      "relative_history_difference": 0.003328357295859029
+    },
+    {
+      "model": "tensor",
+      "angle": 90,
+      "field": "top_displacement",
+      "relative_history_difference": 0.0004982663485163075
+    },
+    {
+      "model": "scalar",
+      "angle": 90,
+      "field": "top_displacement",
+      "relative_history_difference": 0.0005151402717580958
+    },
+    {
+      "model": "tensor",
+      "angle": 90,
+      "field": "right_reaction",
+      "relative_history_difference": 0.0004199749464406632
+    },
+    {
+      "model": "scalar",
+      "angle": 90,
+      "field": "right_reaction",
+      "relative_history_difference": 0.00037859843809136815
+    }
+  ],
+  "norm": "trapezoidal time L2 over [0,0.75], divided by tensor-history L2",
+  "refinement_scope": "20x4 dt=.0025 versus 40x8 dt=.00125; combined space/time sensitivity, not an asymptotic order estimate",
+  "parameters": {
+    "phi": 0.9,
+    "Ks": 2.5,
+    "mineral_shear": 0.8333333333333334,
+    "kv": 5.4,
+    "ka": 1.0,
+    "kc": 0.4,
+    "Kf": 8.0,
+    "mobility": 1.5,
+    "peak_traction": 0.0001,
+    "ramp_end": 0.01,
+    "end_time": 0.75
+  }
+}

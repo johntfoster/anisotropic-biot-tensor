@@ -1,0 +1,5 @@
+# Solver transcripts and derived tabular evidence are retained verbatim.
+# Do not treat tool-emitted spacing in these reproducibility artifacts as a
+# source-code whitespace error.
+fe-evidence/**/run.log whitespace=-trailing-space,-blank-at-eof
+figures/insight_*.csv whitespace=-trailing-space

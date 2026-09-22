@@ -20,11 +20,8 @@ import matplotlib.pyplot as plt
 from conformal_model import Model, I, isotropic_stiffness, shear_gradient, rotation_z
 
 DEST = Path(__file__).resolve().parents[1]/'build/conformal'
-COLORS = ['#0072B2', '#D55E00', '#009E73']
-plt.rcParams.update({'font.family':'DejaVu Sans', 'font.size':9,
-    'axes.labelsize':9, 'legend.fontsize':7.5, 'axes.titlesize':10,
-    'lines.linewidth':1.6, 'pdf.fonttype':42, 'savefig.bbox':'tight',
-    'axes.spines.top':False, 'axes.spines.right':False})
+from figure_style import COLORS, apply_style, publication_size
+apply_style()
 
 
 def write_csv(name, records):
@@ -34,6 +31,7 @@ def write_csv(name, records):
 
 
 def save(fig, name):
+    publication_size(fig)
     fig.savefig(DEST/(name+'.pdf'))
     fig.savefig(DEST/(name+'.png'), dpi=160)
     plt.close(fig)
@@ -205,7 +203,7 @@ def main():
                 mineral_volume=values[-1][1]['y']) for name,values in layer.items()}),
         versions=dict(python=platform.python_version(),numpy=np.__version__,scipy=scipy.__version__,matplotlib=matplotlib.__version__),
         source_sha256={name:hashlib.sha256((Path(__file__).parent/name).read_bytes()).hexdigest()
-                       for name in ('conformal_model.py','conformal_experiments.py')},
+                       for name in ('conformal_model.py','conformal_experiments.py','figure_style.py')},
         scope='Synthetic homogeneous constitutive calculations. No finite-element solve, measured material calibration, or physical validation.')
     (DEST/'experiments.json').write_text(json.dumps(metadata,indent=2)+'\n')
     print(json.dumps({key:metadata[key] for key in ('state_evaluations','max_mineral_residual',

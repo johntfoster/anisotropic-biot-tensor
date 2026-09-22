@@ -50,9 +50,9 @@ def main():
                       'agent_workflows'):
         walk(directory, directory, files, skip_dirs=())
     walk('references/notes', 'references/notes', files)
-    # Reviewers must not read other reviewers' reports or prior-round votes, so
-    # the snapshot carries the review policy document but no round directories.
-    files.add('reviews/README.md')
+    walk('references/pdfs', 'references/pdfs', files)
+    # Review history includes prior votes even in its README. The acceptance
+    # skill supplies policy without exposing that history to new reviewers.
     files.add('.agent/shared/AGENTS.shared.md')
     walk('.agent/shared/skills', '.agent/shared/skills', files)
     for name in sorted(os.listdir(os.path.join(REPO, 'examples'))):
@@ -62,8 +62,8 @@ def main():
         if name.endswith('.py'):
             files.add(os.path.join('tools', name))
     files.update(('build/main.pdf', 'build/main.log',
-                  'build/anisotropic-biot-2026-09-20-v2.zip'))
-    for sub in ('conformal', 'weighted-stress', 'fabric'):
+                  'build/anisotropic-biot-2026-09-22-v3.zip'))
+    for sub in ('conformal', 'weighted-stress', 'fabric', 'insight'):
         walk(os.path.join('build', sub), os.path.join('build', sub), files)
     walk('moose_app', 'moose_app', files, skip_dirs=('build', 'lib', '.libs'))
 

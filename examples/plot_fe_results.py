@@ -26,11 +26,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'validation'))
 from mandel_reference import MandelParameters, MandelSolution
 
-COLORS = ['#0072B2', '#D55E00', '#009E73', '#CC79A7', '#E69F00']
-plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 9,
-    'axes.labelsize': 9, 'legend.fontsize': 7.5, 'axes.titlesize': 10,
-    'lines.linewidth': 1.5, 'pdf.fonttype': 42, 'savefig.bbox': 'tight',
-    'axes.spines.top': False, 'axes.spines.right': False})
+from figure_style import COLORS, apply_style, publication_size
+apply_style()
 
 
 def sha(path):
@@ -378,6 +375,7 @@ def main():
     if args.subdivisions < 1:
         parser.error('subdivisions must be positive')
     figures = Figures(args.output)
+    figures.source(ROOT / 'examples/figure_style.py')
     runs = load_runs(args.runs, figures)
     mandel_figures(runs, figures)
     convergence_figures(runs, figures)

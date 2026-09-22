@@ -2,8 +2,8 @@
   "schema_version": 1,
   "generator": "examples/plot_fe_verification.py",
   "versions": {
-    "python": "3.10.12",
-    "numpy": "2.2.6",
+    "python": "3.14.0",
+    "numpy": "2.4.2",
     "matplotlib": "3.10.8"
   },
   "figures": [
@@ -27,7 +27,7 @@
         "fe_reference_comparison.pdf",
         "fe_reference_comparison.png"
       ],
-      "caption": "Linear constant-reference-tangent Mandel comparison from recorded runs. (a) Center pressure against time: solid the independently evaluated series, dashed the finite-element history at identical saved times. (b) Pressure along the sampled horizontal line at the saved comparison times. There is no temporal interpolation and no fitted coefficient in either panel.",
+      "caption": "Linear constant-reference-tangent Mandel comparison from recorded runs. (a) Center pressure against time: solid curves show the independently evaluated series, hollow markers show the finite-element history at identical saved times. (b) Pressure along the sampled horizontal line at the saved comparison times. There is no temporal interpolation and no fitted coefficient in either panel.",
       "sources": [
         "figures/fe_mandel_history.csv",
         "figures/fe_mandel_profiles.csv"
@@ -36,6 +36,8 @@
   ],
   "missing": [],
   "input_sha256": {
+    "examples/figure_style.py": "35119cbb69f5552cd3df3209079b050225b5568624a3260136fbad751a377237",
+    "examples/plot_fe_verification.py": "1ca6ae65849a3f43639ef965079ec495cc5bda1ecec1ec1cd64eb2983a78143e",
     "figures/fe_mms_convergence.csv": "e171cf31b809f677f8eb76426a74b22a632f647cc6511c2d495144a2c36b8feb",
     "fe-evidence/mms-convergence.json": "de2ca677a47f3c7745a9cc748ad7be768e4884b7b6934878df853036508419a0",
     "figures/fe_mandel_refinement.csv": "4ba439e5250e8a209171f43b43234ea19b2dad1a0279a6cbf159a27e2d1e870d",
@@ -44,10 +46,10 @@
     "figures/fe_mandel_profiles.csv": "94eaf1a5a616504aacfa5d86e56f61983839bf409ec8d70876af123e7abe90a1"
   },
   "output_sha256": {
-    "fe_verification_convergence.pdf": "a7bebca7b89a9c5d8397a92bedfa0bf549c5750eb26e343e5fa16f7a810c61ec",
-    "fe_verification_convergence.png": "c5d8de253fb42d0df84c5436d871672d7d2e9a5f0bb8cc5a67bedc19feefcb2c",
-    "fe_reference_comparison.pdf": "d42df6413254a058157ab49de223ee5398462783bb8e736887be380af90b07f7",
-    "fe_reference_comparison.png": "86707f8dc2b25414c3cb60d6509466f52ca7706c1ffb851f222007d49bbcda01"
+    "fe_verification_convergence.pdf": "e7c068d2d953d44b3bb5e96439d1da01497030b019eb1bb059121d34e042a29c",
+    "fe_verification_convergence.png": "1504d628c1a60217cfa547bee32e2b2bf5276a39953b344901dc4eae49e4cf60",
+    "fe_reference_comparison.pdf": "064d8971e7e8d19e95aff2543b31d83c1aa57d8d06dec54c9399fa622bef6d90",
+    "fe_reference_comparison.png": "a34e8da7019e75e96c726198ccaa4d006d5d042ae38bc60039d4629ffe055358"
   },
   "limitations": [
     "Every curve is read from a recorded artifact; this does not certify its scientific acceptance.",

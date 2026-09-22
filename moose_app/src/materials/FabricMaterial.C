@@ -26,6 +26,9 @@ FabricMaterial::validParams()
   p.addParam<bool>("linear_reference",
                    true,
                    "Use the reference-state fabric response (required by the implemented law)");
+  p.addParam<bool>("scalar_coupling", false,
+                  "Comparison potential: replace B by trace(B)/3 I in both stress and mass, "
+                  "preserving drained stiffness and fixed-strain storage");
   return p;
 }
 
@@ -47,6 +50,7 @@ FabricMaterial::FabricMaterial(const InputParameters & p)
          getParam<Real>("fabric_angle"),
          getParam<bool>("conformal_limit")),
     _linear(getParam<bool>("linear_reference")),
+    _scalar_coupling(getParam<bool>("scalar_coupling")),
     _P(declareADProperty<ADRankTwoTensor>("first_piola")),
     _flux(declareADProperty<RealVectorValue>("mass_flux")),
     _mass(declareADProperty<Real>("fluid_mass")),
@@ -88,6 +92,18 @@ FabricMaterial::computeQpProperties()
   try
   {
     auto s = _law.evaluate(F, _p[_qp], _gp[_qp], _linear);
+    if (_scalar_coupling)
+    {
+      // Both substitutions follow the same quadratic poroelastic potential.
+      // Internal fabric and energy outputs retain the parent law; they are
+      // not states or energy of this phenomenological comparison.
+      const auto I = Fabric::identity();
+      const auto difference = s.B - I * (s.B.trace() / 3.);
+      const auto eps = (F + F.transpose()) * 0.5 - I;
+      s.P += difference * _p[_qp];
+      s.sigma = s.P;
+      s.mass -= _law.rho0 * Fabric::contract(difference, eps);
+    }
     _P[_qp] = s.P;
     _flux[_qp] = s.flux;
     _mass[_qp] = s.mass;
@@ -101,9 +117,9 @@ FabricMaterial::computeQpProperties()
     _ln_h[_qp] = MetaPhysicL::raw_value(s.ln_h);
     _a[_qp] = MetaPhysicL::raw_value(s.distention_a);
     _h[_qp] = MetaPhysicL::raw_value(s.distention_h);
-    _b_par[_qp] = _law.b_par;
-    _b_per[_qp] = _law.b_per;
-    _b_aniso[_qp] = _law.anisotropy;
+    _b_par[_qp] = _scalar_coupling ? (_law.b_par + 2. * _law.b_per) / 3. : _law.b_par;
+    _b_per[_qp] = _scalar_coupling ? _b_par[_qp] : _law.b_per;
+    _b_aniso[_qp] = _scalar_coupling ? 0. : _law.anisotropy;
     _cd11[_qp] = _law.cd[0][0];
     _cd12[_qp] = _law.cd[0][1];
     _s11[_qp] = MetaPhysicL::raw_value(s.sigma(0, 0));

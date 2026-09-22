@@ -25,3 +25,24 @@ fabric_distention:
   equations: [eq:fabric-distention-polar, eq:fabric-volume-ratio, eq:fabric-tensor, eq:fabric-equivalent-energy, eq:fabric-distention-stress, eq:fabric-equilibrium, eq:fabric-compliance-restriction, eq:fabric-transverse-h, eq:fabric-transverse-strain, eq:fabric-shape-equilibrium, eq:fabric-transverse-biot, eq:fabric-biot-tensor, eq:reference-biot-compatibility]
   approximation: reference_state_linearized; general finite-deformation fabric equilibrium out of scope
   verification: examples/verify_fabric.py (independent NumPy re-implementation; worst probe-field difference 4.9e-15; H reconstruction 2.2e-16; rotation invariance 2.5e-16; conformal reduction vs ConformalMaterial 1.9e-14)
+
+fabric_insight_studies:
+  pressure_shear:
+    source: examples/fabric_insight.py
+    equation: eq:fabric-pressure-shear-reaction
+    check: internal_strain_elimination_vs_reference_B_tensor
+  scalar_comparison:
+    material: FabricMaterial
+    equations: [eq:fabric-scalar-stress, eq:fabric-scalar-mass]
+    deck: moose_app/inputs/fabric_comparison.i
+    reference_configuration: linear_small_strain
+    derivatives: exact_AD_in_stress_and_mass
+    FE: Q2_displacement_Q1_pressure_backward_Euler
+    approximation: trace_B_over_3_I_replaces_B_reciprocally; Cd_storage_and_mobility_unchanged
+    evidence: fe-evidence/insight
+    check: loading_and_drainage_mass_balance_and_joint_space_time_refinement
+  finite_material:
+    source: examples/fabric_insight.py
+    equations: [eq:fabric-equilibrium, eq:fabric-commuting-work, eq:fabric-finite-pure-shear]
+    scope: isotropic_mineral_and_commuting_finite_pure_stretch; not_a_general_noncoaxial_law
+    checks: full_spatial_energy_stress_pressure_tangent_independent_minimization_reference_limit

@@ -33,8 +33,10 @@ at zero pressure:
        \left(J-\phi_{s0}\bar J(\mathbf F,p)\right).
  \label{eq:fe-reference-fluid-mass}
 \end{align}
-The mineral volume is the solution of
-\eqref{eq:anisotropic-mineral-eos}, not an independent porosity law.
+For the conformal law, mineral volume is the solution of
+\eqref{eq:anisotropic-mineral-eos}. The reference fabric calculations
+below instead use the linearized fabric equilibrium to determine coupling
+and storage. Neither implementation prescribes an independent porosity law.
 All mass measures in this section are per unit reference mixture volume,
 whereas the intrinsic densities and volume fractions of the preceding sections
 are current-configuration measures; the two conventions differ by the factor
@@ -285,115 +287,20 @@ distention basis, the equilibrium, and the reported sign convention for
 \(\ln h\). In the volume-only limit the same material reproduces the
 conformal material used in \cref{sec:fe-reference-problems} to
 \(1.9\times10^{-14}\).
-\Cref{fig:fe-fabric-probe} shows the corresponding axial and transverse
-Biot coefficients, their difference, and the fabric shape (deviatoric)
-distention \(\ln h\) of the uncoupled probes.
+The reference material checks are retained in the numerical supplement.
+The following experiments use the coupling to predict boundary reactions,
+consolidation, and finite pore-volume changes.
 
-\begin{figure}[htbp]
- \centering
- \includegraphics[width=\textwidth]{figures/fe_fabric_probe.pdf}
- \caption{Reference-state pore-fabric probe under a uniform prescribed
-deformation. (a) Axial and transverse Biot coefficients. (b) Their
-difference. With an isotropic mineral the Biot tensor remains spherical
-when the distention stiffness carries no volume--axial coupling, so the
-directional coupling in (b) is supplied by that modulus. (c) The reported
-shape scalar \(\ln h\) against fabric orientation for the uncoupled
-probes; with the distention restricted to the volumetric--axial subspace
-this is exactly the logarithm of the unimodular transverse fabric
-eigenvalue \(h=\mathrm{e}^{\ln h}\) of
-\eqref{eq:fabric-transverse-h}. Values are
-the recorded material-point outputs with no fitted curve.}
- \label{fig:fe-fabric-probe}
-\end{figure}
+\input{sections/fabric_studies}
 
-A coupled transient calculation then rotates the fabric in the plane while
-the mineral stays isotropic and unrotated, so a directional difference
-isolates the pore fabric. The peak centre pressure is
-\(4.36\times10^{-5}\) for a fabric axis along \(X_1\),
-\(4.99\times10^{-5}\) at \(45^\circ\), and \(5.52\times10^{-5}\) along
-the other in-plane axis, against \(3.62\times10^{-5}\) for the same deck
-with the volume--axial coupling switched off. Each peak coincides with the
-final recorded state rather than a transient overshoot.
-\Cref{fig:fe-fabric-mandel} shows the centre-pressure histories and the peak
-pressures from which these values are read. To resolve the fields behind those
-histories, we rerun the same coupled problem on a refined
-\(40\times8\) mesh of the \(1\times0.1\) strip, with the same boundary
-conditions, material and fabric parameters, and time integration, but a smaller
-step so the Exodus output records eleven evenly spaced field snapshots across
-the run. \Cref{fig:fe-fabric-contours} shows the pore pressure and the
-displacement magnitude at the final recorded state for the isotropic
-(uncoupled) fabric and for fabric axes at \(0^\circ\), \(45^\circ\), and
-\(90^\circ\). The peak pressure at that time is \(3.61\times10^{-5}\) for the
-isotropic case and \(4.35\), \(4.97\), and \(5.50\times10^{-5}\) for the
-\(0^\circ\), \(45^\circ\), and \(90^\circ\) axes, respectively; in every case
-the maximum lies on the \(X_1=0\) symmetry line and the pressure falls to zero
-at the drained edge \(X_1=1\). The displacement magnitude peaks at
-\(5.18\times10^{-5}\) (isotropic), \(5.14\times10^{-5}\) (\(0^\circ\)),
-\(2.38\times10^{-5}\) (\(45^\circ\)), and \(5.26\times10^{-5}\) (\(90^\circ\)).
-\Cref{fig:fe-fabric-diffusion} shows the drainage front advancing from the
-drained right edge into the strip for the isotropic case and the \(45^\circ\)
-case on a common colour scale. These are demonstrations on the synthetic
-parameters of this section; no mesh-convergence claim is made for these runs.
-
-\begin{figure}[htbp]
- \centering
- \includegraphics[width=.95\textwidth]{figures/fe_fabric_mandel.pdf}
- \caption{Coupled consolidation with the pore fabric rotated in the plane,
-behind an isotropic and unrotated mineral. (a) Centre pressure against
-recorded time. (b) Peak centre pressure against fabric orientation, with the
-uncoupled-fabric reference dashed. The spread across orientations comes from
-the pore fabric alone. These are finite-load demonstrations of the
-fabric-coupled model, not quantitative verification of the tensorial
-distention law.}
-  \label{fig:fe-fabric-mandel}
-\end{figure}
-
-\begin{figure}[htbp]
- \centering
- \includegraphics[width=\textwidth]{figures/fe_fabric_contours.pdf}
- \caption{Refined (\(40\times8\)) coupled consolidation contours at the common
- final recorded time. Top row: pore pressure. Bottom row: displacement
- magnitude. Columns: isotropic (uncoupled) fabric, then fabric axis
- \(0^\circ\), \(45^\circ\), and \(90^\circ\) behind an isotropic, unrotated
- mineral; the orange arrow marks the fabric axis (the isotropic column carries
- none). Equal aspect preserves the \(1\times0.1\) domain. Values are read from
- the recorded Exodus fields; the runs are finite-load demonstrations on
- synthetic parameters, not a mesh-convergence study.}
- \label{fig:fe-fabric-contours}
-\end{figure}
-
-\begin{figure}[htbp]
- \centering
- \includegraphics[width=\textwidth]{figures/fe_fabric_diffusion.pdf}
- \caption{Refined (\(40\times8\)) coupled consolidation: pore-pressure
- snapshots at six recorded times, isotropic (uncoupled) row above and coupled
- \(45^\circ\)-fabric row below on a shared colour scale. The drainage front
- starts at the drained right edge and propagates into the strip, so the
- interior pressure is a genuine diffusion field rather than a uniform or
- degenerate state. Equal aspect preserves the \(1\times0.1\) domain. As in
- \cref{fig:fe-fabric-contours}, values are read from the recorded Exodus
- fields and the refined run is a finite-load demonstration, not a
- mesh-convergence study.}
- \label{fig:fe-fabric-diffusion}
-\end{figure}
-
-\paragraph{Scope of these results.}
-The coupled calculations are an implementation verification of the weak
-balances and of the constant reference tangent, and, at finite load and for
-prescribed mineral orientations, demonstrations of the constitutive response.
-They are not a quantitative verification of the nonlinear finite-deformation
-law, and they are not experimental validation: all parameters are synthetic.
-The pore-fabric runs are force-controlled demonstrations of the tensorial
-distention law at the same load; their fabric moduli are synthetic and
-uncalibrated, so they serve as a demonstration of the coupling mechanism and
-not as a quantitative validation of it.
-The rotated-anisotropy and partial-drainage runs are force-controlled
-calculations with a kinematically constrained rigid platen, so their platen
-reaction is an equilibrium residual rather than a prescribed displacement.
-The partial-drainage runs use a square domain, and their comparison with the
-slender Mandel reference geometry is therefore reported as not comparable and
-is excluded from the verification claims; only their mass-balance and
-platen-equality diagnostics and their maps are reported. The synthetic
-parameters and the absence of any laboratory or field comparison are recorded
-as a limitation.
+\paragraph{Scope of the numerical evidence.}
+The manufactured solution and consolidation reference verify the constant
+reference tangent and the coupled weak balances. The scalar/tensor comparison
+quantifies the effect of replacing directional coupling in that linear law.
+The finite material benchmark tests equilibrated fabric only on the commuting
+family of \cref{sec:fabric-finite-benchmark}. The other finite-load coupled
+calculations remain demonstrations, and all parameters are synthetic;
+no experimental validation is claimed. The partial-drainage calculations
+use a square domain and are excluded from comparison with the slender
+Mandel reference geometry.
 \FloatBarrier

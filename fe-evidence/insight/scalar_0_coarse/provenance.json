@@ -1,0 +1,36 @@
+{
+  "case": "scalar_0_coarse",
+  "model": "scalar",
+  "angle": 0,
+  "level": "coarse",
+  "nx": 20,
+  "ny": 4,
+  "dt": 0.0025,
+  "command": [
+    "moose_app/anisotropic_biot-opt",
+    "-i",
+    "moose_app/inputs/fabric_comparison.i",
+    "Outputs/file_base=fe-evidence/insight/scalar_0_coarse/solution",
+    "--n-threads=1",
+    "Mesh/base/nx=20",
+    "Mesh/base/ny=4",
+    "Executioner/dt=0.0025",
+    "Materials/law/fabric_angle=0",
+    "Materials/law/scalar_coupling=true"
+  ],
+  "source_sha256": {
+    "moose_app/inputs/fabric_comparison.i": "a9afe6952a380d54040ad7cd6067c1ca054c3aeeb82158c2191f80a08697e4c9",
+    "moose_app/include/utils/FabricLaw.h": "8362833b4bf43c317f11d1a95b897579a7e5af0441686752d8c3bb9ab0ed2881",
+    "moose_app/include/materials/FabricMaterial.h": "ecfd6babf9be3374c50eaf6d926da5e6e09d80aff5e33bc8bdd866eb939a9c74",
+    "moose_app/src/materials/FabricMaterial.C": "5a186b5e2f0b89f9e14feee70d322b4bab3a8f4f02b7a8a51090baa0c3f637ea",
+    "moose_app/src/kernels/ReferenceBalance.C": "a02c52d671732eaf212eebffa0dbf08569a9231a2d6a24b599fce38d4900d375",
+    "tools/run_fabric_comparison.py": "a0c900ab76b533b5a293e166272213663fc4604d03062453a7b539bf1ab96cd7"
+  },
+  "binary_sha256": {
+    "executable": "ff0272fc279fcf91f6acd0c4a2e0ce436e8b165ad68b15549c27e6845dfdd31e",
+    "library": "ca2604854ee7da167e2ec0c3f8d81a507c97b09a5d19e02f6f35efc1f8498e41"
+  },
+  "exit_code": 0,
+  "wall_seconds": 47.33704086393118,
+  "history_sha256": "cce8aa3c8489080ad841dc6b6f7d5afda0d90fb482bc15c8574a464dff733803"
+}

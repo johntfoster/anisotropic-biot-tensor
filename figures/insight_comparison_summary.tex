@@ -1,0 +1,15 @@
+\Cref{fig:fe-fabric-mandel} shows the complete histories on the
+\(40\times8\) mesh with \(\Delta t=0.00125\). Relative errors use the
+trapezoidal time \(L^2\) norm over \([0,0.75]\), divided by the corresponding
+tensor-history norm. Across the three orientations, the scalar approximation
+produces pressure errors of \(1.13\text{--}3.20\,\%\), settlement errors of
+\(0.26\text{--}0.88\,\%\), and lateral-reaction errors of \(0.65\text{--}0.98\,\%\).
+A joint refinement from \(20\times4\), \(\Delta t=0.0025\), changes these
+pressure, settlement and reaction histories by at most
+\(0.37\,\%\), \(0.05\,\%\), and \(0.11\,\%\), respectively,
+in the same relative norm (using each model's own fine history). This is a measured sensitivity to combined
+space and time refinement, not an asymptotic convergence-order claim.
+The end-of-run pressure is below \(0.35\,\%\) of its maximum in every
+run, so the observation interval resolves loading and substantial drainage.
+The accumulated boundary pressure residual balances the fluid-mass change
+to a maximum relative discrepancy of \(2.3\times10^{-11}\).

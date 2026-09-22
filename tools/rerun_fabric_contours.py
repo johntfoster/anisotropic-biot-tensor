@@ -3,7 +3,7 @@
 """Run the refined pore-fabric contour decks and record the shipped evidence.
 
 Runs the four coupled contour variants (isotropic, fabric axis 0/45/90 deg) of
-``moose_app/inputs/fabric_contour.i`` on the 40 x 8 quarter-Mandel mesh and
+``moose_app/inputs/fabric_contour.i`` on the 40 x 4 quarter-Mandel mesh and
 records the deck, scalar history, solver log, the Exodus field file (kept so the
 contour figures are reproducible from the recorded fields), and a provenance
 record under ``fe-evidence/runs/fabric_contour_<case>/``.
@@ -77,7 +77,7 @@ def run_case(case, overrides):
             input_sha256=sha(ROOT / CONTOUR_DECK),
             source_sha256={path: sha(ROOT / path) for path in SOURCE_FILES},
             input_deck='fabric_contour.i',
-            mesh='nx=40 ny=8 on [0,1] x [0,0.1] (QUAD9)',
+            mesh='nx=40 ny=4 on [0,1] x [0,0.1] (QUAD9)',
             time_control='dt=0.0003, end_time=0.003 (implicit-euler; 11 field snapshots incl. initial)',
             command_overrides=overrides,
             command=['./moose_app/anisotropic_biot-opt', '-i', 'moose_app/inputs/fabric_contour.i',
