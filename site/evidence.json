@@ -4,7 +4,7 @@
   "title": "An anisotropic Biot tensor: finite-element verification",
   "summary": "This companion records the evidence for the conformal-distention model and its MOOSE implementation. Constitutive, fluid-coupling, analytical reference, and manufactured-solution convergence checks pass and are published here with regenerated figures; finite-deformation demonstrations and physical validation remain pending or not performed.",
   "provenance": {
-    "source_revision": "a0e268c81daf1a59f78201a98778a7d542c444fe",
+    "source_revision": "caac406917e5e01d0468ed805a7c8bfd50ec4586",
     "scientific_snapshot": "scientific-snapshot",
     "note": "The base commit predates this working revision. The finite-element sources and evidence are provided under the repository-relative paths moose_app/, validation/, fe-evidence/, figures/ and site/; the scientific-snapshot artifact lists the exact files with SHA-256 hashes, and the review snapshot pinned in the review record is the authoritative frozen artifact for the checks below."
   },

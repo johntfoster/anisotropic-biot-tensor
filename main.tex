@@ -212,7 +212,7 @@ Consequently the normalized right stretches of the mineral and skeleton
 are equal. A general determinant-one distention factor would additionally allow
 shear and describe a different deformation mechanism.
 
-Let \(\bar\rho_s\) be solid intrinsic density, \(\phi_s\) the current
+Let \(\bar\rho_s\) be the solid intrinsic density, \(\phi_s\) the current
 solid volume fraction, and \(\rho_s=\phi_s\bar\rho_s\) the solid mass
 per current mixture volume. Throughout, a bar on a kinematic or energetic quantity denotes the mineral
 state reached by removing the distention in the general multiplicative
@@ -251,8 +251,14 @@ distention quantities instead carry the subscript \(\mathrm{dis}\):
 scalar volume-only distention energy \(W_A(a)\) of \cref{sec:work-equivalence},
 of which \(W_{\mathrm{dis}}\) is the tensorial generalization; both energies are
 normalized per reference mixture volume. The two labels are
-kept distinct throughout, so \(d\) never means distention.
-The two stress representations differ by the rotation \eqref{eq:rotated-mineral-cauchy}.
+kept distinct throughout, so \(d\) never means distention. A superscript \(n\)
+marks the discrete time level of \cref{sec:finite-elements}, and a subscript \(0\)
+marks a quantity of the reference configuration, as in \(\phi_{s0}\) and
+\(\bar\rho_{s0}\). A wide tilde denotes the representation of a true-frame
+quantity in the intermediate mineral frame, obtained by the rotation
+\(\mathbf R_A\), as in \(\widetilde{\mathbf\tau}=\mathbf R_A^T\mathbf\tau'\mathbf R_A\) of
+\eqref{eq:fabric-phase-work}.
+The mixture-frame and true-frame stress representations differ by the rotation \eqref{eq:rotated-mineral-cauchy}.
 Fourth-order tensors are set in blackboard bold and second-order tensors in
 upright bold. Conservation of solid mass gives
 \begin{align}
