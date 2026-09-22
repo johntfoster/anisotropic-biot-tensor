@@ -2,7 +2,7 @@
 \section{Pore fabric and shape-changing distention}
 \label{sec:pore-fabric}
 
-The conformal specialization of
+The spherical specialization of
 \cref{sec:kinematics,sec:work-equivalence} lets the distention change pore
 volume and rotate the intermediate frame, but not change pore shape. The
 fabric literature summarized in \cref{sec:introduction} shows that pore
@@ -14,7 +14,7 @@ equivalence to states in which distention and mineral stress commute.
 This restriction permits a finite pure-shear benchmark with oblique fabric;
 it does not establish a general noncoaxial extension. We state at
 each stage which assumptions are new modeling choices rather than
-consequences of the conformal model.
+consequences of the spherical model.
 
 \subsection{Kinematics of shape-changing distention}
 \label{sec:fabric-kinematics}
@@ -58,7 +58,7 @@ The volume-only model is the specialization
 \eqref{eq:fabric-multiplicative} and
 \eqref{eq:fabric-mineral-metric} reduce exactly to
 \eqref{eq:spherical-distention} and
-\eqref{eq:conformal-mineral-metric}. In that limit the identity stretch
+\eqref{eq:spherical-mineral-metric}. In that limit the identity stretch
 commutes with \(\mathbf R_A\), so the internal rotation cancels. For a
 general \(\mathbf G\) it does not: \(\bar{\mathbf C}\) retains
 \(\mathbf R_A\) through \(\mathbf R_A\mathbf G^{-1}\mathbf R_A^T\), and
@@ -70,7 +70,7 @@ axes and set \(\mathbf R_A=\mathbf I\) in
 \(\mathbf R_A\) transform on the left by \(\mathbf Q\); setting
 \(\mathbf R_A=\mathbf I\) specifies the unrotated calculation, not a
 spatially fixed fabric under rotation of the body. The prescribed relative
-orientation is a modeling choice; in the conformal specialization it is immaterial
+orientation is a modeling choice; in the spherical specialization it is immaterial
 because \(\mathbf R_A\) cancels there. Fixing the rotation has three
 consequences. The distention is symmetric in the material frame, so
 \(\mathbf G\) carries both the shape and the orientation of the
@@ -189,7 +189,7 @@ gives
         (\delta\bar{\mathbf F}\bar{\mathbf F}^{-1}).
  \label{eq:fabric-phase-work}
 \end{align}
-In the conformal limit \(\mathbf G^{1/2}=a^{1/3}\mathbf I\) the first term
+In the spherical limit \(\mathbf G^{1/2}=a^{1/3}\mathbf I\) the first term
 becomes \(\tfrac13\tr\mathbf\tau'\,\delta\ln a\) and the second
 \(\phi_{s0}\widehat{\mathbf\tau}_s:(\delta\bar{\mathbf F}\bar{\mathbf F}^{-1})\),
 recovering \eqref{eq:distention-mineral-energy-work} exactly. The mineral term equals the variation of the prescribed mineral energy
@@ -234,7 +234,7 @@ construction and frozen to the mineral rather than equilibrated. Equation
 retained quadratic distention potential is strictly convex and the mineral term
 contributes a positive-definite stiffness in the same strain, so the stationary
 point exists and is unique in the reference quadratic model of
-\cref{sec:fabric-biot}. Differentiating along the conformal
+\cref{sec:fabric-biot}. Differentiating along the spherical
 submanifold \(\mathbf G=a^{2/3}\mathbf I\), on which only \(a\) varies,
 reduces \eqref{eq:fabric-equilibrium} to
 \(\partial W_A/\partial\ln a
@@ -279,11 +279,11 @@ both directly through \(J\) and through the equilibrated fabric
 \(\mathbf G(\mathbf F,p)\). The reference result is a symmetric tensor whose directional pressure
 response carries both mineral anisotropy and fabric anisotropy. The finite
 benchmark evaluates this derivative only at states satisfying
-\eqref{eq:fabric-commuting-work}. In the conformal model the shape terms were absent because
+\eqref{eq:fabric-commuting-work}. In the spherical model the shape terms were absent because
 \(\mathbf G\) had only the volume degree of freedom; here they are present
 and are determined by the distention stiffness.
 
-The conformal restriction is rank one because the distention energy there
+The spherical restriction is rank one because the distention energy there
 depends only on the volume. For a fabric distention the retained subspace is
 wider, so the restriction must be derived again. In
 the reference state \(\mathbf F=\mathbf G=\mathbf I\), linearize
@@ -313,7 +313,7 @@ minimizing at fixed \(\mathbf\varepsilon\) gives the drained compliance
 with \(\mathbb D^{+}\) the Moore--Penrose inverse: the ordinary inverse on
 \(\operatorname{range}\mathbb{D}\), extended by zero on the complement.
 Here \(\mathbb{D}\) has major and minor symmetry and the material symmetry
-of the fabric. In the conformal case \(W_{\mathrm{dis}}\) depends only on
+of the fabric. In the spherical case \(W_{\mathrm{dis}}\) depends only on
 \(\tr\mathbf E_{\mathrm{dis}}=\ln a\), so \(\mathbb{D}\propto\mathbf I\otimes\mathbf I\)
 is rank one and \eqref{eq:fabric-compliance-restriction} reduces to
 \eqref{eq:drained-compliance-restriction}, with \(\mathbb{D}^{+}\) the
@@ -382,7 +382,7 @@ whose unimodular eigenvalues are \(h^{-2},h,h\). The retained model of
 scalar is exactly \(\ln h\), the logarithm of the unimodular transverse
 fabric eigenvalue, and not a projection of \(h\).
 The equilibrium \eqref{eq:fabric-equilibrium} splits into a volume balance
-for \(a\), which couples to pressure and reduces to the conformal pressure
+for \(a\), which couples to pressure and reduces to the spherical pressure
 equation, and a shape balance for \(h\),
 \begin{equation}
  \pder{}{h}\left[W_{\mathrm{dis}}+\phi_{s0}\bar W_s\right]=0,
@@ -406,7 +406,7 @@ and \(B_\perp\). Their difference measures how the axial and in-plane pore
 opening resistances differ and vanishes when the fabric is isotropic
 (\(h\equiv1\) with \(W_{\mathrm{dis}}\) independent of \(h\)), in which case
 \eqref{eq:fabric-transverse-biot} returns the scalar Biot coefficient of
-the conformal model. The extension therefore predicts that a
+the spherical model. The extension therefore predicts that a
 reaction-induced pore fabric aligned along a preferred axis can produce a
 directionally asymmetric pressure coupling even when the mineral itself is
 isotropic. In the retained volumetric--axial energy used in

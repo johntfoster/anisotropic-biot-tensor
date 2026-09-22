@@ -141,7 +141,7 @@ constants of the solid, but enters the distention energy of the pore space,
 from which the anisotropic Biot tensor follows through the mineral-volume
 response. \Cref{sec:pore-fabric}
 derives the reference-state law and a commuting finite specialization
-by extending the volume-only conformal distention to a symmetric positive
+by extending the volume-only spherical distention to a symmetric positive
 definite distention whose unimodular part is the pore fabric.
 
 We consider an anisotropic mineral and allow the distention gradient
@@ -160,7 +160,7 @@ an independent tensor describing pressure coupling.
 The result is an elastic constitutive model for a specified deformation
 mechanism. Pore-scale calculations offer a separate way to determine
 effective coefficients from geometry \citep{dehghanipentamerodio2019,
-dehghanizilian2021}. In the present model, the mineral law and volume-only conformal
+dehghanizilian2021}. In the present model, the mineral law and volume-only spherical
 distention are prescribed directly. After deriving the compatible energy,
 we obtain the mineral-volume equation and the Biot tensor, examine their
 reference and isotropic limits, and verify the full phase stress balance
@@ -200,7 +200,7 @@ In particular, the mineral right Cauchy--Green tensor satisfies
  \bar{\mathbf C}=\bar{\mathbf F}^T\bar{\mathbf F}
                   =a^{-2/3}\mathbf C,\qquad
  \mathbf C=\mathbf F^T\mathbf F.
- \label{eq:conformal-mineral-metric}
+ \label{eq:spherical-mineral-metric}
 \end{equation}
 Consequently the normalized right stretches of the mineral and skeleton
 are equal. A general determinant-one distention factor would additionally allow
@@ -210,7 +210,7 @@ Let \(\bar\rho_s\) be the solid intrinsic density, \(\phi_s\) the current
 solid volume fraction, and \(\rho_s=\phi_s\bar\rho_s\) the solid mass
 per current mixture volume. Throughout, a bar on a kinematic or energetic quantity denotes the mineral
 state reached by removing the distention in the general multiplicative
-decomposition \eqref{eq:true-mineral-jacobian}, of which the conformal factor
+decomposition \eqref{eq:true-mineral-jacobian}, of which the spherical factor
 \eqref{eq:spherical-distention} is the specialization.
 A bar on an intrinsic density denotes the per-phase-volume value:
 \(\bar\rho_s=\rho_s/\phi_s\) for the solid, which is the mineral state, and
@@ -414,7 +414,7 @@ The distention derivative is
 \begin{equation}
  \bar W_s(a^{-1/3}\mathbf R_A^T\mathbf F)
  =\bar W_s(a^{-1/3}\mathbf F).
- \label{eq:conformal-objective-energy}
+ \label{eq:spherical-objective-energy}
 \end{equation}
 Thus \(W_s\) is a function of \(\mathbf F\) and \(\bar J\), independent
 of \(\mathbf R_A\). This result holds for material anisotropy because a
@@ -636,7 +636,7 @@ The finite pure-shear benchmark independently checks spatial work and
 pressure derivatives on the commuting family and quantifies the error of
 the reference linearization.
 
-Conformal distention requires the skeleton and mineral to share their
+Spherical distention requires the skeleton and mineral to share their
 normalized right stretch, while allowing a relative rotation. With a
 volume-only distention energy, this rotation leaves the response unchanged and
 allows their compliance difference to describe only an additional spherical
@@ -656,7 +656,7 @@ fabric tensor a constitutive variable with its own energy
 \eqref{eq:fabric-distention-stress}. The equilibrium
 \eqref{eq:fabric-equilibrium} that determines the fabric generalizes the
 pressure equation. Restricting that equilibrium to spherical distention
-recovers the conformal result exactly; retaining shape components
+recovers the spherical result exactly; retaining shape components
 equilibrates the fabric against the mineral stress with no external
 conjugate. The rank-one drained compliance
 restriction relaxes, at the reference state, to the fabric-symmetric
@@ -669,7 +669,7 @@ coupling even when the mineral itself is isotropic. This is the mechanism
 by which a reaction-induced pore fabric would enter the poromechanical
 response.
 
-The conformal restriction is a constitutive specialization, not a
+The spherical restriction is a constitutive specialization, not a
 consequence of stress symmetry alone. In the equilibrium similarity
 transformation considered by \citet[section~8.9]{drumheller2000},
 symmetry of a particular true stress and its transformed stress requires
@@ -695,7 +695,7 @@ work on the commuting paths of \eqref{eq:fabric-commuting-work}; a general
 noncoaxial finite extension requires additional mechanics. Restricting an
 already prescribed tensorial distention energy to a dilation times a
 rotation need not recover the volume-only energy assumed here; couplings
-to orientation or skeleton deformation can remain. The conformal result of
+to orientation or skeleton deformation can remain. The spherical result of
 \cref{sec:finite-biot} applies locally to that specialization, and
 compatibility of independently prescribed distention fields is a separate
 boundary-value question. The finite pure-shear benchmark tests the complete spatial phase-work

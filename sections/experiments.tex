@@ -42,7 +42,7 @@ because the skeleton shape term vanishes and \(K_s\) is the same.
 Consequently their mineral volume and solid fraction coincide. Their
 pressure-induced stresses differ: the anisotropic mineral gives three
 normal coupling coefficients, while the isotropic mineral gives a single
-coefficient. Figure~\ref{fig:conformal-pressure} shows the coefficients,
+coefficient. Figure~\ref{fig:spherical-pressure} shows the coefficients,
 total stresses, and phase volumes. The final panel measures the error
 from replacing the pressure integral in
 \eqref{eq:integrated-pressure-response} by the instantaneous product
@@ -57,7 +57,7 @@ mineral volume and hence the coupling tensor.
  minerals have the same mineral-volume curve but different directional
  stress sensitivities. Panel (d) compares the actual total stress with
  \(-p\mathbf B(p)\); the drained stress is zero on this path.}
- \label{fig:conformal-pressure}
+ \label{fig:spherical-pressure}
 \end{figure}
 
 \subsection{Shape change and directional pressure sensitivity}
@@ -72,7 +72,7 @@ To separate shape effects from skeleton volume, prescribe
  \label{eq:experiment-shear-gradient}
 \end{equation}
 The diagonal stretches are fixed while \(-0.8\le\gamma\le0.8\).
-Figure~\ref{fig:conformal-shear} shows that the anisotropic mineral changes
+Figure~\ref{fig:spherical-shear} shows that the anisotropic mineral changes
 volume as skeleton shape changes, even though \(J\) and pressure remain
 fixed. Its off-diagonal coefficient \(B_{12}\) is nonzero away from
 \(\gamma=0\). A pressure increment at fixed deformation therefore changes
@@ -87,7 +87,7 @@ spherical Biot tensor are constant along this isochoric path.
  \(\gamma\). Mineral volume--shape coupling changes \(\bar J\) and
  generates a shear pressure sensitivity in the anisotropic material.
  The isotropic comparison has \(B_{12}=0\).}
- \label{fig:conformal-shear}
+ \label{fig:spherical-shear}
 \end{figure}
 
 The Biot tensor also determines how a pressure change alters the traction
@@ -102,7 +102,7 @@ Equation \eqref{eq:cauchy-pressure-tangent} gives the negative pressure
 derivatives of normal and tangential traction as
 \(\mathbf n\cdot\mathbf B\mathbf n\) and
 \(\mathbf e_t\cdot\mathbf B\mathbf n\), respectively.
-Figure~\ref{fig:conformal-directional} compares the undeformed skeleton
+Figure~\ref{fig:spherical-directional} compares the undeformed skeleton
 with \eqref{eq:experiment-shear-gradient} at \(\gamma=0.65\), both at
 \(p=2K_*\). Anisotropy is visible both in the normal sensitivity and in
 the nonzero tangential sensitivity. Changing the deformation changes the
@@ -117,7 +117,7 @@ response and zero tangential response at every angle.
  refer to fixed current spatial axes, and both plotted quantities are
  dimensionless. Tangential pressure sensitivity is a direct consequence
  of a nonspherical Biot tensor.}
- \label{fig:conformal-directional}
+ \label{fig:spherical-directional}
 \end{figure}
 
 \subsection{Internal and physical rotations}
@@ -126,7 +126,7 @@ state \(\mathbf F=\mathbf F(0.65)\), \(p=2K_*\) fixed and vary
 \(\mathbf R_A\) through rotations about the third axis. Second, hold
 \(\mathbf R_A=\mathbf I\) and rotate the entire deformation by the
 same angle, \(\mathbf F\mapsto\mathbf Q\mathbf F\).
-Figure~\ref{fig:conformal-rotation} shows constant components in the first
+Figure~\ref{fig:spherical-rotation} shows constant components in the first
 experiment and the usual spatial tensor transformation in the second.
 The true-frame mineral stress changes in the first experiment, but its
 mixture-frame representation, energy, mineral volume, and Biot tensor
@@ -141,7 +141,7 @@ the prescribed material stiffness in its reference axes.
  zero to \(180^\circ\). At fixed \(\mathbf F\), varying
  \(\mathbf R_A\) leaves the response unchanged. Rotating the body gives
  \(\mathbf B\mapsto\mathbf Q\mathbf B\mathbf Q^T\).}
- \label{fig:conformal-rotation}
+ \label{fig:spherical-rotation}
 \end{figure}
 
 \subsection{Laterally constrained extension}
@@ -149,7 +149,7 @@ For a homogeneous layer whose lateral stretches remain one and whose
 upper surface has zero total normal stress, set
 \(\mathbf F=\operatorname{diag}(1,1,\exp\varepsilon_{33})\) and solve
 \(\sigma_{33}=0\) at each pressure. This scalar boundary-condition problem
-is coupled to the mineral-volume equation. Figure~\ref{fig:conformal-layer}
+is coupled to the mineral-volume equation. Figure~\ref{fig:spherical-layer}
 shows axial extension, lateral reaction stresses, and mineral volume.
 The anisotropic material has distinct lateral reactions and an axial
 response different from the isotropic comparison. These are boundary
@@ -164,7 +164,7 @@ a tensorial pressure response enters a measurable constrained deformation.
  points on \(0\le p/K_*\le6\); stresses are expressed in \(K_*\).
  The axial stretch is \(\lambda_3=\exp\varepsilon_{33}\). Differences
  between the lateral reactions reflect the anisotropic mineral law.}
- \label{fig:conformal-layer}
+ \label{fig:spherical-layer}
 \end{figure}
 
 \subsection{Independent verification and reproducibility}
@@ -178,7 +178,7 @@ Differences of the solved mineral volume check
 with pressure check \eqref{eq:cauchy-pressure-tangent}. These comparisons
 use complete tensors, including noncoaxial states and repeated stretches.
 
-The conformal verification suite contains 186 named checks. These include the
+The spherical-distention verification suite contains 186 named checks. These include the
 65 per-state identities (five states times thirteen identities spanning
 true-metric, logarithmic-strain, rotation, virtual-work, volume-response,
 rotated-mineral-stress, phase-balance, and pressure-tangent checks) and the two
