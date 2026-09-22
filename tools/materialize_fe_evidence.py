@@ -105,10 +105,12 @@ def main():
              runs=case_records,
              notes=[
                  'Each runs/<case>/provenance.json enumerates the complete output set of the '
-                 'source run. Only the curated subset listed in files[] ships (the Exodus '
-                 'solution.e and the per-step solution_profile_*.csv dumps are intentionally '
-                 'not shipped because of size); provenance_outputs_unshipped records the '
-                 'difference per case.',
+                 'source run. Only the curated subset listed in files[] ships. For the source '
+                 'runs the large Exodus solution.e and the per-step solution_profile_*.csv '
+                 'dumps are intentionally not shipped because of size, and '
+                 'provenance_outputs_unshipped records the difference per case; the four '
+                 'refined fabric_contour_* field files and the sixteen fabric_mandel_* '
+                 'profile dumps are the exceptions that do ship.',
                  'not_applicable lists recorded run files that are deliberately not shipped '
                  '(the non-comparable demonstration/Jacobian/MMS/one-element decks do not solve '
                  'the reference-modulus Mandel problem, so they carry no reference_comparison.csv).',

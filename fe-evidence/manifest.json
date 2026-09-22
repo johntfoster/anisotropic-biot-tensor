@@ -5591,7 +5591,7 @@
     }
   ],
   "notes": [
-    "Each runs/<case>/provenance.json enumerates the complete output set of the source run. Only the curated subset listed in files[] ships (the Exodus solution.e and the per-step solution_profile_*.csv dumps are intentionally not shipped because of size); provenance_outputs_unshipped records the difference per case.",
+    "Each runs/<case>/provenance.json enumerates the complete output set of the source run. Only the curated subset listed in files[] ships. For the source runs the large Exodus solution.e and the per-step solution_profile_*.csv dumps are intentionally not shipped because of size, and provenance_outputs_unshipped records the difference per case; the four refined fabric_contour_* field files and the sixteen fabric_mandel_* profile dumps are the exceptions that do ship.",
     "not_applicable lists recorded run files that are deliberately not shipped (the non-comparable demonstration/Jacobian/MMS/one-element decks do not solve the reference-modulus Mandel problem, so they carry no reference_comparison.csv).",
     "provenance.json binary_sha256 is the digest of the compiled application that produced the run. The binary is not shipped; every recorded source_sha256 digest is verified against the shipped sources by tools/materialize_fe_evidence.py, which fails if any does not match.",
     "The assembled-Jacobian decks ship analysis.json with the recorded ||J - Jfd||_F/||J||_F values; the Jacobian decks do not emit a per-run reference_comparison.csv.",
