@@ -257,7 +257,7 @@ def main():
         grid.append(line)
     im = axs[1, 1].imshow(grid, origin='lower', extent=(-.6, .6, 0, 1), aspect='auto', cmap='viridis')
     axs[1, 1].set(xlabel=r'Logarithmic shear $\gamma$', ylabel=r'$p/K_*$', title='(d) Stress error of the linearization')
-    fig.colorbar(im, ax=axs[1, 1], label=r'$\|\mathbf{\sigma}-\mathbf{\sigma}_{\rm lin}\|/K_s$')
+    fig.colorbar(im, ax=axs[1, 1], label=r'$\|\mathbf{\sigma}-\mathbf{\sigma}_{\rm lin}\|/\mathcal{K}_s$')
     save_fig(fig, 'fabric_finite'); save_csv('finite_error.csv', erows)
     inputs = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
               for p in [Path(__file__), ROOT/'examples/figure_style.py']}

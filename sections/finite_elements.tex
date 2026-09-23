@@ -100,7 +100,8 @@ functions that vanish on their respective essential boundaries.
 Mechanical body force \(\mathbf b_0\) and fluid source \(s_f\) are
 specified per reference mixture volume. With outward reference normal
 \(\mathbf N\), reference traction \(\mathbf t_0\), and outward mass
-flux \(\bar Q_f\), the weak balances are
+flux \(\bar Q_f\), whose bar denotes its prescribed boundary value,
+the weak balances are
 \begin{align}
  0={}&\int_{\Omega_0}\operatorname{Grad}\mathbf v:\mathbf P\,\dd V_0
       -\int_{\Omega_0}\mathbf v\cdot\mathbf b_0\,\dd V_0
@@ -116,8 +117,8 @@ Here \(\Gamma_t\) and \(\Gamma_Q\) are the boundaries carrying
 prescribed traction and mass flux, respectively; on \(\Gamma_Q\),
 \(\mathbf Q_f\cdot\mathbf N=\bar Q_f\).
 The overdot denotes a time derivative following a material point of the
-skeleton. Backward Euler
-approximates the change of the full reference fluid mass:
+skeleton. With superscript \(n\) denoting the time level at \(t_n\),
+backward Euler approximates the change of the full reference fluid mass:
 \begin{equation}
  \dot m_f^{\,n}\simeq
       \frac{m_f(\mathbf F^n,p^n)-m_f(\mathbf F^{n-1},p^{n-1})}
@@ -160,14 +161,14 @@ compressive traction is \(q_L>0\), so the top compressive resultant is
 a quarter-domain calculation for this isotropic problem.
 
 The compatible material inputs, in one consistent nondimensional system,
-are \(\phi_{s0}=0.9\), \(K_s=2.5\), mineral shear modulus
-\(\mu_s=5/6\), \(K=1\), \(K_f=8\),
+are \(\phi_{s0}=0.9\), \(\mathcal{K}_s=2.5\), mineral shear modulus
+\(\mu_s=5/6\), \(\mathcal{K}=1\), \(K_f=8\),
 \(\bar\rho_{f0}=1\), and \(k/\mu_f=1.5\).
 The compliance restriction gives drained shear modulus \(G=0.75\).
 The reference Biot coefficient is \(0.6\), and total storage is
 \(17/80\). These reference coefficients define the constant-coefficient
 analytical problem. The finite-deformation equations instead approach that
-problem as \(q_L/K\) tends to zero; they need not reproduce its series
+problem as \(q_L/\mathcal{K}\) tends to zero; they need not reproduce its series
 at a finite load.
 
 The undrained post-load state supplies initial displacement and pressure.

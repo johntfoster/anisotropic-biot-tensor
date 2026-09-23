@@ -17,14 +17,14 @@ in \eqref{eq:anisotropic-biot-explicit} gives
 \end{equation}
 This is the anisotropic reference relation associated with homogeneous
 mineral compression. Its isotropic form is
-\(\mathbf B_0=(1-K/K_s)\mathbf I\).
+\(\mathbf B_0=(1-\mathcal{K}/\mathcal{K}_s)\mathbf I\).
 The change in pore volume with pressure at fixed skeleton deformation
 also follows from the mineral equation. Define the reference solid
 contribution to storage by
 \begin{align}
  S_s&=-\left.\phi_{s0}\pder{\bar J}p\right|_{\mathbf F=\mathbf I,p=0},
  \label{eq:reference-solid-storage-definition}\\
- &=\frac{\phi_{s0}}{K_s}\left(1-\frac K{\phi_{s0}K_s}\right),
+ &=\frac{\phi_{s0}}{\mathcal{K}_s}\left(1-\frac{\mathcal{K}}{\phi_{s0}\mathcal{K}_s}\right),
  \label{eq:reference-solid-storage}\\
  &=\phi_{s0}\mathbf I:\mathbb{C}_s^{-1}:\mathbf I
  -\mathbf I:\mathbb{C}_s^{-1}:\mathbb{C}^d:\mathbb{C}_s^{-1}:\mathbf I.
@@ -36,17 +36,17 @@ and the same mineral-volume response.
 
 \subsection{Isotropic mineral}
 For an isotropic mineral,
-\(\mathbb{C}_s:\mathbf I=3K_s\mathbf I\). The mineral volume--shape
+\(\mathbb{C}_s:\mathbf I=3\mathcal{K}_s\mathbf I\). The mineral volume--shape
 term vanishes and \eqref{eq:anisotropic-mineral-eos} becomes
 \begin{equation}
- K_s\ln\bar J+\left(1-\frac K{\phi_{s0}K_s}\right)p\bar J
-                   -\frac K{\phi_{s0}}\ln J=0.
+ \mathcal{K}_s\ln\bar J+\left(1-\frac{\mathcal{K}}{\phi_{s0}\mathcal{K}_s}\right)p\bar J
+                   -\frac{\mathcal{K}}{\phi_{s0}}\ln J=0.
  \label{eq:reconstructed-isotropic-source-eos}
 \end{equation}
 The Biot tensor is spherical,
 \begin{equation}
- \mathbf B=\left[1-\frac{K\bar J}
- {J\left[K_s+\left(1-K/(\phi_{s0}K_s)\right)p\bar J\right]}\right]
+ \mathbf B=\left[1-\frac{\mathcal{K}\bar J}
+ {J\left[\mathcal{K}_s+\left(1-\mathcal{K}/(\phi_{s0}\mathcal{K}_s)\right)p\bar J\right]}\right]
  \mathbf I.
  \label{eq:reconstructed-isotropic-source-biot}
 \end{equation}

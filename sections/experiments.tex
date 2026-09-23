@@ -5,7 +5,7 @@
 We use synthetic moduli to illustrate the directional pressure response.
 The examples also check the finite-deformation calculation. Stresses and stiffnesses use the same
 reference stress unit \(K_*\). Let \(\phi_{s0}=0.6\),
-\(K=7K_*\), and prescribe the mineral stiffness in an orthonormal Mandel
+\(\mathcal{K}=7K_*\), and prescribe the mineral stiffness in an orthonormal Mandel
 basis ordered as \(11,22,33,23,13,12\):
 \begin{equation}
  \frac{\mathbb{C}_s}{K_*}=\begin{pmatrix}
@@ -19,13 +19,13 @@ basis ordered as \(11,22,33,23,13,12\):
  \label{eq:example-mineral-stiffness}
 \end{equation}
 The shear strain coordinates in this basis are \(\sqrt2\varepsilon_{ij}\).
-The mineral is positive definite and \(K_s=28K_*\), so
-\(0<K<\phi_{s0}K_s\). Equation \eqref{eq:drained-stiffness-restriction}
+The mineral is positive definite and \(\mathcal{K}_s=28K_*\), so
+\(0<\mathcal{K}<\phi_{s0}\mathcal{K}_s\). Equation \eqref{eq:drained-stiffness-restriction}
 determines the complete drained stiffness, including its shear entries.
 The reference Biot components are \(0.7000\), \(0.7583\), and \(0.7917\).
 
-The isotropic comparison uses the same \(K_s=28K_*\), drained
-spherical-strain modulus \(K=7K_*\), and reference solid fraction. Its
+The isotropic comparison uses the same \(\mathcal{K}_s=28K_*\), drained
+spherical-strain modulus \(\mathcal{K}=7K_*\), and reference solid fraction. Its
 mineral shear modulus is \(16.8K_*\), the mean of the five deviatoric
 stiffness modes of \(\mathbb C_s\), divided by two. The comparison therefore
 preserves the mineral spherical response and its average deviatoric
@@ -38,7 +38,7 @@ simulations or calibration to a measured material.
 \subsection{Pressure change at fixed deformation}
 Hold \(\mathbf F=\mathbf I\) and increase \(p/K_*\) from zero to six.
 The mineral equation is identical for the two materials on this path,
-because the skeleton shape term vanishes and \(K_s\) is the same.
+because the skeleton shape term vanishes and \(\mathcal{K}_s\) is the same.
 Consequently their mineral volume and solid fraction coincide. Their
 pressure-induced stresses differ: the anisotropic mineral gives three
 normal coupling coefficients, while the isotropic mineral gives a single

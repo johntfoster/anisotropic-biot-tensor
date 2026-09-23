@@ -4,6 +4,7 @@
 \usepackage{unicode-math}
 \unimathsetup{mathbf=sym,bold-style=upright}
 \setmathfont{Latin Modern Math}
+\renewcommand{\boldsymbol}[1]{\symbf{#1}}
 \usepackage{booktabs}
 \usepackage{placeins}
 \usepackage{graphicx}
@@ -208,70 +209,8 @@ shear and describe a different deformation mechanism.
 
 Let \(\bar\rho_s\) be the solid intrinsic density, \(\phi_s\) the current
 solid volume fraction, and \(\rho_s=\phi_s\bar\rho_s\) the solid mass
-per current mixture volume. Throughout, a bar on a kinematic or energetic quantity denotes the mineral
-state reached by removing the distention in the general multiplicative
-decomposition \eqref{eq:true-mineral-jacobian}, of which the spherical factor
-\eqref{eq:spherical-distention} is the specialization.
-A bar on an intrinsic density denotes the per-phase-volume value:
-\(\bar\rho_s=\rho_s/\phi_s\) for the solid, which is the mineral state, and
-\(\bar\rho_f=\rho_f/\phi_f\) for the fluid.
-A bar on a stress denotes its representation in the mixture frame, whereas a hat denotes
-the true frame with the mineral normalization. The barred stresses also carry different normalizations:
-\(\bar{\mathbf\sigma}_s\) is per current mineral volume,
-\(\bar{\mathbf\tau}_s=\bar J\bar{\mathbf\sigma}_s\) of
-\eqref{eq:kirchhoff-volume-conventions} is per reference mineral volume.
-When the bar is written on the distention stress \(\bar{\mathbf S}_{\mathrm{dis}}\)
-of \eqref{eq:fabric-distention-stress} it instead marks the member of the
-work-conjugate pair that is conjugate to the distention tensor \(\mathbf G\),
-per reference mixture volume in the intermediate frame; its unbarred partner
-\(\mathbf S_{\mathrm{dis}}\) is conjugate to the distention logarithmic
-strain \(\mathbf E_{\mathrm{dis}}\) in that same frame and normalization. A bar on a
-prescribed boundary datum, such as the mass flux
-\(\bar Q_f\) of \eqref{eq:fe-fluid-residual}, denotes its prescribed value on that
-boundary. A single prime denotes the effective stress that carries the full
-pore-pressure term, as in \(\mathbf\sigma'\) of
-\eqref{eq:total-cauchy-single-prime}, and a double prime denotes its reduced
-counterpart at the prescribed pressure, the stress \(\mathbf P''\) of
-\eqref{eq:fixed-pressure-stress}, so that
-\(\mathbf\sigma=\mathbf\sigma''-p\mathbf B\) in
-\eqref{eq:finite-biot-tensor}. The same two marks name the two prescribed-pressure potentials of
-\cref{sec:finite-biot}: the reduced potential
-\(W''\) of \eqref{eq:reduced-energy}, whose prescribed-pressure derivative is
-the double-primed stress \(\mathbf P''\) of \eqref{eq:fixed-pressure-stress},
-and its single-primed companion
-\(W'\) of \eqref{eq:legendre-energy}, whose prescribed-pressure derivative
-\(\mathbf P'\) of \eqref{eq:fixed-mineral-state-stress} carries the full
-pore-pressure term.
-A superscript \(d\) denotes the drained skeleton, as in the drained
-stiffness \(\mathbb{C}^d\) of \eqref{eq:drained-stiffness-restriction} and
-the drained energy \(W^d\) of \eqref{eq:prescribed-logarithmic-energies}. The
-distention quantities instead carry the subscript \(\mathrm{dis}\):
-\(W_{\mathrm{dis}}\), \(\mathbf E_{\mathrm{dis}}\), and
-\(\mathbf S_{\mathrm{dis}}\) in \cref{sec:pore-fabric}, together with the
-scalar volume-only distention energy \(W_A(a)\) of \cref{sec:work-equivalence},
-of which \(W_{\mathrm{dis}}\) is the tensorial generalization; both energies are
-normalized per reference mixture volume. The two labels are
-kept distinct throughout, so \(d\) never means distention. A superscript \(n\)
-marks the discrete time level of \cref{sec:finite-elements}, and a subscript \(0\)
-marks a quantity of the reference configuration, as in \(\phi_{s0}\) and
-\(\bar\rho_{s0}\). A wide tilde denotes the representation of a mixture-frame
-quantity in the true (mineral) frame, obtained by the inverse rotation
-\(\mathbf R_A^T\), as in \(\widetilde{\mathbf\tau}=\mathbf R_A^T\mathbf\tau'\mathbf R_A\) of
-\eqref{eq:fabric-phase-work}. The hat and the wide tilde both place their
-object in that same true frame, so the criterion that separates them is
-normalization, not frame: a hat marks a mineral-normalized quantity, per
-mineral volume, as in the intrinsic mineral stresses
-\(\widehat{\mathbf\sigma}_s\), per current mineral volume, and
-\(\widehat{\mathbf\tau}_s\), per reference mineral volume; a wide tilde marks a
-mixture-normalized quantity rotated into the true frame, as in
-\(\widetilde{\mathbf\tau}\), whose partner \(\mathbf\tau'\) is the skeleton
-effective Kirchhoff stress per reference mixture volume. A mineral-normalized
-stress therefore keeps its hat in the true frame however it is reached, so
-\(\widehat{\mathbf\tau}_s=\mathbf R_A^T\bar{\mathbf\tau}_s\mathbf R_A\) in
-\eqref{eq:rotated-mineral-kirchhoff}, and no tilde is written for it.
-The mixture-frame and true-frame stress representations differ by the rotation \eqref{eq:rotated-mineral-cauchy}.
-Fourth-order tensors are set in blackboard bold and second-order tensors in
-upright bold. Conservation of solid mass gives
+per current mixture volume. A bar generally denotes an intrinsic quantity
+associated with the constituent in isolation. Conservation of solid mass gives
 \begin{align}
  J\rho_s&=\phi_{s0}\bar\rho_{s0},
  \label{eq:solid-mass}\\
@@ -280,24 +219,48 @@ upright bold. Conservation of solid mass gives
  \phi_s a=\phi_{s0}.
  \label{eq:distention}
 \end{align}
+Here the subscript \(0\) denotes the reference configuration.
 For an incompressible solid phase the intrinsic density is constant,
-\(\bar\rho_s=\bar\rho_{s0}\), so \eqref{eq:distention} gives \(\bar J=1\); the
-present construction is the compressible generalization of that limit.
+\(\bar\rho_s=\bar\rho_{s0}\), so \eqref{eq:distention} gives \(\bar J=1\).
 The reference solid fraction satisfies \(0<\phi_{s0}<1\). Full saturation
 gives fluid fraction \(1-\phi_s\). We retain states with positive mineral
 volume and \(0<\phi_s<1\).
 
 The phase stresses must be added in a common spatial frame. Let
 \(\widehat{\mathbf\sigma}_s\) denote the intrinsic mineral Cauchy stress
-in the frame reached by \(\bar{\mathbf F}\). Its representation in the
-mixture frame is
+associated with \(\bar{\mathbf F}\). Rotating this stress into the mixture
+frame follows from expressing mineral work in terms of skeleton deformation.
+The distention gradient \(\mathbf A=a^{1/3}\mathbf R_A\) maps the mineral
+configuration into the mixture configuration. To isolate mineral work,
+hold \(\mathbf A\) fixed and vary \(\mathbf F=\mathbf A\bar{\mathbf F}\):
+\begin{align}
+ \delta\bar{\mathbf F}\bar{\mathbf F}^{-1}
+ &=\mathbf A^{-1}(\delta\mathbf F\mathbf F^{-1})\mathbf A,
+ \label{eq:fixed-distention-mineral-increment}\\
+ &=\mathbf R_A^T(\delta\mathbf F\mathbf F^{-1})\mathbf R_A.
+ \label{eq:fixed-distention-rotated-increment}
+\end{align}
+The distention factors cancel. The mineral work per current mineral volume
+therefore satisfies
+\begin{equation}
+ \widehat{\mathbf\sigma}_s:
+       (\delta\bar{\mathbf F}\bar{\mathbf F}^{-1})
+ =\left(\mathbf R_A\widehat{\mathbf\sigma}_s\mathbf R_A^T\right):
+       (\delta\mathbf F\mathbf F^{-1}).
+ \label{eq:mineral-cauchy-work-rotation}
+\end{equation}
+Here \(:\) denotes double contraction, summing over two paired tensor
+indices. For two second-order tensors this gives a scalar; for a
+fourth-order tensor acting on a second-order tensor it gives a second-order
+tensor.
+Thus the distention rotation carries the mineral stress into the
+representation conjugate to skeleton deformation:
 \begin{equation}
  \bar{\mathbf\sigma}_s
  =\mathbf R_A\widehat{\mathbf\sigma}_s\mathbf R_A^T.
  \label{eq:rotated-mineral-cauchy}
 \end{equation}
-Both are stresses per current mineral volume; the rotation changes their
-components, not their normalization. The intrinsic fluid stress is
+Both are stresses per current mineral volume. The intrinsic fluid stress is
 \(-p\mathbf I\), with positive \(p\) denoting compression. The
 volume-fraction-weighted phase balance therefore gives
 \begin{equation}
@@ -305,7 +268,9 @@ volume-fraction-weighted phase balance therefore gives
  =\phi_s\bar{\mathbf\sigma}_s-(1-\phi_s)p\mathbf I.
  \label{eq:constitutive-phase-stress-sum}
 \end{equation}
-The single-prime effective stress includes the full pore-pressure term,
+The single-prime effective stress is obtained by differentiating the solid
+energy with respect to skeleton deformation while holding the solid intrinsic
+density \(\bar\rho_s\) fixed \citep{fosterxu2025}. In Cauchy form,
 \begin{align}
  \mathbf\sigma'&=\mathbf\sigma+p\mathbf I,
  \label{eq:total-cauchy-single-prime}\\
@@ -319,6 +284,8 @@ and mineral Kirchhoff stresses:
  \bar{\mathbf\tau}_s=\bar J\bar{\mathbf\sigma}_s.
  \label{eq:kirchhoff-volume-conventions}
 \end{equation}
+Here \(\mathbf\tau'\) is normalized per reference mixture volume and
+\(\bar{\mathbf\tau}_s\) per reference mineral volume.
 The mineral energy \(\bar W_s(\bar{\mathbf F})\), per reference mineral
 volume, supplies the true-frame Kirchhoff stress and its mixture-frame
 representation through
@@ -327,8 +294,11 @@ representation through
  =\pder{\bar W_s}{\bar{\mathbf F}}\bar{\mathbf F}^T,\qquad
  \bar{\mathbf\tau}_s
  =\mathbf R_A\widehat{\mathbf\tau}_s\mathbf R_A^T.
- \label{eq:rotated-mineral-kirchhoff}
+\label{eq:rotated-mineral-kirchhoff}
 \end{equation}
+The second relation follows by multiplying
+\eqref{eq:rotated-mineral-cauchy} by \(\bar J\), with
+\(\widehat{\mathbf\tau}_s=\bar J\widehat{\mathbf\sigma}_s\).
 Objectivity of the mineral energy makes these stresses symmetric, including
 for an anisotropic mineral. Using \(J\phi_s=\phi_{s0}\bar J\) in the
 phase balance gives
@@ -337,8 +307,6 @@ phase balance gives
  =\phi_{s0}(\bar{\mathbf\tau}_s+p\bar J\mathbf I).
  \label{eq:constitutive-kirchhoff-phase-stress}
 \end{equation}
-This is a spatial tensor equation. Its trace alone would determine only
-mean stress; the work calculation below retains its shear components.
 
 \section{Reversible work and the equivalent energy}
 \label{sec:work-equivalence}
@@ -359,8 +327,6 @@ An infinitesimal variation about a finite elastic state therefore gives
                  -\phi_{s0}p\,\delta\bar J.
  \label{eq:coupled-energy-work}
 \end{equation}
-All variations are elastic. The independent arguments in this expression
-are \(\mathbf F\) and \(\bar J\).
 
 To separate mineral work from distention work, vary
 \(\mathbf F=a^{1/3}\mathbf R_A\bar{\mathbf F}\). Direct differentiation
@@ -375,8 +341,8 @@ gives
  &=\bar J\tr(\delta\bar{\mathbf F}\bar{\mathbf F}^{-1}).
  \label{eq:mineral-volume-variation}
 \end{align}
-Differentiating \(\mathbf R_A\mathbf R_A^T=\mathbf I\) shows that
-\(\delta\mathbf R_A\mathbf R_A^T\) is skew. Its contraction with the
+Varying \(\mathbf R_A\mathbf R_A^T=\mathbf I\) shows that
+\(\delta\mathbf R_A\mathbf R_A^T\) is skew-symmetric. Its contraction with the
 symmetric stress \(\mathbf\tau'\) vanishes. Substitution into
 \eqref{eq:coupled-energy-work} therefore gives
 \begin{align}
@@ -394,13 +360,13 @@ symmetric stress \(\mathbf\tau'\) vanishes. Substitution into
 The second line uses the full phase balance
 \eqref{eq:constitutive-kirchhoff-phase-stress} and the stress rotation
 \eqref{eq:rotated-mineral-kirchhoff}. The fluid-pressure work cancels,
-leaving mineral work weighted by the reference solid fraction. This
-cancellation does not require the mineral stress and strain to have common
-principal directions.
+leaving mineral work weighted by the reference solid fraction.
 
-The distention energy is the remaining constitutive input. We assume that it
-depends only on its volume ratio, \(W_A(a)\), with no separate fabric or
-orientation energy. Integrating the mineral work at fixed distention then
+The distention energy is the remaining constitutive input. In this
+specialization, we assume that it depends only on its volume ratio,
+\(W_A(a)\), with no separate fabric or
+orientation energy. Like \(W_s\), \(W_A\) is normalized per reference
+mixture volume. Integrating the mineral work at fixed distention then
 gives
 \begin{equation}
  W_s(\mathbf F,\bar J)=W_A(a)+\phi_{s0}\bar W_s(\bar{\mathbf F}),
@@ -408,7 +374,7 @@ gives
  \bar{\mathbf F}=a^{-1/3}\mathbf R_A^T\mathbf F.
  \label{eq:equivalent-mixture-mineral-energy}
 \end{equation}
-The distention derivative is
+The distention work in \eqref{eq:distention-mineral-energy-work} gives
 \(\partial W_A/\partial\ln a=\tr\mathbf\tau'/3\). Objectivity of
 \(\bar W_s\) means invariance under a left rotation of its argument:
 \begin{equation}
@@ -453,10 +419,7 @@ For a purely volumetric mineral variation,
  +\frac{\phi_{s0}}3\tr\bar{\mathbf\sigma}_s\,\delta\bar J.
  \label{eq:equivalent-volumetric-work}
 \end{equation}
-This is the volume-work relation used in the scalar companion derivation.
-The factor \(\phi_{s0}\) appears because the mineral energy is normalized
-per reference mineral volume while the skeleton work is normalized per
-reference mixture volume.
+This is the volume-work relation used by \citet{foster2026poroplastic}.
 
 \input{sections/stress_reconstruction}
 
@@ -472,7 +435,10 @@ At a prescribed pressure, solve \eqref{eq:anisotropic-mineral-eos} for
  W'(\mathbf F,p)&=W''(\mathbf F,p)+\phi_{s0}p\bar J(\mathbf F,p).
  \label{eq:legendre-energy}
 \end{align}
-Differentiating \(W''\) at fixed pressure gives the double-prime stress.
+Here \(W''\) is the reduced potential at prescribed pressure, and
+\(W'\) includes the pressure contribution to mineral work.
+Differentiating \(W''\) at fixed pressure gives the reduced effective
+stress, denoted by a double prime.
 The derivative of \(W'\) at fixed pressure equals the derivative of
 \(W_s\) at fixed mineral volume because the mineral-response terms cancel
 by \eqref{eq:pressure-conjugacy}. Thus
@@ -492,48 +458,74 @@ Pushing the stresses to the current configuration gives
        \left.\pder{\bar J}{\mathbf F}\right|_p\mathbf F^T.
  \label{eq:finite-biot-tensor}
 \end{equation}
-Here \(\mathbf\sigma''=J^{-1}\mathbf P''\mathbf F^T\).
-At fixed pressure, the contraction of \(\mathbf B\) with the current virtual deformation
-gives the pore-volume change per current mixture volume:
-\begin{equation}
- \frac{\delta(J-\phi_{s0}\bar J)}J
- =\mathbf B:(\delta\mathbf F\mathbf F^{-1}),\qquad \delta p=0.
- \label{eq:biot-pore-volume-variation}
-\end{equation}
-The numerator is the pore-volume change per reference mixture volume;
-dividing by \(J\) gives the current-volume normalization.
-
-To evaluate this derivative, differentiate the mineral equation at fixed
-pressure, which gives
+Here \(\mathbf\sigma''=J^{-1}\mathbf P''\mathbf F^T\), and
+\(\mathbf B\) is the tensor-valued Biot coefficient.
+The current mixture and solid volumes per reference mixture volume are
+\(J\) and \(\phi_{s0}\bar J\), respectively, so their difference is the
+pore volume. At fixed pressure, their variations follow from the
+determinant identity and the dependence of \(\bar J\) on \(\mathbf F\):
 \begin{align}
- &\left[K_s+\left(1-\frac K{\phi_{s0}K_s}\right)p\bar J\right]
+ \delta J&=J\mathbf I:(\delta\mathbf F\mathbf F^{-1}),
+ \label{eq:pore-volume-mixture-variation}\\
+ \delta\bar J&=\left.\pder{\bar J}{\mathbf F}\right|_p:
+                  \delta\mathbf F,\qquad \delta p=0.
+ \label{eq:pore-volume-mineral-fixed-pressure-variation}
+\end{align}
+Writing \(\delta\mathbf F=(\delta\mathbf F\mathbf F^{-1})\mathbf F\)
+expresses the second variation in terms of the current virtual deformation:
+\begin{equation}
+ \left.\pder{\bar J}{\mathbf F}\right|_p:\delta\mathbf F
+ =\left(\left.\pder{\bar J}{\mathbf F}\right|_p\mathbf F^T\right):
+       (\delta\mathbf F\mathbf F^{-1}).
+ \label{eq:pore-volume-gradient-spatial-contraction}
+\end{equation}
+Subtracting the solid-volume variation from the mixture-volume variation
+and dividing by \(J\) therefore gives
+\begin{align}
+ \frac{\delta(J-\phi_{s0}\bar J)}J
+ &=\left[\mathbf I-\frac{\phi_{s0}}J
+       \left.\pder{\bar J}{\mathbf F}\right|_p\mathbf F^T\right]:
+       (\delta\mathbf F\mathbf F^{-1}),
+ \label{eq:pore-volume-variation-expanded}\\
+ &=\mathbf B:(\delta\mathbf F\mathbf F^{-1}),\qquad \delta p=0.
+ \label{eq:biot-pore-volume-variation}
+\end{align}
+The last line uses \eqref{eq:finite-biot-tensor}. Thus the contraction of
+\(\mathbf B\) with the current virtual deformation gives the pore-volume
+change per current mixture volume at fixed pressure.
+
+To evaluate this derivative, differentiate the mineral-volume equation
+\eqref{eq:anisotropic-mineral-eos} at fixed pressure, which gives
+\begin{align}
+ &\left[\mathcal{K}_s+\left(1-\frac{\mathcal{K}}{\phi_{s0}\mathcal{K}_s}\right)p\bar J\right]
      \left.\pder{\ln\bar J}{\mathbf F}\right|_p
  \nonumber\\
- &\qquad=\frac K{\phi_{s0}}\mathbf F^{-T}
- -\frac13\left(1-\frac K{\phi_{s0}K_s}\right)
+ &\qquad=\frac{\mathcal{K}}{\phi_{s0}}\mathbf F^{-T}
+ -\frac13\left(1-\frac{\mathcal{K}}{\phi_{s0}\mathcal{K}_s}\right)
    \pder{}{\mathbf F}
    \left[\mathbf I:\mathbb{C}_s:\dev\mathbf\varepsilon\right].
  \label{eq:mineral-fixed-pressure-derivative}
 \end{align}
 The material logarithmic strain is
 \(\mathbf\varepsilon=\tfrac12\log\mathbf C\), where
-\(\mathbf C=\mathbf F^T\mathbf F\). In an anisotropic solid, the
-logarithmic strain and its conjugate stress need not have the same principal
-directions. The derivative of the matrix logarithm must therefore be retained.
-Using its self-adjointness gives the explicit current Biot tensor
-\begin{align}
+\(\mathbf C=\mathbf F^T\mathbf F\). Evaluating the derivative of the
+shape term in \eqref{eq:mineral-fixed-pressure-derivative} therefore
+requires differentiating \(\log\mathbf C\) with respect to \(\mathbf C\)
+and \(\mathbf C\) with respect to \(\mathbf F\).
+Using the self-adjointness of the matrix-logarithm derivative and
+substituting into \eqref{eq:finite-biot-tensor} gives the explicit current
+Biot tensor
+\begin{equation}
  \mathbf B
- &=\mathbf I-\frac{\bar J}
- {J\left[K_s+\left(1-\dfrac K{\phi_{s0}K_s}\right)p\bar J\right]}
- \left\{K\mathbf I\right.
- \nonumber\\
- &\qquad\left.
- -\frac{\phi_{s0}}3\left(1-\frac K{\phi_{s0}K_s}\right)
+ =\mathbf I-\frac{\bar J}
+ {J\left[\mathcal{K}_s+\left(1-\frac{\mathcal{K}}{\phi_{s0}\mathcal{K}_s}\right) p\bar J\right]}
+ \left\{\mathcal{K}\mathbf I
+ -\frac{\phi_{s0}}3\left(1-\frac{\mathcal{K}}{\phi_{s0}\mathcal{K}_s}\right)
  \mathbf F\left[\pder{\log\mathbf C}{\mathbf C}:
        \dev(\mathbb{C}_s:\mathbf I)\right]\mathbf F^T
  \right\}.
  \label{eq:anisotropic-biot-explicit}
-\end{align}
+\end{equation}
 The matrix derivative and its repeated-eigenvalue limit are given in
 \cref{sec:logarithmic-derivative}. If mineral volume and shape are coupled
 by \(\mathbb{C}_s\), a change of skeleton shape changes \(\bar J\).
@@ -582,7 +574,151 @@ containing zero, integrating this derivative gives
 The reduced effective stress \(\mathbf\sigma''\) itself depends
 on pressure. The instantaneous coupling tensor therefore applies to an
 infinitesimal pressure increment; a finite change from the drained stress
-requires the integral in \eqref{eq:integrated-pressure-response}.
+is given by the integral in \eqref{eq:integrated-pressure-response}.
+
+\subsection{Coupled stored energy and finite pressure coupling}
+\label{sec:coupled-energy-finite-pressure}
+
+We now separate the total stress into the drained response at the same
+skeleton deformation and a finite pressure contribution, following the
+construction of \citet[Secs.~3.4 and 3.5]{foster2026poroplastic}.
+The complete solid energy in \eqref{eq:equivalent-anisotropic-energy} can be written as
+\begin{align}
+ W_s(\mathbf F,\bar J)
+ &=\frac{\mathcal{K}}{2\left(1-\frac{\mathcal{K}}{\phi_{s0}\mathcal{K}_s}\right)}
+       \left[\ln\left(\frac J{\bar J}\right)\right]^2
+ \nonumber\\
+ &\quad+\frac{\phi_{s0}}2
+ \left[\mathbf\varepsilon-\frac13\ln\left(\frac J{\bar J}\right)\mathbf I\right]
+ :\mathbb{C}_s:
+ \left[\mathbf\varepsilon-\frac13\ln\left(\frac J{\bar J}\right)\mathbf I\right].
+ \label{eq:coupled-solid-energy-for-stress}
+\end{align}
+The first term is the distention energy; the second is the mineral energy,
+including volume and shape changes. The bracketed strain is
+\(\bar{\mathbf\varepsilon}\). At fixed \(\bar J\), changing
+\(\mathbf F\) changes \(\ln(J/\bar J)\) by \(\delta\ln J\), while
+\(\delta\bar{\mathbf\varepsilon}=\dev\delta\mathbf\varepsilon\).
+Differentiating the energy under this constraint and pushing the result
+to the current configuration gives
+\begin{align}
+ \mathbf\sigma'
+ &=\frac1J\left.\pder{W_s}{\mathbf F}\right|_{\bar J}\mathbf F^T,
+ \label{eq:coupled-single-prime-energy-stress}\\
+ &=\frac{\mathcal{K}}{\left(1-\frac{\mathcal{K}}{\phi_{s0}\mathcal{K}_s}\right) J}\ln\left(\frac J{\bar J}\right)\mathbf I
+ +\frac{\phi_{s0}}J\mathbf F
+ \left[\pder{\log\mathbf C}{\mathbf C}:
+       \dev(\mathbb{C}_s:\bar{\mathbf\varepsilon})\right]\mathbf F^T.
+ \label{eq:coupled-single-prime-explicit-stress}
+\end{align}
+Here we used
+\(\mathbf F[(\partial\log\mathbf C/\partial\mathbf C):\mathbf I]
+\mathbf F^T=\mathbf I\) for the spherical term. The total stress is
+\(\mathbf\sigma=\mathbf\sigma'-p\mathbf I\), with
+\(\bar J=\bar J(\mathbf F,p)\) determined by
+\eqref{eq:anisotropic-mineral-eos}.
+
+Define the drained Cauchy stress at zero pressure and the same skeleton
+deformation by
+\begin{align}
+ \mathbf\sigma^d(\mathbf F)&=\mathbf\sigma(\mathbf F,0),
+ \label{eq:finite-drained-stress-definition}\\
+ &=\frac1J\mathbf F
+ \left[\pder{\log\mathbf C}{\mathbf C}:
+             (\mathbb{C}^d:\mathbf\varepsilon)\right]\mathbf F^T.
+ \label{eq:finite-drained-stress-energy-law}
+\end{align}
+The second line follows from the drained energy \(W^d\) in
+\eqref{eq:prescribed-logarithmic-energies} and the stiffness restriction
+\eqref{eq:drained-stiffness-restriction}. In this comparison,
+\(\mathbf F\), \(J\), and \(\mathbf\varepsilon\) remain fixed as
+pressure changes; mineral volume adjusts to pressure equilibrium.
+Subtracting the zero-pressure mineral equation from
+\eqref{eq:anisotropic-mineral-eos} gives
+\begin{equation}
+ \ln\left(\frac{\bar J(\mathbf F,p)}{\bar J(\mathbf F,0)}\right)
+ =-\left(1-\frac{\mathcal{K}}{\phi_{s0}\mathcal{K}_s}\right)\frac{p\bar J(\mathbf F,p)}{\mathcal{K}_s}.
+ \label{eq:finite-pressure-mineral-volume-difference}
+\end{equation}
+Since \(a=J/\bar J\) and
+\(\bar{\mathbf\varepsilon}=\mathbf\varepsilon-\ln a\,\mathbf I/3\),
+this volume difference determines both changes needed in the stress:
+\begin{align}
+ \ln a(\mathbf F,p)-\ln a(\mathbf F,0)
+ &=\left(1-\frac{\mathcal{K}}{\phi_{s0}\mathcal{K}_s}\right)\frac{p\bar J(\mathbf F,p)}{\mathcal{K}_s},
+ \label{eq:finite-pressure-distention-difference}\\
+ \bar{\mathbf\varepsilon}(\mathbf F,p)
+       -\bar{\mathbf\varepsilon}(\mathbf F,0)
+ &=-\left(1-\frac{\mathcal{K}}{\phi_{s0}\mathcal{K}_s}\right)\frac{p\bar J(\mathbf F,p)}{3\mathcal{K}_s}\mathbf I.
+ \label{eq:finite-pressure-mineral-strain-difference}
+\end{align}
+Substituting these differences into
+\eqref{eq:coupled-single-prime-explicit-stress} and subtracting
+\(p\mathbf I\) gives
+\begin{align}
+ \mathbf\sigma-\mathbf\sigma^d
+ &=-p\mathbf I+\frac{\mathcal{K}p\bar J}{J\mathcal{K}_s}\mathbf I
+ \nonumber\\
+ &\quad-\frac{\phi_{s0}p\bar J}{3J\mathcal{K}_s}\left(1-\frac{\mathcal{K}}{\phi_{s0}\mathcal{K}_s}\right)\mathbf F
+ \left[\pder{\log\mathbf C}{\mathbf C}:
+                \dev(\mathbb{C}_s:\mathbf I)\right]\mathbf F^T.
+ \label{eq:finite-pressure-stress-difference}
+\end{align}
+Here and below \(\bar J\) is evaluated at the current pressure.
+Collecting the coefficient of \(-p\) defines the finite pressure
+multiplier \(\boldsymbol{\alpha}\):
+\begin{align}
+ \mathbf\sigma(\mathbf F,p)
+ &=\mathbf\sigma^d(\mathbf F)-p\boldsymbol{\alpha}(\mathbf F,p),
+ \label{eq:finite-drained-total-stress-split}\\
+ \boldsymbol{\alpha}
+ &=\mathbf I-\frac{\bar J}{J\mathcal{K}_s}
+ \left\{\mathcal{K}\mathbf I-\frac{\phi_{s0}}3\left(1-\frac{\mathcal{K}}{\phi_{s0}\mathcal{K}_s}\right)\mathbf F
+ \left[\pder{\log\mathbf C}{\mathbf C}:
+                \dev(\mathbb{C}_s:\mathbf I)\right]\mathbf F^T\right\}.
+ \label{eq:finite-pressure-secant-tensor}
+\end{align}
+This tensor relates a finite pressure change from zero to the resulting
+stress difference. The two
+effective stresses can therefore also be written as
+\begin{align}
+ \mathbf\sigma''&=\mathbf\sigma^d
+                   +p(\mathbf B-\boldsymbol{\alpha}),
+ \label{eq:double-prime-drained-finite-pressure-split}\\
+ \mathbf\sigma'&=\mathbf\sigma^d
+                   +p(\mathbf I-\boldsymbol{\alpha}).
+ \label{eq:single-prime-drained-finite-pressure-split}
+\end{align}
+
+Differentiating \eqref{eq:finite-drained-total-stress-split} at fixed
+\(\mathbf F\) and using \eqref{eq:cauchy-pressure-tangent} gives
+\begin{equation}
+ \mathbf B=\boldsymbol{\alpha}
+      +p\left.\pder{\boldsymbol{\alpha}}p\right|_{\mathbf F}.
+ \label{eq:biot-tangent-secant-relation}
+\end{equation}
+Thus \(\mathbf B\) measures the local pressure sensitivity, whereas
+\(\boldsymbol{\alpha}\) measures the finite stress difference from
+the drained state. They agree at zero pressure and generally differ at
+nonzero pressure. On a smooth admissible pressure interval connected to
+zero, \eqref{eq:integrated-pressure-response} also gives
+\begin{equation}
+ \boldsymbol{\alpha}(\mathbf F,p)
+ =\frac1p\int_0^p\mathbf B(\mathbf F,\pi)\,\dd\pi,
+ \qquad p\ne0.
+ \label{eq:finite-pressure-secant-average}
+\end{equation}
+Equation \eqref{eq:finite-pressure-secant-tensor} evaluates this average
+explicitly from the current mineral volume, so the total stress can be
+computed from the drained stress without pressure quadrature. For an
+isotropic mineral, \(\dev(\mathbb{C}_s:\mathbf I)=\mathbf0\), and
+\begin{equation}
+ \boldsymbol{\alpha}
+ =\left(1-\frac{\bar J\mathcal{K}}{J\mathcal{K}_s}\right)\mathbf I.
+ \label{eq:isotropic-finite-pressure-multiplier}
+\end{equation}
+This is the finite pressure multiplier in the elastic specialization of
+\citet{foster2026poroplastic}, now recovered as a spherical tensor.
 
 \input{sections/limits}
 \input{sections/pore_fabric}

@@ -1,0 +1,29 @@
+{
+  "latex-workshop.latex.outDir": "%DIR%/build",
+  "latex-workshop.latex.recipe.default": "LuaLaTeX via latexmk",
+  "latex-workshop.view.pdf.viewer": "browser",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "LuaLaTeX via latexmk",
+      "tools": ["latexmk-lualatex"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk-lualatex",
+      "command": "latexmk",
+      "args": [
+        "-lualatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "-synctex=1",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ]
+    }
+  ],
+  "files.watcherExclude": {
+    "**/.agent-runtime/**": true
+  }
+}
