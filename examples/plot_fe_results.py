@@ -69,9 +69,12 @@ class Figures:
 
     def save(self, fig, name, caption, cases, data):
         names = []
-        for ext in ('pdf', 'png'):
+        for ext in ('pdf', 'png', 'pgf'):
             path = self.output / (name + '.' + ext)
-            fig.savefig(path, dpi=220, metadata={'Creator': 'plot_fe_results.py'})
+            kwargs = dict(dpi=220)
+            if ext != 'pgf':
+                kwargs['metadata'] = {'Creator': 'plot_fe_results.py'}
+            fig.savefig(path, **kwargs)
             names.append(path.name)
             self.outputs[path.name] = sha(path)
         plt.close(fig)

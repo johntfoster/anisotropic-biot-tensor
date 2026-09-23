@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "version": "2026-09-22-insight-studies",
-  "title": "An anisotropic Biot tensor: finite-element verification",
-  "summary": "This companion records the evidence for the conformal-distention model and its MOOSE implementation. Constitutive, fluid-coupling, analytical reference, and manufactured-solution convergence checks pass and are published here with regenerated figures; finite-deformation demonstrations and physical validation remain pending or not performed.",
+  "title": "An anisotropic Biot tensor from mineral stress and distention work",
+  "summary": "A guide to the constitutive checks, finite-element examples, implementation, and numerical data accompanying the paper. Browse the recorded evidence, download the manuscript and numerical supplement, and follow the commands to reproduce the calculations.",
   "provenance": {
     "source_revision": "6d47dfc86c7295b6ffd58f61efac85a2f2b90a71",
     "scientific_snapshot": "scientific-snapshot",
@@ -135,7 +135,7 @@
       "destination": "main.pdf",
       "kind": "paper",
       "label": "Current manuscript PDF with numerical supplement",
-      "sha256": "91971dade2d2096d3a705c720b375a1ca0ea32e611240aa9a4815fc87f8063e2"
+      "sha256": "89703d1873be21c839edaa94d11307f116177f8c3877bacf10c3f49c52eaa094"
     },
     {
       "id": "fabric-comparison-checks",
@@ -151,7 +151,7 @@
       "label": "plot_fabric_contours.py (reads recorded Exodus fields)",
       "path": "examples/plot_fabric_contours.py",
       "destination": "source/plot_fabric_contours.py",
-      "sha256": "6823252cf3e34b8407b0f8fe80b6ad5db49ea95a97673edf3c4e955eb8b51509"
+      "sha256": "3121e255b611b3a2d873474b17ce1943e8304d64d82c6b97522ac4dc710da804"
     },
     {
       "id": "fabric-finite-benchmark",
@@ -159,7 +159,7 @@
       "destination": "insight_fabric_finite.png",
       "kind": "figure",
       "label": "Finite commuting pure shear: pressure-induced stress, pore volume, shape change and reference-linearization error.",
-      "sha256": "a0a8c4081c8a4b33c44f809c5d85b59d7077defeb13d6904b5129fd4b4b8a587"
+      "sha256": "77cc25bdc60e658f8c696e9080dbd2555b80cb24effdda44d709541553b73476"
     },
     {
       "id": "fabric-finite-checks",
@@ -191,7 +191,7 @@
       "destination": "insight_fabric_pressure_shear.png",
       "kind": "figure",
       "label": "Pressure-induced shear reactions with isotropic mineral and oblique fabric; reference linear law.",
-      "sha256": "8f1ccd9233665324f9ad3e75251149ff18516d66bd92585b22ed05961903af3c"
+      "sha256": "cce080b1cfe73a2f76d0fb9a6bce9ef12855102b134d93084c9266916b582e52"
     },
     {
       "id": "fabric-scalar-comparison",
@@ -199,7 +199,7 @@
       "destination": "insight_fabric_comparison.png",
       "kind": "figure",
       "label": "Scalar-versus-tensor coupled consolidation with fixed drained stiffness, storage and isotropic mobility; loading and drainage histories.",
-      "sha256": "78805817c897e03fc10fa091840fb7a3495730303957f9d87523265b443948bf"
+      "sha256": "c446bebe3befa8d862da97d81b354764931e4f679e423570cef630dae66cff3e"
     },
     {
       "id": "fabric-scalar-probe-checks",
@@ -207,7 +207,7 @@
       "destination": "insight_scalar_probe_verification.json",
       "kind": "report",
       "label": "Compiled scalar/tensor stress, storage and drained stiffness checked against a separate linear solve",
-      "sha256": "3abae11d62592dd8bbe65e543ffe5aa078c3e996ee0959a58a8dd55cf2d40ebc"
+      "sha256": "5535c84c86f340df266f6cfec07c4b2b1083fc12eddbfe38fdd05cf022c09ded"
     },
     {
       "id": "fabric-verification",
@@ -239,7 +239,7 @@
       "label": "Refined coupled consolidation contours: pressure and displacement magnitude",
       "path": "figures/fe_fabric_contours.png",
       "destination": "figures/fe_fabric_contours.png",
-      "sha256": "88b1916772b1be704c550bf9f7cae65aba680fae0f2f8897669803f307391db2"
+      "sha256": "d8440993fe0311e409e9cf9bd0c231691b737ad9350c3d6c483823a8b460af33"
     },
     {
       "id": "fe-fabric-contours-data",
@@ -255,7 +255,7 @@
       "label": "Refined coupled consolidation diffusion snapshots",
       "path": "figures/fe_fabric_diffusion.png",
       "destination": "figures/fe_fabric_diffusion.png",
-      "sha256": "1a0a0849645033461ab3519229fb1b4bb6316762197e03e0032aa606c886a63c"
+      "sha256": "485c0d3d87991daa55909fbae22e8afc1c7569f0bfa6629715108eeb161e3bbd"
     },
     {
       "id": "fe-fabric-diffusion-data",
@@ -271,7 +271,7 @@
       "label": "Rotated-fabric consolidation: pressure response",
       "path": "figures/fe_fabric_mandel.png",
       "destination": "figures/fe_fabric_mandel.png",
-      "sha256": "3de5992ec0121df280134480136ecce19c295f2aff4d960565aab58660c5a545"
+      "sha256": "2cd0289b8c644d835bbae160276e852f4c0d308a3de58a33a0b1f399811fef89"
     },
     {
       "id": "fe-fabric-mandel-history",
@@ -295,7 +295,7 @@
       "label": "Pore-fabric probe: Biot tensor and shape response",
       "path": "figures/fe_fabric_probe.png",
       "destination": "figures/fe_fabric_probe.png",
-      "sha256": "85500c39e837b740887b4f3082531c177f7bad3add916cdf3cf0fd468c8addd4"
+      "sha256": "efd37d16038b330d7601b40a748149577d0e1cfda4710db10b6447caac6e400a"
     },
     {
       "id": "fe-fabric-probe-data",
@@ -407,7 +407,7 @@
       "label": "Constant-reference-tangent Mandel comparison: pressure history and profiles",
       "path": "figures/fe_reference_comparison.png",
       "destination": "figures/fe_reference_comparison.png",
-      "sha256": "a34e8da7019e75e96c726198ccaa4d006d5d042ae38bc60039d4629ffe055358"
+      "sha256": "963a59f14a84db0d601033ba62874335003c95e2bdae5709e41f5a2505683e59"
     },
     {
       "id": "fe-verification-convergence",
@@ -415,7 +415,7 @@
       "label": "Measured finite-element verification: manufactured solution, temporal order, finite-load floor",
       "path": "figures/fe_verification_convergence.png",
       "destination": "figures/fe_verification_convergence.png",
-      "sha256": "1504d628c1a60217cfa547bee32e2b2bf5276a39953b344901dc4eae49e4cf60"
+      "sha256": "1a8b0870b4f7e12d4286a46dd78600701702059641bfee0ea75a8d8ccc3dc25e"
     },
     {
       "id": "fe-verification-script",
@@ -423,7 +423,7 @@
       "label": "plot_fe_verification.py (finite-element verification displays)",
       "path": "examples/plot_fe_verification.py",
       "destination": "source/plot_fe_verification.py",
-      "sha256": "1ca6ae65849a3f43639ef965079ec495cc5bda1ecec1ec1cd64eb2983a78143e"
+      "sha256": "b49cf5e9c325ba22e2b4c33d86f4eda1df9b2d9e4c6cbeffa8a153d20f61ab91"
     },
     {
       "id": "figure-style-source",
@@ -431,7 +431,7 @@
       "label": "Shared publication plot style",
       "path": "examples/figure_style.py",
       "destination": "source/figure_style.py",
-      "sha256": "35119cbb69f5552cd3df3209079b050225b5568624a3260136fbad751a377237"
+      "sha256": "275debe25be645f67420f41f33e8cb93fe7a617bb4ba85d73dd02806d3b091f5"
     },
     {
       "id": "finite-deformation-summary",
@@ -471,7 +471,7 @@
       "destination": "fabric_insight.py",
       "kind": "source",
       "label": "Reproduction source: fabric_insight.py",
-      "sha256": "20ef2386ede67a1adbac0aa17f42d86d6c116779d33fc3953350cd16ee012dd6"
+      "sha256": "c3833d46775a8939bf7d43264739a08a9889a1172d99f63f5851e8362fb5ebe7"
     },
     {
       "id": "insight-finite-error",
@@ -495,7 +495,7 @@
       "destination": "plot_fabric_comparison.py",
       "kind": "source",
       "label": "Reproduction source: plot_fabric_comparison.py",
-      "sha256": "bb42c3854973b0b9fb5db04b978986590c9f29a8b32b0900a09cfc00b23399fb"
+      "sha256": "b8235873edac6d48b89921e9d59aebdf9d6ae985e8ad58742796b4fbfaadaa7d"
     },
     {
       "id": "insight-pressure-shear",
@@ -559,7 +559,7 @@
       "destination": "anisotropic-biot-2026-09-22-v3.zip",
       "kind": "supplement",
       "label": "Versioned numerical sources, recorded histories and verification reports",
-      "sha256": "a8a1675af81362a27fc99fd0c6c730ab0b7a6d705ea2bfb836a3eb99838ff129"
+      "sha256": "06e1176442f129fc972159fd14273c7a7452ef04dc5e753edacf04b5b875fb4e"
     },
     {
       "id": "reconstruction-verification",
@@ -575,7 +575,7 @@
       "destination": "scientific-snapshot.json",
       "kind": "provenance",
       "label": "exact FE source and evidence snapshot",
-      "sha256": "53466e655dd361809e496bd99e99b610eb4f07b10b296f4560c66de43f54d833"
+      "sha256": "c8998efa59ffcd65a693780be19782bf6ff6018bb023f89b253652124a53adac"
     },
     {
       "id": "tensor-verification",
@@ -683,6 +683,11 @@
       "title": "Discriminating fabric studies",
       "description": "Generate the finite material benchmark and compare the recorded coupled histories. Recompute the MOOSE histories with tools/run_fabric_comparison.py in the verified environment.",
       "command": "python3 examples/fabric_insight.py\npython3 examples/plot_fabric_comparison.py"
+    },
+    {
+      "title": "Extract the numerical supplement",
+      "description": "Download the manuscript PDF below. Save its embedded ZIP attachment with an attachment-capable viewer, or use Poppler\u2019s pdfdetach command. The self-contained archive includes numerical sources, parameter matrices, CSV figure data, verification reports, a versioned SHA-256 manifest, and a README with reproduction commands. The repository and downloads also provide the coupled finite-element application, input decks, run analyses, and convergence evidence.",
+      "command": "pdfdetach -saveall main.pdf"
     }
   ],
   "limitations": [
@@ -696,6 +701,40 @@
     "The fabric extension supplies a reference quadratic law and a finite commuting specialization. Full phase-work equivalence at finite deformation requires commuting distention and mineral stress. The scalar comparison is phenomenological and does not supply mineral-volume predictions.",
     "The fabric extension supplies a reference quadratic law and a finite commuting specialization. Full phase-work equivalence at finite deformation requires commuting distention and mineral stress. The scalar comparison is phenomenological and does not supply mineral-volume predictions.",
     "The fabric extension supplies a reference quadratic law and a finite commuting specialization. Full phase-work equivalence at finite deformation requires commuting distention and mineral stress. The scalar comparison is phenomenological and does not supply mineral-volume predictions.",
+    "The fabric extension supplies a reference quadratic law and a finite commuting specialization. Full phase-work equivalence at finite deformation requires commuting distention and mineral stress. The scalar comparison is phenomenological and does not supply mineral-volume predictions.",
     "The fabric extension supplies a reference quadratic law and a finite commuting specialization. Full phase-work equivalence at finite deformation requires commuting distention and mineral stress. The scalar comparison is phenomenological and does not supply mineral-volume predictions."
+  ],
+  "verification_details": [
+    {
+      "title": "Independent stress and pressure derivatives",
+      "paragraphs": [
+        "The mineral energy is differentiated in its true frame. Its stress is rotated into the mixture frame and combined with the volume-fraction-weighted fluid stress. Centered differences of the independently evaluated total pressure potential give a separate stress calculation. Differences of solved mineral volume check the pore-volume derivative, and pressure differences of total stress check the instantaneous Biot tensor. Comparisons use complete tensors, including noncoaxial states and repeated stretches."
+      ],
+      "evidence": [
+        "conformal-verification",
+        "tensor-verification"
+      ]
+    },
+    {
+      "title": "Recorded constitutive checks",
+      "paragraphs": [
+        "The spherical-distention suite records 186 named checks, including 65 per-state identities (five states and thirteen identities) and the reference Biot and rank-one compliance relations. The identities cover the true metric, logarithmic strain, rotations, virtual work, volume response, rotated mineral stress, phase balance, and pressure tangent. The largest absolute constitutive-identity error is 2.5 \u00d7 10\u207b\u2079 in nondimensional units. Step refinement of energy, pore-volume, and pressure differences gives second-order convergence before cancellation becomes significant.",
+        "The separate tensor suite covers 273 finite states across 13 mineral stiffnesses. The reconstruction suite checks work equivalence, isotropic reductions, reference coefficients, and finite unjacketed compression. These recorded numerical comparisons support implementation verification; they do not establish experimental validity or global stability."
+      ],
+      "evidence": [
+        "conformal-verification",
+        "tensor-verification",
+        "reconstruction-verification"
+      ]
+    },
+    {
+      "title": "Admissible volumes and pressure branches",
+      "paragraphs": [
+        "The plotted spherical-distention states satisfy positive phase volumes and the scalar stability condition. At negative pressure, the solver brackets the increasing branch of the mineral equation before its turning point and distinguishes loss of that branch from a violation of positive phase volumes. Independent Lambert-function solutions check admissible negative-pressure states and a large positive-pressure state outside the plotted range. Local scalar stability does not establish stability against every deformation mode. Parameter matrices, loading paths, residuals, software versions, and figure data are recorded with the numerical sources."
+      ],
+      "evidence": [
+        "conformal-verification"
+      ]
+    }
   ]
 }

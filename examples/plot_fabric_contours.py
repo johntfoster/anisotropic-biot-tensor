@@ -233,11 +233,13 @@ class Manifest:
     def save(self, fig, name, caption, cases, data):
         publication_size(fig)
         files = []
-        for ext in ('pdf', 'png'):
+        for ext in ('pdf', 'png', 'pgf'):
             path = self.output / (name + '.' + ext)
-            fig.savefig(path, dpi=220,
-                        metadata={'Creator': 'plot_fabric_contours.py',
-                                  'CreationDate': None, 'ModDate': None})
+            kwargs = dict(dpi=220)
+            if ext != 'pgf':
+                kwargs['metadata'] = {'Creator': 'plot_fabric_contours.py',
+                                      'CreationDate': None, 'ModDate': None}
+            fig.savefig(path, **kwargs)
             files.append(path.name)
             self.outputs[path.name] = sha(path)
         plt.close(fig)

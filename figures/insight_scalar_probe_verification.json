@@ -67,6 +67,6 @@
     "fe-evidence/insight-probe/anisotropic_plus/provenance.json": "84e24d8e06ea0304658213e628fe439c812f75a2207491ea1c63d7ac16710ce9",
     "fe-evidence/insight-probe/anisotropic_plus/solution.csv": "18b68c49d6a1871894a5a7afd811a4bc6e6184c31c7f4567c082e4ece62cd635",
     "tools/verify_scalar_probe.py": "7247725772233be49a37a0a0fc366c567a030114739507f13bc5b25d0345dbf9",
-    "examples/fabric_insight.py": "20ef2386ede67a1adbac0aa17f42d86d6c116779d33fc3953350cd16ee012dd6"
+    "examples/fabric_insight.py": "c3833d46775a8939bf7d43264739a08a9889a1172d99f63f5851e8362fb5ebe7"
   }
 }

@@ -2,8 +2,8 @@
   "schema_version": 1,
   "generator": "examples/plot_fabric_results.py",
   "versions": {
-    "python": "3.14.0",
-    "numpy": "2.4.2",
+    "python": "3.10.12",
+    "numpy": "2.2.6",
     "matplotlib": "3.10.8"
   },
   "figures": [
@@ -11,7 +11,8 @@
       "id": "fe_fabric_probe",
       "files": [
         "fe_fabric_probe.pdf",
-        "fe_fabric_probe.png"
+        "fe_fabric_probe.png",
+        "fe_fabric_probe.pgf"
       ],
       "caption": "Reference-state pore-fabric probes (uniform prescribed deformation, one QUAD4 element: eps11=0.01, eps22=-0.005, p=0.02). (a) Axial and transverse Biot coefficients from the recorded final state. The conformal-limit case reduces to the reviewed ConformalMaterial. (b) B_par - B_per: with an isotropic mineral the Biot tensor stays isotropic unless the volume-axial coupling of the distention stiffness is nonzero, so the coupling rows carry the directional coupling. (c) ln h, the fabric shape (deviatoric) distention, against fabric orientation for the uncoupled probes; the Biot tensor of those probes is isotropic and is plotted in (a,b) only for the coupled variants. Values are read from the recorded run histories with no fitting or interpolation.",
       "cases": [
@@ -34,7 +35,8 @@
       "id": "fe_fabric_mandel",
       "files": [
         "fe_fabric_mandel.pdf",
-        "fe_fabric_mandel.png"
+        "fe_fabric_mandel.png",
+        "fe_fabric_mandel.pgf"
       ],
       "caption": "Coupled transient consolidation (quarter Mandel geometry, isotropic and unrotated mineral) with the pore fabric rotated in the plane. (a) Center pressure against recorded time for each fabric orientation. (b) Peak center pressure against fabric orientation, with the uncoupled fabric reference drawn as a dashed line. Because the mineral is isotropic and unrotated, the directional difference isolates the pore fabric. These are finite-load demonstrations of the coupled model, not quantitative verification of the nonlinear law and not experimental validation.",
       "cases": [
@@ -51,8 +53,8 @@
   ],
   "missing": [],
   "input_sha256": {
-    "examples/plot_fabric_results.py": "552efce63e931a5aa5a733e1507471fa86254a95d622625f1509fcec985debd8",
-    "examples/figure_style.py": "35119cbb69f5552cd3df3209079b050225b5568624a3260136fbad751a377237",
+    "examples/plot_fabric_results.py": "bed1a36b01dfc6a5e528d4954fbbf76f9c52e6f1ec577a2f545b85d281cee507",
+    "examples/figure_style.py": "275debe25be645f67420f41f33e8cb93fe7a617bb4ba85d73dd02806d3b091f5",
     "fe-evidence/runs/fabric_probe_iso/solution.csv": "9ee163f46dd58330fa00501cb83b409b64533c0df586bf274cca1ac80e4b6feb",
     "fe-evidence/runs/fabric_probe_coup_a0/solution.csv": "3d25162ad03f033da50c6d3aa30e3a923a4898e38e19025e1a054a403a425dc4",
     "fe-evidence/runs/fabric_probe_coup_a45/solution.csv": "72dc9cec5646dfe1a9949d2f27016ccab032d0d014e57133153ca2cbb3829306",
@@ -70,12 +72,14 @@
   },
   "output_sha256": {
     "fe_fabric_probe.csv": "3fe15c0e9d1ec0c9ae024c7fb374a676b8392424788e5893eb7e21c92f50caa3",
-    "fe_fabric_probe.pdf": "bd721095486ccf2ced5866d68a35e5c17f0271be5b8a18d0462202a56010779c",
-    "fe_fabric_probe.png": "85500c39e837b740887b4f3082531c177f7bad3add916cdf3cf0fd468c8addd4",
+    "fe_fabric_probe.pdf": "d570f899bae67775a810e319cba546d9ebdec46fd5293c9ddab949e564c7034b",
+    "fe_fabric_probe.png": "efd37d16038b330d7601b40a748149577d0e1cfda4710db10b6447caac6e400a",
+    "fe_fabric_probe.pgf": "348ff51cd2c610d35ffb9632ffc19b41e4b1abbe54c682f7b7f841f84d04bced",
     "fe_fabric_mandel_history.csv": "822bfda28e447ca69f2959abc9318102d6878d8db3566e8ec5d01b6ac17ac952",
     "fe_fabric_mandel_peak.csv": "1ad9aba1e1cd83e18ebde3205393454180f6300708289e9ecf8a61f7a8799c8e",
-    "fe_fabric_mandel.pdf": "911251ca062e31a7f29bc05055c04a9f07ba4f83a4863a893afbe48612b3d8e3",
-    "fe_fabric_mandel.png": "3de5992ec0121df280134480136ecce19c295f2aff4d960565aab58660c5a545"
+    "fe_fabric_mandel.pdf": "80dbb4a71f43d271d5c0d32cc26ed7b8bceca26a6bf5bf1e55c2d1137d3adcd8",
+    "fe_fabric_mandel.png": "2cd0289b8c644d835bbae160276e852f4c0d308a3de58a33a0b1f399811fef89",
+    "fe_fabric_mandel.pgf": "33f55ab03524e621a8876d716bbc65f7afcc6c39aba94fe479165bd97c442ec7"
   },
   "limitations": [
     "Only recorded successful runs are plotted; this does not certify their scientific acceptance.",

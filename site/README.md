@@ -16,21 +16,30 @@ done. Publishing a site does not itself run or review a check.
 From the repository root, using Python 3.10 or newer:
 
 ```sh
-python3 tools/build_verification_site.py --validate-only
-python3 tools/build_verification_site.py
+python3 -m pip install -r examples/requirements.txt
+python3 tools/build_site_downloads.py
+python3 tools/build_verification_site.py --manifest .agent-runtime/site-build-evidence.json --validate-only
+python3 tools/build_verification_site.py --manifest .agent-runtime/site-build-evidence.json
 python3 .agent/shared/tools/research_project.py links .agent-runtime/site
 python3 -m unittest discover -s site -p 'test_*.py'
 python3 -m http.server 8000 --directory .agent-runtime/site
 ```
 
 Open `http://localhost:8000` for a local preview. This is not a deployment or an
-embedded simulator. The builder uses only the Python standard library and does
-not require MOOSE, a LaTeX toolchain, or a plotting package. The existing shared
-Pages workflow can call it using:
+embedded simulator. The site renderer uses only the Python standard library. The download builder
+requires NumPy, SciPy, Matplotlib, latexmk, and a complete LuaLaTeX installation.
+It regenerates constitutive calculations and figures from shipped source and
+recorded finite-element histories, packages the numerical supplement, and builds
+the manuscript PDF. It does not run MOOSE. Generated outputs remain ignored.
 
-```yaml
-build-argv: '["python3", "tools/build_verification_site.py"]'
-```
+The Pages workflow runs both builders on a clean checkout, checks publication
+boundaries and local links, and deploys only successful main-branch builds.
+Pull requests build and validate the same site without deploying. The download
+builder writes `.agent-runtime/site-build-evidence.json`, updating only the PDF
+and ZIP hashes for that build; recorded evidence and scientific-source hashes
+are still checked against the versioned manifest. PDF and archive bytes can
+vary with the build environment, so the published checksums identify the actual
+downloads. Site generation does not change the recorded scientific claims.
 
 The default manifest is `site/evidence.json`; `--manifest` selects another
 repository-relative JSON file. Generated output must be a subdirectory of
@@ -161,3 +170,12 @@ shared infrastructure page. `checksums.json` covers every generated file
 except itself. Build provenance records the builder hash, manifest hash,
 build commit, and scientific provenance references. It explicitly states
 that the build does not run scientific checks.
+
+## Companion design
+
+`site/style.css` is copied without changes from `docs/assets/style.css` in
+[the finite-strain companion](https://github.com/johntfoster/finite-strain-biot-poromechanics/blob/13fea4f7d3dc6ffb01d9a76e384750f0b7e78bb3/docs/assets/style.css).
+The header, hero, containers, cards, file lists, and footer use its established
+classes. `site/companion.css` adds evidence-status colors, keyboard focus, and
+small-screen overflow handling. The independent checks formerly detailed in
+manuscript section 8.5 live in `verification_details` in the evidence manifest.

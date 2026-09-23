@@ -1,7 +1,7 @@
 {
   "input_sha256": {
-    "examples/fabric_insight.py": "20ef2386ede67a1adbac0aa17f42d86d6c116779d33fc3953350cd16ee012dd6",
-    "examples/figure_style.py": "35119cbb69f5552cd3df3209079b050225b5568624a3260136fbad751a377237",
+    "examples/fabric_insight.py": "c3833d46775a8939bf7d43264739a08a9889a1172d99f63f5851e8362fb5ebe7",
+    "examples/figure_style.py": "275debe25be645f67420f41f33e8cb93fe7a617bb4ba85d73dd02806d3b091f5",
     "fe-evidence/insight/tensor_0_coarse/provenance.json": "47908702df7bed551659b08e743c78425cba1c5b52fc0d5c5630ea8fe0b92bbc",
     "fe-evidence/insight/tensor_0_coarse/solution.csv": "ec2869ff508ea932f2d876796d09f9287602080000f5d4aba0b26714be5458cd",
     "fe-evidence/insight/scalar_0_coarse/provenance.json": "9b156bb6db4ebc034e348b361c78946f61fc3bdc0668ec32fe4a7fbf40b00f47",
@@ -26,7 +26,7 @@
     "fe-evidence/insight/tensor_90_fine/solution.csv": "bdc75217d973004487f45fd25931cf2f63b765bbea44880e11f6c816ae1fd431",
     "fe-evidence/insight/scalar_90_fine/provenance.json": "a262d9add7329579f7bf07ec7fd36fa29c6ed99ef0e0a7659971d28270f96a65",
     "fe-evidence/insight/scalar_90_fine/solution.csv": "7eea877feedde25d2eb29b1d7cdf4467c8129b4e69f586c10bef5fd2a289c10e",
-    "examples/plot_fabric_comparison.py": "bb42c3854973b0b9fb5db04b978986590c9f29a8b32b0900a09cfc00b23399fb",
+    "examples/plot_fabric_comparison.py": "b8235873edac6d48b89921e9d59aebdf9d6ae985e8ad58742796b4fbfaadaa7d",
     "fe-evidence/insight-probe/tensor/provenance.json": "d199be5d44da63c6575009071fd1bfc7dd6ceb6ef665ce737290ecebcdae8555",
     "fe-evidence/insight-probe/tensor/solution.csv": "252d0848496f886a0a3ae1dda1d273530e499916435a7a03072b1f6f0814b761",
     "fe-evidence/insight-probe/scalar/provenance.json": "84fa8844be78a9b7b70337b0d3f3ec7b3ecacdb054fcb8d4d3c698b906270946",
@@ -38,17 +38,17 @@
     "tools/verify_scalar_probe.py": "7247725772233be49a37a0a0fc366c567a030114739507f13bc5b25d0345dbf9"
   },
   "output_sha256": {
-    "insight_fabric_pressure_shear.png": "8f1ccd9233665324f9ad3e75251149ff18516d66bd92585b22ed05961903af3c",
-    "insight_fabric_finite.png": "a0a8c4081c8a4b33c44f809c5d85b59d7077defeb13d6904b5129fd4b4b8a587",
+    "insight_fabric_pressure_shear.png": "cce080b1cfe73a2f76d0fb9a6bce9ef12855102b134d93084c9266916b582e52",
+    "insight_fabric_finite.png": "77cc25bdc60e658f8c696e9080dbd2555b80cb24effdda44d709541553b73476",
     "insight_pressure_shear.csv": "e5336b2fd24758ffd9eb1c8945c4eb5a45b8010886c3da21f00ad985b1500885",
     "insight_pressure_shear_moduli.csv": "ebd7ecd0211997c8fd2663d516de69974c69afdda05e9970f183c1f55e49b528",
     "insight_finite_fabric.csv": "0d2280d3b0a695b5a685738b4678747fb4d63e20c1d40793670f66f6002c56f6",
     "insight_finite_error.csv": "3b38e2f19558a5dd2ac8ae6a2511ee33beb87d4042d22fdde5e1eee2ae4cd3ca",
     "insight_verification.json": "e9a8e15cbc77dc37ac69f4b85805995af6c4965af66acbf4475d32a47023b8cc",
-    "insight_fabric_comparison.png": "78805817c897e03fc10fa091840fb7a3495730303957f9d87523265b443948bf",
+    "insight_fabric_comparison.png": "c446bebe3befa8d862da97d81b354764931e4f679e423570cef630dae66cff3e",
     "insight_comparison_verification.json": "ecbf6bd5b59279d45fc8bd1b2c4f97960fc9bdfde4b186a221fd5a518d761a58",
     "insight_comparison_errors.csv": "addf4bc606956c9291149cae56037b055c1d710d798c67ec77192ac1cd5f8179",
     "insight_comparison_summary.tex": "6a717543b62c3d216d163f8aa8211fa4b0c675d777a97556829ee61820cba3d4",
-    "insight_scalar_probe_verification.json": "3abae11d62592dd8bbe65e543ffe5aa078c3e996ee0959a58a8dd55cf2d40ebc"
+    "insight_scalar_probe_verification.json": "5535c84c86f340df266f6cfec07c4b2b1083fc12eddbfe38fdd05cf022c09ded"
   }
 }

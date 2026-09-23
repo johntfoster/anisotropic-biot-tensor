@@ -16,6 +16,16 @@ We state at each stage which assumptions are new modeling choices rather
 than consequences of the spherical model of
 \cref{sec:kinematics,sec:work-equivalence}.
 
+Three model levels are used in this section. The spherical model has
+\(\mathbf G=a^{2/3}\mathbf I\), so pore volume is its only independent
+change; it appears only as an exact reduction and comparison. The
+reference-state anisotropic model linearizes about
+\(\mathbf F=\mathbf G=\mathbf I\) and supplies the drained compliance and
+the reference Biot tensor. The finite anisotropic model retains the full
+symmetric tensor \(\mathbf G\) and its energy \(W_A(\mathbf G)\). Its
+energy--work equivalence is used only for states satisfying the specified
+commuting condition; the finite pure-shear benchmark is in that class.
+
 \subsection{Kinematics of shape-changing distention}
 \label{sec:fabric-kinematics}
 
@@ -27,6 +37,9 @@ times a symmetric positive definite stretch:
  \mathbf G=\mathbf G^T,\qquad \mathbf G\ \text{positive definite}.
  \label{eq:fabric-distention-polar}
 \end{equation}
+This is the finite anisotropic kinematics. It allows pore volume, shape, and
+orientation to change independently through \(\mathbf G\) and
+\(\mathbf R_A\).
 Here \(\mathbf G=\mathbf A^T\mathbf A\) is the right Cauchy--Green tensor
 of the distention, \(\mathbf G^{1/2}\) its right stretch, and
 \(\mathbf R_A\) the distention rotation. The distention volume ratio is
@@ -129,8 +142,8 @@ tensor.
 \subsection{Distention energy and its work conjugate}
 \label{sec:fabric-energy}
 
-For commuting distention and mineral stress, the energy per reference
-mixture volume takes the form
+We now use the finite anisotropic model. For commuting distention and mineral
+stress, its energy per reference mixture volume takes the form
 \begin{equation}
  W_s(\mathbf F,\mathbf G)=W_A(\mathbf G)
    +\phi_{s0}\bar W_s(\bar{\mathbf F}),\qquad
@@ -270,7 +283,7 @@ its shape response.
 \subsection{The Biot tensor with fabric coupling}
 \label{sec:fabric-biot}
 
-The Biot tensor retains the form
+For the finite anisotropic model, the Biot tensor retains the form
 \eqref{eq:finite-biot-tensor},
 \begin{equation}
  \mathbf B=\mathbf I-\frac{\phi_{s0}}J
@@ -279,14 +292,14 @@ The Biot tensor retains the form
 \end{equation}
 but \(\bar J=J(\det\mathbf G)^{-1/2}\) now varies with \(\mathbf F\)
 both directly through \(J\) and through the equilibrated fabric
-\(\mathbf G(\mathbf F,p)\). The reference result is a symmetric tensor whose directional pressure
-response carries both mineral anisotropy and fabric anisotropy. The finite
-benchmark evaluates this derivative only at states satisfying
+\(\mathbf G(\mathbf F,p)\). The finite benchmark evaluates this derivative
+only at states satisfying
 \eqref{eq:fabric-commuting-work}. In the spherical model the shape terms were absent because
 \(\mathbf G\) had only the volume degree of freedom; here they are present
 and are determined by the distention stiffness.
 
-The spherical restriction is rank one because the distention energy there
+We now pass to the reference-state anisotropic model. The spherical
+restriction is rank one because the distention energy there
 depends only on the volume. A fabric distention also responds to changes in
 pore shape, so the restriction must be derived again. In
 the reference state \(\mathbf F=\mathbf G=\mathbf I\), linearize
@@ -345,7 +358,8 @@ directional coupling from both the mineral and the pore fabric.
 \subsection{Transverse isotropy of the pore fabric}
 \label{sec:fabric-transverse}
 
-Let the fabric be transversely isotropic about a unit material axis
+We close with a two-mode axisymmetric specialization of both models. In its
+finite form, let the fabric be transversely isotropic about a unit material axis
 \(\mathbf m\), and restrict the distention logarithmic strain to the
 independent volume and axial-shape changes \(\mathbf e_1\) and
 \(\mathbf e_2\) of \cref{sec:fabric-biot}. Then
@@ -372,19 +386,21 @@ whose volume-preserving shape eigenvalues are \(h^{-2},h,h\). This two-mode
 model holds exactly for these pore changes, so the
 reported shape scalar is \(\ln h\), the logarithm of the transverse
 fabric eigenvalue of \(\mathbf H\).
-The equilibrium \eqref{eq:fabric-equilibrium} splits into a volume balance
+In this finite specialization, the equilibrium
+\eqref{eq:fabric-equilibrium} splits into a volume balance
 for \(a\), which couples to pressure and reduces to the spherical pressure
-equation, and a shape balance for \(h\),
+equation \eqref{eq:energy-returned-pressure-balance}, and a shape balance
+for \(h\),
 \begin{equation}
  \pder{}{h}\left[W_A+\phi_{s0}\bar W_s\right]=0,
  \label{eq:fabric-shape-equilibrium}
 \end{equation}
-which has no external conjugate. Because \(\bar J=J/a\) is independent of
-\(h\), the fabric shape is set by the balance between the distention
-stiffness and the mineral stress, not by the fluid pressure directly.
+Because \(\bar J=J/a\) is independent of \(h\), fluid pressure does not
+appear directly in this shape balance. The fabric shape is determined by the
+competition between its distention stiffness and the mineral stress.
 
-For an isotropic mineral the drained compliance
-\eqref{eq:fabric-compliance-restriction} is then transversely isotropic,
+Return now to the reference-state anisotropic model. For an isotropic mineral,
+the drained compliance \eqref{eq:fabric-compliance-restriction} is transversely isotropic,
 with a distention stiffness \(\mathbb D\) described by the volumetric and
 axial-shape fabric moduli. The Biot tensor takes the form
 \begin{equation}
@@ -400,8 +416,10 @@ opening resistances differ and vanishes when the fabric is isotropic
 the spherical model. The extension therefore predicts that a
 reaction-induced pore fabric aligned along a preferred axis can produce a
 directionally asymmetric pressure coupling even when the mineral itself is
-isotropic. In the retained volumetric--axial energy, that directional
-coupling is carried by the volume--axial coupling modulus of the
-distention stiffness: with that modulus zero, the drained
-compliance is transversely isotropic for an isotropic mineral while
-\(\mathbf B\) stays spherical.
+isotropic. In this model, the volume--axial coupling modulus links a change
+in pore volume to a change in axial pore shape. It is therefore the source
+of the directional pressure coupling. If that modulus is zero, the pore
+fabric can still make the drained compliance transversely isotropic, because
+axial and in-plane pore-shape changes have different stiffnesses. Pressure
+then couples only to pore volume, and \(\mathbf B\) is spherical for an
+isotropic mineral.

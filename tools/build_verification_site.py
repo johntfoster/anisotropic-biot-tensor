@@ -17,7 +17,7 @@ CATEGORIES = ("analytical", "implementation", "convergence", "finite_deformation
 STATUSES = {"pending", "passed", "failed", "not_performed"}
 KINDS = {"report", "source", "deck", "data", "figure", "paper", "provenance", "supplement"}
 ROOTS = {"site", "validation", "examples", "figures", "build", "moose_app", "provenance", "sections"}
-EXTENSIONS = {".json", ".csv", ".txt", ".md", ".pdf", ".png", ".jpg", ".jpeg", ".i", ".C", ".h", ".py", ".tex", ".bib", ".yml", ".yaml", ".toml", ".zip", ".sha256"}
+EXTENSIONS = {".json", ".csv", ".txt", ".md", ".pdf", ".pgf", ".png", ".jpg", ".jpeg", ".i", ".C", ".h", ".py", ".tex", ".bib", ".yml", ".yaml", ".toml", ".zip", ".sha256"}
 SECRET_WORDS = {"credentials", "credential", "secrets", "secret", "token", "tokens", "passwd", "password", "id_rsa", "id_ed25519"}
 esc = html.escape
 
@@ -123,6 +123,11 @@ def check_manifest(root, manifest):
             raise ValueError("Passed case requires a report artifact")
         if case["status"] == "passed" and (snapshot is None or provenance["source_revision"] is None):
             raise ValueError("Passed cases require source provenance")
+    for detail in manifest.get("verification_details", []):
+        if not detail.get("title") or not detail.get("paragraphs"):
+            raise ValueError("Verification details require a title and paragraphs")
+        if any(key not in artifacts for key in detail.get("evidence", [])):
+            raise ValueError("Unknown verification-detail evidence")
     for figure in manifest.get("figures", []):
         item = artifacts.get(figure["artifact"])
         if not item or item["kind"] != "figure" or not figure.get("caption") or not figure.get("alt"):
@@ -144,11 +149,17 @@ def render(manifest, metadata, artifacts):
     for name in CATEGORIES:
         item = manifest["categories"][name]
         evidence = ", ".join(artifact_link(artifacts[key]) for key in item.get("evidence", [])) or "No report published."
-        categories.append(f'<article class="category"><h3>{esc(name.replace("_", " ").capitalize())}</h3><p class="status {item["status"]}">{esc(item["status"].replace("_", " "))}</p><p>{esc(item["summary"])}</p><p>{evidence}</p></article>')
+        categories.append(f'<article class="card category"><h3>{esc(name.replace("_", " ").capitalize())}</h3><p class="status {item["status"]}">{esc(item["status"].replace("_", " "))}</p><p>{esc(item["summary"])}</p><p>{evidence}</p></article>')
+    details = "".join(
+        "<article><h3>" + esc(item["title"]) + "</h3>"
+        + "".join("<p>" + esc(paragraph) + "</p>" for paragraph in item["paragraphs"])
+        + "<p>" + " · ".join(artifact_link(artifacts[key]) for key in item.get("evidence", []))
+        + "</p></article>" for item in manifest.get("verification_details", [])
+    )
     cases = []
     for item in manifest.get("cases", []):
         links = " · ".join(artifact_link(artifacts[key]) for key in item.get("artifacts", []))
-        cases.append(f'<article><h3>{esc(item["title"])}</h3><p class="status {item["status"]}">{esc(item["status"].replace("_", " "))}</p><p>{esc(item["description"])}</p><p>{links}</p></article>')
+        cases.append(f'<article class="card"><h3>{esc(item["title"])}</h3><p class="status {item["status"]}">{esc(item["status"].replace("_", " "))}</p><p>{esc(item["description"])}</p><p>{links}</p></article>')
     figures = []
     for item in manifest.get("figures", []):
         art = artifacts[item["artifact"]]
@@ -164,18 +175,20 @@ def render(manifest, metadata, artifacts):
     commit = esc(manifest["provenance"]["source_revision"] or "Pending")
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{esc(manifest["title"])}</title><link rel="stylesheet" href="style.css"></head>
+<title>{esc(manifest["title"])}</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="companion.css"></head>
 <body><a class="skip" href="#main">Skip to scientific evidence</a>
-<header><p class="eyebrow">Research companion · {esc(manifest["version"])}</p><h1>{esc(manifest["title"])}</h1><p>{esc(manifest["summary"])}</p>
-<nav aria-label="Companion navigation"><a href="#verification">Verification</a><a href="#cases">Examples</a><a href="#reproduce">Reproduce</a><a href="#downloads">Downloads</a><a href="{esc(repo, quote=True)}">Repository</a><a href="infrastructure/index.html">Infrastructure record</a></nav></header>
-<main id="main"><section id="verification"><h2>What has been checked?</h2><p>These categories describe different kinds of evidence. A successful site build or hosted development environment does not establish scientific correctness.</p><div class="grid">{"".join(categories)}</div></section>
-<section id="cases"><h2>Finite-element examples</h2>{"".join(cases) or "<p>Examples pending.</p>"}</section>
-<section id="figures"><h2>Results and figures</h2>{"".join(figures) or "<p>No finite-element result figures have been published in this version.</p>"}</section>
-<section id="reproduce"><h2>Reproduce the calculations</h2>{reproduction}<p>Commands are documentation, not browser-executed code. Follow the stated environment requirements before running them.</p></section>
-<section id="limits"><h2>Scope and limitations</h2><ul>{limits}</ul></section>
-<section id="downloads"><h2>Scientific artifacts</h2><ul class="downloads">{downloads}</ul></section>
-<section id="provenance"><h2>Provenance</h2><p>Base repository commit: <code>{commit}</code>. The base commit alone may not contain the scientific working files. Their exact content is identified by the separately hashed scientific snapshot.</p><p>{snapshot}</p><p>{esc(manifest["provenance"].get("note", ""))}</p><p><a href="evidence.json">Scientific evidence manifest</a> · <a href="checksums.json">Published file checksums</a> · <a href="build-provenance.json">Site build provenance</a></p></section>
-</main><footer><p>Code: Apache-2.0. Manuscript: CC BY 4.0. See <a href="{esc(repo, quote=True)}/blob/{esc(metadata["default_branch"], quote=True)}/LICENSES.md">license scope and third-party notices</a>.</p></footer></body></html>'''
+<header class="site-header"><div class="container"><a class="brand" href="index.html">Anisotropic Biot tensor<span class="tag">Mineral stress · distention work</span></a>
+<nav aria-label="Companion navigation"><a class="active" href="index.html">Home</a><a href="#verification">Verification</a><a href="#cases">Examples</a><a href="#reproduce">Reproduce</a><a href="#downloads">Downloads</a></nav></div></header>
+<section class="hero"><div class="container"><h1>{esc(manifest["title"])}</h1><p>{esc(manifest["summary"])}</p><div class="cta"><a class="btn primary" href="#reproduce">Full reproduction commands</a><a class="btn ghost" href="#downloads">Manuscript and data</a><a class="btn ghost" href="{esc(repo, quote=True)}">Repository</a></div></div></section>
+<main id="main"><div class="container"><section class="section" id="verification"><h2>What has been checked?</h2><p>These categories describe different kinds of evidence. A successful site build or hosted development environment does not establish scientific correctness.</p><div class="grid">{"".join(categories)}</div></section>
+<section class="section" id="constitutive-checks"><h2>Independent constitutive verification</h2>{details}</section>
+<section class="section" id="cases"><h2>Finite-element examples</h2>{"".join(cases) or "<p>Examples pending.</p>"}</section>
+<section class="section" id="figures"><h2>Results and figures</h2>{"".join(figures) or "<p>No finite-element result figures have been published in this version.</p>"}</section>
+<section class="section" id="reproduce"><h2>Reproduce the calculations</h2>{reproduction}<p>Commands are documentation, not browser-executed code. Follow the stated environment requirements before running them.</p></section>
+<section class="section" id="limits"><h2>Scope and limitations</h2><ul>{limits}</ul></section>
+<section class="section" id="downloads"><h2>Scientific artifacts</h2><ul class="file-list downloads">{downloads}</ul></section>
+<section class="section" id="provenance"><h2>Provenance</h2><p>Base repository commit: <code>{commit}</code>. The base commit alone may not contain the scientific working files. Their exact content is identified by the separately hashed scientific snapshot.</p><p>{snapshot}</p><p>{esc(manifest["provenance"].get("note", ""))}</p><p><a href="evidence.json">Scientific evidence manifest</a> · <a href="checksums.json">Published file checksums</a> · <a href="build-provenance.json">Site build provenance</a></p></section>
+</div></main><footer class="site-footer"><div class="container"><p>Code: Apache-2.0. Manuscript: CC BY 4.0. See <a href="{esc(repo, quote=True)}/blob/{esc(metadata["default_branch"], quote=True)}/LICENSES.md">license scope and third-party notices</a>.</p><p><a href="infrastructure/index.html">Infrastructure record</a> · <a href="https://johntfoster.github.io/finite-strain-biot-poromechanics/">Companion paper</a></p></div></footer></body></html>'''
 
 
 def build(root, manifest_path, output):
@@ -197,7 +210,8 @@ def build(root, manifest_path, output):
             if digest(destination) != item["sha256"]:
                 raise ValueError("Artifact changed during build")
         (temporary / "index.html").write_text(render(manifest, metadata, artifacts))
-        shutil.copyfile(root / "site/style.css", temporary / "style.css")
+        for name in ("style.css", "companion.css"):
+            shutil.copyfile(root / "site" / name, temporary / name)
         (temporary / "evidence.json").write_text(json.dumps(manifest, indent=2) + "\n")
         git_revision = subprocess.run(["git", "rev-parse", "HEAD"], cwd=root, check=True, capture_output=True, text=True).stdout.strip()
         provenance = {"schema_version": 1, "built_at_utc": datetime.now(timezone.utc).isoformat(), "builder_sha256": digest(root / "tools/build_verification_site.py"), "evidence_sha256": digest(temporary / "evidence.json"), "site_build_commit": git_revision, "scientific_source_revision": manifest["provenance"]["source_revision"], "scientific_snapshot_artifact": manifest["provenance"]["scientific_snapshot"], "claim": "Build and artifact-integrity record only; no scientific checks are executed by this builder."}

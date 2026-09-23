@@ -136,6 +136,7 @@ def main():
     publication_size(fig)
     fig.savefig(OUT / 'fe_anisotropy_2d.png', dpi=200, metadata={'Creator': 'plot_anisotropy_2d.py'})
     fig.savefig(OUT / 'fe_anisotropy_2d.pdf', metadata={'Creator': 'plot_anisotropy_2d.py'})
+    fig.savefig(OUT / 'fe_anisotropy_2d.pgf')
 
     summary = {}
     for angle, d in sorted(cases.items()):

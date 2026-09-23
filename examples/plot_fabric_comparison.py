@@ -104,9 +104,11 @@ def main():
     ax.set(xticks=np.arange(3), xticklabels=['0°', '45°', '90°'], xlabel='Fabric angle',
            ylabel='Relative history error (%)', title='(d) Error of the scalar approximation')
     ax.legend(fontsize=7)
-    for ext in ('png', 'pdf'):
-        fig.savefig(OUT/('fabric_comparison.'+ext), dpi=220, bbox_inches='tight',
-                    metadata={'CreationDate': None, 'ModDate': None} if ext == 'pdf' else None)
+    for ext in ('png', 'pdf', 'pgf'):
+        kwargs = dict(dpi=220, bbox_inches='tight')
+        if ext == 'pdf':
+            kwargs['metadata'] = {'CreationDate': None, 'ModDate': None}
+        fig.savefig(OUT/('fabric_comparison.'+ext), **kwargs)
     plt.close(fig)
     maxrefs = [100*max(r['relative_history_difference'] for r in refinement if r['field']==field) for field in FIELDS]
     errorranges = {}

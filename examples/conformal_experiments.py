@@ -32,6 +32,7 @@ def write_csv(name, records):
 
 def save(fig, name):
     publication_size(fig)
+    fig.savefig(DEST/(name+'.pgf'))
     fig.savefig(DEST/(name+'.pdf'))
     fig.savefig(DEST/(name+'.png'), dpi=160)
     plt.close(fig)

@@ -116,9 +116,11 @@ def save_csv(name, rows):
 
 
 def save_fig(fig, name):
-    for ext in ('png', 'pdf'):
-        fig.savefig(OUT/(name+'.'+ext), dpi=220, bbox_inches='tight',
-                    metadata={'Creator': 'fabric_insight.py', 'CreationDate': None, 'ModDate': None} if ext == 'pdf' else None)
+    for ext in ('png', 'pdf', 'pgf'):
+        kwargs = dict(dpi=220, bbox_inches='tight')
+        if ext == 'pdf':
+            kwargs['metadata'] = {'Creator': 'fabric_insight.py', 'CreationDate': None, 'ModDate': None}
+        fig.savefig(OUT/(name+'.'+ext), **kwargs)
     plt.close(fig)
 
 

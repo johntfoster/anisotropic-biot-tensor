@@ -52,7 +52,7 @@ from replacing the pressure integral in
 mineral volume and hence the coupling tensor.
 \begin{figure}[htbp]
  \centering
- \includegraphics[width=.91\textwidth]{build/conformal/pressure_response.pdf}
+ \resizebox{.91\textwidth}{!}{\import{build/conformal/}{pressure_response.pgf}}
  \caption{Fixed-deformation pressure experiment, \(\mathbf F=\mathbf I\).
  All stresses and pressures are expressed in \(K_*\). The curves use 121
  pressure states on \(0\le p/K_*\le6\). The anisotropic and isotropic
@@ -83,7 +83,7 @@ mineral-volume equation depends only on \(J\) and \(p\); its volume and
 spherical Biot tensor are constant along this isochoric path.
 \begin{figure}[htbp]
  \centering
- \includegraphics[width=\textwidth]{build/conformal/shear_response.pdf}
+ \resizebox{\textwidth}{!}{\import{build/conformal/}{shear_response.pgf}}
  \caption{Isochoric shape-change experiment at \(p=2K_*\), using
  \eqref{eq:experiment-shear-gradient} and 161 equally spaced values of
  \(\gamma\). Mineral volume--shape coupling changes \(\bar J\) and
@@ -112,7 +112,7 @@ preferred directions. The isotropic comparison gives a circular normal
 response and zero tangential response at every angle.
 \begin{figure}[htbp]
  \centering
- \includegraphics[width=.93\textwidth]{build/conformal/directional_response.pdf}
+ \resizebox{.93\textwidth}{!}{\import{build/conformal/}{directional_response.pgf}}
  \caption{Directional pressure sensitivities at \(p=2K_*\), sampled at
  one-degree intervals. The finite-shear state is
  \eqref{eq:experiment-shear-gradient} with \(\gamma=0.65\). Directions
@@ -137,7 +137,7 @@ representation and rotating the physical body; neither operation changes
 the prescribed material stiffness in its reference axes.
 \begin{figure}[htbp]
  \centering
- \includegraphics[width=.93\textwidth]{build/conformal/rotation_response.pdf}
+ \resizebox{.93\textwidth}{!}{\import{build/conformal/}{rotation_response.pgf}}
  \caption{Internal-frame change versus superposed physical rotation.
  The base state is \(\mathbf F(0.65)\), \(p=2K_*\); 121 angles span
  zero to \(180^\circ\). At fixed \(\mathbf F\), varying
@@ -160,7 +160,7 @@ prevented while axial deformation is free. The calculation illustrates how
 a tensorial pressure response enters a measurable constrained deformation.
 \begin{figure}[htbp]
  \centering
- \includegraphics[width=\textwidth]{build/conformal/constrained_layer.pdf}
+ \resizebox{\textwidth}{!}{\import{build/conformal/}{constrained_layer.pgf}}
  \caption{Homogeneous laterally constrained layer with
  \(F_{11}=F_{22}=1\) and \(\sigma_{33}=0\). Pressure is sampled at 121
  points on \(0\le p/K_*\le6\); stresses are expressed in \(K_*\).
@@ -168,59 +168,3 @@ a tensorial pressure response enters a measurable constrained deformation.
  between the lateral reactions reflect the anisotropic mineral law.}
  \label{fig:spherical-layer}
 \end{figure}
-
-\subsection{Independent verification and reproducibility}
-We first evaluate the stress by differentiating the mineral energy in
-its true frame, rotating that stress into the mixture frame, and adding
-the volume-fraction-weighted phase stresses. Centered differences of the
-independently evaluated total pressure potential
-\(W_s+\phi_{s0}p\bar J-pJ\) give a separate stress calculation.
-Differences of the solved mineral volume check
-\eqref{eq:biot-pore-volume-variation}; differences of the total stress
-with pressure check \eqref{eq:cauchy-pressure-tangent}. These comparisons
-use complete tensors, including noncoaxial states and repeated stretches.
-
-The spherical-distention verification suite contains 186 named checks. These include the
-65 per-state identities (five states times thirteen identities spanning
-true-metric, logarithmic-strain, rotation, virtual-work, volume-response,
-rotated-mineral-stress, phase-balance, and pressure-tangent checks) and the two
-reference Biot and rank-one compliance relations used to establish the
-specialization. The largest absolute error among its constitutive
-identities is \(2.5\times10^{-9}\) in the stated nondimensional units.
-Step refinement of the energy, pore-volume, and pressure differences gives
-second-order convergence before cancellation becomes significant.
-Further checks recover the isotropic formula. A separate tensor-verification
-suite checks 273 finite states across 13 mineral stiffnesses;
-a reconstruction suite checks work equivalence and finite unjacketed
-compression. Numerical differentiation supports implementation verification,
-not experimental validation or a proof of global stability.
-
-The implementation and its verification scripts travel with the manuscript
-sources. The repository records the parameter matrices, loading paths,
-solver residuals, software versions, and figure data as JSON and CSV files.
-All plotted states satisfy positive phase volumes and the scalar stability
-condition \eqref{eq:trace-mineral-stability-domain}. At negative pressure,
-the solver brackets the increasing branch of the mineral equation before
-its turning point. The solver distinguishes the loss of that branch from
-the violation of positive phase volumes. Independent Lambert-function solutions check
-admissible negative-pressure states and a large positive-pressure state
-outside the plotted range. Local scalar stability does not establish
-stability against all deformation modes.
-
-\paragraph{Code and data availability.}
-The numerical supplement is embedded in the PDF as an attachment. It carries
-the numerical sources, parameter matrices, CSV figure data, and verification
-reports, together with a manifest that identifies its version and the SHA-256
-hashes of its payload files and a README that gives the reproduction commands.
-Download the PDF and use an attachment-capable viewer to save the archive, or
-extract it with \texttt{pdfdetach -saveall article.pdf}. The supplement is
-self-contained and does not require the companion repository, and it covers
-the constitutive and material-point verification. The remaining coupled
-finite-element application sources of section~\ref{sec:finite-elements}, the
-deck inputs and per-run analyses, the manufactured-solution convergence
-analysis, the figure data, and the machine-readable verification-evidence file
-travel with the manuscript sources in the repository named in the
-data-availability statement, whose evidence file records the inspected source
-revision and pins the SHA-256 hashes of the files it reports. The public source
-location and inspected commit of the unpublished companion manuscript are
-given in reference~\citep{foster2026poroplastic}.

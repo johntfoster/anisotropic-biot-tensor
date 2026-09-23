@@ -60,7 +60,7 @@ def main():
     files += list((ROOT / 'licenses').glob('*'))
     for directory in ('conformal', 'weighted-stress', 'fabric', 'insight'):
         files += [p for p in (ROOT / 'build' / directory).glob('*')
-                  if p.suffix in ('.csv', '.dat', '.json', '.pdf', '.tex', '.txt')]
+                  if p.suffix in ('.csv', '.dat', '.json', '.pdf', '.pgf', '.tex', '.txt')]
     for required in ('verification.json', 'experiments.json', 'step_refinement.csv'):
         if not (ROOT / 'build/conformal' / required).is_file():
             raise SystemExit('Run verification and experiments before packaging: ' + required)

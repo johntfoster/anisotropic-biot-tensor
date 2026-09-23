@@ -22,6 +22,7 @@ class PublicationBoundaryTests(unittest.TestCase):
         self.manifest["artifacts"] = []
         self.manifest["figures"] = []
         self.manifest["cases"] = []
+        self.manifest["verification_details"] = []
         self.manifest["provenance"]["scientific_snapshot"] = None
         self.manifest["provenance"]["source_revision"] = None
         for item in self.manifest["categories"].values():

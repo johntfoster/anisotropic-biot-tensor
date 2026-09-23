@@ -1,0 +1,16 @@
+/* Evidence-specific additions to the companion paper's unchanged stylesheet. */
+a { color: var(--accent); overflow-wrap: anywhere; }
+a:focus-visible { outline: 3px solid var(--warn); outline-offset: 3px; }
+section { scroll-margin-top: 20px; }
+.grid { grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
+.status { font-weight: 600; }
+.passed { color: #166534 !important; }
+.pending, .not_performed { color: #92400e !important; }
+.failed { color: #991b1b !important; }
+#cases article, #constitutive-checks article { margin-bottom: 18px; }
+code { overflow-wrap: anywhere; }
+figure img { height: auto; }
+.skip { position: absolute; top: -100px; padding: 10px; background: white; }
+.skip:focus { top: 0; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media print { .hero, .site-header { background: white; color: black; } figure { break-inside: avoid; } }

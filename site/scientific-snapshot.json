@@ -2,7 +2,7 @@
   "files": [
     {
       "path": "examples/conformal_experiments.py",
-      "sha256": "2710fdad5a8abaa19bbc8e78e4987583e0d10c3985f3ca0061189678f6818c49"
+      "sha256": "12b8f09e8c49f4b00185b660cd0e937fe477a56b6790afad273907e4db3a9334"
     },
     {
       "path": "examples/conformal_model.py",
@@ -10,11 +10,11 @@
     },
     {
       "path": "examples/fabric_insight.py",
-      "sha256": "20ef2386ede67a1adbac0aa17f42d86d6c116779d33fc3953350cd16ee012dd6"
+      "sha256": "c3833d46775a8939bf7d43264739a08a9889a1172d99f63f5851e8362fb5ebe7"
     },
     {
       "path": "examples/figure_style.py",
-      "sha256": "35119cbb69f5552cd3df3209079b050225b5568624a3260136fbad751a377237"
+      "sha256": "275debe25be645f67420f41f33e8cb93fe7a617bb4ba85d73dd02806d3b091f5"
     },
     {
       "path": "examples/finite_pressure.py",
@@ -22,27 +22,27 @@
     },
     {
       "path": "examples/plot_anisotropy_2d.py",
-      "sha256": "f86c1e1ccfabddcd4d7afce056421537188f0eef94fde5294adca4b5b984fb62"
+      "sha256": "e2c9d3cfb463e0fec2e7c01a3a88e0499581a2a3ff9b3ebc4320ff2aaa7ab0be"
     },
     {
       "path": "examples/plot_fabric_comparison.py",
-      "sha256": "bb42c3854973b0b9fb5db04b978986590c9f29a8b32b0900a09cfc00b23399fb"
+      "sha256": "b8235873edac6d48b89921e9d59aebdf9d6ae985e8ad58742796b4fbfaadaa7d"
     },
     {
       "path": "examples/plot_fabric_contours.py",
-      "sha256": "6823252cf3e34b8407b0f8fe80b6ad5db49ea95a97673edf3c4e955eb8b51509"
+      "sha256": "3121e255b611b3a2d873474b17ce1943e8304d64d82c6b97522ac4dc710da804"
     },
     {
       "path": "examples/plot_fabric_results.py",
-      "sha256": "552efce63e931a5aa5a733e1507471fa86254a95d622625f1509fcec985debd8"
+      "sha256": "bed1a36b01dfc6a5e528d4954fbbf76f9c52e6f1ec577a2f545b85d281cee507"
     },
     {
       "path": "examples/plot_fe_results.py",
-      "sha256": "fa7ce3bfb585d8270574c123c29db6cae7d9c6665dcd50779821ad466a84767e"
+      "sha256": "a9ce8790281ff38176987ea411018ede493c22c9e99c5aef83d8ff802083c6d9"
     },
     {
       "path": "examples/plot_fe_verification.py",
-      "sha256": "1ca6ae65849a3f43639ef965079ec495cc5bda1ecec1ec1cd64eb2983a78143e"
+      "sha256": "b49cf5e9c325ba22e2b4c33d86f4eda1df9b2d9e4c6cbeffa8a153d20f61ab91"
     },
     {
       "path": "examples/verify_conformal.py",
@@ -70,7 +70,7 @@
     },
     {
       "path": "main.tex",
-      "sha256": "725e0613e8faffa26a8eeb84b479d52c7f68da2d5c3da5bed686f66420f4cccd"
+      "sha256": "02b01106251f65289f2281f7cb12c5631ce10c3a5e710db73bc2d040ff0a4b6a"
     },
     {
       "path": "moose_app/include/base/AnisotropicBiotApp.h",
@@ -193,16 +193,32 @@
       "sha256": "ae8f1a8fd0ff94c12d0e791e55aca38281ec6e025233e1135c53cdab852b6d29"
     },
     {
+      "path": "sections/experiments.tex",
+      "sha256": "35698e6282ce2bbd57e053dacf7129a5e5ff752dfc8059e006a99ec7db8585a3"
+    },
+    {
       "path": "sections/fabric_studies.tex",
-      "sha256": "c79f501e2a9477fde98d7cfc0b3edc8559170ea231a0819ffa30d72fcdbec2a7"
+      "sha256": "c9f7eafeaa7f3691725e28dcb26f5ef9687194bbeeefd2fcb9993202df1ef0af"
     },
     {
       "path": "sections/finite_elements.tex",
-      "sha256": "77b19d69637612d33cd7c71a482f54a2a90fc51d9712c3894afb4f39ee61bc86"
+      "sha256": "34d8b96d18861cbee86e8b5ece3e5818bd2ec16479daf0c38c9dec06283a4603"
+    },
+    {
+      "path": "sections/limits.tex",
+      "sha256": "3ace99711c133e230a111b44225c42e78bf8468fca56e525a2288d6bf6b33f1e"
+    },
+    {
+      "path": "sections/logarithmic_derivative.tex",
+      "sha256": "f86a8ed9b96b4405e780a769e0202e3f3df032a72f8e1b290dbb51a515fbff2f"
     },
     {
       "path": "sections/pore_fabric.tex",
-      "sha256": "9ab5008ba9db3715f18dd4928e06aa297963702d52cb182a29c2bbfc87b498ca"
+      "sha256": "574a1e7ddf3e9b8a33cc7f8a88483974e596f5aed16f5ec9d7c7a5c117d3b3a8"
+    },
+    {
+      "path": "sections/stress_reconstruction.tex",
+      "sha256": "8e3623df110b41b49faae0f85365b4d0f3551411437d12a1720e03a4054c3b9b"
     },
     {
       "path": "tools/register_insight_evidence.py",
