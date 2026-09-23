@@ -35,7 +35,7 @@ at zero pressure:
 \end{align}
 For the spherical law, mineral volume is the solution of
 \eqref{eq:anisotropic-mineral-eos}. The reference fabric calculations
-below instead use the linearized fabric equilibrium to determine coupling
+instead use the linearized fabric equilibrium to determine coupling
 and storage. Neither implementation prescribes an independent porosity law.
 All mass measures in this section are per unit reference mixture volume,
 whereas the intrinsic densities and volume fractions of the preceding sections
@@ -161,14 +161,14 @@ compressive traction is \(q_L>0\), so the top compressive resultant is
 a quarter-domain calculation for this isotropic problem.
 
 The compatible material inputs, in one consistent nondimensional system,
-are \(\phi_{s0}=0.9\), \(\mathcal{K}_s=2.5\), mineral shear modulus
-\(\mu_s=5/6\), \(\mathcal{K}=1\), \(K_f=8\),
+are \(\phi_{s0}=0.9\), \(K_s=2.5\), mineral shear modulus
+\(\mu_s=5/6\), \(K=1\), \(K_f=8\),
 \(\bar\rho_{f0}=1\), and \(k/\mu_f=1.5\).
 The compliance restriction gives drained shear modulus \(G=0.75\).
 The reference Biot coefficient is \(0.6\), and total storage is
 \(17/80\). These reference coefficients define the constant-coefficient
 analytical problem. The finite-deformation equations instead approach that
-problem as \(q_L/\mathcal{K}\) tends to zero; they need not reproduce its series
+problem as \(q_L/K\) tends to zero; they need not reproduce its series
 at a finite load.
 
 The undrained post-load state supplies initial displacement and pressure.
@@ -264,10 +264,10 @@ mass-balance error.
 We implement the tensorial distention law of \cref{sec:pore-fabric} as a
 material that evaluates the reference-state drained stiffness, the Biot
 tensor, and the distention strains. The compiled law retains the
-two-dimensional axisymmetric distention subspace of
-\cref{sec:fabric-biot}: the distention stiffness is positive definite on the
-volumetric--axial block and the four complementary modes are frozen to the
-mineral. With that restriction the reconstructed fabric is exactly
+two independent axisymmetric pore changes of \cref{sec:fabric-biot}:
+overall volume and axial shape. The distention stiffness acts on those two
+changes, while the other four symmetric changes remain fixed to the mineral.
+With that restriction the reconstructed fabric is exactly
 \eqref{eq:fabric-transverse-h}, and the independent script confirms it
 numerically---the reconstruction differs from
 \(h^{-2}\mathbf m\otimes\mathbf m+h(\mathbf I-\mathbf m\otimes\mathbf m)\)
@@ -289,7 +289,7 @@ distention basis, the equilibrium, and the reported sign convention for
 spherical material used in \cref{sec:fe-reference-problems} to
 \(1.9\times10^{-14}\).
 The reference material checks are retained in the numerical supplement.
-The following experiments use the coupling to predict boundary reactions,
+The numerical experiments use the coupling to predict boundary reactions,
 consolidation, and finite pore-volume changes.
 
 \input{sections/fabric_studies}

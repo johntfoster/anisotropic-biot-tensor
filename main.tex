@@ -62,7 +62,8 @@ requires commuting distention and mineral stress. A finite oblique pure-shear
 benchmark satisfies this condition, equilibrates pore volume and shape,
 and quantifies the error of the reference linearization. The reference
 fabric law relaxes the spherical rank-one compliance restriction to a
-fabric-symmetric compliance on the retained volumetric--axial subspace.
+fabric-symmetric compliance for the retained volumetric and axial-shape
+pore changes.
 \end{abstract}
 \noindent\textbf{Keywords:} anisotropic poroelasticity; finite deformation;
 Biot tensor; mineral compression; logarithmic strain; finite-element
@@ -140,10 +141,9 @@ distinct from the fabric-elasticity and fabric-poroelasticity constructions
 above: the fabric tensor does not stand in for anisotropic elastic
 constants of the solid, but enters the distention energy of the pore space,
 from which the anisotropic Biot tensor follows through the mineral-volume
-response. \Cref{sec:pore-fabric}
-derives the reference-state law and a commuting finite specialization
-by extending the volume-only spherical distention to a symmetric positive
-definite distention whose unimodular part is the pore fabric.
+response. The reference-state law and a commuting finite specialization
+extend the volume-only spherical distention to a symmetric positive
+definite distention whose unit-determinant part describes the pore fabric.
 
 We consider an anisotropic mineral and allow the distention gradient
 \(\mathbf A\) of \eqref{eq:true-mineral-jacobian}, with \(J=a\bar J\), to
@@ -526,8 +526,7 @@ Biot tensor
  \right\}.
  \label{eq:anisotropic-biot-explicit}
 \end{equation}
-The matrix derivative and its repeated-eigenvalue limit are given in
-\cref{sec:logarithmic-derivative}. If mineral volume and shape are coupled
+The matrix derivative is evaluated with its repeated-eigenvalue limit. If mineral volume and shape are coupled
 by \(\mathbb{C}_s\), a change of skeleton shape changes \(\bar J\).
 The second term inside braces represents this contribution. It makes the
 pressure response directional even though distention changes only volume and orientation.
@@ -664,20 +663,22 @@ Substituting these differences into
                 \dev(\mathbb{C}_s:\mathbf I)\right]\mathbf F^T.
  \label{eq:finite-pressure-stress-difference}
 \end{align}
-Here and below \(\bar J\) is evaluated at the current pressure.
+Throughout, \(\bar J\) is evaluated at the current pressure.
 Collecting the coefficient of \(-p\) defines the finite pressure
 multiplier \(\boldsymbol{\alpha}\):
-\begin{align}
+\begin{equation}
  \mathbf\sigma(\mathbf F,p)
- &=\mathbf\sigma^d(\mathbf F)-p\boldsymbol{\alpha}(\mathbf F,p),
- \label{eq:finite-drained-total-stress-split}\\
+ =\mathbf\sigma^d(\mathbf F)-p\boldsymbol{\alpha}(\mathbf F,p),
+ \label{eq:finite-drained-total-stress-split}
+\end{equation}
+\begin{equation}
  \boldsymbol{\alpha}
- &=\mathbf I-\frac{\bar J}{J\mathcal{K}_s}
+ =\mathbf I-\frac{\bar J}{J\mathcal{K}_s}
  \left\{\mathcal{K}\mathbf I-\frac{\phi_{s0}}3\left(1-\frac{\mathcal{K}}{\phi_{s0}\mathcal{K}_s}\right)\mathbf F
  \left[\pder{\log\mathbf C}{\mathbf C}:
                 \dev(\mathbb{C}_s:\mathbf I)\right]\mathbf F^T\right\}.
  \label{eq:finite-pressure-secant-tensor}
-\end{align}
+\end{equation}
 This tensor relates a finite pressure change from zero to the resulting
 stress difference. The two
 effective stresses can therefore also be written as
@@ -711,10 +712,12 @@ zero, \eqref{eq:integrated-pressure-response} also gives
 Equation \eqref{eq:finite-pressure-secant-tensor} evaluates this average
 explicitly from the current mineral volume, so the total stress can be
 computed from the drained stress without pressure quadrature. For an
-isotropic mineral, \(\dev(\mathbb{C}_s:\mathbf I)=\mathbf0\), and
+isotropic mineral, \(\dev(\mathbb{C}_s:\mathbf I)=\mathbf0\).
+The spherical-distention stiffness restriction also makes the drained
+skeleton isotropic, so the moduli are \(K\) and \(K_s\), and
 \begin{equation}
  \boldsymbol{\alpha}
- =\left(1-\frac{\bar J\mathcal{K}}{J\mathcal{K}_s}\right)\mathbf I.
+ =\left(1-\frac{\bar J K}{J K_s}\right)\mathbf I.
  \label{eq:isotropic-finite-pressure-multiplier}
 \end{equation}
 This is the finite pressure multiplier in the elastic specialization of
@@ -788,7 +791,7 @@ chosen independently.
 finite specialization. Replacing the scalar dilation
 with a symmetric positive definite distention \(\mathbf G\) makes the
 fabric tensor a constitutive variable with its own energy
-\(W_{\mathrm{dis}}(\mathbf G)\) and symmetric work conjugate
+\(W_A(\mathbf G)\) and symmetric work conjugate
 \eqref{eq:fabric-distention-stress}. The equilibrium
 \eqref{eq:fabric-equilibrium} that determines the fabric generalizes the
 pressure equation. Restricting that equilibrium to spherical distention

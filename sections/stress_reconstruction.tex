@@ -39,7 +39,7 @@ Hooke laws are
 \end{align}
 These stresses are conjugate to logarithmic strain. Their spatial
 Kirchhoff stresses are obtained by differentiating the strain with respect
-to deformation, as detailed in \cref{sec:logarithmic-derivative}.
+to deformation.
 The energies, zero in the undeformed state, are
 \begin{equation}
  \bar W_s=\frac12\bar{\mathbf\varepsilon}:\mathbb{C}_s:
@@ -61,8 +61,11 @@ strain. Define
 These coefficients give mean logarithmic stress per logarithmic volume
 change when strain is spherical. For an anisotropic solid, a spherical
 strain can generate a deviatoric stress; \(\mathcal{K}\) and \(\mathcal{K}_s\) need not
-equal moduli measured under hydrostatic stress. They become the usual
-bulk moduli in the isotropic limit.
+equal moduli measured under hydrostatic stress. Under isotropy, spherical
+strain produces hydrostatic stress, so these loading conditions give the
+same linearized volume response. We therefore write
+\(K=\mathcal{K}\) and \(K_s=\mathcal{K}_s\) for the usual reference bulk
+moduli in isotropic specializations.
 
 Along the spherical drained path, both strains are spherical. Taking the
 trace of \eqref{eq:constitutive-kirchhoff-phase-stress} at \(p=0\)
@@ -242,7 +245,7 @@ stiffness on symmetric tensors gives
  \label{eq:drained-mineral-strain-from-stress}
 \end{equation}
 
-We next express the distention in terms of the same drained logarithmic
+We express the distention in terms of the same drained logarithmic
 stress \(\mathbb{C}^d:\mathbf\varepsilon\). Taking the trace of
 \eqref{eq:drained-stress-distention-split} and using
 \(\mathbf I:\mathbb{C}_s:\mathbf I=9\mathcal{K}_s\) gives
